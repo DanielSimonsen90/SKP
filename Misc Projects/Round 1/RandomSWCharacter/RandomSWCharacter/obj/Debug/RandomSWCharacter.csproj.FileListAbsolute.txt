@@ -1,0 +1,12 @@
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.exe.config
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.exe
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.pdb
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.exe
+C:\Users\DanielSimonsen\source\repos\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.exe
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\bin\Debug\RandomSWCharacter.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.exe
+C:\Users\DanielSimonsen\source\repos\SKP\RandomSWCharacter\RandomSWCharacter\obj\Debug\RandomSWCharacter.pdb

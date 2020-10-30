@@ -1,0 +1,71 @@
+<Account StartDate="03-05-2001">
+	<Login Username="Player" Password="TopSecretPassword123">
+		<Player Level="100" Strength="100" Smarts="100" execSpeed="100" moveSpeed="100">
+			<Rank Equipped="Warrior" />
+				<Warrior Rank="10">
+					<Range Short="100" Medium="50" Long="40" />
+					<Equiptment>
+						<Melee Weapon="Dual-Axe" dmgBoost="80" Durability="60" needsAmmo="false" ammoAmount="1" ammoPerReload="1"/>
+						<Midrange Weapon="Small Axe" dmgBoost="20" Durability="90" needsAmmo="true" ammoAmount="3" ammoPerReload="1"/>
+						<Longrange Weapon="Bow" dmgBoost="30" Durability="85" needsAmmo="true" ammoAmount="25" ammoPerReload="1"/>
+						<Potion> 
+							<Health Amount="3" healingDone="40" />
+							<Shield Amount="1" externalShield="30" />
+						</Potion>
+					</Equipment/>
+				</Warrior>
+				<Soldier Rank="10" />
+					<Range Short="80" Medium="100" Long="60" />
+					<Equiptment>
+						<Melee Weapon="Dagger" dmgBoost="15" Durability="100" needsAmmo="false" ammoAmount="0" ammoPerReload="1"/>
+						<Midrange Weapon="Revolver" dmgBoost="33" Durability="90" needsAmmo="true" ammoAmount="60" ammoPerReload="6"/>
+						<Longrange Weapon="AK-47" dmgBoost="70" Durability="100" needsAmmo="true" ammoAmount="240" ammoPerReload="60"/>
+						<Potion> 
+							<Health Amount="3" healingDone="40" />
+							<Shield Amount="1" externalShield="30" />
+						</Potion>
+					</Equipment/>
+				</Soldier>
+				<Mage Rank="10" />
+					<Range Short="70" Medium="100" Long="100" />
+					<Equiptment>
+						<Melee Weapon="Magic Wand" dmgBoost="1.5" Durability="75" needsAmmo="false" ammoAmount="1" ammoPerReload="1"/>
+						<Midrange Weapon="Magic Wand" dmgBoost="33" Durability="90" needsAmmo="false" ammoAmount="1" ammoPerReload="1"/>
+						<Longrange Weapon="Magic Wand" dmgBoost="70" Durability="100" needsAmmo="false" ammoAmount="1" ammoPerReload="1"/>
+						<Potion> 
+							<Health Amount="3" healingDone="40" />
+							<Shield Amount="1" externalShield="30" />
+						</Potion>
+					</Equipment/>
+				</Mage>
+				<Engineer Rank="10" />
+					<Range Short="80" Medium="100" Long="100" />
+					<Equiptment>
+						<Melee Weapon="Hammer" dmgBoost="5" Durability="95" needsAmmo="false" ammoAmount="1", ammoPerReload="1"/>
+						<Midrange Weapon="Revolver" dmgBoost="33" Durability="90" needsAmmo="true" ammoAmount="60" ammoPerReload="6"/>
+						<Longrange Weapon="Drone" dmgBoost="10" Durability="100" needsAmmo="true" ammoAmount="10" ammoPerReload="5"/>
+						<Potion> 
+							<Health Amount="3" healingDone="40" />
+							<Shield Amount="1" externalShield="30" />
+						</Potion>
+					</Equipment/>
+				</Engineer>
+			</Rank>
+			<Armor>
+				<Helmet Protection="100" Durability="100" />
+				<Chestplate Protection="100" Durability="100" />
+				<Leggings Protection="100" Durability="100" />
+				<Boots Protection="100" Durability="100" />
+				<Shield Protection="100" Durability="100" />
+				<Barrier Protection="50" Durability="60" />
+			</Armor>
+		</Player>
+	</Login>
+</Account>
+
+<XmlRoot>
+	<XmlElement XmlAttribute>
+	
+	- Get more data from newer players instead of replacing & fix AccountID
+	- Load data from file
+	- Fix Login so it actually works :omegalul:

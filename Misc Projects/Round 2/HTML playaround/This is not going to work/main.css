@@ -1,0 +1,69 @@
+/* Header Elements */
+.Header
+{
+    position: relative;
+    background-color: #222222;
+    color: black;
+    padding: 1%;
+    border-style: solid;
+    border-color: #888888;
+}
+
+.Header a
+{
+    color: inherit;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.Header a:hover
+{
+    color: White;
+    text-decoration: inherit;
+    text-transform: bold;
+    font-size: 30px;
+    padding: 4px;
+    transition: 90ms;
+}
+
+.logoArea
+{
+    position: static;
+    border-style: solid;
+    border-color: #888888;
+}
+/* Body Elements */
+.body{
+    background-color: black;
+}
+/* Sidebar Elements */
+.Sidebar
+{
+    position: fixed;
+    border: #888888;
+    border-style: solid;
+    background-color: #444444;
+    padding: 4px;
+    height: 100%;
+    width: 10%;
+    top: inherit;
+}
+
+/* Main Elements */
+.main
+{
+    position: relative;
+    left: 13%;
+    background-color: inherit;
+    padding-left: 2%;
+    color: inherit;
+
+    position: relative;
+    color: #444444;
+}
+
+.main p:hover, h1:hover
+{
+    color: white;
+    transition: 1s;
+}

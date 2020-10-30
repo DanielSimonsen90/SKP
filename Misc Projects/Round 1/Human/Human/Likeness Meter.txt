@@ -1,0 +1,41 @@
+*********************
+Start Phase
+*********************
+0: Don't like
+5: Would stay away from
+10: Don't know you
+
+
+*********************
+Presentation Phase
+*********************
+15: Met you
+20: Know who you are
+25: Aquantance
+
+
+*********************
+Spark Phase
+*********************
+35: Buddy
+50: Friend
+
+
+*********************
+Early Stage Phase
+*********************
+69: Great friend
+80: Best friend
+
+
+*********************
+Ignition Phase
+*********************
+100: Flirt
+125: Friends with Benefits
+
+
+*********************
+Point of no return
+*********************
+150: Date

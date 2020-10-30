@@ -1,0 +1,6 @@
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.exe.config
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.exe
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.pdb
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.exe
+C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.pdb

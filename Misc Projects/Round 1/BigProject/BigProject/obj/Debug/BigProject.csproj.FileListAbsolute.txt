@@ -1,0 +1,14 @@
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\obj\Debug\BigProject.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\obj\Debug\BigProject.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\bin\Debug\BigProject.exe.config
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\bin\Debug\BigProject.exe
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\bin\Debug\BigProject.pdb
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\obj\Debug\BigProject.exe
+C:\Users\DanielSimonsen\source\repos\BigProject\BigProject\obj\Debug\BigProject.pdb
+C:\Users\Thomas\Desktop\BigProject\BigProject\bin\Debug\BigProject.exe.config
+C:\Users\Thomas\Desktop\BigProject\BigProject\bin\Debug\BigProject.exe
+C:\Users\Thomas\Desktop\BigProject\BigProject\bin\Debug\BigProject.pdb
+C:\Users\Thomas\Desktop\BigProject\BigProject\obj\Debug\BigProject.csprojAssemblyReference.cache
+C:\Users\Thomas\Desktop\BigProject\BigProject\obj\Debug\BigProject.csproj.CoreCompileInputs.cache
+C:\Users\Thomas\Desktop\BigProject\BigProject\obj\Debug\BigProject.exe
+C:\Users\Thomas\Desktop\BigProject\BigProject\obj\Debug\BigProject.pdb

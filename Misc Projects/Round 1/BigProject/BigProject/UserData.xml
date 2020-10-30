@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Login AccountID="1" Username="Player" Password="Password" StartDate="15-08-2019">
+    <Player Level="1" Strength="3" Smarts="6" execSpeed="7" moveSpeed="8">
+      <Rank Equipped="Mage">
+        <Mage Rank="1">
+          <Range Short="1" Medium="4" Long="7" />
+          <Equipment>
+            <Melee Weapon="Magic Wand" dmgBoost="1.5" Durability="100" needsAmmo="false" ammoAmount="1" ammoPerReload="1" />
+            <Medium Weapon="Magic Wand" dmgBoost="1.5" Durability="100" needsAmmo="false" ammoAmount="1" ammoPerReload="1" />
+            <Long dmgBoost="0" Durability="0" needsAmmo="false" ammoAmount="0" ammoPerReload="0" />
+            <Potion>
+              <Health Amount="5" healingDone="25" />
+              <Shield Amount="2" externalShield="10" />
+            </Potion>
+          </Equipment>
+        </Mage>
+      </Rank>
+      <Armor>
+        <Helmet Protection="1" Durability="100" />
+        <Chestplate Protection="4" Durability="100" />
+        <Leggings Protection="3" Durability="100" />
+        <Boots Protection="2" Durability="100" />
+        <Shield Protection="1" Durability="100" />
+        <Barrier Protection="3" Durability="100" />
+      </Armor>
+    </Player>
+  </Login>
+</UserData>

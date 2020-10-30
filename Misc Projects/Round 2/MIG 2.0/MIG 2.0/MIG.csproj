@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B690754-D363-464E-A33E-CC3147521284}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MIG_2._0</RootNamespace>
+    <AssemblyName>MIG 2.0</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DanhoLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DanhoLibrary\DanhoLibrary\bin\Release\netstandard2.0\DanhoLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ideas\Looking For\LFArtist.cs" />
+    <Compile Include="Ideas\Looking For\LFBPM.cs" />
+    <Compile Include="Ideas\Looking For\LFGenre.cs" />
+    <Compile Include="Ideas\Looking For\LFIdea.cs" />
+    <Compile Include="Ideas\Looking For\LFScale.cs" />
+    <Compile Include="Ideas\Looking For\LFTitle.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="References\Data\Category.cs" />
+    <Compile Include="References\Data\Data.cs" />
+    <Compile Include="References\Data\Names.cs" />
+    <Compile Include="References\Data\Title.cs" />
+    <Compile Include="References\Reference\Reference.cs" />
+    <Compile Include="References\Reference\Artist.cs" />
+    <Compile Include="References\BPM\BPM.cs" />
+    <Compile Include="References\Scale.cs" />
+    <Compile Include="Song Elements\Drums\Drum Elements.cs" />
+    <Compile Include="Song Elements\Drums\Drums.cs" />
+    <Compile Include="Ideas\Idea.cs" />
+    <Compile Include="References\Genre.cs" />
+    <Compile Include="Song Elements\GetInfoInterface.cs" />
+    <Compile Include="Song Elements\Instruments.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Song Elements\Synths\Synth.cs" />
+    <Compile Include="Song Elements\Synths\Synths.cs" />
+    <Compile Include="References\Reference\Track.cs" />
+    <Compile Include="CustomExtender.cs" />
+    <Compile Include="SQL\SQLData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ideas\Looking For\Combinations Overview.xml" />
+    <Content Include="References\BPM\BPMs.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

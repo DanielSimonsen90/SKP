@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Themes>
+  <Theme ID="0" Name="Dark Theme">
+    <Button Fore="DarkGray" Back="Black"/>
+    <Box Fore="Lime" Back="Black"/>
+  </Theme>
+  <Theme ID="1" Name="Darker Theme">
+    <Button Fore="Red" Back="Black"/>
+    <Box Fore="Red" Back="Black"/>
+  </Theme>
+  <Theme ID="2" Name="Light Theme">
+    <Button Fore="Black" Back="White"/>
+    <Box Fore="Black" Back="White"/>
+  </Theme>
+  <Theme ID="3" Name="Rainbow Theme">
+    <Button Fore="Orange" Back="Black"/>
+    <Box Fore="Orange" Back="Black"/>
+  </Theme>
+</Themes>

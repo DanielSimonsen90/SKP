@@ -1,0 +1,14 @@
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\MainWindow.g.cs
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\App.g.cs
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator_MarkupCompile.cache
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator_MarkupCompile.lref
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\bin\Debug\VPFCalculator.exe.config
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\bin\Debug\VPFCalculator.exe
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\bin\Debug\VPFCalculator.pdb
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\MainWindow.baml
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.g.resources
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.Properties.Resources.resources
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.csproj.GenerateResource.cache
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.exe
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.pdb
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\VPFCalculator\VPFCalculator\obj\Debug\VPFCalculator.csprojAssemblyReference.cache

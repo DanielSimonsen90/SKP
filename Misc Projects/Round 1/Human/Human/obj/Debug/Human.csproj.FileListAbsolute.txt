@@ -1,0 +1,13 @@
+C:\Users\DanielSimonsen\source\repos\Human\Human\bin\Debug\Human.exe.config
+C:\Users\DanielSimonsen\source\repos\Human\Human\bin\Debug\Human.exe
+C:\Users\DanielSimonsen\source\repos\Human\Human\bin\Debug\Human.pdb
+C:\Users\DanielSimonsen\source\repos\Human\Human\obj\Debug\Human.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Human\Human\obj\Debug\Human.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\Human\Human\obj\Debug\Human.exe
+C:\Users\DanielSimonsen\source\repos\Human\Human\obj\Debug\Human.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\bin\Debug\Human.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\bin\Debug\Human.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\bin\Debug\Human.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\obj\Debug\Human.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\obj\Debug\Human.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Human\Human\obj\Debug\Human.pdb

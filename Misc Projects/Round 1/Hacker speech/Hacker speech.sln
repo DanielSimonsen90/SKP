@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hacker speech", "Hacker speech\Hacker speech.csproj", "{C3400555-EAC3-4162-9FC2-91DD29B9A236}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3400555-EAC3-4162-9FC2-91DD29B9A236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3400555-EAC3-4162-9FC2-91DD29B9A236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3400555-EAC3-4162-9FC2-91DD29B9A236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3400555-EAC3-4162-9FC2-91DD29B9A236}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5431D2AB-2854-49A4-9677-A5D5C59F7A93}
+	EndGlobalSection
+EndGlobal

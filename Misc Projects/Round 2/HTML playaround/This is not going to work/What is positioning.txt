@@ -1,0 +1,10 @@
+Positioning:
+static: always positioned according to the normal flow of the page
+fixed: Always stays in the same position no matter where on the page user its
+relative: Positioned "relative" to its relanormal position
+absolute: Positioned inside a "relative" parent
+z-index: Works as layering
+
+Display:
+Inline: Takes up specified space
+Block: Takes whole space

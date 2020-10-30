@@ -1,0 +1,19 @@
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\bin\Debug\Hacker speech.exe.config
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\bin\Debug\Hacker speech.exe
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\bin\Debug\Hacker speech.pdb
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker speech.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker_speech.Properties.Resources.resources
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker speech.csproj.GenerateResource.cache
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker speech.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker speech.exe
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Hacker speech.pdb
+C:\Users\DanielSimonsen\source\repos\Hacker speech\Hacker speech\obj\Debug\Translator.AWTranslator.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\bin\Debug\Hacker speech.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\bin\Debug\Hacker speech.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\bin\Debug\Hacker speech.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Hacker speech.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Translator.AWTranslator.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Hacker_speech.Properties.Resources.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Hacker speech.csproj.GenerateResource.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Hacker speech.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Hacker speech\Hacker speech\obj\Debug\Hacker speech.pdb

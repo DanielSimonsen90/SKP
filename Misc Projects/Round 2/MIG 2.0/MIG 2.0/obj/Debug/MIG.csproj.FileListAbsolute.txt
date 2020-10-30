@@ -1,0 +1,22 @@
+C:\Users\DanielSimonsen\source\repos\MIG 2.0\MIG 2.0\obj\Debug\MIG.csprojAssemblyReference.cache
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.exe.config
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.exe
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.pdb
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\bin\Debug\DanhoLibrary.dll
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\obj\Debug\MIG.csproj.CopyComplete
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\obj\Debug\MIG 2.0.exe
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\obj\Debug\MIG 2.0.pdb
+C:\Users\Bruger\Documents\GitHub\MIG-2.0\MIG 2.0\MIG 2.0\obj\Debug\MIG.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.exe.config
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.exe
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\MIG 2.0.pdb
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\obj\Debug\MIG.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\obj\Debug\MIG.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\obj\Debug\MIG 2.0.exe
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\obj\Debug\MIG 2.0.pdb
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\DanhoLibrary.dll
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\Dapper.dll
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\Dapper.xml
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\System.Data.SqlClient.dll
+C:\Users\DanielSimonsen\source\repos\Gitte\MIG 2.0\MIG 2.0\bin\Debug\System.Data.SqlClient.xml

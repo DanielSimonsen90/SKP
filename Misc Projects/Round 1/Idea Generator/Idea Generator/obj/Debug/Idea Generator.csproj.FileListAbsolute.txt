@@ -1,0 +1,7 @@
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\bin\Debug\Idea Generator.exe.config
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\bin\Debug\Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\bin\Debug\Idea Generator.pdb
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\obj\Debug\Idea Generator.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\obj\Debug\Idea Generator.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\obj\Debug\Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\Idea Generator\Idea Generator\obj\Debug\Idea Generator.pdb

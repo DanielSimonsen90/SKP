@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LFIdea>
+  <Genre Finished="true">
+    <Artist>true</Artist>
+    <BPM>true</BPM>
+    <Both>true</Both> 
+  </Genre>
+  <Artist Finished="true">
+    <Genre>true</Genre>
+    <BPM>true</BPM>
+    <Both>true</Both>
+  </Artist>
+  <BPM Finished="true">
+    <Genre>true</Genre>
+    <Artist>true</Artist>
+    <Both>true</Both>
+  </BPM>
+  <Scale Finished="true">
+    <SetKey>true</SetKey>
+    <SetScale>true</SetScale>
+    <SetBoth>true</SetBoth>
+  </Scale>
+</LFIdea>

@@ -1,0 +1,17 @@
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.exe.config
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.pdb
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.pdb
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\DanhoLibrary.dll
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\Muisc Idea Generator.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\bin\Debug\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Muisc Idea Generator\Muisc Idea Generator\obj\Debug\Muisc Idea Generator.pdb

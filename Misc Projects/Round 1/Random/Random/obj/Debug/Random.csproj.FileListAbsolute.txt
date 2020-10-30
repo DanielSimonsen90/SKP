@@ -1,0 +1,13 @@
+C:\Users\DanielSimonsen\source\repos\Random\Random\bin\Debug\Random.exe.config
+C:\Users\DanielSimonsen\source\repos\Random\Random\bin\Debug\Random.exe
+C:\Users\DanielSimonsen\source\repos\Random\Random\bin\Debug\Random.pdb
+C:\Users\DanielSimonsen\source\repos\Random\Random\obj\Debug\Random.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\Random\Random\obj\Debug\Random.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\Random\Random\obj\Debug\Random.exe
+C:\Users\DanielSimonsen\source\repos\Random\Random\obj\Debug\Random.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\bin\Debug\Random.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\bin\Debug\Random.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\bin\Debug\Random.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\obj\Debug\Random.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\obj\Debug\Random.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Random\Random\obj\Debug\Random.pdb

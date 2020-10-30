@@ -1,0 +1,35 @@
+Start phase:
+Main person at bar
+Encounters Kvinde and gets visual representation of looks
+You get a choice to commit, to conversation with said female, if he likes the girl he can futher the conversation, otherwise new Kvinde until 5x then program closes
+
+Presentation phase:
+You kindly greet the Kvinde, and begin the conversation
+As you carry on the conversation, you get multiple chioces of lying about your actual job, hobby etc. or tell the truth and (maybe) turn out boring...
+As you progress through the conversation, your sin-meter can increase or decrease, all depending on your choices...
+If the conversation was successful, you can earn her number, otherwise she has a percentage of leaving
+If she leaves, you must start over
+
+Spark phase:
+It's now up to you, if you want to go further with the Kvinde, or if you want to just drop it and find another
+You call the kvinde, and depending on her likeness-meter & formal stat, you can choose a date-setting in a randomized location (string[] Location). This may increase or decrease the likeness-meter
+In this stage, you can become closer with the Kvinde, where you get asked more questions while also learning more about her
+Depending on Formal stat & Likness-meter, a one-night-stand option may occur
+
+Early-stage phase:
+Random chance of Kvinde calling for either event or date || Cooldown phase
+Learn about past/future and get the opportunity to flirt with Kvinde
+
+Ignition phase:
+Kvinde calls you, invites you to her favorite place - you have an opportunity to turn this down, although it will result her being upset.
+You arrive at the favorite place, where she has planned some extrodinarily romantic activities...
+Day turns to night, and it's time for you to head home, where depending on her likeness meter, one of you initialize the kissy wissy opportunity, and the other may or may not act upon the initializiation...
+This opens an opportunity to claim the kvinde as your own.
+
+Point of no return
+You now have 4 choices:
+ - Call Kvinde and talk about the Ignition day
+ - Message Kvinde and talk about the Ignition day
+ - Meet up with Kvinde and discuss the Ignition day
+ - Pussy out
+In each choice, you have the opportunity to date Kvinde, or to tell Kvinde you're not interested

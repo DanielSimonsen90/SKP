@@ -1,0 +1,7 @@
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\obj\Debug\ezdab.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\bin\Debug\ezdab.exe.config
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\bin\Debug\ezdab.exe
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\bin\Debug\ezdab.pdb
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\obj\Debug\ezdab.exe
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\obj\Debug\ezdab.pdb
+C:\Users\DanielSimonsen\source\repos\ezdab\ezdab\obj\Debug\ezdab.csprojAssemblyReference.cache

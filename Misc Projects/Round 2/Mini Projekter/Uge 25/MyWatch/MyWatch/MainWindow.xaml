@@ -1,0 +1,90 @@
+﻿<Window x:Class="WatchProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WatchProject"
+        mc:Ignorable="d"
+        Title="MyWatch" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+            <TabItem x:Name="Time" Header="Time">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-6,-3">
+                    <TextBlock x:Name="MainWatchDisplay" HorizontalAlignment="Left" Margin="290,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="01:23:45" FontSize="50"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Alam" Header="Alarm" Loaded="Alam_Loaded">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="51*"/>
+                        <ColumnDefinition Width="625*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="Alarm_Container" HorizontalAlignment="Left" Height="328" Margin="0,5,0,0" VerticalAlignment="Top" Width="280" SelectionChanged="Alarm_Container_SelectionChanged" Grid.ColumnSpan="3"/>
+                    <Label x:Name="Alarm_RepeatLabel" Content="Repeat" Margin="143.728,5,409,353" FontSize="18" FontWeight="Bold" Grid.Column="2"/>
+                    <Label x:Name="Alarm_GeneralLabel" Content="General" Margin="257.728,10,238,332" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.481,0.184" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_MondayCheckBox" Content="Monday" Margin="143.728,43,409,330" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_TuesdayCheckBox" Content="Tuesday" Margin="143.728,66,409,307" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_WednesdayCheckBox" Content="Wednesday" Margin="143.728,89,397,284" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_ThursdayCheckBox" Content="Thursday" Margin="143.728,112,409,261" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_FridayCheckBox" Content="Friday" Margin="143.728,135,409,238" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_SaturdayCheckBox" Content="Saturday" Margin="143.728,158,409,215" Grid.Column="2"/>
+                    <CheckBox x:Name="Alarm_SundayCheckBox" Content="Sunday" Margin="143.728,181,409,192" Grid.Column="2"/>
+                    <Border x:Name="Alarm_RepeatBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="113" Margin="133.728,5,0,0" Grid.Column="2"/>
+                    <TextBox x:Name="Alarm_NoteTextBox" TextWrapping="Wrap" Text="Insert an alarm note..." Margin="133.728,212,10,58" FontSize="18" Grid.Column="2"/>
+                    <ListBox x:Name="Alarm_HoursListBox" Margin="257.728,64,191,184" Grid.Column="2" FontSize="24"/>
+                    <ListBox x:Name="Alarm_MinutesListBox" Margin="438.728,64,10,184" Grid.Column="2" FontSize="24"/>
+                    <Button x:Name="Alarm_AddButton" Content="Add" Margin="133.728,344,336,10" FontSize="24" Click="Alarm_HandleAddSaveDelete" RenderTransformOrigin="0.5,0.5" Height="37" Grid.Column="2"/>
+                    <Button x:Name="Alarm_SaveButton" Content="Save" Margin="293.728,344,170,10" FontSize="24" Click="Alarm_HandleAddSaveDelete" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
+                    <Button x:Name="Alarm_DeleteButton" Content="Delete" Margin="459.728,344,10,10" FontSize="24" Click="Alarm_HandleAddSaveDelete" Grid.Column="2"/>
+                    <Button x:Name="Alarm_OnButton" Content="On" Margin="0,344,26.272,10" FontSize="24" Click="Alarm_OnOffButton_Click" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Grid.ColumnSpan="2"/>
+                    <Button x:Name="Alarm_OffButton" Content="Off" Margin="35,344,506,10" FontSize="24" Click="Alarm_OnOffButton_Click" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Stopwatch" Header="Stopwatch" Loaded="StopwatchTab_Loaded">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="313*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="StopwatchDisplay" HorizontalAlignment="Left" Margin="147,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" Grid.Column="2"><Run Text="00.00.00,0"/><Run Text="00"/></TextBlock>
+                    <Button x:Name="StopwatchStartStopButton" Content="Start" HorizontalAlignment="Left" Margin="147,77,0,0" VerticalAlignment="Top" Width="89" Height="32" Click="Stopwatch_StartStopButton_Click" Grid.Column="2"/>
+                    <Button x:Name="StopwatchResetButton" Content="Reset" HorizontalAlignment="Left" Margin="334,77,0,0" VerticalAlignment="Top" Width="89" Height="32" Click="Stopwatch_ResetButton_Click" Grid.Column="2"/>
+                    <Button x:Name="StopwatchLapButton" Content="Lap" HorizontalAlignment="Left" Margin="241,77,0,0" VerticalAlignment="Top" Width="88" Height="32" Click="Stopwatch_LapButton_Click" Grid.Column="2"/>
+                    <ListBox x:Name="LapContainer" HorizontalAlignment="Left" Height="376" Margin="0,5,0,0" VerticalAlignment="Top" Width="280" Grid.ColumnSpan="3"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Timer" Header="Timer" Loaded="TimerTab_Loaded">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="344*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="TimerDisplay" HorizontalAlignment="Left" Margin="201,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="00:00:00" FontSize="50" Grid.Column="1" Width="239"/>
+                    <ListBox x:Name="Timer_Container" HorizontalAlignment="Left" Height="366" Margin="0,5,0,0" VerticalAlignment="Top" Width="280" Grid.ColumnSpan="2" SelectionChanged="Timer_Container_SelectionChanged"/>
+                    <ListBox x:Name="TimerHoursInput" Margin="201,77,436,254" Grid.Column="1"/>
+                    <ListBox x:Name="TimerMinutesInput" Margin="269,77,368,254" Grid.Column="1"/>
+                    <ListBox x:Name="TimerSecondsInput" Margin="336,77,301,254" Grid.Column="1"/>
+                    <Button Content="Add time" HorizontalAlignment="Left" Margin="201,154,0,0" VerticalAlignment="Top" Width="90" Click="Timer_AddButton_Click" Grid.Column="1" Height="30"/>
+                    <Button x:Name="Timer_StartStopButton" Content="Start timer" HorizontalAlignment="Left" Margin="201,189,0,0" VerticalAlignment="Top" Width="90" Click="Timer_StartStopButton_Click" Grid.Column="1" Height="30"/>
+                    <Button Content="Remove time" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="Timer_RemoveButton_Click" Height="30" RenderTransformOrigin="-1.88,0.6" Margin="297,154,0,0" Grid.Column="1"/>
+                    <Button Content="Reset timer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="Timer_ResetButton_Click" Height="30" Margin="296,189,0,0" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="226" Margin="187,5,0,0" VerticalAlignment="Top" Width="216"/>
+                    <Button Content="New Row" Grid.Column="1" Margin="187,236,285,125" Click="Timers_AddRemoveResetButton_Click"/>
+                    <Button Content="Remove Selected Row" Grid.Column="1" Margin="187,271,285,90" Click="Timers_AddRemoveResetButton_Click"/>
+                    <Button Content="Reset List" Grid.Column="1" Margin="187,306,285,55" Click="Timers_AddRemoveResetButton_Click"/>
+                    <Button Content="Pointless button but it looks good" Grid.Column="1" Margin="187,341,285,20" Click="PointlessButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Visual" Header="Visual" Loaded="Visual_Loaded">
+            <Canvas x:Name="Visual_Paper" Height="394"/>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+    
+    

@@ -1,0 +1,66 @@
+﻿=== Big Room ===
+* Big Room: 126, 150
+* Spinnin' Records: 125, 135
+
+-== Bounce ==-
+* Bootleg: 128, 140
+* Bounce: 125, 175
+* Melbourne Bounce: 126, 128
+
+=== Drum and Stuff ===
+* Drumstep: 110, 175
+* DnB: 160, 180
+
+=== Dubstep ===
+* Dubstep: 125, 174
+* Mel Dubstep: 105, 174
+
+=== Future ===
+* Future Bass: 140, 170
+* Future Funk: 90, 132
+* Future House: 120, 160
+* Future Bounce: 125, 128
+
+=== Electro ===
+* Electro: 100, 130
+* Electro-Swing: 90, 128
+
+=== General ===
+* General EDM: 110, 140
+* EDM Trap: 95, 170
+* Electrio: 100, 175
+
+=== Hype ===
+-== Classic ==-
+* Hands Up: 128, 170
+* Eurodance: 126, 155
+
+-== High BPM ==-
+* Rawstyle: 77, 190
+* Hardstyle: 150, 170
+* Hardcore: 150, 180
+
+=== House ===
+* Deep House: 120, 130
+* House: 120, 130
+* Melodic House: 120, 140
+* Tropical House: 100, 128
+
+-== Progressive House ==-
+* Progressive House: 120, 135
+* Progressive Dream: 110, 130
+* Progressive Pop: 125, 130
+* NCS Style: 128, 128
+
+-== Electro-House ==-
+* Electro-House: 90, 175
+* Taking Electro Literal: 128, 130
+* Dudu dudu: 100, 130
+
+=== Old School ===
+* Downtempo: 100, 130
+* Synthwave: 90, 133
+
+=== EDM ===
+* Pop: 75, 140
+* Psytrance: 138, 145

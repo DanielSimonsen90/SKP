@@ -1,0 +1,28 @@
+Food for thought:
+
+GUI with amount of attempts, amount of days, Kvinder in phonebook, Money in bank, //sin-meter
+The difficulty depends on the Kvinde
+If possible, detect current time, and give +seconds to user - if user doesn't respond within time period, a consequence occurs
+
+Player Loneliness Meter
+
+Achievement challenges?
+
+Soundtrack?
+
+Cooldown phase
+- Ability to earn money & shop for the Kvinde
+- Affects relationship with Kvinde - likeness meter can decrease
+- Continue dating or bail
+
+White: Speech / User interaction - "Text"
+Yellow: Action - *Action*
+Green: Emotion - :Emotion:
+
+DLCs
+- Pride
+- Furry
+- Age differencial
+- Kink
+- Youtuber (pewdiepie, markiplier etc.)
+- Getting Serious [Extention Pack]
