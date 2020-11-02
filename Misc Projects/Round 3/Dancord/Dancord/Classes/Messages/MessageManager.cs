@@ -7,15 +7,13 @@ namespace Dancord.Classes.Messages
     {
         public BasicList<Message> Messages = new BasicList<Message>();
 
-        public event OnDelete<Message> OnDeleted;
-
         public void Create(User author, string content)
         {
             Message message = new Message(author, content);
-            message.OnDeleted += Delete(message);
+            message.OnDeleting += OnDeleted(message);
             Messages.Add(message);
         }
-        public OnDelete<Message> Delete(Message msg)
+        public OnDelete<Message> OnDeleted(Message msg)
         {
             Messages.Remove(msg);
             return null;

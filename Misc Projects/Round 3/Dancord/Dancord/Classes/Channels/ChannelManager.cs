@@ -11,14 +11,15 @@ namespace Dancord.Classes.Channels
 {
     class ChannelManager 
     {
-        public BasicList<Channel> Channels = new BasicList<Channel>();
-
-        public event OnDelete<Channel> OnDeleted;
+        private readonly BasicList<Channel> Channels = new BasicList<Channel>();
 
         public void Create(string name)
         {
             TextChannel channel = new TextChannel(name);
+            channel.OnDeleting += OnDeleted;
             Channels.Add(channel);
         }
+
+        private void OnDeleted(Channel channel) => Channels.Remove(channel);
     }
 }

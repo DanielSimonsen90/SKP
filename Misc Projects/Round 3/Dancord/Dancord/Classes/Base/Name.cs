@@ -8,6 +8,7 @@ namespace Dancord.Classes.Base
 {
     public class Name
     {
+        public delegate void OnChangeName(string nameValue, Name name);
         public event OnChangeName ChangeName;
 
         private string Value;

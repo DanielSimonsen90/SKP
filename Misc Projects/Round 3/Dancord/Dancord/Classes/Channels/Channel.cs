@@ -10,11 +10,13 @@ namespace Dancord.Classes.Channels
     public abstract class Channel
     {
         public Name Name { get; private set; }
-        public event OnDelete<Channel> OnDeleted;
+        public event OnDelete<Channel> OnDeleting;
 
         public Channel(string name)
         {
             this.Name = new Name(name);
         }
+
+        public void Delete() => OnDeleting(this);
     }
 }
