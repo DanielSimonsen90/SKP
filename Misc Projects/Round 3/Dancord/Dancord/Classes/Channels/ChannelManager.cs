@@ -2,7 +2,7 @@
 
 namespace Dancord.Classes.Channels
 {
-    class ChannelManager
+    public class ChannelManager
     {
         private readonly BasicList<Channel> Channels = new BasicList<Channel>();
 

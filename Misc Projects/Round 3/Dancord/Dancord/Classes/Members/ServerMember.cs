@@ -27,6 +27,9 @@ namespace Dancord.Classes.Members
         }
         public ServerMember(User user, bool isOwner) : this(user) => this.IsOwner = isOwner;
 
+        public void Leave() => OnLeaving(this);
+        public void RemoveNickname() => OnNicknameRemoving(this);
+
         public override string ToString() => Nickname is null ? User.Name : Nickname.ToString();
     }
 }

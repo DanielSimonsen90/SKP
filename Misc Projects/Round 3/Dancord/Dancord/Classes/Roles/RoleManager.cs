@@ -49,7 +49,7 @@ namespace Dancord.Classes.Roles
                     BAN_MEMBERS = new Permission("BAN_MEMBERS"),
                     CHANGE_NICKNAME = new Permission("CHANGE_NICKNAME"),
                     MANAGE_NICKNAMES = new Permission("MANAGE_NICKNAMES");
-                public override Permission[] Array => new bool[]
+                public override Permission[] Array => new Permission[]
                 {
                     ADMINISTRATOR,
                     AUDIT_LOG,
@@ -67,12 +67,13 @@ namespace Dancord.Classes.Roles
             public class Text : PermissionGroup
             {
                 public static Permission
-                    SEE_CHANNELS = new Permission("SEE_CHANNELS"),
+                    READ_MESSAGES = new Permission("READ_MESSAGES"),
                     SEND_MESSAGES = new Permission("SEND_MESSAGES"),
-                    MANAGE_MESSAGES = new Permission("MANAGE_MESSAGES");
-                public override Permission[] Array => new bool[]
+                    MANAGE_MESSAGES = new Permission("MANAGE_MESSAGES"),
+                    REACTIONS = new Permission("REACTIONS");
+                public override Permission[] Array => new Permission[]
                 {
-                    SEE_CHANNELS,
+                    READ_MESSAGES,
                     SEND_MESSAGES,
                     MANAGE_MESSAGES
                 };
@@ -111,7 +112,7 @@ namespace Dancord.Classes.Roles
             Roles.Add(new Role(new Name("Default"), new List<PermissionsManager.PermissionGroup>()
             {
                 new PermissionsManager.General(PermissionsManager.General.CHANGE_NICKNAME),
-                new PermissionsManager.Text(PermissionsManager.Text.SEE_CHANNELS, PermissionsManager.Text.SEND_MESSAGES),
+                new PermissionsManager.Text(PermissionsManager.Text.READ_MESSAGES, PermissionsManager.Text.SEND_MESSAGES),
                 new PermissionsManager.Voice(PermissionsManager.Voice.CONNECT, PermissionsManager.Voice.SPEAK)
             }));
         }

@@ -34,7 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Dancord.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DanhoLibrary">
+      <HintPath>..\..\..\..\DanhoLibrary\DanhoLibrary\bin\Release\netstandard2.0\DanhoLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,7 +75,7 @@
     </Compile>
     <Compile Include="Classes\Base\BasicList.cs" />
     <Compile Include="Classes\Base\Events.cs" />
-    <Compile Include="Classes\Base\IManager.cs" />
+    <Compile Include="Classes\Base\Extensions.cs" />
     <Compile Include="Classes\Base\Name.cs" />
     <Compile Include="Classes\Base\Permission.cs" />
     <Compile Include="Classes\Channels\Channel.cs" />
@@ -73,13 +83,16 @@
     <Compile Include="Classes\Channels\ChannelManager.cs" />
     <Compile Include="Classes\Members\ServerMember.cs" />
     <Compile Include="Classes\Members\ServerMemberManager.cs" />
-    <Compile Include="Classes\Messages\IManager.cs" />
     <Compile Include="Classes\Messages\Message.cs" />
     <Compile Include="Classes\Messages\MessageManager.cs" />
     <Compile Include="Classes\Roles\Role.cs" />
     <Compile Include="Classes\Roles\RoleManager.cs" />
-    <Compile Include="Classes\Server.cs" />
+    <Compile Include="Classes\Servers\Server.cs" />
+    <Compile Include="Classes\Servers\ServersManager.cs" />
     <Compile Include="Classes\Users\User.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

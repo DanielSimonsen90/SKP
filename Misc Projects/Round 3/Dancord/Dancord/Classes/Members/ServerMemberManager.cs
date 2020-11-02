@@ -3,7 +3,7 @@ using System;
 
 namespace Dancord.Classes.Members
 {
-    class ServerMemberManager
+    public class ServerMemberManager
     {
         public delegate void OnMemberLeave(ServerMember member);
         public OnMemberLeave OnMemberLeaving;
