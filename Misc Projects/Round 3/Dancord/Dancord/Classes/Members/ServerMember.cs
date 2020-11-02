@@ -1,30 +1,32 @@
-﻿using Dancord.Classes.Roles;
+﻿using Dancord.Classes.Base;
+using Dancord.Classes.Roles;
 using Dancord.Classes.Users;
 using System;
-using System.Dynamic;
 
 namespace Dancord.Classes.Members
 {
     public class ServerMember
     {
         public delegate void OnLeave(ServerMember member);
-        public OnLeave OnLeaving;
+        public delegate void OnNicknameRemove(ServerMember member);
+        public event OnLeave OnLeaving;
+        public event OnNicknameRemove OnNicknameRemoving;
 
         private User User { get; set; }
-        public string Nickname { get => nickname; set => throw new NotImplementedException(); }
-        private string nickname;
+        public Name Nickname { get => nickname; set => throw new NotImplementedException(); }
+        private Name nickname;
         public DateTime JoinedAt { get; private set; }
         public RoleManager Roles { get; }
         public bool IsOwner;
-
 
         public ServerMember(User user)
         {
             this.User = user;
             this.JoinedAt = DateTime.Now;
+            this.OnNicknameRemoving += delegate { this.nickname = null; };
         }
         public ServerMember(User user, bool isOwner) : this(user) => this.IsOwner = isOwner;
 
-        public override string ToString() => Nickname is null ? User.Name : Nickname;
+        public override string ToString() => Nickname is null ? User.Name : Nickname.ToString();
     }
 }

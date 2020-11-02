@@ -1,15 +1,8 @@
 ﻿using Dancord.Classes.Base;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace Dancord.Classes.Channels
 {
-    class ChannelManager 
+    class ChannelManager
     {
         private readonly BasicList<Channel> Channels = new BasicList<Channel>();
 
@@ -19,7 +12,6 @@ namespace Dancord.Classes.Channels
             channel.OnDeleting += OnDeleted;
             Channels.Add(channel);
         }
-
         private void OnDeleted(Channel channel) => Channels.Remove(channel);
     }
 }

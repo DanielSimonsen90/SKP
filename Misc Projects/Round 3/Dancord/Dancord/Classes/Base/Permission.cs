@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Dancord.Classes.Base
 {
-    class Permission
+    public class Permission
     {
         public string Name { get; }
-        public bool Value { get; private set; }
+        private bool Value { get; set; } = false;
 
         public Permission(string name) => this.Name = name;
-        public Permission(string name, PermissionInfo info) : this(name)
+        public Permission(string name, PermissionInfo info) : this(name) => Set(info);
+
+        public override string ToString() => Value.ToString();
+
+        public void Set(PermissionInfo info)
         {
             switch (info)
             {
@@ -22,8 +26,6 @@ namespace Dancord.Classes.Base
                 default: break;
             }
         }
-
-        public override string ToString() => Value.ToString();
     }
 
     public enum PermissionInfo { ALLOW, INHERIT, DENY }

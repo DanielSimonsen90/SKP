@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dancord.Classes.Base
 {
-    public sealed class BasicList<T> : ICollection<T>, IList<T>
+    public class BasicList<T> : ICollection<T>, IList<T>
     {
         #region Public Properties
         public T this[int index] { get => innerList[index]; set => innerList[index] = value; }

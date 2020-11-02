@@ -6,9 +6,9 @@ using Dancord.Classes.Users;
 using System;
 using System.Windows;
 
-namespace Dancord.Classes
+namespace Dancord.Classes.Servers
 {
-    class Server
+    public class Server
     {
         #region Own Events
         public delegate void OnMemberJoin(ServerMember member);
@@ -24,32 +24,33 @@ namespace Dancord.Classes
         #region General Properties
         public Name Name { get; }
         public DateTime CreatedAt { get; }
+        public User Owner { get; }
+        public BasicList<User> Bans = new BasicList<User>();
         #endregion
 
         #region Managers
         public ChannelManager Channels { get; }
-        public ServerMemberManager ServerMembers { get; }
+        public ServerMemberManager Members { get; }
         public RoleManager Roles { get; }
         #endregion
 
-
-
-        public Server(string name)
+        public Server(string name, User owner)
         {
             this.Name = new Name(name);
             this.CreatedAt = DateTime.Now;
+            this.Owner = owner;
 
             Roles = new RoleManager(true);
             
             OnMemberLeaving += OnLeft;
-            OnMemberJoining += ServerMembers.OnJoined;
+            OnMemberJoining += Members.OnJoined;
 
         }
 
         public void AddMember(User user)
         {
             ServerMember member = new ServerMember(user);
-            member.OnLeaving += ServerMembers.OnLeft;
+            member.OnLeaving += Members.OnLeft;
             OnMemberJoining(member);
         }
         public void OnLeft(ServerMember member)
