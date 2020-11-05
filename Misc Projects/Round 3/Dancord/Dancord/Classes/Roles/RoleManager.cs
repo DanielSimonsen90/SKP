@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dancord.Classes.Roles
 {
-    public class RoleManager
+    public class RoleManager : IJSONID
     {
         public class PermissionsManager
         {
@@ -119,5 +119,10 @@ namespace Dancord.Classes.Roles
 
         public void Add(Role role) => Roles.Add(role);
         public void Remove(Role role) => Roles.Remove(role);
+
+        public string ToJSON() =>
+            "{" + 
+                $"Roles: {Roles.ToJSON()}" + 
+            "}";
     }
 }

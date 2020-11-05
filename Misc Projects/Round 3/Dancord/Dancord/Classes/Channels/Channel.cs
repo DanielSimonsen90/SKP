@@ -1,13 +1,8 @@
 ﻿using Dancord.Classes.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dancord.Classes.Channels
 {
-    public abstract class Channel
+    public abstract class Channel : IJSONID
     {
         public Name Name { get; private set; }
         public event OnDelete<Channel> OnDeleting;
@@ -18,5 +13,10 @@ namespace Dancord.Classes.Channels
         }
 
         public void Delete() => OnDeleting(this);
+
+        public string ToJSON() =>
+            "{" +
+                $"Name: {Name.ToJSON()}" +
+            "}";
     }
 }

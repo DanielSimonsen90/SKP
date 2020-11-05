@@ -1,4 +1,3 @@
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Login.g.cs
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\App.g.cs
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord_MarkupCompile.cache
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord_MarkupCompile.lref
@@ -7,7 +6,6 @@ C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\b
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\bin\Debug\Dancord.pdb
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\bin\Debug\DanhoLibrary.dll
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\bin\Debug\DanhoLibrary.pdb
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Login.baml
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord.g.resources
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord.Properties.Resources.resources
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord.csproj.GenerateResource.cache
@@ -17,3 +15,11 @@ C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\o
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord.pdb
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\MainWindow.g.cs
 C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\MainWindow.baml
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Pages\Dancord.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Pages\Login.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Pages\Dancord.baml
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Pages\Login.baml
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Dancord.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Console.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\obj\Debug\Console.baml
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\Dancord\Dancord\bin\Debug\Newtonsoft.Json.dll

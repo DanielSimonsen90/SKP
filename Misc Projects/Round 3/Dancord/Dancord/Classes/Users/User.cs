@@ -1,11 +1,13 @@
 ﻿using Dancord.Classes.Base;
 using Dancord.Classes.Servers;
+using System.Text;
+using System.Windows.Media.Animation;
 
 namespace Dancord.Classes.Users
 {
-    public class User
+    public class User : IJSON
     {
-        public class UserServers
+        public class UserServers : IJSON
         {
             private User User { get; }
             public ServersManager All;
@@ -16,10 +18,20 @@ namespace Dancord.Classes.Users
                 this.User = user;
                 this.Own = new ServersManager(this.User);
                 this.All = new ServersManager(this.User);
+                this.All.Create("Dancord Official");
             }
+
+            public string ToJSON(bool onlyID) =>
+                "{" +
+                    $"UserID: {User.ID}" +
+                    $"All: {All.ToJSON()}" +
+                    $"Own: {Own.ToJSON()}" +
+                "}";
+
+            
         }
 
-        public string Name { get; }
+        public Name Name { get; }
         public int ID { get; }
 
         public UserServers Servers;
@@ -37,10 +49,25 @@ namespace Dancord.Classes.Users
 
         public User(string name, int id)
         {
-            this.Name = name;
+            this.Name = new Name(name);
             this.ID = id;
             this.Servers = new UserServers(this);
         }
 
+        public string ToJSON(bool onlyID)
+        {
+            StringBuilder result = new StringBuilder();
+            result.Append(
+                "{" +
+                    $"Name: {Name.ToJSON()}" +
+                    $"ID: {ID}"
+                );
+            if (!onlyID) result.Append(
+                 $"Servers: {Servers.ToJSON(true)}" +
+                 $"Friends: {Friends.ToJSON(true)}" +
+                 $"Blocked: {Blocked.ToJSON(true)}"
+                 );
+            return result.ToString() + "}";
+        }
     }
 }

@@ -3,6 +3,7 @@ using Dancord.Classes.Channels;
 using Dancord.Classes.Members;
 using Dancord.Classes.Roles;
 using Dancord.Classes.Users;
+using DanhoLibrary;
 using System;
 using System.Windows;
 
@@ -23,25 +24,25 @@ namespace Dancord.Classes.Servers
 
         #region General Properties
         public Name Name { get; }
-        public DateTime CreatedAt { get; }
+        public int ID { get; }
+        public DateTime CreatedAt { get; } = DateTime.Now;
         public User Owner { get; }
         public BasicList<User> Bans = new BasicList<User>();
         #endregion
 
         #region Managers
-        public ChannelManager Channels { get; }
-        public ServerMemberManager Members { get; }
-        public RoleManager Roles { get; }
+        public ChannelManager Channels { get; } = new ChannelManager();
+        public ServerMemberManager Members { get; } = new ServerMemberManager();
+        public RoleManager Roles { get; } = new RoleManager(true);
         #endregion
 
         public Server(string name, User owner)
         {
             this.Name = new Name(name);
-            this.CreatedAt = DateTime.Now;
             this.Owner = owner;
+            this.ID = ConsoleItems.RandomNumber(0, 999999);
+            while (this.ID.ToString().Length < 6) this.ID = int.Parse("0" + this.ID.ToString());
 
-            Roles = new RoleManager(true);
-            
             OnMemberLeaving += OnLeft;
             OnMemberJoining += Members.OnJoined;
 
@@ -58,5 +59,7 @@ namespace Dancord.Classes.Servers
             if (member.IsOwner && MessageBox.Show($"Are you sure you want to DELETE \"{Name}\"?", $"Delete {Name}?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     OnDelete(this);
         }
+
+        public override string ToString() => $"{Name} ({ID})";
     }
 }

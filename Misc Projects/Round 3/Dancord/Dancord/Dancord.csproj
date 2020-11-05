@@ -61,7 +61,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Login.xaml">
+    <Page Include="Console.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dancord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,11 +84,14 @@
     <Compile Include="Classes\Base\BasicList.cs" />
     <Compile Include="Classes\Base\Events.cs" />
     <Compile Include="Classes\Base\Extensions.cs" />
+    <Compile Include="Classes\Base\IJSON.cs" />
     <Compile Include="Classes\Base\Name.cs" />
-    <Compile Include="Classes\Base\Permission.cs" />
+    <Compile Include="Classes\Misc\DancordFileManager.cs" />
+    <Compile Include="Classes\Misc\Permission.cs" />
     <Compile Include="Classes\Channels\Channel.cs" />
     <Compile Include="Classes\Channels\TextChannel.cs" />
     <Compile Include="Classes\Channels\ChannelManager.cs" />
+    <Compile Include="Classes\Misc\Login.cs" />
     <Compile Include="Classes\Members\ServerMember.cs" />
     <Compile Include="Classes\Members\ServerMemberManager.cs" />
     <Compile Include="Classes\Messages\Message.cs" />
@@ -89,8 +100,15 @@
     <Compile Include="Classes\Roles\RoleManager.cs" />
     <Compile Include="Classes\Servers\Server.cs" />
     <Compile Include="Classes\Servers\ServersManager.cs" />
+    <Compile Include="Classes\Servers\ServerTabItem.cs" />
     <Compile Include="Classes\Users\User.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="Console.xaml.cs">
+      <DependentUpon>Console.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dancord.xaml.cs">
+      <DependentUpon>Dancord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -124,6 +142,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Databases\logins.txt" />
+    <Resource Include="Databases\servers.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

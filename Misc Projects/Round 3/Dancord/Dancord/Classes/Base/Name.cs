@@ -1,6 +1,6 @@
 ﻿namespace Dancord.Classes.Base
 {
-    public class Name
+    public class Name : IJSONID
     {
         public delegate void OnChangeName(string nameValue, Name name);
         public event OnChangeName ChangeName;
@@ -20,5 +20,10 @@
         }
 
         public override string ToString() => this.Value;
+
+        public string ToJSON() => 
+            "{" + 
+                $"Value:{Value}" + 
+            "}";
     }
 }

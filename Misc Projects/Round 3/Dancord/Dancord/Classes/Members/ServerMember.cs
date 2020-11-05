@@ -5,7 +5,7 @@ using System;
 
 namespace Dancord.Classes.Members
 {
-    public class ServerMember
+    public class ServerMember : IJSONID
     {
         public delegate void OnLeave(ServerMember member);
         public delegate void OnNicknameRemove(ServerMember member);
@@ -30,6 +30,15 @@ namespace Dancord.Classes.Members
         public void Leave() => OnLeaving(this);
         public void RemoveNickname() => OnNicknameRemoving(this);
 
-        public override string ToString() => Nickname is null ? User.Name : Nickname.ToString();
+        public override string ToString() => Nickname is null ? User.Name.ToString() : Nickname.ToString();
+
+        public string ToJSON() =>
+            "{" +
+                $"User: {User.ToJSON()}" +
+                $"Nickname: {Nickname.ToJSON()}" +
+                $"JoinedAt: {JoinedAt.ToLocalTime()}" +
+                $"Roles: {Roles.ToJSON()}" +
+                $"IsOwner: {IsOwner}" +
+            "}";
     }
 }
