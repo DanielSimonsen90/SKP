@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "upR9rmqfFOEPo7FQlF3OmASdmGUvM3sSNSd5j1j3b7sNzZQLUnI6SWC8aN4M44lKng0lNIwW13M1aryaDGu0ZQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\Dancord.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DanielSimonsen\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

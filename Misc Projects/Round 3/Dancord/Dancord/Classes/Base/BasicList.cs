@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Dancord.Classes.Misc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Dancord.Classes.Base
 {
-    public class BasicList<T> : ICollection<T>, IList<T>
+    public class BasicList<T> : ICollection<T>, IList<T>, IJSONID
     {
         #region Public Properties
         public T this[int index] { get => innerList[index]; set => innerList[index] = value; }
+        public string File { get; set; }
         #endregion
 
         #region Private Properties
@@ -29,6 +29,17 @@ namespace Dancord.Classes.Base
         public bool IsReadOnly => true;
 
         public void Add(T item) => innerList.Add(item);
+        public void Add(T item, ConsoleWindow DancordConsole)
+        {
+            Add(item);
+            if (File == string.Empty)
+            {
+                DancordConsole.PopoutError("File not defined", "Error while saving to file", System.Windows.MessageBoxButton.OK);
+                return;
+            }
+            DancordFileManager.Update(File, (item as IJSONID).ToJSON(), DancordConsole);
+
+        }
         public void Clear() => innerList.Clear();
         public bool Contains(T item) => innerList.Contains(item);
         public void CopyTo(T[] array, int arrayIndex) => innerList.CopyTo(array, arrayIndex);
@@ -41,6 +52,23 @@ namespace Dancord.Classes.Base
         public int IndexOf(T item) => innerList.IndexOf(item);
         public void Insert(int index, T item) => innerList.Insert(index, item);
         public void RemoveAt(int index) => innerList.RemoveAt(index);
+        #endregion
+
+        #region IJSON
+        public string ToJSON() =>
+            "{" +
+                $"File: {File}" +
+                $"innerList: {ItemsToJSON()}" +
+            "}";
+        private string ItemsToJSON()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in innerList)
+                sb.Append((item as IJSONID).ToJSON() + ",");
+            sb = new StringBuilder().Append(sb.ToString().Substring(0, sb.Length - 1));
+
+            return $"[{sb}]";
+        }
         #endregion
 
         #endregion

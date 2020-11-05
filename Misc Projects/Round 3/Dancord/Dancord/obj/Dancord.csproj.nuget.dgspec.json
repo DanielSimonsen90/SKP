@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\Dancord.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\Dancord.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\Dancord.csproj",
+        "projectName": "Dancord",
+        "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\Dancord.csproj",
+        "packagesPath": "C:\\Users\\DanielSimonsen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\Dancord\\Dancord\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\DanielSimonsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
