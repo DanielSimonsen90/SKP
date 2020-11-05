@@ -197,7 +197,21 @@ namespace RandomSWCharacter
                         new string[]{"Bare", "Robotic", "Glove"},
                         new string[]{"Pants"},
                         new string[]{"Shoes", "Sandals"}
-                    }))
+                    })),
+                new Species("Mandalorian", 
+                new string[] {"Mando", "Jango", "Boba"},
+                new string[] {"forger beech"},
+                new string[] {"Mandalore"},
+                new Appearance(new string[][]
+                {
+                    new string[]{"Helmet"},
+                    new string[]{"Beard", "Moustache", "Clean"},
+                    new string[]{"Jetpack", "None" },
+                    new string[]{"Mandalorian Chest armor thing"},
+                    new string[]{"Poggers gloves men"},
+                    new string[]{"Pants yes"},
+                    new string[]{"Shoes", "Boots"}
+                }))
             };
         }
     }

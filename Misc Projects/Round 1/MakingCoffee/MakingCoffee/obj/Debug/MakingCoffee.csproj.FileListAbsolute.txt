@@ -4,3 +4,10 @@ C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\bin\Debug\MakingC
 C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.csprojAssemblyReference.cache
 C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.exe
 C:\Users\DanielSimonsen\source\repos\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.pdb
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.exe.config
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.exe
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\bin\Debug\MakingCoffee.pdb
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.csprojAssemblyReference.cache
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.csproj.CoreCompileInputs.cache
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.exe
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 1\MakingCoffee\MakingCoffee\obj\Debug\MakingCoffee.pdb

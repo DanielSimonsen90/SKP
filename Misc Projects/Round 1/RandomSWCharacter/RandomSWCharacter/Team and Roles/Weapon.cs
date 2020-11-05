@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandomSWCharacter
 {
-    interface IWeapon
+    public interface IWeapon
     {
         IWeapon RandomizeWeapon(bool isImperial);
     }
