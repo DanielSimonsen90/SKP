@@ -1,5 +1,4 @@
 ﻿using Dancord.Classes.Base;
-using System;
 
 namespace Dancord.Classes.Roles
 {

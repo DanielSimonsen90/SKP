@@ -1,7 +1,6 @@
 ﻿using Dancord.Classes.Base;
 using Dancord.Classes.Servers;
 using System.Text;
-using System.Windows.Media.Animation;
 
 namespace Dancord.Classes.Users
 {

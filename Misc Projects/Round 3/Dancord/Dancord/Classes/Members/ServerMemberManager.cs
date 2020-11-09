@@ -3,7 +3,7 @@ using System;
 
 namespace Dancord.Classes.Members
 {
-    public class ServerMemberManager
+    public class ServerMemberManager : IJSON
     {
         public delegate void OnMemberLeave(ServerMember member);
         public OnMemberLeave OnMemberLeaving;
@@ -25,5 +25,10 @@ namespace Dancord.Classes.Members
 
             Members.Remove(member);
         }
+
+        public string ToJSON() =>
+            "{" +
+                $"Members: {Members.ToJSON()}" +
+            "}";
     }
 }

@@ -3,7 +3,7 @@ using Dancord.Classes.Users;
 
 namespace Dancord.Classes.Servers
 {
-    public class ServersManager : IJSONID
+    public class ServersManager : IJSON
     {
         private User User { get; }
         public BasicList<Server> Servers = new BasicList<Server>();

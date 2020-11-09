@@ -2,7 +2,7 @@
 
 namespace Dancord.Classes.Channels
 {
-    public class ChannelManager
+    public class ChannelManager : IJSON
     {
         private readonly BasicList<Channel> Channels = new BasicList<Channel>();
 
@@ -13,5 +13,10 @@ namespace Dancord.Classes.Channels
             Channels.Add(channel);
         }
         private void OnDeleted(Channel channel) => Channels.Remove(channel);
+
+        public string ToJSON() =>
+            "{" +
+                $"Channels: {Channels.ToJSON()}" +
+            "}";
     }
 }
