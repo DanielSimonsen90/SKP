@@ -4,6 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+/*
+ 
+ Should be implemented in DanhoLibrary (this list very useful)    
+     
+ */
 namespace Dancord.Classes.Base
 {
     public class BasicList<T> : ICollection<T>, IList<T>, IJSON
@@ -20,6 +25,20 @@ namespace Dancord.Classes.Base
         #region ChannelManager Methods
         public T Find(Predicate<T> match) => innerList.Find(match);
         public T[] ToArray() => innerList.ToArray();
+        public BasicList<T> AddRange(params T[] arr)
+        {
+            innerList.AddRange(arr);
+            return this;
+        }
+        public BasicList<T> RemoveRange(params T[] arr)
+        {
+            foreach (T item in arr)
+            {
+                if (!innerList.Contains(item)) throw new InvalidOperationException($"{nameof(this)} does not contain item \"{item.ToString()}\"");
+                innerList.Remove(item);
+            }
+            return this;
+        }
         #endregion
 
         #region Interfaces
@@ -57,7 +76,7 @@ namespace Dancord.Classes.Base
         #region IJSON
         public string ToJSON() =>
             "{" +
-                $"File: {File}" +
+                File != null ? $"File: {File}" : "" +
                 $"innerList: {ItemsToJSON()}" +
             "}";
         private string ItemsToJSON()
@@ -66,6 +85,7 @@ namespace Dancord.Classes.Base
             foreach (var item in innerList)
                 try { sb.Append((item as IJSONID).ToJSON(true) + ","); }
                 catch { sb.Append((item as IJSON).ToJSON() + ","); }
+                catch { sb.Append(item.ToString() + ","); }
             sb = new StringBuilder().Append(sb.ToString().Substring(0, sb.Length - 1));
 
             return $"[{sb}]";

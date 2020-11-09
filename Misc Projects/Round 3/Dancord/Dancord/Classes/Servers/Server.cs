@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace Dancord.Classes.Servers
 {
-    public class Server
+    public class Server : IJSONID
     {
         #region Own Events
         public delegate void OnMemberJoin(ServerMember member);
@@ -34,6 +34,22 @@ namespace Dancord.Classes.Servers
         public ChannelManager Channels { get; } = new ChannelManager();
         public ServerMemberManager Members { get; } = new ServerMemberManager();
         public RoleManager Roles { get; } = new RoleManager(true);
+        #endregion
+
+        #region IJSONID
+        public string ToJSON(bool onlyID) =>
+            onlyID ?
+            "{" + $"ID: {ID}" + "}" :
+            "{" +
+                $"Name: {Name.ToJSON()}" +
+                $"ID: {ID}" +
+                $"CreatedAt: {CreatedAt.ToLocalTime()}" +
+                $"Owner: {Owner.ToJSON(true)}" +
+                $"Bans: {Bans.ToJSON()}" +
+                $"Channels: {Channels.ToJSON()}" +
+                $"Members: {Members.ToJSON()}" +
+                $"Roles: {Roles.ToJSON()}" +
+            "}";
         #endregion
 
         public Server(string name, User owner)

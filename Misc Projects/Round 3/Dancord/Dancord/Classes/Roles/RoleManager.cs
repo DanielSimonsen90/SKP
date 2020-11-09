@@ -1,21 +1,22 @@
 ﻿using Dancord.Classes.Base;
 using DanhoLibrary;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Dancord.Classes.Roles
 {
     public class RoleManager : IJSON
     {
-        public class PermissionsManager
+        public class PermissionsManager : IJSON
         {
             public static PermissionsManager operator +(PermissionsManager a, PermissionsManager b)
             {
-                b.Permissions.ForEach(perm => a.Permissions.Add(perm));
+                b.Permissions.ToList().ForEach(perm => a.Permissions.Add(perm));
                 return a;
             }
             public static PermissionsManager operator -(PermissionsManager a, PermissionsManager b)
             {
-                b.Permissions.ForEach(perm =>
+                b.Permissions.ToList().ForEach(perm =>
                 {
                     if (a.Permissions.Contains(perm))
                         a.Permissions.Remove(perm);
@@ -98,9 +99,48 @@ namespace Dancord.Classes.Roles
                 public Voice(params Permission[] perms) : base(perms) { }
             }
 
-            public List<PermissionGroup> Permissions = new List<PermissionGroup>();
+            public BasicList<PermissionGroup> Permissions = new BasicList<PermissionGroup>();
 
-            public PermissionsManager(List<PermissionGroup> permissions) => this.Permissions = permissions;
+            public PermissionsManager(BasicList<PermissionGroup> permissions) => this.Permissions = permissions;
+
+            private BasicList<bool> WithAllPermissions()
+            {
+                var AllPermissions = new BasicList<Permission>(),
+                    general = new General(new Permission[] {
+                            General.ADMINISTRATOR,
+                            General.AUDIT_LOG,
+                            General.BAN_MEMBERS,
+                            General.CHANGE_NICKNAME,
+                            General.KICK_MEMBERS,
+                            General.MANAGE_CHANNELS,
+                            General.MANAGE_NICKNAMES,
+                            General.MANAGE_ROLES,
+                            General.MANAGE_SERVER
+                    }),
+                    text = new Text(new Permission[] {
+                            Text.MANAGE_MESSAGES,
+                            Text.REACTIONS,
+                            Text.READ_MESSAGES,
+                            Text.SEND_MESSAGES
+                    }),
+                    voice = new Voice(new Permission[] {
+                            Voice.CONNECT,
+                            Voice.MOVE_MEMBERS,
+                            Voice.MUTE_MEMBERS,
+                            Voice.SPEAK
+                    });
+                AllPermissions.AddRange(general.Array, text.Array, voice.Array);
+
+                var booleans = new BasicList<bool>();
+                foreach (Permission perm in AllPermissions)
+                    if (Permissions.Contains(perm, out bool value)) booleans.Add(value);
+                    else booleans.Add(perm.ToString() as bool);
+
+                var result = new BasicList<bool>();
+                result.AddRange(booleans);
+                return result;
+            }
+            public string ToJSON() => WithAllPermissions().ToJSON();
         }
 
         private readonly BasicList<Role> Roles = new BasicList<Role>();

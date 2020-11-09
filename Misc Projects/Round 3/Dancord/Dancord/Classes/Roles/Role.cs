@@ -1,6 +1,5 @@
 ﻿using Dancord.Classes.Base;
 using System;
-using System.Collections.Generic;
 
 namespace Dancord.Classes.Roles
 {
@@ -9,9 +8,9 @@ namespace Dancord.Classes.Roles
         public Name Name { get; }
         public int ID { get; }
         private RoleManager.PermissionsManager PermissionsManager { get; set; }
-        public List<RoleManager.PermissionsManager.PermissionGroup> Permissions => PermissionsManager.Permissions;
+        public BasicList<RoleManager.PermissionsManager.PermissionGroup> Permissions => PermissionsManager.Permissions;
 
-        public Role(int id, Name name, List<RoleManager.PermissionsManager.PermissionGroup> permissions)
+        public Role(int id, Name name, BasicList<RoleManager.PermissionsManager.PermissionGroup> permissions)
         {
             this.ID = id;
             this.Name = name;
@@ -24,7 +23,7 @@ namespace Dancord.Classes.Roles
             "{" +
                 $"Name: {Name.ToJSON()}" +
                 $"ID: {ID}" +
-                $"Permissions: {new NotImplementedException()}" +
+                $"Permissions: {PermissionsManager.ToJSON()}" +
             "}";
 
     }
