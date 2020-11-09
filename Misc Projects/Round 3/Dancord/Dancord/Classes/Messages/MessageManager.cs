@@ -9,7 +9,7 @@ namespace Dancord.Classes.Messages
 
         public void Create(User author, string content)
         {
-            Message message = new Message(author, content);
+            Message message = new Message(Messages.Count, author, content);
             message.OnDeleting += OnDeleted(message);
             Messages.Add(message);
         }

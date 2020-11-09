@@ -8,7 +8,7 @@ namespace Dancord.Classes.Channels
 
         public void Create(string name)
         {
-            TextChannel channel = new TextChannel(name);
+            TextChannel channel = new TextChannel(name, Channels.Count);
             channel.OnDeleting += OnDeleted;
             Channels.Add(channel);
         }

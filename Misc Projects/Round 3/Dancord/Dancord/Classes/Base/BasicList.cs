@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Dancord.Classes.Base
 {
-    public class BasicList<T> : ICollection<T>, IList<T>, IJSONID
+    public class BasicList<T> : ICollection<T>, IList<T>, IJSON
     {
         #region Public Properties
         public T this[int index] { get => innerList[index]; set => innerList[index] = value; }
@@ -37,7 +37,7 @@ namespace Dancord.Classes.Base
                 DancordConsole.PopoutError("File not defined", "Error while saving to file", System.Windows.MessageBoxButton.OK);
                 return;
             }
-            DancordFileManager.Update(File, (item as IJSONID).ToJSON(), DancordConsole);
+            DancordFileManager.Update(File, (item as IJSONID).ToJSON(true), DancordConsole);
 
         }
         public void Clear() => innerList.Clear();
@@ -64,7 +64,8 @@ namespace Dancord.Classes.Base
         {
             StringBuilder sb = new StringBuilder();
             foreach (var item in innerList)
-                sb.Append((item as IJSONID).ToJSON() + ",");
+                try { sb.Append((item as IJSONID).ToJSON(true) + ","); }
+                catch { sb.Append((item as IJSON).ToJSON() + ","); }
             sb = new StringBuilder().Append(sb.ToString().Substring(0, sb.Length - 1));
 
             return $"[{sb}]";

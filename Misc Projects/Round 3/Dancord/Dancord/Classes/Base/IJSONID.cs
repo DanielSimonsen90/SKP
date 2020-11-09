@@ -1,7 +1,11 @@
 ﻿namespace Dancord.Classes.Base
 {
-    interface IJSON
+    interface IJSONID
     {
         string ToJSON(bool onlyID);
+    }
+    interface IJSON
+    {
+        string ToJSON();
     }
 }

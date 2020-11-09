@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dancord.Classes.Roles
 {
-    public class RoleManager : IJSONID
+    public class RoleManager : IJSON
     {
         public class PermissionsManager
         {
@@ -109,7 +109,7 @@ namespace Dancord.Classes.Roles
         {
             if (!MakeDefault) return;
 
-            Roles.Add(new Role(new Name("Default"), new List<PermissionsManager.PermissionGroup>()
+            Roles.Add(new Role(Roles.Count, new Name("Default"), new List<PermissionsManager.PermissionGroup>()
             {
                 new PermissionsManager.General(PermissionsManager.General.CHANGE_NICKNAME),
                 new PermissionsManager.Text(PermissionsManager.Text.READ_MESSAGES, PermissionsManager.Text.SEND_MESSAGES),

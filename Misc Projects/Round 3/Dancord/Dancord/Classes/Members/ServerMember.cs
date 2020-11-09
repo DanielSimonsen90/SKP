@@ -2,6 +2,7 @@
 using Dancord.Classes.Roles;
 using Dancord.Classes.Users;
 using System;
+using System.Windows.Media.Animation;
 
 namespace Dancord.Classes.Members
 {
@@ -32,9 +33,13 @@ namespace Dancord.Classes.Members
 
         public override string ToString() => Nickname is null ? User.Name.ToString() : Nickname.ToString();
 
-        public string ToJSON() =>
+        public string ToJSON(bool onlyID) => 
+            onlyID ? 
+            "{" + 
+                $"ID: {this.User.ID}" + 
+            "}" : 
             "{" +
-                $"User: {User.ToJSON()}" +
+                $"User: {User.ToJSON(true)}" +
                 $"Nickname: {Nickname.ToJSON()}" +
                 $"JoinedAt: {JoinedAt.ToLocalTime()}" +
                 $"Roles: {Roles.ToJSON()}" +

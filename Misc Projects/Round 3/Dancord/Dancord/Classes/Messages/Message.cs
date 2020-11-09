@@ -14,11 +14,13 @@ namespace Dancord.Classes.Messages
         #region Properties
         public User Author { get; }
         public string Content { get; private set; }
+        public int ID { get; }
         public DateTime CreatedAt { get; }
         #endregion
 
-        public Message(User author, string content)
+        public Message(int id, User author, string content)
         {
+            this.ID = id;
             this.Author = author;
             this.Content = content;
             this.CreatedAt = DateTime.Now;

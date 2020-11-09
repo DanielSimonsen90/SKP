@@ -5,9 +5,9 @@ using System.Windows.Media.Animation;
 
 namespace Dancord.Classes.Users
 {
-    public class User : IJSON
+    public class User : IJSONID
     {
-        public class UserServers : IJSON
+        public class UserServers : IJSONID
         {
             private User User { get; }
             public ServersManager All;
@@ -27,8 +27,6 @@ namespace Dancord.Classes.Users
                     $"All: {All.ToJSON()}" +
                     $"Own: {Own.ToJSON()}" +
                 "}";
-
-            
         }
 
         public Name Name { get; }
@@ -64,8 +62,8 @@ namespace Dancord.Classes.Users
                 );
             if (!onlyID) result.Append(
                  $"Servers: {Servers.ToJSON(true)}" +
-                 $"Friends: {Friends.ToJSON(true)}" +
-                 $"Blocked: {Blocked.ToJSON(true)}"
+                 $"Friends: {Friends.ToJSON()}" +
+                 $"Blocked: {Blocked.ToJSON()}"
                  );
             return result.ToString() + "}";
         }
