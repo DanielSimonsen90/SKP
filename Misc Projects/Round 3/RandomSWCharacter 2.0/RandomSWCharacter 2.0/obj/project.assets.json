@@ -8,19 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Daniel Simonsen\\.nuget\\packages\\": {}
+    "C:\\Users\\DanielSimonsen\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0.csproj",
+      "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0.csproj",
       "projectName": "RandomSWCharacter 2.0",
-      "projectPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0.csproj",
-      "packagesPath": "C:\\Users\\Daniel Simonsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\obj\\",
+      "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0.csproj",
+      "packagesPath": "C:\\Users\\DanielSimonsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 3\\RandomSWCharacter 2.0\\RandomSWCharacter 2.0\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Daniel Simonsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DanielSimonsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -20,3 +20,15 @@ C:\Users\DanielSimonsen\source\repos\SKP\Team Generator\Team Generator\obj\Debug
 C:\Users\DanielSimonsen\source\repos\SKP\Team Generator\Team Generator\obj\Debug\Team Generator.csproj.GenerateResource.cache
 C:\Users\DanielSimonsen\source\repos\SKP\Team Generator\Team Generator\obj\Debug\Team Generator.exe
 C:\Users\DanielSimonsen\source\repos\SKP\Team Generator\Team Generator\obj\Debug\Team Generator.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\bin\Debug\Team Generator.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\bin\Debug\Team Generator.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\bin\Debug\Team Generator.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team Generator.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team_Generator.Menu.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team_Generator.Overwatch.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team_Generator.Pokémon.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team_Generator.Properties.Resources.resources
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team Generator.csproj.GenerateResource.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team Generator.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team Generator.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\Team Generator\Team Generator\obj\Debug\Team Generator.pdb

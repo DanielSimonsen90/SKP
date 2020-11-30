@@ -41,6 +41,6 @@ namespace RandomSWCharacter_2._0
             $"ID: {ID}",
             $"Class: {Class}, {ClassNames[Class - 1]}",
             $"Type: {Type}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }

@@ -21,6 +21,6 @@ namespace RandomSWCharacter_2._0
             $"Name: {Name}",
             $"Age: {Age}",
             $"Gender: {Gender}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }

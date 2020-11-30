@@ -105,8 +105,8 @@ namespace Dancord.Classes.Roles
 
             private BasicList<bool> WithAllPermissions()
             {
-                var AllPermissions = new BasicList<Permission>(),
-                    general = new General(new Permission[] {
+                var AllPermissions = new BasicList<Permission>();
+                var general = new General(new Permission[] {
                             General.ADMINISTRATOR,
                             General.AUDIT_LOG,
                             General.BAN_MEMBERS,
@@ -116,14 +116,14 @@ namespace Dancord.Classes.Roles
                             General.MANAGE_NICKNAMES,
                             General.MANAGE_ROLES,
                             General.MANAGE_SERVER
-                    }),
-                    text = new Text(new Permission[] {
+                    });
+                var text = new Text(new Permission[] {
                             Text.MANAGE_MESSAGES,
                             Text.REACTIONS,
                             Text.READ_MESSAGES,
                             Text.SEND_MESSAGES
-                    }),
-                    voice = new Voice(new Permission[] {
+                    });
+                var voice = new Voice(new Permission[] {
                             Voice.CONNECT,
                             Voice.MOVE_MEMBERS,
                             Voice.MUTE_MEMBERS,
@@ -134,10 +134,10 @@ namespace Dancord.Classes.Roles
                 var booleans = new BasicList<bool>();
                 foreach (Permission perm in AllPermissions)
                     if (Permissions.Contains(perm, out bool value)) booleans.Add(value);
-                    else booleans.Add(perm.ToString() as bool);
+                    else booleans.Add(bool.Parse(perm.ToString()));
 
                 var result = new BasicList<bool>();
-                result.AddRange(booleans);
+                result.AddRange(booleans.ToArray());
                 return result;
             }
             public string ToJSON() => WithAllPermissions().ToJSON();
@@ -149,7 +149,7 @@ namespace Dancord.Classes.Roles
         {
             if (!MakeDefault) return;
 
-            Roles.Add(new Role(Roles.Count, new Name("Default"), new List<PermissionsManager.PermissionGroup>()
+            Roles.Add(new Role(Roles.Count, new Name("Default"), new BasicList<PermissionsManager.PermissionGroup>()
             {
                 new PermissionsManager.General(PermissionsManager.General.CHANGE_NICKNAME),
                 new PermissionsManager.Text(PermissionsManager.Text.READ_MESSAGES, PermissionsManager.Text.SEND_MESSAGES),

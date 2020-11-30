@@ -4,7 +4,7 @@ using System;
 
 namespace Dancord.Classes
 {
-    class Login : IJSONID
+    class Login : IJSON
     {
         private string Username { get; set; }
         private string Password { get; set; }
@@ -24,7 +24,7 @@ namespace Dancord.Classes
             "{" +
                 $"Username: {Username}" + 
                 $"Password: {Password}" + 
-                $"User: {User.ToJSON()}" +
+                $"User: {User.ToJSON(false)}" +
             "}";
     }
 }

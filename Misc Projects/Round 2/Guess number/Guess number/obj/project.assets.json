@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\Gitte\\Guess number\\Guess number\\Guess number.csproj",
+      "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 2\\Guess number\\Guess number\\Guess number.csproj",
       "projectName": "Guess number",
-      "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\Gitte\\Guess number\\Guess number\\Guess number.csproj",
+      "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 2\\Guess number\\Guess number\\Guess number.csproj",
       "packagesPath": "C:\\Users\\DanielSimonsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\Gitte\\Guess number\\Guess number\\obj\\",
+      "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Misc Projects\\Round 2\\Guess number\\Guess number\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,7 +62,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

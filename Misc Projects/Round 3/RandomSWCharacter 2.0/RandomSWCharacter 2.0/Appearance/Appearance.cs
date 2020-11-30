@@ -97,6 +97,6 @@ namespace RandomSWCharacter_2._0
             $"Hand: {Hand}",
             $"Pant: {Pant}",
             $"Shoe: {Shoe}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }

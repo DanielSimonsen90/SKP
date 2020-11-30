@@ -44,6 +44,6 @@ namespace RandomSWCharacter_2._0
             "-- == Anchestors == --",
             $"Mother: {Mother}",
             $"Father {Father}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }

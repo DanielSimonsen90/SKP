@@ -35,6 +35,6 @@ namespace RandomSWCharacter_2._0
             $"Planet: {Planet}",
 
 
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }

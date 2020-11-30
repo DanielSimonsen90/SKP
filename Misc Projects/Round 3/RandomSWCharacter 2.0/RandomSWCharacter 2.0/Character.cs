@@ -38,7 +38,7 @@ namespace RandomSWCharacter_2._0
             if (ConsoleItems.RandomNumber(100) >= 25) result.Add(Robot.GetInfo());
             if (ConsoleItems.RandomNumber(100) >= 50) result.Add(Ship);
 
-            return result.ToBigBoiString("\n");
+            return result.Join("\n");
         }
     }
 }

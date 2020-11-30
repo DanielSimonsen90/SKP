@@ -7,3 +7,12 @@ C:\Users\DanielSimonsen\source\repos\CleanEmotes\CleanEmotes\obj\Debug\CleanEmot
 C:\Users\DanielSimonsen\source\repos\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.csproj.CopyComplete
 C:\Users\DanielSimonsen\source\repos\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.exe
 C:\Users\DanielSimonsen\source\repos\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\bin\Debug\CleanEmotes.exe.config
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\bin\Debug\CleanEmotes.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\bin\Debug\CleanEmotes.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\bin\Debug\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 1\CleanEmotes\CleanEmotes\obj\Debug\CleanEmotes.pdb

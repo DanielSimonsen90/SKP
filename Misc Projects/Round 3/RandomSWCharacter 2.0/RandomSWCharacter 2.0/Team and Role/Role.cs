@@ -26,12 +26,12 @@ namespace RandomSWCharacter_2._0
             $"Team: {Team}",
             $"Role: {Name}",
             $"Weapon: {(Gun == null ? GetInfoLightsaber() : GetInfoGun())}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
         private string GetInfoGun() => Gun.ToString();
         private string GetInfoLightsaber() => new string[]
         {
             "Lightsaber",
             $"Color: {Lightsaber}"
-        }.ToBigBoiString("\n");
+        }.Join("\n");
     }
 }
