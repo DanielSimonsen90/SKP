@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoginDatabase
+namespace LoginDatabase.Exceptions
 {
     public class InvalidLoginException : Exception
     {

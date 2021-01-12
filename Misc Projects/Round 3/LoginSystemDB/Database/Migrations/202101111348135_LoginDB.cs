@@ -1,4 +1,6 @@
-﻿namespace LoginDatabase.Migrations
+﻿//Package Manager Console: Add-Migration LoginDB
+
+namespace LoginDatabase.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

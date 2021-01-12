@@ -5,6 +5,9 @@ using LoginDatabase.Interfaces;
 using LoginDatabase.Repositories;
 using System.Data.Entity;
 using LoginDatabase;
+using DanhoLibrary;
+using LoginDatabase.Exceptions;
+using System.Windows.Input;
 
 namespace LoginSystemDB
 {
@@ -13,12 +16,11 @@ namespace LoginSystemDB
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ILoginRepository LoginRepository;
         private readonly LoginContext loginContext = new LoginContext();
+        private readonly ILoginRepository LoginRepository;
         public MainWindow()
         {
             InitializeComponent();
-
             LoginRepository = new LoginRepository(loginContext);
         }
 
@@ -27,7 +29,7 @@ namespace LoginSystemDB
             try
             {
                 //insert login yes
-                LoginRepository.AddLogin(new Login() /*Replace me pls*/);
+                LoginRepository.AddLogin(LoginNullOrEmptyCheck());
                 MessageBox.Show("Created!");
             }
             catch (Exception ex)
@@ -35,13 +37,16 @@ namespace LoginSystemDB
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK);
             }
         }
-
-        private void Read_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Login login = LoginRepository.GetLogin(_globalLogin.Username, _globalLogin.Password);
-                MessageBox.Show($"[Username]: {_globalLogin.Username}\n[Password]: {_globalLogin.Password}");
+                Login loginCheck = LoginNullOrEmptyCheck();
+                Login login = LoginRepository.GetLogin(loginCheck.Username, loginCheck.Password);
+
+                ChatPage chat = new ChatPage(LoginRepository, login, loginContext);
+                this.Content = chat;
+                this.Title = "Simonsen Techs • Chat";
             }
             catch (Exception ex)
             {
@@ -49,18 +54,42 @@ namespace LoginSystemDB
             }
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private string password = "";
+        private Login LoginNullOrEmptyCheck()
         {
-            try
+            string username = UsernameTextBlock.Text;
+            if (string.IsNullOrEmpty(username)) throw new InvalidLoginException(InvalidLoginException.ExceptionTypes.InvalidUsername, "Please provide a username!");
+            else if (string.IsNullOrEmpty(password)) throw new InvalidLoginException(InvalidLoginException.ExceptionTypes.InvalidPassword, "Please provide a password!");
+            return new Login()
             {
-                Login login = LoginRepository.GetLogin(_globalLogin.Username, _globalLogin.Password);
-                LoginRepository.RemoveLogin(login);
-                MessageBox.Show("Removed Login");
-            }
-            catch (Exception ex)
+                Username = username,
+                Password = password
+            };
+        }
+
+        private void PasswordTextBlock_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            try { if (PasswordTextBlock.Text[PasswordTextBlock.Text.Length - 1] == '*') return; }
+            catch 
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK);
+                if (string.IsNullOrEmpty(PasswordTextBlock.Text))
+                    password = "";
+                return; 
             }
+            password += PasswordTextBlock.Text[PasswordTextBlock.Text.Length - 1];
+
+            var cursorPos = PasswordTextBlock.CaretIndex;
+            char[] PasswordChars = PasswordTextBlock.Text.ToCharArray();
+            for (int i = 0; i < PasswordChars.Length; i++)
+                PasswordChars[i] = '*';
+            
+            PasswordTextBlock.Text = PasswordChars.Join("");
+            PasswordTextBlock.CaretIndex = cursorPos;
+        }
+
+        private void PasswordTextBlock_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) Login_Click(null, null);
         }
     }
 }

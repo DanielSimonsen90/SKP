@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:LoginSystemDB"
         mc:Ignorable="d"
         Title="Simonsen Techs • Login" Height="450" Width="800">
-    <Grid>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="309,51,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="48"/>
-        <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Margin="332,152,0,0" VerticalAlignment="Top" Width="75" Click="Create_Click"/>
-        <Button x:Name="Read" Content="Read" HorizontalAlignment="Left" Margin="332,178,0,0" VerticalAlignment="Top" Width="75" Click="Read_Click"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="332,203,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
-    </Grid>
+    <DockPanel>
+        <Label      DockPanel.Dock="Top"                 Content="Login"        HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="48"/>
+        <TextBox x:Name="UsernameTextBlock" DockPanel.Dock="Top" Text="" HorizontalAlignment="Center" FontSize="45" Width="500" TextAlignment="Center"></TextBox>
+        <Rectangle  DockPanel.Dock="Top" Height="25" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="PasswordTextBlock" DockPanel.Dock="Top" Text="" HorizontalAlignment="Center" FontSize="45" Width="500" TextAlignment="Center" TextChanged="PasswordTextBlock_TextChanged" KeyDown="PasswordTextBlock_KeyDown"></TextBox>
+        <Rectangle  DockPanel.Dock="Top"  Height="50" VerticalAlignment="Top" Width="100"/>
+        <Button     DockPanel.Dock="Top" x:Name="Login"  Content="Login"        HorizontalAlignment="Center" VerticalAlignment="Top" Width="85" Click="Login_Click"/>
+        <Rectangle  DockPanel.Dock="Top" Height="10" VerticalAlignment="Top" Width="100"/>
+        <Button     DockPanel.Dock="Top" x:Name="Create" Content="Create Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="85" Click="Create_Click"/>
+    </DockPanel>
 </Window>

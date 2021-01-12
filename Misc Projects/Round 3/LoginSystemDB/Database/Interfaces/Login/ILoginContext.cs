@@ -6,6 +6,6 @@ namespace LoginDatabase.Interfaces
     interface ILoginContext : IDbContext
     {
         DbSet<Login> Login { get; set; }
-
+        DbSet<Message> Message { get; set; }
     }
 }

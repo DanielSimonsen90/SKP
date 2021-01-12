@@ -1,8 +1,11 @@
 ﻿using Common.Entities;
+using LoginDatabase.Exceptions;
 using LoginDatabase.Interfaces;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
+
 
 namespace LoginDatabase.Repositories
 {
@@ -29,7 +32,7 @@ namespace LoginDatabase.Repositories
             var passwordCollection = usernameCollection.Where(passwordLogin => passwordLogin.Password == password);
             if (!passwordCollection.Any()) throw new InvalidLoginException(InvalidLoginException.ExceptionTypes.InvalidPassword, "Password is incorrect!");
 
-            return passwordCollection.First();
+            return passwordCollection.FirstOrDefault();
         }
         public void UpdateLogin(string username, string newPassword)
         {
@@ -43,8 +46,15 @@ namespace LoginDatabase.Repositories
             var Login = this.Find(login.Username);
             if (Login == null) throw new System.Exception("Login is not in database!");
 
-            _loginContext.Login.Attach(login);
-            _loginContext.Login.Remove(login);
+            try { _loginContext.Login.Remove(login); }
+            catch (Exception ex) 
+            {
+                if (ex.Message == "The object cannot be deleted because it was not found in the ObjectStateManager.")
+                {
+                    _loginContext.Login.Attach(login);
+                    _loginContext.Login.Remove(login);
+                }
+            }
             _loginContext.SaveChanges();
         }
         #endregion
