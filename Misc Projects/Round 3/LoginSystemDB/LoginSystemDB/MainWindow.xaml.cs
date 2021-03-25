@@ -54,7 +54,6 @@ namespace LoginSystemDB
             }
         }
 
-        private string password = "";
         private Login LoginNullOrEmptyCheck()
         {
             string username = UsernameTextBlock.Text;
@@ -67,6 +66,8 @@ namespace LoginSystemDB
             };
         }
 
+        #region Password Stuff
+        private string password = "";
         private void PasswordTextBlock_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             try { if (PasswordTextBlock.Text[PasswordTextBlock.Text.Length - 1] == '*') return; }
@@ -86,10 +87,10 @@ namespace LoginSystemDB
             PasswordTextBlock.Text = PasswordChars.Join("");
             PasswordTextBlock.CaretIndex = cursorPos;
         }
-
         private void PasswordTextBlock_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter) Login_Click(null, null);
         }
+        #endregion
     }
 }
