@@ -28,33 +28,3 @@ C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 3\LoginSystemD
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\DanhoLibrary.pdb
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\ChatPage.g.cs
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\ChatPage.baml
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\LoginSystemDB.exe.config
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\LoginSystemDB.exe
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\LoginSystemDB.pdb
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\Common.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\DanhoLibrary.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\Database.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\EntityFramework.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\System.ComponentModel.Annotations.dll
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\Common.pdb
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\Database.pdb
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\Database.dll.config
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\DanhoLibrary.pdb
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\EntityFramework.xml
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.csprojAssemblyReference.cache
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\ChatPage.g.cs
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\MainWindow.g.cs
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\App.g.cs
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB_MarkupCompile.cache
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB_MarkupCompile.lref
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\ChatPage.baml
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\MainWindow.baml
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.g.resources
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.Properties.Resources.resources
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.csproj.GenerateResource.cache
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.csproj.CoreCompileInputs.cache
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.csproj.CopyComplete
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.exe
-C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\LoginSystemDB\LoginSystemDB\obj\Debug\LoginSystemDB.pdb
