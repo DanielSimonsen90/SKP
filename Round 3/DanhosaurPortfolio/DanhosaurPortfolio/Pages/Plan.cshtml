@@ -1,0 +1,21 @@
+﻿@page
+@model DanhosaurPortfolio.Pages.PlanModel
+@{
+    ViewData["Title"] = "Uddannelses Plan";
+    ViewData["Description"] = "Min uddannelses plan som datatekniker m. speciale i programmering";
+}
+@using DanhosaurPortfolio.Classes
+
+<h1 class="text-center startPage">Min uddannelses plan</h1>
+<table name="planContainer" class="rounded danhoborder">
+    <tbody class="rounded">
+        @for (int i = 0; i < Model.Plan.Length; i++)
+        {
+            <tr class="educationRow mainContainer">
+                <td class="danhoborder text-center">@Model.Plan[i].Start.ToMyTime()</td>
+                <td class="danhoborder text-center">@Model.Plan[i].End.ToMyTime()</td>
+                <td class="danhoborder text-center">@Model.Plan[i].Course</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hjem";
+    ViewData["Description"] = "Portfolie hjemmeside for Daniel Simonsen";
+}
+<div class="text-center">
+    <h1 class="startPage">Daniel Simonsen Portfolie</h1>
+    <h3 class="startPage">Videresend dig selv til de andre sider for at vide mere om mig</h3>
+</div>
+
+<div name="index" class="mainContainer">
+    <div class="profilePictureContainer danhoborder mainContent">
+        <img src="@Model.Me.ProfilePicture" alt="Billede af mig selv" title="Han nikker og han smiler og han er så glad" />
+    </div>
+    <div class="mainContent">
+        <h4>Velkommen</h4>
+        @* Writes welcome message from Mode.IntroductionSentences into paragraphs, seperated by a break. If the last sentence is next, do a double break *@
+        @for (int i = 0; i < Model.IntroductionSentences.Length; i++)
+        {
+            <p>@Model.IntroductionSentences[i]</p>
+            if (i + 2 == Model.IntroductionSentences.Length)
+            {
+                <br />
+            }
+            <br />
+        }
+    </div>
+</div>
+

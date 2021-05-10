@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\basically monkey.jpg" />
+    <None Include="wwwroot\Images\Logo.png" />
+    <None Include="wwwroot\Images\ProfilePicture.png" />
+    <None Include="wwwroot\Images\Sketches\About Me.pdn" />
+    <None Include="wwwroot\Images\Sketches\About Me.png" />
+    <None Include="wwwroot\Images\Sketches\Index.pdn" />
+    <None Include="wwwroot\Images\Sketches\Index.png" />
+    <None Include="wwwroot\Images\Sketches\Projects.pdn" />
+    <None Include="wwwroot\Images\Sketches\Projects.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Project Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DanhoLibrary">
+      <HintPath>..\..\..\..\..\DanhoLibrary\DanhoLibrary\bin\Release\netstandard2.1\DanhoLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

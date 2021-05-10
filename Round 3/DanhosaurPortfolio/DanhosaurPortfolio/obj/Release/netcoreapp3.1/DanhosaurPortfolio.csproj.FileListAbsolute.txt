@@ -1,0 +1,84 @@
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\appsettings.Development.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\appsettings.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\danhosaurportfolio - Web Deploy\profile.arm.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.exe
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.deps.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.runtimeconfig.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.runtimeconfig.dev.json
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.dll
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.pdb
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.Views.dll
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.Views.pdb
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhoLibrary.dll
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfoInputs.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorAssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.TagHelpers.input.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.TagHelpers.output.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorCoreGenerate.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\AboutMe.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\MyProjects.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorTargetAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorTargetAssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.Views.pdb
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\staticwebassets\DanhosaurPortfolio.StaticWebAssets.Manifest.cache
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\staticwebassets\DanhosaurPortfolio.StaticWebAssets.xml
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.dll
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.pdb
+C:\Users\DanielSimonsen\source\repos\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.genruntimeconfig.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\appsettings.Development.json
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\appsettings.json
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.exe
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.deps.json
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.runtimeconfig.json
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.runtimeconfig.dev.json
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.dll
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.Views.dll
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhosaurPortfolio.Views.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csprojAssemblyReference.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfoInputs.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csproj.CoreCompileInputs.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorAssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.TagHelpers.input.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.TagHelpers.output.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorCoreGenerate.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\AboutMe.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\MyProjects.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorTargetAssemblyInfo.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.RazorTargetAssemblyInfo.cs
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.Views.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.csproj.CopyComplete
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\staticwebassets\DanhosaurPortfolio.StaticWebAssets.Manifest.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\staticwebassets\DanhosaurPortfolio.StaticWebAssets.xml
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.dll
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\DanhosaurPortfolio.genruntimeconfig.cache
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhoLibrary.dll
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Release\netcoreapp3.1\DanhoLibrary.pdb
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\scopedcss\bundle\DanhosaurPortfolio.styles.css
+C:\Users\DanielSimonsen\source\repos\SKP\Misc Projects\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Release\netcoreapp3.1\Razor\Pages\Plan.cshtml.g.cs

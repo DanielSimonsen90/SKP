@@ -1,0 +1,64 @@
+﻿@page
+@model DanhosaurPortfolio.Pages.MyProjectsModel
+@{
+    ViewData["Title"] = "Mine Projekter";
+    ViewData["Description"] = "Alle mine projekter";
+}
+
+<script src="~/js/DanhoScript.js"></script>
+
+<div name="myProjects" class="mainContainer">
+    <h1 class="text-center startPage">Mine Projekter</h1>
+    <div class="languageDropDown danhoborder">
+        <p name="languageAmount">@Model.DisplayProjects.Length @(Model.DisplayProjects.Length == 1 ? "projekt" : "projekter"): @Model.Language</p>
+        <input type="text" readonly="readonly" name="projectLanguage" value="Sprog ↓" />
+        <div class="dropdownContent">
+            @foreach (string language in Model.GetLanguages())
+            {
+            <a href="?projectLanguage=@language" class="dropdownContent">@language</a>
+            }
+        </div>
+    </div>
+    @using DanhosaurPortfolio.Classes
+    @foreach (Project project in Model.DisplayProjects)
+    {
+        if (!project.Display) continue;
+        <div class="projectContainer">
+            <h3>[@project.Name] • @project.DateOfCreation.ToMyTime() • @project.ProjectType • @project.Language</h3>
+            <div>
+                <div class="projectDescription">
+                    <h4 class=" text-center">Beskrivelse</h4>
+                    @foreach (string sentence in project.Description)
+                    {
+                        if (string.IsNullOrEmpty(sentence))
+                        {
+                            <br />
+                        }
+                        else
+                        {
+                            <p>@sentence</p>
+                        }
+                    }
+                    <div class="projectLink">
+                        @if (project.ProjectPath != Project.IntetLink)
+                        {
+                            <a href="@project.ProjectPath" target="_blank">Se <b>@project.Name</b> på Github.</a>
+                        }
+                    </div>
+                </div>
+                <div class="projectMediaContainer">
+                    @if (System.IO.File.Exists($"./wwwroot/{project.ImagePath}"))
+                    {
+                        <a href="@project.ImagePath" target="_blank">
+                            <img class="projectMediaItem" src="@project.ImagePath" alt="@project.Name" />
+                        </a>
+                    }
+                    else
+                    {
+                        <h5 class="projectMediaItem text-center">[Intet Medie]</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - [Daniel Simonsen Portfolie]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/SimonsenTechs.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <meta content="Daniel Simonsen Portfolio" property="og:title">
+    <meta content="@ViewData["Description"]" property="og:description">
+    <meta content="https://embed.com/danhosaurportfolio.azurewebsites.net" property="og:url">
+    <meta content="/Images/Logo.png" property="og:image">
+    <meta content="#FF5E00" data-react-helmet="true" name="theme-color">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 navigation danhoborder">
+            <img src="/Images/Logo.png"
+                 class="logo"
+                 alt="Simonsen Techs • Daniel Simonsen"
+                 onclick="location.href = document.location.origin"
+                 onmouseover="ImageHover(true)"
+                 onmouseout="ImageHover(false)" />
+            @*<button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>*@
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item"><a class="navigationItem" asp-page="/Index">Hjem</a></li>
+                    <li class="nav-item"><a class="navigationItem" asp-page="/AboutMe">Om</a></li>
+                    <li class="nav-item"><a class="navigationItem" asp-page="/MyProjects">Projekter</a></li>
+                    <li class="nav-item"><a class="navigationItem" asp-page="/Plan">Plan</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-3"> @RenderBody() </main>
+    <footer>
+        <div class="navbar navbar-toggleable-sm navigation danhoborder footer text-muted">
+            <div class="container navbar navbar-expand-sm navigation" style="margin-left: 33%;">
+                <ul class="navbar-nav flex-grow-1">
+                    <li><p class="startPage">© @DateTime.Now.Year • Simonsen Techs • </p></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" asp-area="" asp-page="/Index" title="Gå hjem med dig">Hjem</a></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" asp-area="" asp-page="/AboutMe" title="Jeg er også meget interessant">Om</a></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" asp-area="" asp-page="/MyProjects" title="Jeg er den bedste i klassen så glæd dig">Projekter</a></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" asp-area="" asp-page="/Plan" title="I do as the crystal guides">Plan</a></li>
+                    <li><p class="startPage">•</p></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" href="mailto:@Classes.Contacts.Email" title="Kun send mig noget jeg kan bruge">E-mail</a></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" onclick="CopyToClipboard('@Classes.Contacts.Phone', 'mit telefonnummer')" title="Du kan ligeså godt lade vær, jeg tager den ikke">Telefon</a></li>
+                    <li class="nav-item"><a class="navigationItem text-muted navigationItemFooter" href="@Classes.Contacts.Github" target="_blank" title="Gitte og jeg kom lidt skævt ind på hinanden, men jeg tror vi er okay nu">Github</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/DanhoScript.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+@* Sets navigationItemSelected to the navigation item that represents the page user is viewing *@
+<script>$("document").ready(onStartUp())</script>

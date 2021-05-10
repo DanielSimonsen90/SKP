@@ -1,0 +1,68 @@
+﻿@page
+@model DanhosaurPortfolio.Pages.AboutMeModel
+@{
+    ViewData["Title"] = "Om mig";
+    ViewData["Description"] = "Hvem er jeg??";
+
+}
+
+<script src="~/js/DanhoScript.js"></script>
+
+<div name="aboutMe" class="mainContainer">
+    <h1 class="text-center startPage">Daniel Simonsen</h1>
+    <div name="whoAmI" class="mainContent">
+        <h3>Hvem er jeg?</h3>
+        <p>Mit navn er @Model.Me.Name og jeg er en @Model.Me.Age.ToString() årig dreng, som tager uddannelsen som datatekniker med speciale i programmering på TECHCOLLEGE.</p>
+        <p>Jeg har @Model.Me.CodingFor.ToString() års erfaring med programmering og programmerer både i skole- og fritiden.</p>
+        <p>Jeg interesserer mig meget for OOP og er ret stærk til det. Jeg synes, det er sjovt at lege med klassehierakier, og især hvis der kommer noget tilfældighed ind over det.</p>
+        <br />
+        <h6>@Model.Me.Occupation</h6>
+    </div>
+    <div name="Other" class="mainContent">
+        <div class="spareTime">
+            <h3>Fritid</h3>
+            <div name="spareTimeContent">
+                @for (int i = 0; i < Model.Me.SpareTime.Length; i++)
+                {
+                    <div class="spareTimeItem" id="@(i + 1)">
+                        <h5 class="subItem">@Model.Me.SpareTime[i].Title:</h5>
+                        <p class="subItem">@Model.Me.SpareTime[i].Description</p>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="contactInfo">
+            <h3>Kontakt</h3>
+            <div name="spareTimeContent">
+                <div class="contactInfoItem" id="1">
+                    <h5 class="subItem">Email:</h5>
+                    <a class="contactLinks subItem"
+                       href="mailto:@Classes.Contacts.Email"
+                       title="Kun send mig noget jeg kan bruge">
+                        @Classes.Contacts.Email
+                    </a>
+                </div>
+                <div class="contactInfoItem" id="2">
+                    <h5 class="subItem">Telefon:</h5>
+                    <a class="contactLinks subItem"
+                       onclick="CopyToClipboard('@Classes.Contacts.Phone', 'mit telefonnummer')"
+                       title="Du kan ligeså godt lade vær, jeg tager den ikke">
+                        @Classes.Contacts.Phone
+                    </a>
+                </div>
+                <div class="contactInfoItem" id="3">
+                    <h5 class="subItem">Github:</h5>
+                    <a class="contactLinks subItem"
+                       href="@Classes.Contacts.Github"
+                       target="_blank"
+                       title="FeelsBadMan når alle mine repos er private :kekw:">
+                        @Classes.Contacts.Github
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div name="aboutMe" class="profilePictureContainer danhoborder mainContent">
+    <img src="@Model.Me.ProfilePicture" alt="Billede af mig selv" title="Han nikker og han smiler og han er så glad" />
+</div>
