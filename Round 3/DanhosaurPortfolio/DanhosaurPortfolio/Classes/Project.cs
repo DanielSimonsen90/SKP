@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DanhosaurPortfolio.Classes
 {
@@ -22,6 +24,8 @@ namespace DanhosaurPortfolio.Classes
                 language == Languages.CSharp ? "C#" :
                 language == Languages.JavaScript ? "JavaScript" :
                 language == Languages.TypeScript ? "TypeScript" :
+                language == Languages.VueJS ? "Vue.js" :
+                language == Languages.EJS ? "EJS" :
                 "Website";
 
             ProjectType =
@@ -40,6 +44,21 @@ namespace DanhosaurPortfolio.Classes
         }
     }
 
-    public enum Languages { CSharp, JavaScript, Website, TypeScript /*On hover, display "Dette inkluderer HTML, CSS & JavaScript"*/ }
+    public enum Languages { CSharp, JavaScript, Website, TypeScript, VueJS, EJS /*On hover, display "Dette inkluderer HTML, CSS & JavaScript"*/ }
     public enum ProjectTypes { Console, WindowsForms, WPF, ASPNet, Node, Website, Library }
+
+    public static class ProjectExtensions
+    {
+        public static Project[] GetProjectsByLanguage(this Project[] projects, string language) => (
+            from p in projects
+            where (language == p.Language || language == "CSharp" && p.Language == "C#" || language == "Alle") && p.Display
+            select p
+        ).ToArray();
+
+        public static Project[] GetProjectsByType(this Project[] projects, string type) => (
+            from p in projects
+            where (type == p.ProjectType) && p.Display || type == "Alle"
+            select p
+        ).ToArray();
+    }
 }

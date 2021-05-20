@@ -32,8 +32,14 @@ namespace DanhosaurPortfolio.Pages
                     ));
                 }
 
-                return new List<ScheduleItem>() { Schedules.WhereAmI() }
-                    .AddRange(Schedules.Future, SKP)
+                ScheduleItem whereAmI = Schedules.WhereAmI();
+                IList<ScheduleItem> range = whereAmI.Course == Schedules.Future[0].Course ? 
+                    new List<ScheduleItem>().AddRange(Schedules.Future, SKP) : 
+                    new List<ScheduleItem>()
+                        .AddRange<ScheduleItem>(new List<ScheduleItem>() { whereAmI })
+                        .AddRange(Schedules.Future, SKP);
+
+                return range
                     .OrderBy(a => a.Start.Ticks)
                     .ToArray();
             }

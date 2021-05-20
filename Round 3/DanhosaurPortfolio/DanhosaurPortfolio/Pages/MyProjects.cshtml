@@ -5,11 +5,42 @@
     ViewData["Description"] = "Alle mine projekter";
 }
 
-<script src="~/js/DanhoScript.js"></script>
-
-<div name="myProjects" class="mainContainer">
-    <h1 class="text-center startPage">Mine Projekter</h1>
-    <div class="languageDropDown danhoborder">
+<div class="projectFilterContainer" style="display:none">
+    <p name="projectAmount">@Model.DisplayProjects.Length @(Model.DisplayProjects.Length == 1 ? "projekt" : "projekter"): @Model.Language</p>
+    <div class="projectFilterOptionContainer">
+        <div class="projectFilterOption">
+            <input type="text" 
+                   readonly="readonly" 
+                   class="projectFilterCategory" 
+                   value="Typer ↓" 
+                   name="projectTypes" 
+                   onmouseover="displayDropdown('type')" 
+                   />
+            <div class="dropdownContent" id="type">
+                @foreach (string type in Model.GetProjectTypes())
+                {
+                    <a href="@Model.FilterClicked(FilterType.Type, type)" class="dropdownContent">@type</a>
+                }
+            </div>
+        </div>
+        <div class="projectFilterOption">
+            <input type="text" 
+                   readonly="readonly" 
+                   class="projectFilterCategory" 
+                   value="Sprog ↓" 
+                   name="projectLanguages" 
+                   onmouseover="displayDropdown('language')" 
+                   />
+            <div class="dropdownContent" id="language">
+                @foreach (string language in Model.GetLanguages())
+                {
+                    <a href="@Model.FilterClicked(FilterType.Language, language)" class="dropdownContent">@language</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@*@<div class="languageDropDown danhoborder">
         <p name="languageAmount">@Model.DisplayProjects.Length @(Model.DisplayProjects.Length == 1 ? "projekt" : "projekter"): @Model.Language</p>
         <input type="text" readonly="readonly" name="projectLanguage" value="Sprog ↓" />
         <div class="dropdownContent">
@@ -18,7 +49,14 @@
             <a href="?projectLanguage=@language" class="dropdownContent">@language</a>
             }
         </div>
-    </div>
+    </div>*@
+
+<script defer>loadNavbarExtension();</script>
+
+<div name="myProjects" class="mainContainer">
+
+    <h1 class="text-center startPage">Mine Projekter</h1>
+
     @using DanhosaurPortfolio.Classes
     @foreach (Project project in Model.DisplayProjects)
     {
@@ -55,6 +93,7 @@
                     }
                     else
                     {
+                        <script>console.log(`No media for @project.Name`)</script>
                         <h5 class="projectMediaItem text-center">[Intet Medie]</h5>
                     }
                 </div>

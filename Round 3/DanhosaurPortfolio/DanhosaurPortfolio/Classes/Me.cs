@@ -32,15 +32,7 @@ namespace DanhosaurPortfolio.Classes
         /// <summary>
         /// Returns whether I'm at school or SKP and when I switch
         /// </summary>
-        public string Occupation
-        {
-            get
-            {
-                ScheduleItem schedule = Schedules.WhereAmI();
-
-                return $"I øjebilkket er jeg på {schedule.Course} indtil {schedule.End.ToMyTime()}";
-            }
-        }
+        public string Occupation => Schedules.WhereAmI(schedule => $"I øjebilkket er jeg på {schedule.Course} indtil {schedule.End.ToMyTime()}");
         /// <summary>
         /// My sparetime activities
         /// </summary>
@@ -48,6 +40,7 @@ namespace DanhosaurPortfolio.Classes
         {
             new Item("Discord", "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via css/html, og generelle permission handling."),
             new Item("FL Studio", "Jeg tilbringer nogle gange min fritid op at lave min egen musik, som jeg sætter på services som Spotify & SoundCloud."),
+            new Item("Overwatch", "Som programmør er man naturligt interesseret i spil - Overwatch har jeg spillet i 1000 timer og elsker at spille det med mine venner."),
             new Item("Skolehjem", "Jeg bor på Aalborg Erhvervskollegium ved TECHCOLLEGE på Øster Uttrupvej")
         };
         /// <summary>
@@ -211,6 +204,13 @@ namespace DanhosaurPortfolio.Classes
                 "Så derfor, ville jeg prøve at lave min egen struktur i WPF, men kom aldrig længere end login siden...", "",
                 "På et tidspunkt kunne jeg godt forestille mig, at jeg laver en 2.0 i ASP.Net, eftersom denne hjemmeside er det første produkt jeg har lavet i ASP.Net Core."
             }, "https://github.com/DanielSimonsen90/SKP/tree/main/Misc%20Projects/Round%203/Dancord"),
+            new Project("DanhosaurPortfolio", Languages.CSharp, ProjectTypes.ASPNet, new DateTime(2020, 11, 15), new string[]
+            {
+                "Min DanhosaurPortfolio er den hjemmeside du er på nu.",
+                "Den er 100% bygget i ASP.NET Core, og er mit første ASP.NET projekt.",
+                "",
+                "Formålet med projektet er, at det er en hjemmeside jeg kan sende rundt til virksomheder, så virksomhederne får en idé af, hvad det er jeg kan som programmør"
+            }, "https://github.com/DanielSimonsen90/SKP/tree/main/Round%203/DanhosaurPortfolio"),
             new Project("RandomSWCharacter 2.0", Languages.CSharp, ProjectTypes.Console, new DateTime(2020, 11, 24), new string[]
             {
                 "Rework af min tidligere RandomSWCharacter - dette inkludere bedre kodestruktur, da det er flere måneder siden jeg sidst lavede min originale RandomSWCharacter"
@@ -221,6 +221,30 @@ namespace DanhosaurPortfolio.Classes
                 "Dog eftersom jeg følte at det var let sluppet fra, valgte jeg at implementere et messaging-system, så den også gemte på beskeder sendt af tidligere brugere."
             }, "https://github.com/DanielSimonsen90/SKP/tree/main/Misc%20Projects/Round%203/LoginSystemDB"),
             #endregion
+
+            #region Hovedforløb 3
+            new Project("ORM", Languages.CSharp, ProjectTypes.Console, new DateTime(2021, 04, 12), new string[]
+            {
+                "I database programmering, ville vores lærer have at vi skulle lave vores egen Object Relational Mapping klasse, så vi fik en god forståelse af ledet mellem code-behind og database objekthåndtering",
+            }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/Database%20programmering/ORM/ORM"),
+            new Project("DanhosMessages", Languages.CSharp, ProjectTypes.WPF, new DateTime(2021, 04, 28), new string[]
+            {
+                "En afsluttende opgave, hvor jeg brugte EntityFramework til at binde mine modeller til en database, så jeg havde både login- og messagesystem"
+            }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/Database%20programmering/Final%20Assignment/DanhosMessages"),
+            new Project("MyWebserver", Languages.CSharp, ProjectTypes.Console, new DateTime(2021, 04, 25), new string[]
+            {
+                "Da vi startede med GUI Programmering III, synes vores lærer at det kunne være sjovt at vi lavede vores egen webserver, så vi fik en lille forståelse af, hvordan en webserver fungerer.",
+                "Her brugte vi HttpListeners, til at lytte til URL gets, og håndterede dem i vores C# kode."
+            }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/GUI%20Programmering/MyWebserver"),
+            new Project("Vue.js", Languages.VueJS, ProjectTypes.Website, new DateTime(2021, 04, 28), new string[]
+            {
+                "Som start i GUI Programmering III, startede vi ud med at udforske Vue.js.",
+                "Udover min \"komponent viden\" fra tidligere WPF projekter, var det første gang jeg legede med komponenter - og det var noget jeg nød rigtig meget.",
+                "Eftersom jeg længe har haft lyst til at lære React.js, blev jeg relativ glad for at starte med Vue.js, da de minder meget om hinaden.",
+                "",
+                "Selve projektet er én stor klump af udforskning af forskellige Vue problemstillinger, og sætte de fleste af dem til brug."
+            }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/GUI%20Programmering/Vue.js"),
+	        #endregion
 
             #region Other projects
             new Project("GymleaderTimer", Languages.CSharp, ProjectTypes.WPF, new DateTime(2020, 7, 9), new string[]
@@ -263,15 +287,14 @@ namespace DanhosaurPortfolio.Classes
                 "Når andres bots kan noget bestemt, som jeg synes er fedt, vil jeg prøve mit bedste på at lave det selv - det synes jeg trodsalt er den bedste måde at lære på.", "",
                 "Pingu er det projekt jeg er mest stolt over i min programmeringskarriere. Der er altid noget at forbedre eller bygge på. " +
                 "Derudover ligger den også i min interesse i Discord - så det er generelt bare fedt at udvikle et produkt til noget man alligevel bruger meget tid på."
-            }, "https://github.com/DanielSimonsen90/Pingu")
+            }, "https://github.com/DanielSimonsen90/Pingu"),
+            new Project("Discord Bot Interface", Languages.EJS, ProjectTypes.Node, new DateTime(2021, 02, 26), new string[]
+            {
+                "Discord Bot Interface er et projekt, hvor man skal kunne logge ind som sin Discord bot, og kunne bruge den som var den en normal Discord bruger.",
+                "Projektet gør brug af Node.js webserver og selvfølgelig en række HTML sider og Discord.js modulet"
+            }, Project.IntetLink, false) //Repository not created - hiding
             #endregion
 
-        }.Reverse().ToArray();
-
-        public IEnumerable<Project> GetProjectsByLanguage(string language) => 
-            from p in Projects 
-            where (language == p.Language || language == "CSharp" && p.Language == "C#" || language == "Alle") && p.Display
-            select p;
-
+        }.OrderByDescending(p => p.DateOfCreation).ToArray();
     }
 }
