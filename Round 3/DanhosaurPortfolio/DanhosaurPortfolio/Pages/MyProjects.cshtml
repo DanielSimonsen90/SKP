@@ -5,7 +5,7 @@
     ViewData["Description"] = "Alle mine projekter";
 }
 
-<div class="projectFilterContainer" style="display:none">
+@*<div class="projectFilterContainer" style="display:none">
     <p name="projectAmount">@Model.DisplayProjects.Length @(Model.DisplayProjects.Length == 1 ? "projekt" : "projekter"): @Model.Language</p>
     <div class="projectFilterOptionContainer">
         <div class="projectFilterOption">
@@ -15,6 +15,8 @@
                    value="Typer ↓" 
                    name="projectTypes" 
                    onmouseover="displayDropdown('type')" 
+                   onmouseout="displayDropdown('type')"
+
                    />
             <div class="dropdownContent" id="type">
                 @foreach (string type in Model.GetProjectTypes())
@@ -29,7 +31,8 @@
                    class="projectFilterCategory" 
                    value="Sprog ↓" 
                    name="projectLanguages" 
-                   onmouseover="displayDropdown('language')" 
+                   onmouseover="displayDropdown('language')"
+                   onmouseout="displayDropdown('language')"
                    />
             <div class="dropdownContent" id="language">
                 @foreach (string language in Model.GetLanguages())
@@ -39,19 +42,9 @@
             </div>
         </div>
     </div>
-</div>
-@*@<div class="languageDropDown danhoborder">
-        <p name="languageAmount">@Model.DisplayProjects.Length @(Model.DisplayProjects.Length == 1 ? "projekt" : "projekter"): @Model.Language</p>
-        <input type="text" readonly="readonly" name="projectLanguage" value="Sprog ↓" />
-        <div class="dropdownContent">
-            @foreach (string language in Model.GetLanguages())
-            {
-            <a href="?projectLanguage=@language" class="dropdownContent">@language</a>
-            }
-        </div>
-    </div>*@
+</div>*@
 
-<script defer>loadNavbarExtension();</script>
+<script>loadNavbarExtension();</script>
 
 <div name="myProjects" class="mainContainer">
 

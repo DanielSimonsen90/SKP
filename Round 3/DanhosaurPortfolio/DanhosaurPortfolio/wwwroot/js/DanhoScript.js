@@ -1,5 +1,5 @@
-﻿const EventEmitter = require("events");
-let loader = new EventEmitter();
+﻿let loader = new EventEmitter();
+
 
 //Sets navigationItemSelected to the navigation item that represents the page user is viewing
 function onStartUp() {
@@ -85,7 +85,7 @@ function displayDropdown(id) {
 }
 
 function loadNavbarExtension() {
-    let extension = document.getElementById('projectFilterContainer');
+    let extension = document.getElementsByClassName('projectFilterContainer')[0];
     if (!extension) return;
 
     extension.remove();

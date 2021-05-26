@@ -20,31 +20,39 @@ namespace DanhosaurPortfolio.Classes
         public Project(string name, Languages language, ProjectTypes projectType, DateTime creationDate, string[] description, string link, bool display = true)
         {
             Name = name;
-            Language =
-                language == Languages.CSharp ? "C#" :
-                language == Languages.JavaScript ? "JavaScript" :
-                language == Languages.TypeScript ? "TypeScript" :
-                language == Languages.VueJS ? "Vue.js" :
-                language == Languages.EJS ? "EJS" :
-                "Website";
-
-            ProjectType =
-                projectType == ProjectTypes.Console ? "Console" :
-                projectType == ProjectTypes.WindowsForms ? "Windows Forms" :
-                projectType == ProjectTypes.WPF ? "WPF" :
-                projectType == ProjectTypes.ASPNet ? "ASP.NET Core" :
-                projectType == ProjectTypes.Node ? "Node" :
-                projectType == ProjectTypes.Library ? "Library" :
-                "Website";
-
+            Language = GetLanguage(language);
+            ProjectType = GetProjectType(projectType);
             DateOfCreation = creationDate;
             Description = description;
             Display = display;
             ProjectPath = link;
         }
+
+        private string GetLanguage(Languages language) => language switch
+        {
+            Languages.CSharp => "C#",
+            Languages.JavaScript => "JavaScript",
+            Languages.Website => "Website",
+            Languages.TypeScript => "TypeScript",
+            Languages.VueJS => "Vue.js",
+            Languages.EJS => "EJS",
+            Languages.XML => "XML",
+            _ => "Unknown Language",
+        };
+        private string GetProjectType(ProjectTypes projectType) => projectType switch
+        {
+            ProjectTypes.ASPNet => "ASP.NET Core",
+            ProjectTypes.Console => "Console",
+            ProjectTypes.Library => "Library",
+            ProjectTypes.Node => "Node.js",
+            ProjectTypes.Website => "Website",
+            ProjectTypes.WindowsForms => "Windows Forms",
+            ProjectTypes.WPF => "WPF",
+            _ => "Unknown ProjectType"
+        };
     }
 
-    public enum Languages { CSharp, JavaScript, Website, TypeScript, VueJS, EJS /*On hover, display "Dette inkluderer HTML, CSS & JavaScript"*/ }
+    public enum Languages { CSharp, JavaScript, Website, TypeScript, VueJS, EJS, XML }
     public enum ProjectTypes { Console, WindowsForms, WPF, ASPNet, Node, Website, Library }
 
     public static class ProjectExtensions

@@ -244,6 +244,19 @@ namespace DanhosaurPortfolio.Classes
                 "",
                 "Selve projektet er én stor klump af udforskning af forskellige Vue problemstillinger, og sætte de fleste af dem til brug."
             }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/GUI%20Programmering/Vue.js"),
+            new Project("vuepos", Languages.VueJS, ProjectTypes.Website, new DateTime(2021, 05, 10), new string[]
+            {
+                "Et mere reelt projekt ved brug af Vue.js",
+                "Sammen med mine kammerarter, Lasse & Mihaela, havde vi gruppe projekt om at lave en webshop, der havde en Employee og Admin mode.",
+                "",
+                "Som employee, skulle du kunne \"bippe\" produkter ind i kassen, og altid kunne følge med i, hvad den endelige sum for produkterne ville være. " +
+                "Når så ordren var blevet placeret, skal man kunne se en historik over solgte produkter i Admin mode.",
+                "Som admin, skal du kunne oprette eller slette produkter. Desuden skal du også have en ordrehistorik."
+            }, "https://github.com/TheOnlySlothman/vuepos"),
+            new Project("XML Intro", Languages.XML, ProjectTypes.WPF, new DateTime(2021, 05, 25), new string[]
+            { 
+                "Upload XML, XSL & XSD filer til programmet, og den vil konvertere en XML fil baseret på XSL'en, og verificere den nye XML fil ved brug af XSD filen, og give et endeligt output, som konvertereingen var successfuld eller ej."
+            }, "https://github.com/DanielSimonsen90/Education/tree/master/Hovedforl%C3%B8b%203/XML/Intro/csharp/XMLintro/XMLintro"),
 	        #endregion
 
             #region Other projects
@@ -292,7 +305,14 @@ namespace DanhosaurPortfolio.Classes
             {
                 "Discord Bot Interface er et projekt, hvor man skal kunne logge ind som sin Discord bot, og kunne bruge den som var den en normal Discord bruger.",
                 "Projektet gør brug af Node.js webserver og selvfølgelig en række HTML sider og Discord.js modulet"
-            }, Project.IntetLink, false) //Repository not created - hiding
+            }, Project.IntetLink, false), //Repository not created - hiding
+            new Project("DanhoLibraryJS", Languages.TypeScript, ProjectTypes.Library, new DateTime(2021, 05, 13), new string[]
+            {
+                "Ligesom mit DanhoLibrary i C#, ville jeg have et DanhoLibrary til JavaScript.",
+                "Jeg kom tit i situationer, hvor jeg ikke forstod, hvorfor f.eks. HTMLCollection ikke havde en .array() eller hvorfor jeg ikke havde en måde at bruge Node.js' EventEmitter klasse i vanilla JavaScript.",
+                "",
+                "Så jeg lavede naturligvis mit eget library til situationen. Alle modifikationer og extentions kan læses på projektets README fil."
+            }, "https://github.com/DanielSimonsen90/DanhoLibraryJS")
             #endregion
 
         }.OrderByDescending(p => p.DateOfCreation).ToArray();

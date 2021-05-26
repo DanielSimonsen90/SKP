@@ -94,7 +94,6 @@ C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\Danhosa
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Debug\netcoreapp3.1\DanhosaurPortfolio.Views.pdb
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Debug\netcoreapp3.1\DanhoLibrary.dll
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\bin\Debug\netcoreapp3.1\DanhoLibrary.pdb
-C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.csprojAssemblyReference.cache
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfoInputs.cache
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.AssemblyInfo.cs
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.csproj.CoreCompileInputs.cache
@@ -124,3 +123,4 @@ C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\Danhosa
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.dll
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.pdb
 C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.genruntimeconfig.cache
+C:\Users\Daniel Simonsen\Documents\GitHub\SKP\Round 3\DanhosaurPortfolio\DanhosaurPortfolio\obj\Debug\netcoreapp3.1\DanhosaurPortfolio.csprojAssemblyReference.cache

@@ -29,7 +29,7 @@ namespace DanhosaurPortfolio.Classes
             new ScheduleItem(new DateTime(2020, 1, 6), new DateTime(2020, 3, 13), "Hovedforløb 1"),
             new ScheduleItem(new DateTime(2020, 8, 3), new DateTime(2020, 10, 9), "Hovedforløb 2"),
             new ScheduleItem(new DateTime(2021, 4, 6), new DateTime(2021, 6, 18), "Hovedforløb 3"),
-            new ScheduleItem(new DateTime(2021, 10, 11), new DateTime(2022, 12, 17), "Hovedforløb 4"),
+            new ScheduleItem(new DateTime(2021, 10, 11), new DateTime(2021, 12, 17), "Hovedforløb 4"),
             new ScheduleItem(new DateTime(2022, 9, 19), new DateTime(2022, 11, 25), "Hovedforløb 5"),
             new ScheduleItem(new DateTime(2023, 11, 6), new DateTime(2023, 12, 8), "Hovedforløb 6")
         };
