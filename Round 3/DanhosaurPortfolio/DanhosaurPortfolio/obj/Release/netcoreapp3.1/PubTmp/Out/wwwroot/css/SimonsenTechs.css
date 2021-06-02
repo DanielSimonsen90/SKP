@@ -238,54 +238,61 @@ p.subItem {
     margin-left: 6%;
 }
 
-.languageDropDown {
-    overflow: hidden;
+.projectFilterContainer {
     position: fixed;
-    display: inline-block;
-    top: .78%;
-    right: 5%;
-    max-width: 15%;
-    background: var(--navigationBackground);
+    right: 2%;
+    width: 9%;
     padding: .68%;
 }
 
-[name=languageAmount] {
-    display: inline-flex;
-    height: 100%;
+[name=projectAmount] {
     font-weight: bold;
+    text-align: center;
+    background: var(--navigationBackground);
 }
 
-[name=projectLanguage] {
-    display: inline;
+.projectFilterOptionContainer {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.projectFilterOption {
+    width: 50%;
+    background: var(--navigationBackground);
+}
+
+.projectFilterCategory {
     border: none;
     outline: none;
     margin: 0;
     color: var(--navigationHover);
     background: var(--navigationBackground);
+    text-align: center;
+    width: 100%;
+    min-width: min-content;
 }
 
 /*#region Dropdown Content*/
 .dropdownContent {
     display: none;
+    width: min-content;
 }
 
-    .dropdownContent a {
-        float: none;
+    .dropdownContent:hover {
         display: block;
-        background-color: var(--navigationBackground);
+    }
+
+    .dropdownContent#type a, .dropdownContent#language a {
+        display: block;
         color: var(--navigationDefault);
     }
 
-        .dropdownContent a:hover {
-            display: block;
+        .dropdownContent#type a:hover, .dropdownContent#language a:hover {
             color: var(--navigationHover);
             text-decoration: none;
             font-weight: bold;
         }
-
-.languageDropDown:hover .dropdownContent {
-    display: block;
-}
 /*#endregion*/
 
 .projectContainer > div {
@@ -296,7 +303,7 @@ p.subItem {
 }
 
 .projectDescription {
-    display: inline-table;
+    display: inline-block;
     width: 50%;
     vertical-align: top;
 }
@@ -326,6 +333,7 @@ img.projectMediaItem {
     bottom: 0;
     display: block;
     margin: 1%;
+
 }
 
     .projectLink a {
