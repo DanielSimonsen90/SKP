@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Reference Include="DanhoLibrary">
-      <HintPath>..\..\..\..\DanhoLibrary\DanhoLibrary\bin\Release\netstandard2.1\DanhoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Library\DanhoLibrary\DanhoLibrary\bin\Release\netstandard2.1\DanhoLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 

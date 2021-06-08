@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
       "projectName": "DanhosaurPortfolio",
-      "projectPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
+      "projectPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
       "packagesPath": "C:\\Users\\Daniel Simonsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\obj\\",
+      "outputPath": "C:\\Users\\Daniel Simonsen\\Documents\\GitHub\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Daniel Simonsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

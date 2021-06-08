@@ -1,4 +1,7 @@
-﻿/**Sets navigationItemSelected to the navigation item that represents the page user is viewing */
+﻿let loader = new EventEmitter();
+
+
+//Sets navigationItemSelected to the navigation item that represents the page user is viewing
 function onStartUp() {
     //Get the page user is viewing
     var currentPage = document.location.href;
@@ -8,10 +11,19 @@ function onStartUp() {
 
     //Find the item that needs to add navigationItemSelected and add the item
     $("header").find("a").each((_, element) => {
-        if (element.href == currentPage)
+        if (element.href == currentPage) {
             element.setAttribute("class", `${element.classList} navigationItemSelected`);
+            loader.emit('load', currentPage.toLowerCase());
+        }
     });
 }
+
+loader.on('load', currentPage => {
+    switch (currentPage) {
+        case 'myprojects': myProjectsLoaded(); break;
+        default: break;
+    }
+})
 
 /**Copies item to clipboard, and displays itemString in alert message as "Du har kopieret ${itemString}"
  * @param {string} item item that should be copied
@@ -45,4 +57,40 @@ function ImageHover(hovering) {
     //Take the first result (there's only 1 in the navigation header) 
     //Change its source depending whether the hovering paramter is true or false
     document.getElementsByClassName("logo").item(0).src = `${document.location.origin}/Images${(hovering ? `/Logo Hover.png` : `/Logo.png`)}`;
+}
+
+let hoverings = new Map([
+    ['type', false],
+    ['language', false]
+]);
+
+function myProjectsLoaded() {
+    let hoveringIds = ['type', 'language'];
+    hoverings = new Map(hoveringIds.map(id => [id, false]));
+
+    loadNavbarExtension();
+}
+
+
+/**@param {boolean} hovering
+ * @param {string} id*/
+function displayDropdown(id) {
+    console.log(id);
+    hoverings.set(id, !hoverings.get(id));
+
+    let element = document.getElementById(id);
+    let displayType = hoverings.get(id) ? "block" : "none";
+
+    element.setAttribute('style', `display:${displayType};`);
+}
+
+function loadNavbarExtension() {
+    let extension = document.getElementsByClassName('projectFilterContainer')[0];
+    if (!extension) return;
+
+    extension.remove();
+    extension.removeAttribute('style');
+
+    let navbar = document.getElementsByTagName('nav').item(0);
+    navbar.append(extension);
 }
