@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj": {}
+    "C:\\Users\\DanielSimonsen\\source\\repos\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj": {
+    "C:\\Users\\DanielSimonsen\\source\\repos\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
+        "projectUniqueName": "C:\\Users\\DanielSimonsen\\source\\repos\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
         "projectName": "DanhosaurPortfolio",
-        "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
+        "projectPath": "C:\\Users\\DanielSimonsen\\source\\repos\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\DanhosaurPortfolio.csproj",
         "packagesPath": "C:\\Users\\DanielSimonsen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\obj\\",
+        "outputPath": "C:\\Users\\DanielSimonsen\\source\\repos\\Techcollege\\SKP\\Round 3\\DanhosaurPortfolio\\DanhosaurPortfolio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
