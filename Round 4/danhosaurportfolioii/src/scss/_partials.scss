@@ -1,0 +1,76 @@
+%clickable {
+    cursor: pointer;
+}
+%click-me {
+    @import '@/scss/variables';
+    @extend %clickable;
+
+    color: $color-click-me;
+    text-decoration: underline;
+
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+%hoverable {
+    @import '@/scss/variables';
+    transition: $transition-hover;
+
+    &:hover {
+        transition: $transition-hover;
+    }
+}
+%hoverable-color {
+    @import '@/scss/variables';
+    @extend %hoverable;
+
+    color: $color-hoverable;
+
+    &:hover {
+        color: $color-hover;
+    }
+}
+%hoverable-background {
+    @import '@/scss/variables';
+    @extend %hoverable;
+
+    background-color: $background-hoverable;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        background-image: linear-gradient($background-hover, $background-hoverable, $background-hover);
+    }
+}
+%hoverable-border {
+    @import '@/scss/variables';
+    @extend %hoverable;
+
+    border: $non-content-border;
+
+    &:hover {
+        border: $non-content-border-hover;
+    }
+}
+
+%shadow-me {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+%rounded {
+    border-radius: .75rem;
+}
+
+%non-content {
+    @extend %hoverable-color;
+    @extend %hoverable-background;
+    @extend %hoverable-border;
+    @extend %shadow-me;
+
+    display: grid;
+    width: 100%;
+    align-items: center;
+    
+    &:hover {
+        background-image: unset;
+    }
+}

@@ -1,6 +1,6 @@
 "use-strict"
 
-import { LocationCollection, ScheduleItem, Item, ProjectCollection, Project } from 'models'
+import { LocationCollection, ScheduleItem, Item, ProjectCollection, Project, DanhoDate } from 'models'
 
 const contact = {
     github: "DanielSimonsen90",
@@ -9,15 +9,15 @@ const contact = {
 };
   
 const locationCollection = new LocationCollection(...[
-    new ScheduleItem("Folkeskole", new Date(2007, 8, 8), new Date(2017, 6, 15)),
-    new ScheduleItem("10. klasse", new Date(2017, 8, 8), new Date(2018, 6, 15)),
-    new ScheduleItem("Grundforløb 1 & 2", new Date(2018, 8, 8), new Date(2019, 6, 28)),
-    new ScheduleItem("Hovedforløb 1", new Date(2020, 1, 6), new Date(2020, 3, 13)),
-    new ScheduleItem("Hovedforløb 2", new Date(2020, 8, 3), new Date(2020, 10, 9)),
-    new ScheduleItem("Hovedforløb 3", new Date(2021, 4, 6), new Date(2021, 6, 18)),
-    new ScheduleItem("Hovedforløb 4", new Date(2021, 10, 11), new Date(2021, 12, 17)),
-    new ScheduleItem("Hovedforløb 5", new Date(2022, 9, 19), new Date(2022, 11, 25)),
-    new ScheduleItem("Hovedforløb 6", new Date(2023, 11, 6), new Date(2023, 12, 8))
+    // new ScheduleItem("Folkeskole", new DanhoDate(2007, 8, 8), new DanhoDate(2017, 6, 15)),
+    // new ScheduleItem("10. klasse", new DanhoDate(2017, 8, 8), new DanhoDate(2018, 6, 15)),
+    new ScheduleItem("Grundforløb 1 & 2", new DanhoDate(2018, 8, 8), new DanhoDate(2019, 6, 28)),
+    new ScheduleItem("Hovedforløb 1", new DanhoDate(2020, 1, 6), new DanhoDate(2020, 3, 13)),
+    new ScheduleItem("Hovedforløb 2", new DanhoDate(2020, 8, 3), new DanhoDate(2020, 10, 9)),
+    new ScheduleItem("Hovedforløb 3", new DanhoDate(2021, 4, 6), new DanhoDate(2021, 6, 18)),
+    new ScheduleItem("Hovedforløb 4", new DanhoDate(2021, 10, 11), new DanhoDate(2021, 12, 17)),
+    new ScheduleItem("Hovedforløb 5", new DanhoDate(2022, 9, 19), new DanhoDate(2022, 11, 25)),
+    new ScheduleItem("Hovedforløb 6", new DanhoDate(2023, 11, 6), new DanhoDate(2023, 12, 8))
 ]).constructSKP();
   
 const spareTime = [
@@ -32,7 +32,7 @@ const SKP = {
         new Project("Big Project", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 8, 7),
+            createdAt: new DanhoDate(2019, 8, 7),
             description: [
               "Et spil jeg blev inspireret af, da vores grundforløbslærer gav os en opgave med XML database. " + 
               "Jeg havde ingen anelese om hvad jeg lavede, og kom ikke langt med det..."
@@ -42,7 +42,7 @@ const SKP = {
         new Project("CleanEmotes", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 11, 4),
+            createdAt: new DanhoDate(2019, 11, 4),
             description: [
               "Ét af mine \"joke programmer\" - der var ingen udfordring, ikke en ordenligt pointe - det var bare en joke."
             ],
@@ -51,7 +51,7 @@ const SKP = {
         new Project("ezdab", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 8, 15),
+            createdAt: new DanhoDate(2019, 8, 15),
             description: [
                 "En lille figur der dabber - en slags animation i konsol vindue."
             ],
@@ -60,7 +60,7 @@ const SKP = {
         new Project("Hacker Speech", {
             language: 'C#',
             projectType: 'Windows Forms', 
-            createdAt: new Date(2019, 9, 19),
+            createdAt: new DanhoDate(2019, 9, 19),
             description: [
               "En translator, der oversætter fra normal sprog til \"Hacker\" sprog med indbyggede temaer.",
               "Dette projekt var ren og skær for sjov - men alligevel også for at gå lidt væk fra vores konsolapplikationer. " +
@@ -78,7 +78,7 @@ const SKP = {
         new Project("Human", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 8, 12),
+            createdAt: new DanhoDate(2019, 8, 12),
             description: [
               "Dating simulator, hvor kvindens karakter bliver randomizet, " + 
               "og hvor alle ens handlinger har betydning på, hvordan forholdet kommer til at gå."
@@ -88,7 +88,7 @@ const SKP = {
         new Project("Idea Generator", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 8, 12),
+            createdAt: new DanhoDate(2019, 8, 12),
             description: [
               "Eftersom én af mine interesser er musik, valgte jeg at blande både programmering og musik sammen - " +
               "så jeg skabte et program, der giver mig tilfeldige idéer til, hvad for noget musik jeg skulle lave.", "",
@@ -107,7 +107,7 @@ const SKP = {
         new Project("Making Coffee", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 11, 11),
+            createdAt: new DanhoDate(2019, 11, 11),
             description: [
               "Ét af mine \"joke programmer\", der gav en bruger interaction til, " + 
               "om min kammerart Andreas skulle lave kaffe til os eller ej."
@@ -117,7 +117,7 @@ const SKP = {
         new Project("Music Idea Generator", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 11, 4),
+            createdAt: new DanhoDate(2019, 11, 4),
             description: [
               "Rework af Idea Generator - dette inkluderer:",
               "• Reference Artists: Tilfeldigt musiker fra den genre der er blevet valgt",
@@ -128,7 +128,7 @@ const SKP = {
         new Project("PixelSpark", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 11, 4),
+            createdAt: new DanhoDate(2019, 11, 4),
             description: [
               "PixelSpark er en Minecraft server jeg spillede på, som har et hieraki af forskellige ranks.",
               "Det hieraki ville jeg prøve at bygge i C#"
@@ -137,7 +137,7 @@ const SKP = {
         new Project("Pokémon I guess", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 8, 23),
+            createdAt: new DanhoDate(2019, 8, 23),
             description: [
               "Ligesom med PixelSpark projektet, har jeg i dette prøvet at bygge klassestrukturen op med domæne på Pokémon"
             ]
@@ -145,7 +145,7 @@ const SKP = {
         new Project("Random", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 9, 26),
+            createdAt: new DanhoDate(2019, 9, 26),
             description: [
                 "Jeg har lige lært lidt omkring klasser og hvordan man randomizer - " + 
                 "så det skulle testes i dette projekt med domæne på biler - " + 
@@ -155,7 +155,7 @@ const SKP = {
         new Project("RandomSWCharacter", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2019, 12, 17),
+            createdAt: new DanhoDate(2019, 12, 17),
             description: [
                 "Da jeg er glad for randomizers og klassehierakier, lavede jeg et program der lavede sin egen Star Wars karakter",
                 "Ligesom min Music Idea Generators, randomizer RandomSWCharacter forskellige properties på subklasser, sådan at der kommer en tilfeldig karakter ud."
@@ -164,7 +164,7 @@ const SKP = {
         new Project("Team Generator", {
             language: 'C#',
             projectType: 'Windows Forms',
-            createdAt: new Date(2019, 11, 12),
+            createdAt: new DanhoDate(2019, 11, 12),
             description: [
                 "Jeg ville tage mine randomization programmer til næste niveau, og lave en team generator til både Pokémon og Overwatch",
                 "Når programmet starter, bliver man præsenteret for 2 valgmuligheder: Pokémon eller Overwatch.",
@@ -179,7 +179,7 @@ const SKP = {
         new Project("Guess number", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 5, 18),
+            createdAt: new DanhoDate(2020, 5, 18),
             description: [
                 "Simpelt \"Gæt et tal\" spil, der gemmer highscore."
             ]
@@ -187,7 +187,7 @@ const SKP = {
         new Project("MIG 2.0", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 6, 3),
+            createdAt: new DanhoDate(2020, 6, 3),
             description: [
                 "Rework af MIG projektet, da jeg ville prøve at implementere den nye viden fra Hovedforløb 1"
             ],
@@ -195,7 +195,7 @@ const SKP = {
         new Project("Pizzaria", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 5, 19),
+            createdAt: new DanhoDate(2020, 5, 19),
             description: [
                 "Stereotypiske pizzaria bestillings-program, der skal kunne håndtere bruger specifikationer."
             ],
@@ -204,7 +204,7 @@ const SKP = {
         new Project("MyWatch", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 6, 17),
+            createdAt: new DanhoDate(2020, 6, 17),
             description: [
                 "Alt hvad et ur kan, kan dette program - om det er alarmer, stopur, tidtagning og endda se klokken på en lidt kreativ måde..."
             ],
@@ -213,7 +213,7 @@ const SKP = {
         new Project("VPFCalculator", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 5, 18),
+            createdAt: new DanhoDate(2020, 5, 18),
             description: [
                 "Lommeregner i WPF, der bl.a. kan udregne arealet af figurer."
             ]
@@ -223,7 +223,7 @@ const SKP = {
         new Project("Dancord", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 11, 2),
+            createdAt: new DanhoDate(2020, 11, 2),
             description: [
                 "Min egen version af Discord.",
                 "Jeg er stor fan af Discord, og har brugt meget tid på at læse og forstår deres opbygning - " + 
@@ -236,7 +236,7 @@ const SKP = {
         new Project("DanhosaurPortfolio", {
             language: 'C#',
             projectType: 'ASP.NET Core',
-            createdAt: new Date(2020, 11, 15),
+            createdAt: new DanhoDate(2020, 11, 15),
             description: [
                 "DanhosaurPortfolio var min første portfolio side, som er 100% bygget i ASP.NET Core, og er mit første ASP.NET projekt.",
                 "",
@@ -251,7 +251,7 @@ const SKP = {
         new Project("RandomSWCharacter 2.0", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 11, 24),
+            createdAt: new DanhoDate(2020, 11, 24),
             description: [
                 "Rework af min tidligere RandomSWCharacter - dette inkludere bedre kodestruktur, " + 
                 "da det er flere måneder siden jeg sidst lavede min originale RandomSWCharacter"
@@ -260,7 +260,7 @@ const SKP = {
         new Project("LoginSystemDB", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2021, 1, 12),
+            createdAt: new DanhoDate(2021, 1, 12),
             description: [
                 "Min instruktør bad mig om at lege med databaser. " + 
                 "Så jeg ville lave et simpelt login system, der gemte på brugernavne og adgangskoder.",
@@ -273,7 +273,7 @@ const SKP = {
         new Project("DanhosaurPortfolioii", {
             language: 'Vue.js',
             projectType: 'Website',
-            createdAt: new Date(2021, 6, 21),
+            createdAt: new DanhoDate(2021, 6, 21),
             description: [
                 "Et remake af DanhosaurPortfolio fra ASP.Net Core til Vue.js, hvor jeg har indblandet eget modul, og arbejdet i komponenter."
             ],
@@ -285,7 +285,7 @@ const Hovedforløb = {
         new Project("awesomeboi", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 1, 15),
+            createdAt: new DanhoDate(2020, 1, 15),
             description: [
                 "Vores Grundlæggende programmeringslærer lavede en opgave, " + 
                 "hvor vi skulle finde ud af, hvad det magiske tal var, for at få en bestemt sætning. " + 
@@ -297,7 +297,7 @@ const Hovedforløb = {
         new Project("NetworkCalc", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 1, 9),
+            createdAt: new DanhoDate(2020, 1, 9),
             description: [
                 "Et program der kan udregne subnet maske og antallet af subnets af et netværk, via en ip med /-notation."
             ],
@@ -306,7 +306,7 @@ const Hovedforløb = {
         new Project("WebRefresh", {
             language: 'Website',
             projectType: 'Website',
-            createdAt: new Date(2020, 2, 6),
+            createdAt: new DanhoDate(2020, 2, 6),
             description: [
                 "Clientside hjemmeside, der skulle fortælle om os selv.",
                 "Se på http://dani146d.web.techcollege.dk/Webpages/index.html"
@@ -318,7 +318,7 @@ const Hovedforløb = {
         new Project("File Details", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 10, 30),
+            createdAt: new DanhoDate(2020, 10, 30),
             description: [
                 "Vælg en mappe eller en fil på computeren, og få en masse oplysninger omkring en fil."
             ]
@@ -326,7 +326,7 @@ const Hovedforløb = {
         new Project("H2ClientSide", {
             language: 'Website',
             projectType: 'Website',
-            createdAt: new Date(2020, 10, 1),
+            createdAt: new DanhoDate(2020, 10, 1),
             description: [
                 "Lommeregner i Javascript, jQuery & Typescript."
             ]
@@ -334,7 +334,7 @@ const Hovedforløb = {
         new Project("OOP", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 10, 8),
+            createdAt: new DanhoDate(2020, 10, 8),
             description: [
                 "Objekt Orienteret Programmering projekt, hvor vi skulle lære om controllers, " + 
                 "libraries & at flytte ting fra én type applikation til en anden."
@@ -343,7 +343,7 @@ const Hovedforløb = {
         new Project("The Hungry Philosophers", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2020, 9, 2),
+            createdAt: new DanhoDate(2020, 9, 2),
             description: [
                 "Projekt hvor vi skulle lære om Threads & locks."
             ]
@@ -351,7 +351,7 @@ const Hovedforløb = {
         new Project("TicTacToe", {
             language: 'Website',
             projectType: 'Website',
-            createdAt: new Date(2020, 20, 2),
+            createdAt: new DanhoDate(2020, 2, 20),
             description: [
                 "Projekt hvor vi skulle lave vores egen clientside side, " + 
                 "hvor at informationen kom fra en server, for at vise at det er ligegyldigt hvordan siden ser ud."
@@ -362,7 +362,7 @@ const Hovedforløb = {
         new Project("ORM", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2021, 4, 12),
+            createdAt: new DanhoDate(2021, 4, 12),
             description: [
                 "I database programmering, ville vores lærer have at vi skulle lave vores egen Object Relational Mapping klasse, " + 
                 "så vi fik en god forståelse af ledet mellem code-behind og database objekthåndtering.",
@@ -372,7 +372,7 @@ const Hovedforløb = {
         new Project("DanhosMessages", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2021, 4, 28),
+            createdAt: new DanhoDate(2021, 4, 28),
             description: [
                 "En afsluttende opgave, hvor jeg brugte EntityFramework til at binde mine modeller til en database, " + 
                 "så jeg havde både login- og messagesystem"
@@ -382,7 +382,7 @@ const Hovedforløb = {
         new Project("MyWebserver", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2021, 4, 25),
+            createdAt: new DanhoDate(2021, 4, 25),
             description: [
                 "Da vi startede med GUI Programmering III, synes vores lærer at det kunne være sjovt at vi lavede vores egen webserver, " + 
                 "så vi fik en lille forståelse af, hvordan en webserver fungerer.",
@@ -393,7 +393,7 @@ const Hovedforløb = {
         new Project("Vue.js", {
             language: 'Vue.js',
             projectType: 'Website',
-            createdAt: new Date(2021, 4, 28),
+            createdAt: new DanhoDate(2021, 4, 28),
             description: [
                 "Som start i GUI Programmering III, startede vi ud med at udforske Vue.js.",
                 "Udover min \"komponent viden\" fra tidligere WPF projekter, var det første gang jeg legede med komponenter - " + 
@@ -408,7 +408,7 @@ const Hovedforløb = {
         new Project("vuepos", {
             language: 'Vue.js',
             projectType: 'Website',
-            createdAt: new Date(2021, 5, 10),
+            createdAt: new DanhoDate(2021, 5, 10),
             description: [
                 "Et mere reelt projekt ved brug af Vue.js",
                 "Sammen med mine kammerarter, Lasse & Mihaela, havde vi gruppe projekt om at lave en webshop, der havde en Employee og Admin mode.",
@@ -426,7 +426,7 @@ const Hovedforløb = {
         new Project("XMLintro", {
             language: 'XML',
             projectType: 'WPF',
-            createdAt: new Date(2021, 5, 25),
+            createdAt: new DanhoDate(2021, 5, 25),
             description: [
                 "Upload XML, XSL & XSD filer til programmet, og den vil konvertere en XML fil baseret på XSL'en, " + 
                 "og verificere den nye XML fil ved brug af XSD filen, og give et endeligt output, som konvertereingen var successfuld eller ej."
@@ -436,7 +436,7 @@ const Hovedforløb = {
         new Project("pewpew", {
             language: 'C#',
             projectType: 'Console',
-            createdAt: new Date(2021, 6, 8),
+            createdAt: new DanhoDate(2021, 6, 8),
             description: [
                 "Game Design I - vi fik ret frie hylder til at lave et spil, men jeg valgte at tage imod en udfordring.",
                 "Jeg ville forsøge og lave et 2D spil, hvor man er spiller, der skal skyde fjender. Spillet var ment som et endless spil."
@@ -447,7 +447,7 @@ const Hovedforløb = {
         new Project("Interrupts", {
             language: 'C',
             projectType: 'ATmega168',
-            createdAt: new Date(2021, 4, 6),
+            createdAt: new DanhoDate(2021, 4, 6),
             description: [
                 "Interrupts er et projekt, hvor vi skulle experimentere med interrupts i vores ATmega168.",
                 "Programmet laver et interrupt hvert sekund, hvor jeg kan tilmelde callbacks via \"hercules\", " +
@@ -461,7 +461,7 @@ const Other = {
         new Project("Gymleader-timer", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new Date(2020, 7, 9),
+            createdAt: new DanhoDate(2020, 7, 9),
             description: [
                 "Jeg arbejdede på en Pixelmon server, hvor jeg var Gym leader. " +
                 "Én af vores regler er, at efter at man har haft en kamp, skal man vente i en halv time, før man kan udfordre gymmet igen. " +
@@ -480,7 +480,7 @@ const Other = {
         new Project("DanhoLibrary", {
             language: 'C#',
             projectType: 'Library',
-            createdAt: new Date(2019, 11, 24),
+            createdAt: new DanhoDate(2019, 11, 24),
             description: [
                 "Mit eget library som er en stor hjælp i mine C# projekter...",
                 "Der har været op til flere gange, hvor jeg har lavet noget i bl.a. et konsol projekt, og jeg har lavet den samme metode om og om igen... så lavede jeg et library...", "",
@@ -491,7 +491,7 @@ const Other = {
         new Project("PinguPackage", {
             language: 'TypeScript',
             projectType: 'Library',
-            createdAt: new Date(2020, 10, 12),
+            createdAt: new DanhoDate(2020, 10, 12),
             description: [
                 "\"PinguPackage\", er et TypeScript modul, som jeg bruger i forbindelse med udvikling af mit Pingu projekt. " + 
                 "PinguPackage fungerer som et library, som min Discord bot, Pingu, er stærkt afhængig af.",
@@ -507,7 +507,7 @@ const Other = {
         new Project("Pingu", {
             language: 'JavaScript',
             projectType: 'Node.js',
-            createdAt: new Date(2019, 11, 15),
+            createdAt: new DanhoDate(2019, 11, 15),
             description: [
                 "Min egen Discord bot, som jeg stadig arbejder på.",
                 "Jeg har altid været stor fan af Discord. Da jeg så kom på grundforløb 2, ville jeg virkelig gerne lave min helt egen Discord bot. " +
@@ -528,7 +528,7 @@ const Other = {
         new Project("Discord Bot Interface", {
             language: 'EJS',
             projectType: 'Website',
-            createdAt: new Date(2021, 2, 26),
+            createdAt: new DanhoDate(2021, 2, 26),
             description: [
                 "Discord Bot Interface er et projekt, hvor man skal kunne logge ind som sin Discord bot, " + 
                 "og kunne bruge den som var den en normal Discord bruger.",
@@ -540,7 +540,7 @@ const Other = {
         new Project("DanhoLibraryJS", {
             language: 'TypeScript',
             projectType: 'Library',
-            createdAt: new Date(2021, 5, 13),
+            createdAt: new DanhoDate(2021, 5, 13),
             description: [
                 "Ligesom mit DanhoLibrary i C#, ville jeg have et DanhoLibrary til JavaScript.",
                 "Jeg kom tit i situationer, hvor jeg ikke forstod, hvorfor f.eks. HTMLCollection ikke havde en .array(), " + 
@@ -552,7 +552,7 @@ const Other = {
         new Project("Dancord", {
             language: 'Vue.js',
             projectType: 'Website',
-            createdAt: new Date(2021, 5, 30),
+            createdAt: new DanhoDate(2021, 5, 30),
             description: [
                 "Som vist i nogle af mine andre projekter, er jeg rigtig glad for Discord, og den måde det er bygget op på.",
                 "Jeg har tidligere forsøgt at lave en \"Dancord\" før i WPF, men har siden da indset, at det ville være meget nemmere i Vue.js."
@@ -567,7 +567,7 @@ const projects = (function getProjects() {
     const arrays = [SKP, Hovedforløb, Other];
 
     for (const obj of arrays) {
-        for (let i = 0; i < Object.keys(obj).length; i++) {
+        for (let i = 0; i <= Object.keys(obj).length; i++) {
             if (obj[i]) {
                 result.append(...obj[i])
             }

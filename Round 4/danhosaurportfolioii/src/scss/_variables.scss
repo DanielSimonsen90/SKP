@@ -1,0 +1,32 @@
+$theme-difference: 10%;
+$theme-primary: #ff5e00;
+$theme-secondary: lighten($theme-primary, $theme-difference);
+$theme-tertiary: lighten($theme-secondary, $theme-difference);
+
+$background-input: 40;
+$background-secondary-input: 45;
+
+$background: rgb($background-input, $background-input, $background-input);
+$background-secondary: rgb($background-secondary-input, $background-secondary-input, $background-secondary-input);
+
+$background-hover: lighten($background-secondary, 3%);
+$background-hoverable: darken($background-secondary, 2%);
+
+$color: #ddd;
+$color-hover: lighten($color, 5%);
+$color-hoverable: darken($color-hover, $theme-difference * 5);
+$color-click-me: rgb(155, 179, 211);
+
+$transition-hover: .1s;
+
+$non-content-border: 2px solid lighten($background, 2.5%);
+$non-content-border-hover: 2px solid lighten($background, 5%);
+
+$link-item-margin: 1%;
+$link-item-padding-top-bottom: 4%;
+$footer-point-space: 1%;
+
+$fieldset-background: lighten($background-secondary, 5%);
+$legend-color: linear-gradient($color, $color-hover, $color);
+
+$table-lighten-by: .25;

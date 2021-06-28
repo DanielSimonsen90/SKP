@@ -1,0 +1,24 @@
+@mixin margin-block($start, $end) {
+    margin-block-start: $start;
+    margin-block-end: $end;
+}
+@mixin height-width($height, $width) {
+    height: $height;
+    width: $width;
+}
+@mixin min-height-width($height, $width) {
+    min-height: $height;
+    min-width: $width;
+}
+
+@mixin table-row-hoverable ($background, $color) {
+    background-color: lighten($background, $theme-difference * $table-lighten-by);
+    color: lighten($color, $theme-difference);
+    transition: $transition-hover;
+
+    &:hover {
+        background-color: lighten($background, $theme-difference * ($table-lighten-by * 3.5));
+        color: lighten($color, $theme-difference * $table-lighten-by);
+        transition: $transition-hover;
+    }
+}

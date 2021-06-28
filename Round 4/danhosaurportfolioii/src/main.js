@@ -13,26 +13,38 @@ import Plan from './components/Plan';
 import Admin from './components/Admin';
 import NotFound from './components/Shared/NotFound';
 
-const homes = [{
+const home = [{
+  path: '',
+  component: Home
+}, {
   path: '/home',
   component: Home
 }, {
-  path: '',
+  path: '/hjem',
   component: Home
 }];
-const about = {
+const about = [{
   path: '/about',
   component: About
-};
-const projects = {
+}, {
+  path: '/om',
+  component: About
+}];
+
+//domain.com/projects?language=C#&projectType=Library
+//rounter.push({ name: 'projects' query: { language: 'C#', projectType: 'Library' } })
+const projectChildren = [{
+  path: ':filter', component: Projects
+}]
+const projects = [{
   path: '/projects',
   component: ProjectsIndex,
-  children: [
-    //domain.com/projects?language=C#&projectType=Library
-    //rounter.push({ name: 'projects' query: { language: 'C#', projectType: 'Library' } })
-    { path: ':filter', component: Projects } 
-  ]
-};
+  children: projectChildren
+}, {
+  path: '/projekter',
+  component: ProjectsIndex,
+  children: projectChildren
+}];
 const plan = {
   path: '/plan',
   component: Plan
@@ -46,7 +58,7 @@ const notFound = {
   component: NotFound
 };
 
-const routes = [...homes, about, projects, plan, admin, notFound];
+const routes = [...home, ...about, ...projects, plan, admin, notFound];
 const router = new VueRouter({ routes, mode: 'history' })
 
 new Vue({
