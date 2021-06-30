@@ -6,7 +6,9 @@
       @hover="onLogoHover" 
     />
 
-    <p id="test">no</p>
+    <div id="projects-filter" style="visibility: hidden;">
+      Hello!
+    </div>
 
     <danho-navigation id="header-navigation"
       :links="links"
@@ -18,6 +20,8 @@
 <script>
 import Logo from './Logo.vue'
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
+import FilterLabel from '../Projects/FilterLabel.vue';
+console.log(FilterLabel);
 
 import { Me } from 'models'
 
@@ -29,10 +33,6 @@ export default {
   props: {
     me: Me,
     links: Array,
-  },
-  created() {
-    if (['projects', 'projekter'].includes(document.location.pathname.toLowerCase()))
-      document.querySelector('#test').value = "yes";
   },
   data: () => ({ logoHover: false }),
   methods: {
