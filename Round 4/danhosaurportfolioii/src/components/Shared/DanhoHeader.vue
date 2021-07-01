@@ -6,9 +6,11 @@
       @hover="onLogoHover" 
     />
 
-    <div id="projects-filter" style="visibility: hidden;">
-      Hello!
-    </div>
+    <project-filter :title="filterTitle" :visibility="filerVisibility"
+      :language="language" :projectType="projectType" 
+      :me="me" 
+      @project-filter-change="onFilterChange"
+    />
 
     <danho-navigation id="header-navigation"
       :links="links"
@@ -20,21 +22,34 @@
 <script>
 import Logo from './Logo.vue'
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
-import FilterLabel from '../Projects/FilterLabel.vue';
-console.log(FilterLabel);
+import ProjectFilter from '../Projects/ProjectFilter.vue';
 
 import { Me } from 'models'
 
-/**@props { me: Me, links: Array<string> } 
- * @emits navigate(link: string)*/
+import { projectsRoutes } from '../../data';
+
+/**@props { me: Me, links: Array<string>, filterTitle: string, all: String, language: String, projectType: string } 
+ * @emits navigate(link: string)
+ * @emits project-filter-change(type, value)*/
 export default {
   name: "danho-header",
-  components: { Logo, DanhoNavigation },
+  components: { Logo, DanhoNavigation, ProjectFilter },
   props: {
     me: Me,
     links: Array,
+
+    filterTitle: String,
+    all: String,
+    language: String,
+    projectType: String
   },
   data: () => ({ logoHover: false }),
+  computed: {
+    filerVisibility() {
+      console.log(this.$route);
+      return projectsRoutes.map(r => r.path.toLowerCase()).includes(this.$route.path.toLowerCase()) ? 'visible' : 'hidden';
+    }
+  },
   methods: {
     /**@param {string} link*/
     navigateTo(link) {
@@ -42,6 +57,9 @@ export default {
     },
     onLogoHover(hovering) {
       this.logoHover = hovering;
+    },
+    onFilterChange(type, value) {
+      this.$emit('project-filter-change', type, value);
     }
   }
 }

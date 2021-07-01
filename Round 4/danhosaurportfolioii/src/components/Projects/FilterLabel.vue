@@ -1,6 +1,6 @@
 <template>
   <label>
-    {{ display }}
+    <b>{{ display }}</b>
     <input type="text" :list="`filter-data-${type}`" :value="inputValue" @input="valueChanged">
     <datalist :id="`filter-data-${type}`">
       <option :value="item" v-for="(item, i) in getProjects(type)" :key="i"></option>
@@ -37,10 +37,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/scss/variables';
+
 label {
     width: 100%;
     display: block;
     text-align: left;
+
+    input {
+        background-color: lighten($background-secondary, $theme-difference * 2);
+        color: $color;
+        
+        &:hover {
+            background-color: $background-secondary;
+        }
+    }
+
+    b {
+        margin: 0 10px;
+    }
 }
 </style>

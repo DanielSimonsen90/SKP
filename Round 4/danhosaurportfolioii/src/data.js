@@ -578,4 +578,39 @@ const projects = (function getProjects() {
 
 })();
 
-export { contact, locationCollection, spareTime, projects }
+import Home from './components/Home';
+import About from './components/About';
+import ProjectsIndex from './components/Projects';
+import Projects from './components/Projects/Projects';
+import Plan from './components/Plan';
+import Admin from './components/Admin';
+import NotFound from './components/Shared/NotFound';
+
+/**@param {string[]} routes 
+ * @param {any} component 
+ * @param {any[]} children*/
+ const makeRoutes = (routes, component, ...props) => 
+ routes.map(route => {
+   let result = { path: route, component };
+   
+   if (props.length) return { ...result, ...props.reduce((obj, i) => Object.assign(obj, ...props[i])) }
+   return result;
+ });
+
+const homeRoutes = makeRoutes(['', '/home', '/hjem'], Home);
+const aboutRoutes = makeRoutes(['/about', '/om'], About);
+
+//domain.com/projects?language=CSharp&projectType=Library
+const projectsRoutes = makeRoutes(['/projects', '/projekter'], ProjectsIndex, {
+ children: makeRoutes([':filter'], Projects)
+})
+const planRoutes = makeRoutes(['/plan'], Plan);
+const adminRoutes = makeRoutes(['/admin'], Admin);
+const notFoundRoutes = makeRoutes(['*'], NotFound);
+
+const routes = [homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, notFoundRoutes].reduce((result, route) => result.concat(...route));
+export { 
+    contact, locationCollection, spareTime, projects, 
+    homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, notFoundRoutes,
+    routes 
+}

@@ -31,9 +31,10 @@ export default {
         fileExists(_this) {
             try {
                 let xhr = new XMLHttpRequest();
+
                 xhr.open('HEAD', `../${_this.project.image}`);
                 xhr.send();
-                return xhr.status != '404';
+                return xhr.status != 404;
             } catch (err) {
                 return false;
             }

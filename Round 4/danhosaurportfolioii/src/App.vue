@@ -1,8 +1,16 @@
 <template>
   <div id="app">
-    <danho-header :me="me" :links="links" @navigate="onNavigate"/>
+    <danho-header 
+      :me="me" :links="links" 
+      @navigate="onNavigate"
+
+      :all="all" :language="language" :projectType="projectType" :filterTitle="filterTitle"
+      @project-filter-change="onProjectFilterChange"
+    />
     <content id="main-content">
-      <router-view :me="me" @navigate="onNavigate"/>
+      <router-view :me="me" @navigate="onNavigate"
+        :all="all" :language="language" :projectType="projectType"
+      />
     </content>
     <danho-footer :me="me" :links="links" @navigate="onNavigate" />
   </div>
@@ -19,8 +27,6 @@ const me = new Me(locationCollection, contact, spareTime, projects);
 // const links = ['Home', 'About', 'Projects', 'Plan'];
 const links = ['Hjem', 'Om', 'Projekter', 'Plan'];
 
-
-
 export default {
   name: 'App',
   components: {
@@ -29,13 +35,21 @@ export default {
   },
   data: () => ({ 
     me, 
-    links
+    links,
+
+    filterTitle: 'Projekt Filter',
+    all: 'Alle',
+    language: null,
+    projectType: null
   }),
   methods: {
     /**@param {string} direction */
     onNavigate(direction) {
       if (window.location.href.endsWith(direction)) return;
       this.$router.push(`/${direction}`);
+    },
+    onProjectFilterChange(type, value) {
+      this[type] = value;
     }
   }
 }
