@@ -19,8 +19,15 @@ export default {
         projectType: String
     },
     async created() {
-        this.projects = this.me.projects.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-        // this.projects = await API.getProjects();
+
+    },
+    computed: {
+        projects() {
+            return new Promise(resolve => {
+                resolve(this.me.projects);
+                // API.getProjects().then(data => resolve(data));
+            }).then(arr => arr.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()))
+        }
     },
     data: () => ({
         projects: []

@@ -50,6 +50,10 @@ export default {
     },
     onProjectFilterChange(type, value) {
       this[type] = value;
+      console.log({
+        language: this.language,
+        projectType: this.projectType
+      })
     }
   }
 }

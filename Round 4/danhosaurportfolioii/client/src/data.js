@@ -270,7 +270,7 @@ const SKP = {
         })
     ],
     4: [
-        new Project("DanhosaurPortfolioii", {
+        new Project("danhosaurportfolioii", {
             language: 'Vue.js',
             projectType: 'Website',
             createdAt: new DanhoDate(2021, 6, 21),
@@ -318,7 +318,7 @@ const Hovedforløb = {
         new Project("File Details", {
             language: 'C#',
             projectType: 'WPF',
-            createdAt: new DanhoDate(2020, 10, 30),
+            createdAt: new DanhoDate(2020, 9, 16),
             description: [
                 "Vælg en mappe eller en fil på computeren, og få en masse oplysninger omkring en fil."
             ]
@@ -326,12 +326,12 @@ const Hovedforløb = {
         new Project("H2ClientSide", {
             language: 'Website',
             projectType: 'Website',
-            createdAt: new DanhoDate(2020, 10, 1),
+            createdAt: new DanhoDate(2020, 9, 17),
             description: [
                 "Lommeregner i Javascript, jQuery & Typescript."
             ]
         }),
-        new Project("OOP", {
+        new Project("H2OOP", {
             language: 'C#',
             projectType: 'Console',
             createdAt: new DanhoDate(2020, 10, 8),
@@ -340,7 +340,7 @@ const Hovedforløb = {
                 "libraries & at flytte ting fra én type applikation til en anden."
             ]
         }),
-        new Project("The Hungry Philosophers", {
+        new Project("TheHungryPhilosophers", {
             language: 'C#',
             projectType: 'Console',
             createdAt: new DanhoDate(2020, 9, 2),
@@ -452,7 +452,8 @@ const Hovedforløb = {
                 "Interrupts er et projekt, hvor vi skulle experimentere med interrupts i vores ATmega168.",
                 "Programmet laver et interrupt hvert sekund, hvor jeg kan tilmelde callbacks via \"hercules\", " +
                 "og på den måde bestemme, hvilke callbacks jeg vil have, ATmegaen skal køre." 
-            ]
+            ],
+            baseLink: `Embedded Controller/Embedded II/Interrupts`
         })
     ]
 }
@@ -558,7 +559,7 @@ const Other = {
                 "Jeg har tidligere forsøgt at lave en \"Dancord\" før i WPF, men har siden da indset, at det ville være meget nemmere i Vue.js."
             ]
         })
-    ]
+    ].forEach(p => p.spareTime = true)
 }
 
 const projects = (function getProjects() {
