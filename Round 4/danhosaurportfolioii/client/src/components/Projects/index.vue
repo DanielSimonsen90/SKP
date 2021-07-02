@@ -21,12 +21,11 @@ export default {
     async created() {
 
     },
-    computed: {
-        projects() {
-            return new Promise(resolve => {
-                resolve(this.me.projects);
-                // API.getProjects().then(data => resolve(data));
-            }).then(arr => arr.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()))
+    asyncComputed: {
+        async projects() {
+            let arr = this.me.projects;
+            // let arr = await API.getProjects();
+            return arr.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
         }
     },
     data: () => ({
