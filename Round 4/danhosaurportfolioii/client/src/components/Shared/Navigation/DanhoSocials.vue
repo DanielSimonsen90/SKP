@@ -2,7 +2,7 @@
   <ul>
       <li v-for="(link, i) in links" :key="i" class="link-item">
           <img class="socials-icon" :src="link.image" :alt="link.name" :title="link.name" v-if="displayIcons">
-          <a @click="link.click" :title="link.name">{{ link.name }}</a>
+          <a @click="link.click" :title="link.name">{{ language && language.has(link.name) ? language.get(link.name) : link.name }}</a>
       </li>
   </ul>
 </template>
@@ -15,12 +15,12 @@ export default {
     name: 'danho-socials',
     props: {
         me: Me,
-        displayIcons: Boolean
+        displayIcons: Boolean,
+        language: Map
     },
     computed: {
         links: (_this) => Object.keys(_this.me.contact).map((prop) => {
-
-            const name = prop.substring(0, 1).toUpperCase() + prop.substring(1);
+            const name = _this.language && _this.language.has(prop) ? _this.language.get(prop) : prop.substring(0, 1).toUpperCase() + prop.substring(1);
             const value = _this.me.contact[prop];
             const click = _this[`on${name}Click`] && (() => _this[`on${name}Click`](value)) || (() => { _this.onNoCallback(prop); });
             const image = `${window.location.origin}/socials/${prop}.png`;

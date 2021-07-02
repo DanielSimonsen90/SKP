@@ -27,7 +27,8 @@ export default {
             content: Array,
             projectString: String,
             projects: Array,
-        }
+        },
+        language: Map
     },
     data: () => ({
         id: 'who-dis'
@@ -37,7 +38,7 @@ export default {
         content: (_this) => _this.data.content,
         projectString: (_this) => _this.data.projectString,
         projects: (_this) => _this.data.projects,
-        projectTitles: (_this) => _this.projects.map(p => `Se mit ${p} her`),
+        projectTitles: (_this) => _this.projects.map(p => _this.language.get('whoDisSeeMyProject')(p)),
     },
     methods: {
         onNavigate(link) {

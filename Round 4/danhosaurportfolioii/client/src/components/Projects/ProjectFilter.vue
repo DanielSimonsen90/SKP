@@ -1,9 +1,9 @@
 <template>
   <fieldset id="projects-filter" :style="`visibility: ${visibility};`">
-      <legend>{{ title }}</legend>
+      <legend>{{ language.get('filterTitle') }}</legend>
       <content>
-        <filter-label :type="'language'" :inputValue="language" :display="'Sprog'" :me="me" @change="onChange"/>
-        <filter-label :type="'projectType'" :inputValue="projectType" :display="'Projekt Type'" :me="me" @change="onChange"/>
+        <filter-label :type="'projectLanguage'" :inputValue="projectLanguage" :display="language.get('languageLabel')" :me="me" @change="onChange"/>
+        <filter-label :type="'projectType'" :inputValue="projectType" :display="language.get('projectType')" :me="me" @change="onChange"/>
       </content>
   </fieldset>
 </template>
@@ -24,10 +24,10 @@ export default {
         props.forEach(prop => this.onChange(prop, this.$route.query[prop]));
     },
     props: {
-        title: String,
         visibility: String,
 
-        language: String,
+        language: Map,
+        projectLanguage: String,
         projectType: String,
 
         me: Me
@@ -49,16 +49,12 @@ export default {
     display: flex;
     justify-content: center;
     position: fixed;
-    width: 33%;
+    width: 35%;
     left: 50%;
     transform: translateX(-50%);
 
-    label {
-        display: inline;
-    }
-    legend {
-        margin: 0 auto;
-    }
+    label { display: inline; }
+    legend { margin: 0 auto; }
 }
 
 </style>

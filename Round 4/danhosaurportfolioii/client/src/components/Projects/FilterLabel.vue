@@ -11,7 +11,7 @@
 <script>
 import { Me } from 'models';
 
-/**@props: { display: String, type: 'language' | 'projectType', all: String, me: Me }
+/**@props: { display: String, type: 'projectLanguage' | 'projectType', all: String, me: Me }
  * @emits change(type: 'language' | 'projectType', value: String)*/
 export default {
     name: 'filter-label',
@@ -22,8 +22,9 @@ export default {
         me: Me
     },
     methods: {
-        /**@param {'language' | 'projectType'} type*/
+        /**@param {'projectLanguage' | 'projectType'} type*/
         getProjects(type) {
+            type = type == 'projectLanguage' ? 'language' : type;
             return [this.all, ...this.me.projects.reduce((result, p) => {
                 if (!result.includes(p[type]))
                     result.push(p[type])

@@ -10,7 +10,11 @@
     />
     <p id="point-3">•</p>
     <danho-socials id="footer-socials"
-      :me="me"
+      :me="me" :language="language"
+    />
+    <language-selector 
+      :language="language" :languageValue="languageValue" 
+      @change="onLanguageChanged" 
     />
   </footer>
 </template>
@@ -19,15 +23,19 @@
 import { Me } from 'models';
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
 import DanhoSocials from './Navigation/DanhoSocials.vue';
+import LanguageSelector from './LanguageSelector.vue';
 
-/**@props { me: Me, links: Array<string> } 
- * @emits navigate(link: string)*/
+/**@props { me: Me, links: Array<string>, language: map<string, string>, languageValue: string } 
+ * @emits navigate(link: string)
+ * @emits language-change(value: string)*/
 export default {
   name: 'danho-footer',
-  components: { DanhoNavigation, DanhoSocials },
+  components: { DanhoNavigation, DanhoSocials, LanguageSelector },
   props: {
     me: Me,
-    links: Array
+    links: Array,
+    language: Map,
+    languageValue: String
   },
   computed: {
     socials: () => Object.keys(this.me.contact).reduce((map, prop) => map.set(prop, this.me.contact[prop]), new Map()),
@@ -39,6 +47,9 @@ export default {
     },
     onSocialClick(link) {
       alert(this.me.contact[link.toLowerCase()]);
+    },
+    onLanguageChanged(value) {
+      this.$emit('language-change', value);
     }
   }
 }

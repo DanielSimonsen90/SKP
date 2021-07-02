@@ -1,6 +1,6 @@
 <template>
   <div id="about">
-      <who-dis :data="whoDis"/>
+      <who-dis :data="whoDis" :language="language"/>
       <sparetime :data="spareTime" />
       <portrait :style="portraitStyle" id="about-portrait"/>
       <p id="occupation" @click="toPlan">
@@ -9,7 +9,7 @@
           {{ occupationStrings[1] }}
           <b>{{ occupationUntil }}</b>
       </p>
-      <contact :data="contact" />
+      <contact :data="contact" :language="language" />
   </div>
 </template>
 
@@ -25,20 +25,17 @@ import Contact from './Contact.vue';
 export default {
     components: { WhoDis, Portrait, Sparetime, Contact },
     props: {
-        me: Me
+        me: Me,
+        language: Map
     },
     computed: {
         whoDis(_this) {
-            const title = 'Hvem er jeg?';
-            const content = [
-                `Mit navn er ${_this.me.name}, og jeg er en ${_this.me.age} årig ung mand, som tager Datatekniker med speciale i programmerings uddannelsen på Techcollege, Aalborg.`,
-                `Jeg har ${_this.me.codingFor} års erfaring med programmering, og bruger rigtig meget af min fritid på forskellige projekter.`,
-                `Objekt Orienteret Programmering har jeg stor glæde for, og bruger rigtig meget tid på at gøre min kode så fleksibelt som muligt via generics & callbacks.`,
-                `Webudvikling, og generelt JavaScript/TypeScript, er alle noget jeg virkelig elsker at lege med. Det kan måske ses på hjemmesiden?`
-            ];
-            const projectString = `Nogle af mine personlige ynglingsprojekter indgår:`;
-            const projects = ['Pingu', 'DanhoLibrary', 'MyWatch'];
-            return { title, content, projects, projectString };
+            return {
+                title: this.language.get('whoDisTitle'),
+                content: this.language.get('whoDisContent')(_this.me),
+                projectString: this.language.get('whoDisProjectString'),
+                projects: ['Pingu', 'DanhoLibrary', 'MyWatch']
+            }
         },
         portraitStyle: () => ({
             'justify-self': 'center',
@@ -47,20 +44,16 @@ export default {
             'grid-row': 1
         }),
         spareTime() {
-            const title = 'Fritid';
-            const content = [
-                new Item('Discord', "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via components, og generelle permission handling."),
-                new Item('FL Studio', "Jeg tilbringer nogle gange min fritid på at lave min egen musik, som jeg sætter på services from Spotify & SoundCloud."),
-                new Item('Overwatch', "Som programmør er man naturligt interesseret i spil. Overwatch er det spil, jeg spiller mest sammen med mine venner." )
-            ];
-
-            return { title, content }
+            return {
+                title: this.language.get('spareTimeTitle'),
+                content: ['Discord', 'FL Studio', 'Overwatch'].map(i => new Item(i, this.language.get(`spareTime${i.replace(/ +/, '')}`)))
+            }
         },
         contact: (_this) => ({
-            title: 'Kontakt',
+            title: _this.language.get('contact'),
             me: _this.me
         }),
-        occupationStrings: () => ['I øjeblikket er jeg på', 'indtil'],
+        occupationStrings: (_this) => _this.language.get('occupationStrings'),
         occupationUntil: (_this) => locationCollection.find(i => i.course == _this.me.occupation).end.toString()
     },
     methods: {

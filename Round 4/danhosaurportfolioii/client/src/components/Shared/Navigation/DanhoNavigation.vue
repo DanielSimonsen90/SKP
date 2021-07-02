@@ -28,6 +28,7 @@ export default {
             this.$emit('navigate', link);
         },
         getTitle(index, link) {
+            console.log(this.titles, link, index);
             return this.titles?.[index] || link;
         }
     }

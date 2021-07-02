@@ -1,6 +1,6 @@
 <template>
   <div id="projects">
-    <projects :projects="projects" />
+    <projects :projects="projects"/>
   </div>
 </template>
 
@@ -9,17 +9,14 @@ import { Me } from 'models';
 import { API } from '../../data';
 import Projects from './Projects.vue';
 
-/**@props { me: Me, all: string, language: string, projectType: string }*/
+/**@props { me: Me, language: string, projectType: string }*/
 export default {
     components: { Projects },
     props: { 
         me: Me, 
-        all: String,
-        language: String,
-        projectType: String
-    },
-    async created() {
-
+        language: Map,
+        projectLanguage: String,
+        projectType: String,
     },
     asyncComputed: {
         async projects() {
@@ -33,9 +30,10 @@ export default {
     }),
     methods: {
         projectFilter(project) {
+            const all = this.language.get('all');
             const { display } = project;
-            const language = project.language == this.language || project.language == 'C#' && this.language?.toLowerCase() == 'csharp' || this.language == this.all || !this.language;
-            const projectType = project.projectType == this.projectType || this.projectType == this.all || !this.projectType;
+            const language = project.language == this.projectLanguage || project.language == 'C#' && this.projectLanguage?.toLowerCase() == 'csharp' || this.projectLanguage == all || !this.projectLanguage;
+            const projectType = project.projectType == this.projectType || this.projectType == all || !this.projectType;
 
             const result = display && language && projectType;
             return result;

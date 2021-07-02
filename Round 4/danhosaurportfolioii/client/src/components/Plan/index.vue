@@ -3,8 +3,8 @@
     <table>
       <tr>
         <th>Start</th>
-        <th>Slut</th>
-        <th>Beskæftigelse</th>
+        <th>{{ language.get('end') }}</th>
+        <th>{{ language.get('occupation') }}</th>
       </tr>
       <tr :class="`plan-item ${plan.course.split(' ')[0]}`" v-for="(plan, i) in plans" :key="i">
         <td>{{ plan.start }}</td>
@@ -21,10 +21,11 @@ import { locationCollection } from '../../data';
 
 export default {
     props: {
-        me: Me
+      me: Me,
+      language: Map
     },
     data: () => ({
-        plans: locationCollection.filter(p => p.start.getTime() > new Date().getTime() || p.end.getTime() > new Date().getTime())
+      plans: locationCollection.filter(p => p.start.getTime() > new Date().getTime() || p.end.getTime() > new Date().getTime())
     })
 }
 </script>

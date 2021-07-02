@@ -5,7 +5,7 @@
 </template>
 
 <script>
-/**@props { link: string, title: string } 
+/**@props { link: string, tooltip: string } 
  * @emits click(link: string)*/
 export default {
     props: {
@@ -13,7 +13,7 @@ export default {
         tooltip: String
     },
     computed: {
-        _tooltip: (_this) => _this.title || _this.link 
+        _tooltip: (_this) => _this.tooltip || _this.link 
     },
     methods: {
         onLinkClicked() {

@@ -2,13 +2,13 @@
 
 import { LocationCollection, ScheduleItem, Item, ProjectCollection, Project, DanhoDate } from 'models'
 
-const contact = {
+export const contact = {
     github: "DanielSimonsen90",
     phone: "20 95 61 77",
     email: "DanielSimonsen90@gmail.com"
 };
   
-const locationCollection = new LocationCollection(...[
+export const locationCollection = new LocationCollection(...[
     // new ScheduleItem("Folkeskole", new DanhoDate(2007, 8, 8), new DanhoDate(2017, 6, 15)),
     // new ScheduleItem("10. klasse", new DanhoDate(2017, 8, 8), new DanhoDate(2018, 6, 15)),
     new ScheduleItem("Grundforløb 1 & 2", new DanhoDate(2018, 8, 8), new DanhoDate(2019, 6, 28)),
@@ -20,7 +20,7 @@ const locationCollection = new LocationCollection(...[
     new ScheduleItem("Hovedforløb 6", new DanhoDate(2023, 11, 6), new DanhoDate(2023, 12, 8))
 ]).constructSKP();
   
-const spareTime = [
+export const spareTime = [
     new Item("Discord", "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via css/html, og generelle permission handling."),
     new Item("FL Studio", "Jeg tilbringer nogle gange min fritid op at lave min egen musik, som jeg sætter på services som Spotify & SoundCloud."),
     new Item("Overwatch", "Som programmør er man naturligt interesseret i spil - Overwatch har jeg spillet i 1000 timer og elsker at spille det med mine venner."),
@@ -562,7 +562,7 @@ const Other = {
     ].forEach(p => p.spareTime = true)
 }
 
-const projects = (function getProjects() {
+export const projects = (function getProjects() {
     let result = new ProjectCollection(contact.github, locationCollection);
 
     const arrays = [SKP, Hovedforløb, Other];
@@ -598,18 +598,18 @@ import NotFound from './components/Shared/NotFound';
    return result;
  });
 
-const homeRoutes = makeRoutes(['', '/home', '/hjem'], Home);
-const aboutRoutes = makeRoutes(['/about', '/om'], About);
+export const homeRoutes = makeRoutes(['', '/home', '/hjem'], Home);
+export const aboutRoutes = makeRoutes(['/about', '/om'], About);
 
 //domain.com/projects?language=CSharp&projectType=Library
-const projectsRoutes = makeRoutes(['/projects', '/projekter'], ProjectsIndex, {
+export const projectsRoutes = makeRoutes(['/projects', '/projekter'], ProjectsIndex, {
  children: makeRoutes([':filter'], Projects)
 })
-const planRoutes = makeRoutes(['/plan'], Plan);
-const adminRoutes = makeRoutes(['/admin'], Admin);
-const notFoundRoutes = makeRoutes(['*'], NotFound);
+export const planRoutes = makeRoutes(['/plan'], Plan);
+export const adminRoutes = makeRoutes(['/admin'], Admin);
+export const notFoundRoutes = makeRoutes(['*'], NotFound);
 
-const routes = [homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, notFoundRoutes].reduce((result, route) => result.concat(...route));
+export const routes = [homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, notFoundRoutes].reduce((result, route) => result.concat(...route));
 
 import axios from 'axios';
 // import { port } from '../../server/index';
@@ -649,8 +649,72 @@ export class API {
 
 // projects.forEach(p => API.createProject(p));
 
-export { 
-    contact, locationCollection, spareTime, projects, 
-    homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, notFoundRoutes,
-    routes 
-}
+/**@param {Me} me*/
+const getWhoDisContentDansk = (me) => [
+    `Mit navn er ${me.name}, og jeg er en ${me.age} årig ung mand, som tager Datatekniker med speciale i programmerings uddannelsen på Techcollege, Aalborg.`,
+    `Jeg har ${me.codingFor} års erfaring med programmering, og bruger rigtig meget af min fritid på forskellige projekter.`,
+    `Objekt Orienteret Programmering har jeg stor glæde for, og bruger rigtig meget tid på at gøre min kode så fleksibelt som muligt via generics & callbacks.`,
+    `Webudvikling, og generelt JavaScript/TypeScript, er alle noget jeg virkelig elsker at lege med. Det kan måske ses på hjemmesiden?`
+];
+/**@param {string} p*/
+const whoDisSeeMyProjectDansk = (p) => `Se mit ${p} her`;
+
+/**@param {Me} me*/
+const getWhoDisContentEnglish = (me) => [
+    `My name is ${me.name}, and I'm a ${me.age} year old young man, who's taking the "Datatechnician with speciality in Programming" education on Techcollege, Aalborg.`,
+    `I've been coding for ${me.codingFor} years and use a ton og my sparetime on different projects.`,
+    `Object Oriented Programming is something I really enjoy - I use a ton of my time on making my code as flexible as possible using generics & callbacks.`,
+    `Webdevelopment, and generally JavaScript/TypeScript, are all something I really love to play with. It might be visible on the website?`
+];
+/**@param {string} p*/
+const whoDisSeeMyProjectEnglish = (p) => `See my ${p} here`;
+
+
+const Dansk = new Map([
+    ['links', ['Hjem', 'Om', 'Projekter', 'Plan']],
+    ['filterTitle', 'Projekt Filter'],
+    ['all', 'Alle'],
+    ['noProjects', 'Der var ingen projekter til kriterierne.'],
+    ['languageLabel', 'Sprog'],
+    ['projectType', 'Projekt Type'],
+    ['whoDisTitle', 'Hvem er jeg?'],
+    ['whoDisContent', getWhoDisContentDansk],
+    ['whoDisProjectString', 'Nogle af mine personlige ynglingsprojekter indgår:'],
+    ['whoDisSeeMyProject', whoDisSeeMyProjectDansk],
+    ['spareTimeTitle', 'Fritid'],
+    ['spareTimeDiscord', "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via components, og generelle permission handling."],
+    ['spareTimeFLStudio', "Jeg tilbringer nogle gange min fritid på at lave min egen musik, som jeg sætter på services from Spotify & SoundCloud."],
+    ['spareTimeOverwatch', "Som programmør er man naturligt interesseret i spil. Overwatch er det spil jeg spiller mest sammen med mine venner."],
+    ['contact', 'Kontakt'],
+    ['occupationStrings', ['I øjeblikket er jeg på', 'indtil']],
+    ['phone', 'Telefon'],
+    ['end', 'Slut'],
+    ['occupation', 'Beskæftigelse']
+]);
+const English = new Map([
+    ['links', ['Home', 'About', 'Projects', 'Plan']],
+    ['filterTitle', 'Project Filter'],
+    ['all', 'All'],
+    ['noProjects', 'There were no projecs for the criteria.'],
+    ['languageLabel', 'Language'],
+    ['projectType', 'Project Type'],
+    ['whoDisTitle', 'Who am I?'],
+    ['whoDisContent', getWhoDisContentEnglish],
+    ['whoDisProjectString', 'Some of my favorite projects include:'],
+    ['whoDisSeeMyProject', whoDisSeeMyProjectEnglish],
+    ['spareTimeTitle', 'Sparetime'],
+    ['spareTimeDiscord', "I use a lot of my time on Discord. This includes my interest for Discord bots, the way Discord is built using components and general permission handling."],
+    ['spareTimeFLStudio', "I occationally use my time on making my own music, that I release on services such as Spotify & SoundCloud."],
+    ['spareTimeOverwatch', "As a programmer, you're natrually interested in games. Overwatch is the game I play the most with my friends"],
+    ['contact', 'Contact'],
+    ['occupationStrings', ["I'm current at", 'until']],
+    ['phone', 'Phone'],
+    ['end', 'End'],
+    ['occupation', 'Occupation']
+]);
+
+export const languages = new Map([
+    ['Dansk', Dansk],
+    ['English', English]
+]);
+

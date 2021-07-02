@@ -7,7 +7,7 @@
     />
 
     <project-filter :title="filterTitle" :visibility="filerVisibility"
-      :language="language" :projectType="projectType" 
+      :projectLanguage="projectLanguage" :projectType="projectType" :language="language"
       :me="me" 
       @project-filter-change="onFilterChange"
     />
@@ -40,7 +40,8 @@ export default {
 
     filterTitle: String,
     all: String,
-    language: String,
+    language: Map,
+    projectLanguage: String,
     projectType: String
   },
   data: () => ({ logoHover: false }),

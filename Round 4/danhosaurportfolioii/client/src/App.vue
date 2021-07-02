@@ -4,15 +4,23 @@
       :me="me" :links="links" 
       @navigate="onNavigate"
 
-      :all="all" :language="language" :projectType="projectType" :filterTitle="filterTitle"
+      :language="language"
+
+      :projectLanguage="projectLanguage" :projectType="projectType"
       @project-filter-change="onProjectFilterChange"
     />
     <content id="main-content">
       <router-view :me="me" @navigate="onNavigate"
-        :all="all" :language="language" :projectType="projectType"
+        :language="language" :projectType="projectType" :projectLanguage="projectLanguage"
       />
     </content>
-    <danho-footer :me="me" :links="links" @navigate="onNavigate" />
+    <danho-footer 
+      :me="me" :links="links" 
+      @navigate="onNavigate" 
+
+      :language="language" :languageValue="languageValue"
+      @language-change="onLanguageChanged"
+    />
   </div>
 </template>
 
@@ -21,11 +29,9 @@ import DanhoHeader from './components/Shared/DanhoHeader.vue';
 import DanhoFooter from './components/Shared/DanhoFooter.vue';
 
 import { Me } from 'models';
-import { contact, locationCollection, spareTime, projects } from './data';
+import { contact, locationCollection, spareTime, projects, languages } from './data';
 
 const me = new Me(locationCollection, contact, spareTime, projects);
-// const links = ['Home', 'About', 'Projects', 'Plan'];
-const links = ['Hjem', 'Om', 'Projekter', 'Plan'];
 
 export default {
   name: 'App',
@@ -35,13 +41,16 @@ export default {
   },
   data: () => ({ 
     me, 
-    links,
-
-    filterTitle: 'Projekt Filter',
-    all: 'Alle',
-    language: null,
-    projectType: null
+    projectLanguage: null,
+    projectType: null,
+    languageValue: 'Dansk',
+    language: languages.get('Dansk')
   }),
+  computed: {
+    links() {
+      return this.language.get('links');
+    },
+  },
   methods: {
     /**@param {string} direction */
     onNavigate(direction) {
@@ -50,10 +59,13 @@ export default {
     },
     onProjectFilterChange(type, value) {
       this[type] = value;
-      console.log({
-        language: this.language,
-        projectType: this.projectType
-      })
+      console.log(type, value)
+    },
+    onLanguageChanged(language) {
+      if (!languages.has(language)) return;
+
+      this.languageValue = language;
+      this.language = languages.get(language);
     }
   }
 }

@@ -2,7 +2,7 @@
   <fieldset  :id="id">
       <legend>{{ data.title }} </legend>
       <content class="article-content">
-        <danho-socials :me="data.me" :displayIcons="true"/>
+        <danho-socials :me="data.me" :displayIcons="true" :language="language"/>
       </content>
   </fieldset>
 </template>
@@ -17,7 +17,8 @@ export default {
         data: {
             title: String,
             me: Me
-        }
+        },
+        language: Map
     },
     data: () => ({
         id: 'contact'
