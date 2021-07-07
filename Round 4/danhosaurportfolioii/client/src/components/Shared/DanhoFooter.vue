@@ -12,6 +12,7 @@
     <danho-socials id="footer-socials"
       :me="me" :language="language"
     />
+    <p id="point-4">•</p>
     <language-selector 
       :language="language" :languageValue="languageValue" 
       @change="onLanguageChanged" 
@@ -63,7 +64,7 @@ export default {
 footer {
   @extend %non-content;
 
-  grid-template-columns: 4% $footer-point-space 10% $footer-point-space 17.5% $footer-point-space 15%;
+  grid-template-columns: 4% $footer-point-space 10% $footer-point-space 17.5% $footer-point-space 15% $footer-point-space 17.5%;
   bottom: 0;
   
   width: 88.5%;

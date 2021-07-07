@@ -2,16 +2,21 @@
     margin-block-start: $start;
     margin-block-end: $end;
 }
-@mixin height-width($height, $width) {
-    height: $height;
-    width: $width;
-}
+
 @mixin min-height-width($height, $width) {
     min-height: $height;
     min-width: $width;
 }
+@mixin height-width($height, $width) {
+    height: $height;
+    width: $width;
+}
+@mixin max-height-width($height, $width) {
+    max-height: $height;
+    max-width: $width;
+}
 
-@mixin table-row-hoverable ($background, $color) {
+@mixin table-row-hoverable($background, $color) {
     background-color: lighten($background, $theme-difference * $table-lighten-by);
     color: lighten($color, $theme-difference);
     transition: $transition-hover;
@@ -20,5 +25,64 @@
         background-color: lighten($background, $theme-difference * ($table-lighten-by * 3.5));
         color: lighten($color, $theme-difference * $table-lighten-by);
         transition: $transition-hover;
+    }
+}
+
+@mixin tblr($top, $bottom, $left, $right) {
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+}
+@mixin tBlR($topBottom, $leftRight) {
+    @include tblr($topBottom, $topBottom, $leftRight, $leftRight);
+}
+
+@mixin scroll-bar() {
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track {
+        @extend %hoverable;
+        background: darken($background, $theme-difference);
+      
+        &:hover { background: lighten($background-secondary, $theme-difference); }
+    }
+    ::-webkit-scrollbar-thumb {
+        @extend %hoverable;
+        background: lighten($background-secondary, $theme-difference);
+      
+        &:hover { background: $theme-secondary; }
+    }
+}
+@mixin popup-modal() {
+    .modal {
+        @include tBlR(0, auto);
+        @include height-width(99%, 99%);
+
+        position: absolute;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        @include tblr(0, 0, 25%, auto);
+        position: relative;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+        overflow: unset;
+        // transition: visibility 0s linear .25s, opacity .25s 0s, transform .25s;
+        transition: opacity .5s;
+        
+        &.show-modal {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .modal-fadeout {
+        @keyframes fade {
+            0% { opacity: 1 }
+            100% { opacity: 0 }
+        }
+        animation: fade .5s forwards;
     }
 }

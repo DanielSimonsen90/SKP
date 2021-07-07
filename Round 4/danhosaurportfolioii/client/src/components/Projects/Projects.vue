@@ -4,6 +4,7 @@
             :project="project"
             :collabText="collabText"
             :linkTexts="linkTexts"
+            :languageValue="languageValue"
         />
     </div>
     <div class="no-projects" v-else>
@@ -18,11 +19,15 @@ import Project from './Project.vue';
 export default {
     name: 'projects',
     components: { Project },
-    props: { projects: Array, noProjects: String },
-    data: () => ({
-        collabText: 'Projektet er lavet sammen med',
-        linkTexts: ['Se', 'på Github.'],
-    }),
+    props: { projects: Array, noProjects: String, languageValue: String, language: Map },
+    computed: {
+        collabText(_this) {
+            return _this.language.get('collabText');
+        },
+        linkTexts(_this) {
+            return _this.language.get('linkTexts');
+        } 
+    },
 }
 </script>
 

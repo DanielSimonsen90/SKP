@@ -1,13 +1,18 @@
 <template>
   <div class="image-container">
-      <img src="profile_picture.png" alt="Very handsome man">
+      <img src="profile_picture.png" alt="Very handsome man" @click="onPFPClick">
   </div>
 </template>
 
 <script>
 
+/**@emits click(e: MouseClickEvent)*/
 export default {
-
+    methods: {
+        onPFPClick(e) {
+            this.$emit('click', e)
+        }
+    }
 }
 </script>
 

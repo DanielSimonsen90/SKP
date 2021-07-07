@@ -2,7 +2,7 @@
   <div id="about">
       <who-dis :data="whoDis" :language="language"/>
       <sparetime :data="spareTime" />
-      <portrait :style="portraitStyle" id="about-portrait"/>
+      <portrait :style="portraitStyle" id="about-portrait" @click="onPortraitClick"/>
       <p id="occupation" @click="toPlan">
           {{ occupationStrings[0] }}
           <b>{{ me.occupation }}</b>
@@ -59,6 +59,9 @@ export default {
     methods: {
         toPlan() {
             this.$emit('navigate', 'Plan')
+        },
+        onPortraitClick() {
+            this.$emit('navigate', 'Admin')
         }
     }
 }

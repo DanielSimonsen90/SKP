@@ -3,7 +3,7 @@
       <h1>[{{ project.name }}] • {{ project.createdAt.toString() }} • {{ project.language }} • {{ project.projectType }}</h1>
       <div class="project-info">
           <div class="project-text">
-            <div class="project-description" v-for="(sentence, i) in project.description" :key="i">
+            <div class="project-description" v-for="(sentence, i) in project.description[languageValue]" :key="i">
               <p v-if="sentence">{{ sentence }}</p>
               <br v-else />
             </div>
@@ -25,7 +25,8 @@ export default {
     props: {
         project: Project,
         collabText: String,
-        linkTexts: Array
+        linkTexts: Array,
+        languageValue: String
     },
     computed: {
         fileExists(_this) {

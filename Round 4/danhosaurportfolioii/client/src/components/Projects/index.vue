@@ -1,6 +1,6 @@
 <template>
   <div id="projects">
-    <projects :projects="projects"/>
+    <projects :projects="projects" :languageValue="languageValue" :language="language"/>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
     props: { 
         me: Me, 
         language: Map,
+        languageValue: String,
         projectLanguage: String,
         projectType: String,
     },

@@ -46,12 +46,18 @@ label {
     display: block;
     text-align: left;
 
-    input {
-        background-color: lighten($background-secondary, $theme-difference * 2);
-        color: $color;
+    input, textarea {
+        background-color: lighten($background-secondary, $theme-difference * 1.5);
+        color: darken($color, $theme-difference);
+        resize: none;
         
-        &:hover {
-            background-color: $background-secondary;
+        &:hover, &:focus {
+            background-color: lighten($background-secondary, $theme-difference * 2.5);
+            color: lighten($color, $theme-difference * 5);
+            
+            &::placeholder {
+                color: darken($color, $theme-difference * 3);
+            }
         }
     }
 

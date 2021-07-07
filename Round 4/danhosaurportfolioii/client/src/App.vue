@@ -11,7 +11,7 @@
     />
     <content id="main-content">
       <router-view :me="me" @navigate="onNavigate"
-        :language="language" :projectType="projectType" :projectLanguage="projectLanguage"
+        :language="language" :languageValue="languageValue" :projectType="projectType" :projectLanguage="projectLanguage"
       />
     </content>
     <danho-footer 
@@ -29,9 +29,9 @@ import DanhoHeader from './components/Shared/DanhoHeader.vue';
 import DanhoFooter from './components/Shared/DanhoFooter.vue';
 
 import { Me } from 'models';
-import { contact, locationCollection, spareTime, projects, languages } from './data';
+import { contact, locationCollection, projects, languages } from './data';
 
-const me = new Me(locationCollection, contact, spareTime, projects);
+const me = new Me(locationCollection, contact, projects);
 
 export default {
   name: 'App',
@@ -43,13 +43,15 @@ export default {
     me, 
     projectLanguage: null,
     projectType: null,
-    languageValue: 'Dansk',
-    language: languages.get('Dansk')
+    languageValue: localStorage.getItem('language') || 'Dansk'
   }),
   computed: {
     links() {
       return this.language.get('links');
     },
+    language() {
+      return languages.get(this.languageValue);
+    }
   },
   methods: {
     /**@param {string} direction */
@@ -59,13 +61,12 @@ export default {
     },
     onProjectFilterChange(type, value) {
       this[type] = value;
-      console.log(type, value)
     },
     onLanguageChanged(language) {
       if (!languages.has(language)) return;
 
+      localStorage.setItem('language', language);
       this.languageValue = language;
-      this.language = languages.get(language);
     }
   }
 }
@@ -79,14 +80,18 @@ export default {
 body {
   background: $background;
   color: $color;
+  box-sizing: border-box;
 }
 
 header, footer {
   background: $background-secondary;
 }
+header { top: 0; position: sticky }
+footer { bottom: 0 }
 
-#app > * {
-  position: fixed;
+#app > * { 
+  // position: absolute; 
+  z-index: 1;
 }
 
 #main-content {
@@ -96,33 +101,10 @@ header, footer {
   margin: 0 auto;
   min-height: 76vh;
   overflow: auto;
-  height: 75%;
-  width: 99%;
+  @include height-width(100%, 100%);
 }
 
-/* #region Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  @extend %hoverable;
-
-  background: lighten($background-secondary, $theme-difference / 2);
-
-  &:hover {
-    background: lighten($background-secondary, $theme-difference);
-  }
-}
-::-webkit-scrollbar-thumb {
-  @extend %hoverable;
-
-  background: darken($background, $theme-difference);
-
-  &:hover{
-    background: $theme-secondary;
-  }
-}
-/* #endregion */
-
+@include scroll-bar();
+@include popup-modal();
 
 </style>

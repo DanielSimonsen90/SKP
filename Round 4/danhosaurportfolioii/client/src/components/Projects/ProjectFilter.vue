@@ -48,13 +48,25 @@ export default {
     
     display: flex;
     justify-content: center;
-    position: fixed;
-    width: 35%;
+    position: inherit;
+    width: 50%;
     left: 50%;
     transform: translateX(-50%);
 
-    label { display: inline; }
+    label { display: inline-block; }
     legend { margin: 0 auto; }
+    content { 
+        width: 100%; 
+
+        label { 
+            width: 50%;
+            margin: 0;
+
+            b {
+                margin-left: 0;
+            }
+        } 
+    }
 }
 
 </style>
