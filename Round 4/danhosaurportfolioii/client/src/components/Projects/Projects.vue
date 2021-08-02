@@ -8,7 +8,7 @@
         />
     </div>
     <div class="no-projects" v-else>
-        <h3>{{ noProjects }}</h3>
+        <h3>{{ language.get('noProjects') }}</h3>
     </div>
 </template>
 

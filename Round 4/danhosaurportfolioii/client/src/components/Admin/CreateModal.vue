@@ -1,23 +1,23 @@
 <template>
-  <div id="project-create" class="modal-content">
-    <fieldset id="project-create-content">
-      <legend>{{ language.get('createProject') }}</legend>
+  <div id="project-create">
+    <fieldset id="project-create-content" class="modal-content">
+      <legend>{{ language.get('registerProject') }}</legend>
 
       <fieldset id="project-create-required">
             <legend>{{ language.get('projectInfo') }}</legend>
             <label id="project-create-required-1">
                 <p>{{ language.get('name') }}</p>
-                <input id="project-name" type="text" required placeholder="My super awesome project">
+                <input id="project-name" type="text" required :placeholder="language.get('projectNamePlaceholder')">
 
                 <label id="project-create-display">
                     <p>{{ language.get('display') }}</p>
-                    <input id="project-display" type="checkbox" required>
+                    <input id="project-display" type="checkbox" required checked>
                 </label>
             </label>
 
             <div id="project-create-required-2" class="split-3">
-                <label class="project-filters split-item" :id="`project-create-filter-${type}`" v-for="({ type, name }, i) in projectFilters" :key="i">
-                    <p>{{ language.get(name || type) }}</p>
+                <label class="project-filters split-item" :id="`project-create-filter-${type}`" v-for="(type, i) in projectFilters" :key="i">
+                    <p>{{ language.get(type) }}</p>
                     <input :id="`project-${type}`" type="text" :list="`filter-data-${type}`" required>
                     <datalist :id="`filter-data-${type}`">
                         <option v-for="(item, j) in getProjectFilterOptions(type)" :key="j">{{ item }}</option>
@@ -51,47 +51,54 @@
                 <input id="project-hasLink" type="checkbox" checked>
             </label>
             <label id="project-create-spareTime">
-                <p>{{ language.get('spareTimeTitle') }}</p>
+                <p>{{ language.get('spareTime') }}</p>
                 <input id="project-spareTime" type="checkbox">
             </label>
         </div>
 
         <fieldset id="project-create-github" class="project-create-option">
-            <legend>{{ language.get('collabInfo') }}</legend>
+            <legend>{{ language.get('collab') }}</legend>
             <label id="project-create-github-author">
                 <p>{{ language.get('collabName') }}</p>
                 <input id="project-collab-github" type="text" placeholder="github.com/..."> 
             </label>
             <label id="project-create-github-repo">
                 <p>{{ language.get('collabRepo') }}</p>
-                <input id="project-collab-repo" type="text" placeholder="github.com/${collabName}/...">
+                <input id="project-collab-repo" type="text" :placeholder="`github.com/${language.get('collabName').toLowerCase()}/...`">
             </label>
+        </fieldset>
+
+        <fieldset id="project-create-image" class="project-create-option">
+            <legend>{{ language.get('projectImage') }}</legend>
+            <p id="file-title">{{ imageValue }}</p>
+            <button id="open-file-button" @click="onOpenFileButtonClick">{{ language.get('uploadFile') }}</button>
+            <input type="file" id="project-image" accept="image/png, img/jpg, img/jpeg" style="display: none" @change="onOpenFileChange"/>
         </fieldset>
       </fieldset>
 
-      <button id="project-create-submit" @click="onProjectSubmit" type="submit">Create Project</button>
+      <button id="project-create-submit" @click="onProjectSubmit" type="submit">{{ language.get('registerProject') }}</button>
     </fieldset>
   </div>
 </template>
 
 <script>
-import { languages } from '../../data';
+import { languages, API } from '../../data';
 import { Me, Project, DanhoDate } from 'models';
 
-
-/**@props { language: Map<string, string> }
+/**@props { language: Map<string, string>, me: Me }
  * @emits create(project: Project)*/
 export default {
-    name: 'project-create',
+    name: 'project-create-modal',
     props: {
         language: Map,
         me: Me
     },
+    created() {
+        const input = document.getElementById('project-crate-image-input');
+        this.imageValue = input?.value && !input.value.includes('fakepath') ? input.value : this.language.get('noFile');
+    },
     data: () => ({
-        projectFilters: [
-            { name: 'languageLabel', type: 'language' },
-            { type: 'projectType' },
-        ],
+        projectFilters: ['language', 'projectType'],
         languages
     }),
     computed: {
@@ -112,26 +119,25 @@ export default {
                 return result;
             }, []).sort();
         },
-        onProjectSubmit() {
-            try { var p = this.createProject(); } 
+        async onProjectSubmit() {
+            try { var p = await this.createProject(); } 
             catch (err) { alert(err); }
-            
+            console.log(p);
             this.$emit('create', p);
         },
-        createProject() {
+        /**@returns { Promise<Project> }*/
+        async createProject() {
+            const projects = this.me?.projects || await API.getProjects();
             const get = (prop) => document.getElementById(`project-${prop}`);
-
             const description = {
                 Dansk: get('description-Dansk').value.split('\n'),
                 English: get('description-English').value.split('\n'),
             };
-
             const collabValues = {
                 github: get('collab-github').value,
                 repo: get('collab-repo').value
             };
-            const collab = Object.keys(collabValues).map(p => collabValues[p] !== "").length ? collabValues : null;
-
+            const collab = Object.keys(collabValues).filter(p => collabValues[p]).length ? collabValues : null;
             const requiredObj = { 
                 name: get('name').value, 
                 display: get('display').checked, 
@@ -146,21 +152,48 @@ export default {
 
             let resultBuilder = {};
             for (const [key, value] of required) {
-                if (value === "" || value == undefined || value == null) {
+                if (value === "" || value == null) {
                     throw `${key} must not be null!`;
+                }
+                else if (key == 'name' && projects.some(p => p.name == value)) {
+                    throw `There's already a project called ${value}!`;
+                }
+                else if (key == 'createdAt' && new Date('2018-8-8').getTime() - new Date(value).getTime() > 0) {
+                    throw `Date is too low for your programming expertise!`;
                 }
                 resultBuilder[key] = value;
             }
 
-            const { name } = resultBuilder;
-            const result = new Project(name, { ...resultBuilder, 
-                hasLink: get('hasLink').checked, 
-                baseLink: get('baseLink').value, 
-                spareTime: get('spareTime').checked, 
-                collab
-            });
+            return new Promise(res => {
+                const reader = new FileReader();
+                reader.readAsArrayBuffer(get('image').files[0]);
+                reader.addEventListener('load', () => {
+                    const image = Buffer.from(reader.result);
+                    const { name } = resultBuilder;
+                    const result = new Project(name, { ...resultBuilder, 
+                        description, 
+                        createdAt: new DanhoDate(...requiredObj.createdAt.split('-').map(s => parseInt(s))),
+                        hasLink: get('hasLink').checked, 
+                        baseLink: get('baseLink').value, 
+                        spareTime: get('spareTime').checked, 
+                        image,
+                        collab,
+                    });
+                    result._id = projects.length
+                    res(result);
+                })
+            })
 
-            return result;
+            
+        },
+        onOpenFileButtonClick() { 
+            document.getElementById('project-image').click()
+        },
+        onOpenFileChange(e) {
+            const file = e.srcElement.value;
+            const fileSplit = file.split('\\');
+            const fileName = fileSplit[fileSplit.length - 1];
+            document.getElementById('file-title').textContent = fileName;
         }
     }
 }
@@ -172,12 +205,12 @@ export default {
 @import '@/scss/mixins';
 
 #project-create {
-    position: fixed;
+    position: relative;
+    display: none;
     margin: 0 auto;
     z-index: 4;
-    
-    @include max-height-width(90%, 50%);
-    @include height-width(100%, 50%);
+
+    @include height-width(100%, 100%);
 
     & > * { position: absolute; height: inherit; }
     &-required, &-optional { top: -2em; position: relative; height: 100%; }
@@ -186,6 +219,9 @@ export default {
         display: grid;
         grid-template-columns: 60% 39%;
         grid-template-rows: 5% 85% 5%;
+
+        @include max-height-width(90%, 50%);
+        @include height-width(100%, 50%);
 
         legend {
             width: max-content;
@@ -200,6 +236,12 @@ export default {
 
         & > * { position: relative; }
         &-1 input { font-size: 24px; }
+        &-2 {
+            input { height: 20px; }
+            label {
+                height: 75px;
+            }
+        }
         &-3 { 
             height: 62.5%;
 
@@ -224,6 +266,7 @@ export default {
 }
 
 #project-create-required-1, 
+#project-create-github,
 .project-create-option,
 .split-item {
     display: inline-block;
@@ -236,9 +279,7 @@ export default {
     & > * { display: inherit; }
 }
 
-.project-description {
-    height: 100%;
-}
+.project-description { height: 100%; }
 
 .project-create-option {
     margin: 4%;
@@ -254,20 +295,24 @@ export default {
     }
 }
 
+#project-create-github {
+    height: 25%;
+
+
+    label {
+        display: inline-block;
+        p { 
+            text-align: center; 
+            display: block; 
+            @include margin-block(0, 0);
+        }
+    }
+}
+
 label {
     margin: 2%;
 
     & > p { font-weight: bold; }
-}
-
-button {
-    @extend %hoverable-background;
-    @extend %hoverable-color;
-    @extend %shadow-me;
-    @extend %clickable;
-
-    background: $background-secondary;
-    margin: 1%;
 }
 
 @mixin split($split-item-division) {

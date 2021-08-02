@@ -2,7 +2,7 @@
   <fieldset id="projects-filter" :style="`visibility: ${visibility};`">
       <legend>{{ language.get('filterTitle') }}</legend>
       <content>
-        <filter-label :type="'projectLanguage'" :inputValue="projectLanguage" :display="language.get('languageLabel')" :me="me" @change="onChange"/>
+        <filter-label :type="'projectLanguage'" :inputValue="projectLanguage" :display="language.get('language')" :me="me" @change="onChange"/>
         <filter-label :type="'projectType'" :inputValue="projectType" :display="language.get('projectType')" :me="me" @change="onChange"/>
       </content>
   </fieldset>
@@ -42,6 +42,7 @@ export default {
 
 <style lang="scss">
 @import '@/scss/partials';
+@import '@/scss/mixins';
 
 #projects-filter {
     @extend %shadow-me;
@@ -49,7 +50,7 @@ export default {
     display: flex;
     justify-content: center;
     position: inherit;
-    width: 50%;
+    @include height-width(60%, 50%);
     left: 50%;
     transform: translateX(-50%);
 
@@ -62,9 +63,7 @@ export default {
             width: 50%;
             margin: 0;
 
-            b {
-                margin-left: 0;
-            }
+            b { margin-left: 0; }
         } 
     }
 }

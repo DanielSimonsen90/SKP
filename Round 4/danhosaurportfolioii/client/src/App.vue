@@ -31,16 +31,17 @@ import DanhoFooter from './components/Shared/DanhoFooter.vue';
 import { Me } from 'models';
 import { contact, locationCollection, projects, languages } from './data';
 
-const me = new Me(locationCollection, contact, projects);
-
 export default {
   name: 'App',
   components: {
     DanhoHeader, 
     DanhoFooter
   },
+  async created() {
+    this.me = new Me(locationCollection, contact, await projects);
+  },
   data: () => ({ 
-    me, 
+    me: null,
     projectLanguage: null,
     projectType: null,
     languageValue: localStorage.getItem('language') || 'Dansk'
@@ -81,13 +82,12 @@ body {
   background: $background;
   color: $color;
   box-sizing: border-box;
+  margin: 0;
 }
 
-header, footer {
-  background: $background-secondary;
-}
+header, footer { background: $background-secondary; }
 header { top: 0; position: sticky }
-footer { bottom: 0 }
+footer { bottom: 0; position: absolute; }
 
 #app > * { 
   // position: absolute; 
@@ -100,11 +100,49 @@ footer { bottom: 0 }
   text-align: center;
   margin: 0 auto;
   min-height: 76vh;
+  max-height: 80vh;
   overflow: auto;
   @include height-width(100%, 100%);
+
+  & > * {
+    min-height: inherit;
+    max-height: inherit;
+  }
 }
 
 @include scroll-bar();
 @include popup-modal();
+
+label {
+  width: 100%;
+  display: block;
+  text-align: left;
+
+  input, textarea {
+    background-color: lighten($background-secondary, $theme-difference / 1.2);
+    color: darken($color, $theme-difference);
+    resize: none;
+    padding: 2px;
+    
+    &:hover, &:focus {
+      background-color: lighten($background-secondary, $theme-difference * 1.1);
+      color: lighten($color, $theme-difference * 5);
+      
+      &::placeholder { color: darken($color, $theme-difference * 3); }
+    }
+  }
+
+  b { margin: 0 10px; }
+}
+
+button, input[type=file] {
+    @extend %hoverable-background;
+    @extend %hoverable-color;
+    @extend %shadow-me;
+    @extend %clickable;
+
+    background: $background-secondary;
+    margin: 1%;
+}
 
 </style>

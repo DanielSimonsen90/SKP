@@ -17,18 +17,26 @@ router.post('/', async (req, res) => {
     await projects.insertOne({ ...JSON.parse(req.body.postData) });
     res.status(201).send();
 });
+
 router.get('/', async (req, res) => {
     const projects = await getProjects();
     res.send(await projects.find({}).toArray());
 });
+router.get('/:id', async (req, res) => {
+    const projects = await getProjects();
+    const project = await projects.findOne({ _id: parseInt(req.params.id) });
+    res.send(JSON.stringify(project))
+})
+
 router.put('/:id', async (req, res) => {
     const projects = await getProjects();
-    await projects.updateOne({ _id: new mongo.ObjectID(req.params._id) });
+    await projects.updateOne({ _id: req.params.id });
     res.status(200).send();
 });
+
 router.delete('/:id', async (req, res) => {
     const projects = await getProjects();
-    await projects.deleteOne({ _id: new mongo.ObjectID(req.params._id) })
+    await projects.deleteOne({ _id: req.params.id })
     res.status(200).send();
 });
 

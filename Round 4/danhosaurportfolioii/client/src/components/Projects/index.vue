@@ -1,6 +1,9 @@
 <template>
   <div id="projects">
-    <projects :projects="projects" :languageValue="languageValue" :language="language"/>
+    <projects :projects="projects" :languageValue="languageValue" :language="language" v-if="projects"/>
+    <div class="no-projects" v-else>
+        <h3>{{ loadingProjects }}</h3>
+    </div>
   </div>
 </template>
 
@@ -19,15 +22,43 @@ export default {
         projectLanguage: String,
         projectType: String,
     },
+    created() {
+        this.loadingProjects = this.language.get('loadingProjects');
+        if (!this.interval) {
+            this.interval = setInterval(() => {
+                if (this.loadingProjects.endsWith('...')) {
+                    this.loadingProjects = this.language.get('loadingProjects');
+                }
+                else this.loadingProjects += '.';
+            }, 1000);
+        }    
+    },
     asyncComputed: {
         async projects() {
-            let arr = this.me.projects;
-            // let arr = await API.getProjects();
-            return arr.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+            let arr = this.me.projects || await API.getProjects();
+            const result = arr.filter(this.projectFilter).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+            clearInterval(this.interval);
+
+            if (this.$route.query) {
+                setTimeout(() => {
+                    const projectContainer = document.getElementsByClassName('project-container')[0];
+                    if (!projectContainer) return;
+
+                    const scrollToProject = projectContainer.children.namedItem(this.$route.query[this.language.get('project')?.toLowerCase()]);
+                    
+                    if (scrollToProject) {
+                        scrollToProject.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 500);
+            }
+
+            return result;
         }
     },
     data: () => ({
-        projects: []
+        projects: [],
+        loadingProjects: null,
+        interval: null
     }),
     methods: {
         projectFilter(project) {

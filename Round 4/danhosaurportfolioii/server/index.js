@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 
 const { json } = require('body-parser');
-app.use(json());
+app.use(json({ limit: '50mb' }));
 
 const cors = require('cors');
 app.use(cors());
 app.use('/api/projects', require('./routes/api/projects'));
+app.use('/api/projects/:id', require('./routes/api/projects'));
+// app.use('/postProjects', require('./runProjects'))
 
 require('dotenv').config();
 const port = process.env.PORT || 5000;

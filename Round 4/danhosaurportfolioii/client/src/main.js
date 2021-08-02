@@ -9,9 +9,7 @@ Vue.use(AsyncComputed);
 
 import { routes } from './data';
 
-const router = new VueRouter({ routes, mode: 'history' });
-
 new Vue({
-  router,
+  router: new VueRouter({ routes, mode: 'history' }),
   render: h => h(App),
 }).$mount('#app')

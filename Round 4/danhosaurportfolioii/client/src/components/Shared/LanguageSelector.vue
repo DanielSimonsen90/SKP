@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label id="language-selector">
       <b>{{ languageLabel }}</b>
       <input type="text" list="languages-list" :value="languageValue" @input="valueChanged">
       <datalist id="languages-list">
@@ -16,18 +16,12 @@ import { languages } from '../../data';
 export default {
     props: {
         language: Map,
-        languageValue: String
+        languageValue: String,
+        supportedLanguages: languages.keys()
     },
     computed: {
-        supportedLanguages() {
-            let result = [];
-            for (const [lang] of languages) {
-                result.push(lang);
-            }
-            return result;
-        },
         languageLabel() { 
-            return this.language.get('languageLabel');
+            return this.language.get('language');
         }
     },
     methods: {

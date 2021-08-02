@@ -2,7 +2,7 @@
   <footer>
     <p id="copyright">© {{ new Date().getFullYear() }}</p>
     <p id="point-1">•</p>
-    <p id="company-name">{{ me.name }}</p>
+    <p id="company-name">{{ me && me.name }}</p>
     <p id="point-2">•</p>
     <danho-navigation id="footer-navigation"
       :links="links"
@@ -39,15 +39,15 @@ export default {
     languageValue: String
   },
   computed: {
-    socials: () => Object.keys(this.me.contact).reduce((map, prop) => map.set(prop, this.me.contact[prop]), new Map()),
-    socialNames: () => Object.keys(this.me.contact).map(prop => prop.substring(0, 1).toUpperCase() + prop.substring(1))
+    socials: () => Object.keys(this.me?.contact).reduce((map, prop) => map.set(prop, this.me.contact[prop]), new Map()),
+    socialNames: () => Object.keys(this.me?.contact).map(prop => prop.substring(0, 1).toUpperCase() + prop.substring(1))
   },
   methods: {
     onNavigate(link) {
       this.$emit('navigate', link);
     },
     onSocialClick(link) {
-      alert(this.me.contact[link.toLowerCase()]);
+      alert(this.me?.contact[link.toLowerCase()]);
     },
     onLanguageChanged(value) {
       this.$emit('language-change', value);
@@ -65,11 +65,9 @@ footer {
   @extend %non-content;
 
   grid-template-columns: 4% $footer-point-space 10% $footer-point-space 17.5% $footer-point-space 15% $footer-point-space 17.5%;
-  bottom: 0;
   
-  width: 88.5%;
   //vertical horizontal
-  padding: 1% 5%;
+  padding: 1% 0;
   justify-content: center; 
   justify-items: center;
 
@@ -85,7 +83,6 @@ footer {
   .link-item {
     box-shadow: unset;
     margin: 0 10px;
-
   }
 }
 </style>

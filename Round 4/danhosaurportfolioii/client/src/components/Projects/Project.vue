@@ -10,7 +10,7 @@
             <p class="project-collab" v-if="project.collab != null && project.collab != undefined">{{ collabText }} {{ project.collab.github }}</p>
             <p class="project-link" v-if="project.link" @click="toRepo">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
           </div>
-          <img class="project-image" :src="project.image" v-if="fileExists">
+          <img class="project-image" :src="`data:image/png;base64,${project.image}`" v-if="fileExists" />
           <p v-else>Der er intet billede til {{ project.name }}.</p>
       </div>
   </div>
@@ -30,15 +30,7 @@ export default {
     },
     computed: {
         fileExists(_this) {
-            try {
-                let xhr = new XMLHttpRequest();
-
-                xhr.open('HEAD', `../${_this.project.image}`);
-                xhr.send();
-                return xhr.status != 404;
-            } catch (err) {
-                return false;
-            }
+            return this.project.image != null;
         }
     },
     methods: {

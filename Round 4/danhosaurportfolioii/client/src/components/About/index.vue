@@ -45,7 +45,7 @@ export default {
         }),
         spareTime() {
             return {
-                title: this.language.get('spareTimeTitle'),
+                title: this.language.get('spareTime'),
                 content: ['Discord', 'FL Studio', 'Overwatch'].map(i => new Item(i, this.language.get(`spareTime${i.replace(/ +/, '')}`)))
             }
         },

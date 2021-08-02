@@ -6,7 +6,7 @@
       @hover="onLogoHover" 
     />
 
-    <project-filter :title="filterTitle" :visibility="filerVisibility"
+    <project-filter :title="filterTitle" :visibility="filterVisibility"
       :projectLanguage="projectLanguage" :projectType="projectType" :language="language"
       :me="me" 
       @project-filter-change="onFilterChange"
@@ -46,8 +46,13 @@ export default {
   },
   data: () => ({ logoHover: false }),
   computed: {
-    filerVisibility() {
-      return projectsRoutes.map(r => r.path.toLowerCase()).includes(this.$route.path.toLowerCase()) ? 'visible' : 'hidden';
+    filterVisibility() {
+      console.log(this.$route);
+
+      return projectsRoutes.reduce((result, { path }) => {
+        result.push(path.toLowerCase(), `${path.toLowerCase()}/`);
+        return result;
+      }, []).includes(this.$route.path.toLowerCase()) ? 'visible' : 'hidden';
     }
   },
   methods: {

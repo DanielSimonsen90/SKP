@@ -25,6 +25,8 @@ export default {
         /**@param {'projectLanguage' | 'projectType'} type*/
         getProjects(type) {
             type = type == 'projectLanguage' ? 'language' : type;
+            if (!this.me) return this.all;
+
             return [this.all, ...this.me.projects.reduce((result, p) => {
                 if (!result.includes(p[type]))
                     result.push(p[type])
@@ -38,31 +40,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '@/scss/variables';
+<style>
 
-label {
-    width: 100%;
-    display: block;
-    text-align: left;
-
-    input, textarea {
-        background-color: lighten($background-secondary, $theme-difference * 1.5);
-        color: darken($color, $theme-difference);
-        resize: none;
-        
-        &:hover, &:focus {
-            background-color: lighten($background-secondary, $theme-difference * 2.5);
-            color: lighten($color, $theme-difference * 5);
-            
-            &::placeholder {
-                color: darken($color, $theme-difference * 3);
-            }
-        }
-    }
-
-    b {
-        margin: 0 10px;
-    }
-}
 </style>

@@ -75,7 +75,4 @@ tr {
 td {
   padding: 1% 0;
 }
-
-
-
 </style>

@@ -59,6 +59,7 @@
         @include height-width(99%, 99%);
 
         position: absolute;
+        left: 0;
         z-index: 2;
         background-color: rgba(0, 0, 0, 0.5);
     }

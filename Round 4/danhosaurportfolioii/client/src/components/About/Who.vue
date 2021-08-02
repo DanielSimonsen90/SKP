@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         onNavigate(link) {
-            this.$router.push(`projects/#${link}`)
+            this.$router.push(`${this.language.get('projects')}/?${this.language.get('project')?.toLowerCase()}=${link}`)
         }
     }
 }

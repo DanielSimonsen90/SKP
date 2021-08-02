@@ -57,7 +57,13 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 %rounded {
-    border-radius: .75rem;
+    $radius: .75rem;
+
+    border-radius: $radius;
+
+    &::-webkit-scrollbar { border-radius: $radius; }
+    &::-webkit-scrollbar-track { border-radius: $radius; }
+    &::-webkit-scrollbar-thumb { border-radius: $radius; }
 }
 
 %non-content {
@@ -67,8 +73,9 @@
     @extend %shadow-me;
 
     display: grid;
-    width: 99%;
+    width: 98.8%;
     align-items: center;
+    margin: .5%;
     
     &:hover {
         background-image: unset;

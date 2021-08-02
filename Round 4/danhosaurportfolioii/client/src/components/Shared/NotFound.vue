@@ -33,6 +33,7 @@ export default {
   color: rgb(207, 40, 74);
   border: 2px solid rgb(143, 29, 50);
   width: fit-content;
+  min-height: max-content !important;
   top: 33%;
   left: 33%;
   padding: 2%;

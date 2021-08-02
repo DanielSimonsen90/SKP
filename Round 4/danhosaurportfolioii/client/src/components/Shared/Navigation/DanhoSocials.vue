@@ -19,13 +19,14 @@ export default {
         language: Map
     },
     computed: {
-        links: (_this) => Object.keys(_this.me.contact).map((prop) => {
-            const name = _this.language && _this.language.has(prop) ? _this.language.get(prop) : prop.substring(0, 1).toUpperCase() + prop.substring(1);
+        links: (_this) => _this.me ? Object.keys(_this.me.contact).map(prop => {
+            const clickName = prop.substring(0, 1).toUpperCase() + prop.substring(1)
+            const name = _this.language?.has(prop) ? _this.language.get(prop) : clickName;
             const value = _this.me.contact[prop];
-            const click = _this[`on${name}Click`] && (() => _this[`on${name}Click`](value)) || (() => { _this.onNoCallback(prop); });
+            const click = _this[`on${clickName}Click`] && (() => _this[`on${clickName}Click`](value)) || (() => { _this.onNoCallback(prop); });
             const image = `${window.location.origin}/socials/${prop}.png`;
-            return { prop, name, value, click, image };
-        })
+            return { prop, name, value, click, image, test: prop.substring(0, 1).toUpperCase() + prop.substring(1) };
+        }) : [{ prop: null, name: null, value: null, click: () => alert("Hello there!"), image: null }]
     },
     methods: {
         /**@param {string} prop*/
