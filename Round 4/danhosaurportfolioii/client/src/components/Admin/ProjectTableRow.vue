@@ -1,11 +1,16 @@
 <template>
   <div class="project-table-row" :name="project.name">
       <div class="project-table-cell" v-for="([prop, v], i) in data" :key="i" :name="prop" :value="v" @click="onCellClick(data[i])">
-          <p v-if="v != null && !['description', 'image', 'link'].includes(prop)">{{ v }}</p>
+          <p v-if="v != null && !['description', 'image', 'link', 'collab'].includes(prop)">{{ v }}</p>
           <a v-else-if="prop == 'link' && v && v != 'No link'" class="click-me" :href="v" target="_blank">[link]</a>
-          <p v-else-if="v && !['image'].includes(prop)" class="click-me">[{{ language.get(prop) }}]</p>
+          <p v-else-if="v && !['image', 'collab'].includes(prop)" class="click-me">[{{ language.get(prop) }}]</p>
           <img v-else-if="prop == 'image' && v" class="project-image" :src="`data:image/png;base64,${project.image}`"/>
+          <p v-else-if="prop == 'collab' && v" class="collab-cell click-me" @click="toGithub(v.githubLink)"><b>{{ v.github }}</b></p>
           <p v-else value="NA">N/A</p>
+      </div>
+      <div class="project-table-cell" name="update">
+          <button @click="onUpdateClick" v-if="clickable">{{ language.get('update') }}</button>
+          <p v-else>{{ language.get('update') }}</p>
       </div>
       <div class="project-table-cell" name="delete">
           <button @click="onDeleteClick" v-if="clickable">{{ language.get('delete') }}</button>
@@ -19,6 +24,7 @@ import { Project } from 'models';
 
 /**@props { language: Map<string ,string>, project: Project, clickable: boolean }
  * @emits delete(project: Project)
+ * @emits update(project: Project)
  * @emits navigate(link: string)*/
 export default {
     name: 'project-table-row',
@@ -27,7 +33,7 @@ export default {
         project: Project,
         clickable: Boolean
     },
-    created() {
+    mounted() {
         let element = document.querySelector(`.project-table-row[name="${this.project.name}"]`);
         if (!element) return;
         
@@ -48,19 +54,25 @@ export default {
     },
     methods: {
         onCellClick([prop, value]) {
-            if (!this.clickable || ['link'].includes(prop)) return;
+            if (!this.clickable || ['link', 'collab'].includes(prop)) return;
 
             if (prop == 'description') {
                 return alert(Object.keys(value).reduce((msg, prop) => msg += `${prop}:\n${value[prop].join('\n')}\n\n`, ''));
             }
-            else if (prop == 'image') {
+            else if (prop == 'image' && value) {
                 return this.$emit('navigate', `Admin/${this.language.get('images')}/?${this.language.get('image')?.toLowerCase()}=${this.project.name}`);
             }
 
             alert(`${prop}\n\n${[null, undefined].includes(value) ? `${prop} is ${value}.` : value}`);
         },
+        toGithub(link) {
+            window.location.href = link;
+        },
+        onUpdateClick() {
+            this.$emit('update', this.project);
+        },
         onDeleteClick() {
-            this.emit('delete', this.project);
+            this.$emit('delete', this.project);
         }
     }
 }
@@ -84,10 +96,8 @@ $table-margin: .25%;
     display: table-row;
     margin: $table-margin 0;
 
-    &:hover {
-        .project-table-cell {
-            background-color: lighten($background-secondary, $theme-difference / 3);
-        }
+    &:hover .project-table-cell {
+        background-color: lighten($background-secondary, $theme-difference / 3);
     }
 }
 .project-table-cell {
@@ -128,12 +138,23 @@ $table-margin: .25%;
 
     button {
         width: max-content;
-        padding: 3%;
+        @include max-height-width(100%, max-content);
+        font-size: 18px;
+        padding: 5% 10%;
     }
 
     .project-image {
         @include height-width($height, $width);
         border-radius: 5px;
+    }
+
+    .collab-cell b {
+        padding: inherit;
+        font-size: 12px;
+
+        &:hover {
+            font-size: 16px;
+        }
     }
 
     &[name=display] > p, &[name=spareTime] > p { color: red; }

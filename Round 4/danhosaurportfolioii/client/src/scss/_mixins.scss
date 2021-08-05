@@ -42,13 +42,15 @@
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track {
         @extend %hoverable;
-        background: darken($background, $theme-difference);
+        background: lighten($background, $theme-difference / 2);
       
-        &:hover { background: lighten($background-secondary, $theme-difference); }
+        &:hover { 
+            background: lighten($background-secondary, $theme-difference / 2);
+        }
     }
     ::-webkit-scrollbar-thumb {
         @extend %hoverable;
-        background: lighten($background-secondary, $theme-difference);
+        background: lighten($background-secondary, $theme-difference * 2);
       
         &:hover { background: $theme-secondary; }
     }

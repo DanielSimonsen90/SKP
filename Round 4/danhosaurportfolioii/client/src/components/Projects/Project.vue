@@ -1,5 +1,5 @@
 <template>
-  <div class="project" :name="`${project.name}`" @click="toRepo">
+  <div class="project" :name="project.name">
       <h1>[{{ project.name }}] • {{ project.createdAt.toString() }} • {{ project.language }} • {{ project.projectType }}</h1>
       <div class="project-info">
           <div class="project-text">
@@ -8,7 +8,7 @@
               <br v-else />
             </div>
             <p class="project-collab" v-if="project.collab != null && project.collab != undefined">{{ collabText }} {{ project.collab.github }}</p>
-            <p class="project-link" v-if="project.link" @click="toRepo">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
+            <p class="project-link" v-if="project.link">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
           </div>
           <img class="project-image" :src="`data:image/png;base64,${project.image}`" v-if="fileExists" />
           <p v-else>Der er intet billede til {{ project.name }}.</p>
@@ -19,22 +19,51 @@
 <script>
 import { Project } from 'models';
 
-/**@props { project: Project, collabText: string, linkTexts: Array<string> }*/
+/**@props { project: Project, collabText: string, linkTexts: Array<string>, language: Map<string, string> }
+ * @emits navigate(link: string)*/
 export default {
     name: 'project',
     props: {
         project: Project,
         collabText: String,
         linkTexts: Array,
-        languageValue: String
+        languageValue: String,
+        language: Map
+    },
+    mounted() {
+        const projectImage = (() => {
+            const projectInfo = this.projectElement.children[1];
+            for (let i = 0; i < projectInfo.children.length; i++) {
+                const child = projectInfo.children[i];
+                
+                if (child.tagName == 'IMG') return child;
+            }
+            return null;
+        })();
+
+        const { onClicked } = this;
+
+        this.projectElement.onclick = (e) => onClicked(e, 'project');
+        if (projectImage) projectImage.onclick = (e) => onClicked(e, 'image');
     },
     computed: {
-        fileExists(_this) {
+        fileExists() {
             return this.project.image != null;
-        }
+        },
+        projectElement() {
+            return document.getElementsByName(this.project.name)[0]
+        } 
     },
     methods: {
-        toRepo() {
+        onClicked(e, target) {
+            if (target == 'image') {
+                e.stopPropagation();
+                console.log({ route: this.$route })
+                return this.$emit('navigate', `${this.$route.path.substring(1)}/${this.language.get('images')}/?${this.language.get('image')?.toLowerCase()}=${this.project.name}`);
+            }
+
+            if (!this.project.link) return;
+
             window.location.href = this.project.link;
         }
     }

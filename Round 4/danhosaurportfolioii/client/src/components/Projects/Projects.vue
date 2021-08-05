@@ -5,6 +5,9 @@
             :collabText="collabText"
             :linkTexts="linkTexts"
             :languageValue="languageValue"
+            :language="language"
+
+            @navigate="onNavigate"
         />
     </div>
     <div class="no-projects" v-else>
@@ -19,15 +22,25 @@ import Project from './Project.vue';
 export default {
     name: 'projects',
     components: { Project },
-    props: { projects: Array, noProjects: String, languageValue: String, language: Map },
+    props: { 
+        projects: Array, 
+        noProjects: String, 
+        languageValue: String, 
+        language: Map 
+    },
     computed: {
         collabText(_this) {
             return _this.language.get('collabText');
         },
         linkTexts(_this) {
             return _this.language.get('linkTexts');
-        } 
+        }
     },
+    methods: {
+        onNavigate(link) {
+            this.$emit('navigate', link);
+        }
+    }
 }
 </script>
 

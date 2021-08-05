@@ -1,6 +1,6 @@
 <template>
   <div id="projects">
-    <projects :projects="projects" :languageValue="languageValue" :language="language" v-if="projects"/>
+    <projects :projects="projects" :languageValue="languageValue" :language="language" @navigate="onNavigate" v-if="projects"/>
     <div class="no-projects" v-else>
         <h3>{{ loadingProjects }}</h3>
     </div>
@@ -70,6 +70,9 @@ export default {
             const result = display && language && projectType;
             return result;
         },
+        onNavigate(link) {
+            this.$emit('navigate', link);
+        }
     }
 }
 </script>

@@ -40,17 +40,14 @@ import NotFound from './components/Shared/NotFound';
 
 export const homeRoutes = makeRoutes(['', '/home', '/hjem'], Home);
 export const aboutRoutes = makeRoutes(['/about', '/om'], About);
-
-//domain.com/projects?language=CSharp&projectType=Library
-export const projectsRoutes = makeRoutes(['/projects', '/projekter'], ProjectsIndex, {
-//  children: makeRoutes([':filter'], Projects)
-})
+export const projectsRoutes = makeRoutes(['/projects', '/projekter'], ProjectsIndex)
 export const planRoutes = makeRoutes(['/plan'], Plan);
 export const adminRoutes = makeRoutes(['/admin'], Admin);
-export const imagesRoutes = makeRoutes(
-    adminRoutes
-        .map(({ path }) => [`${path}/images`, `${path}/billeder`])
-        .reduce((result, arr) => { result.push(...arr); return result; }, []), 
+export const imagesRoutes = makeRoutes([...adminRoutes, ...projectsRoutes]
+    .reduce((result, { path }) => { 
+        result.push(`${path}/images`, `${path}/billeder`); 
+        return result; 
+    }, []), 
     Images
 );
 export const notFoundRoutes = makeRoutes(['*'], NotFound);
@@ -86,8 +83,8 @@ export class API {
             return result;
         });
     }
-    static updateProject(current, updated) {
-        return axios.put(`${API.url}/${current._id}`, updated);
+    static updateProject(updated) {
+        return axios.put(`${API.url}/${updated._id}`, updated);
     }
     static deleteProject(project) {
         return axios.delete(`${API.url}/${project._id}`)
@@ -139,6 +136,7 @@ const Dansk = new DanhoMap([
     ['collabRepo', 'Partner repo'],
     ['collabText', 'Projektet er lavet sammen med'],
     ['contact', 'Kontakt'],
+    ['create', 'Opret'],
     ['createdAt', 'Oprettet'],
     ['delete', 'Slet'],
     ['description', 'Beskrivelse'],
@@ -161,16 +159,19 @@ const Dansk = new DanhoMap([
     ['occupation', 'Beskæftigelse'],
     ['occupationStrings', ['I øjeblikket er jeg på', 'indtil']],
     ['phone', 'Telefon'],
+    ['previousImage', 'Tidligere billede'],
+    ['projects', 'Projekter'],
+    ['project', 'Projekt'],
     ['projectImage', 'Projekt Billede'],
     ['projectInfo', 'Projekt Information'],
     ['projectNamePlaceholder', 'Mit super fede projekt'],
     ['projectOptional', 'Valgfrit'],
     ['projectType', 'Projekt Type'],
-    ['registerProject', 'Registrér projekt'],
     ['spareTime', 'Fritid'],
     ['spareTimeDiscord', "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via components, og generelle permission handling."],
     ['spareTimeFLStudio', "Jeg tilbringer nogle gange min fritid på at lave min egen musik, som jeg sætter på services from Spotify & SoundCloud."],
     ['spareTimeOverwatch', "Som programmør er man naturligt interesseret i spil. Overwatch er det spil jeg spiller mest sammen med mine venner."],
+    ['update', 'Opdatér'],
     ['uploadFile', 'Upload billede'],
     ['whoDisTitle', 'Hvem er jeg?'],
     ['whoDisContent', getWhoDisContentDansk],
@@ -197,6 +198,7 @@ const English = new DanhoMap([
     ['noFile', 'No image selected.'],
     ['noProjects', 'There were no projecs for the criteria.'],
     ['occupationStrings', ["I'm current at", 'until']],
+    ['previousImage', 'Previous image'],
     ['projectImage', 'Project Image'],
     ['projectInfo', 'Project Information'],
     ['projectNamePlaceholder', 'My super amazing project'],

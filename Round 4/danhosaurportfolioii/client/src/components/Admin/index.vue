@@ -1,26 +1,48 @@
 <template>
   <div id="admin">
-      <project-create-modal :language="language" :me="me" @create="onProjectCreate"/>
-      <button @click="openModal('project-create')">{{ language.get('registerProject') }}</button>
-      <project-table :projects="projects" :language="language" @navigate="onNavigate" v-if="projects" />
+      <modify-modal :crud="'create'" :language="language" :me="me" @create="onProjectCreate"/>
+      <modify-modal :crud="'update'" :language="language" :me="me" @update="onProjectUpdate" :project="project"/>
+
+      <button @click="openModal('project-create')">{{ language.get('create') }} {{ language.get('project') }}</button>
+      <project-table v-if="projects"
+        :projects="projects" :language="language" :me="me" 
+        @navigate="onNavigate" @update="onUpdateRequest" @delete="onProjectDelete"
+      />
   </div>
 </template>
 
 <script>
-import ProjectCreateModal from './CreateModal.vue';
+import ModifyModal from './ModifyModal.vue';
 
 import { Me, Project } from 'models';
 import { API } from '../../data';
 import ProjectTable from './ProjectTable.vue';
 
+/**@param {'create' | 'update' | 'delete'} type
+ * @param {Project} project
+ * @param {Project} preProject*/
+function crudLog(type, project, preProject) {
+    const message = `Successfully ${type}d ${project.name}${preProject?.name != project.name ? `(${preProject.name})` : ''} (${project._id})`;
+    const crudMap = new Map([
+        ['create', 'green'], 
+        ['update', 'yellow'], 
+        ['delete', 'red']
+    ]);
+
+    console.log(`%c[Portfolio]: %c${message}`, "color: cornflowerblue", crudMap.get(type));
+}
+
 /**@props { language: Map<string, string> }
  * @emits navigate(link: string)*/
 export default {
-    components: { ProjectCreateModal, ProjectTable },
+    components: { ProjectTable, ModifyModal },
     props: {
         language: Map,
         me: Me
     },
+    data: () => ({
+        project: null
+    }),
     asyncComputed: {
         async projects() {
             return this.me?.projects || await API.getProjects();
@@ -31,6 +53,7 @@ export default {
             const admin = document.getElementById('admin');
             const wrapper = document.getElementById(modalWrapper);
             const wrapperContent = document.getElementById(`${modalWrapper}-content`);
+
             wrapperContent.classList.toggle('modal-fadeout');
             let showFadeout = true;
             let showing = false;
@@ -68,9 +91,32 @@ export default {
             toggleModal();
         },
         /**@param {Project} project*/
-        onProjectCreate(project) {
-            API.createProject(project);
+        async onProjectCreate(project) {
+            await API.createProject(project);
+            crudLog('create', project);
             this.removeAppListenAndToggle();
+
+            if (this.me) this.me.projects = await API.getProjects();
+        },
+        onUpdateRequest(project) {
+            this.project = project;
+            this.openModal('project-update')
+        },
+        async onProjectUpdate(project) {
+            console.log({ pre: this.project, current: project });
+            await API.updateProject(project);
+            crudLog('update', project, this.project);
+            this.project = null;
+            this.removeAppListenAndToggle();
+
+            if (this.me) this.me.projects = await API.getProjects();
+
+        },
+        async onProjectDelete(project) {
+            await API.deleteProject(project);
+            crudLog('delete', project);
+
+            if (this.me) this.me.projects = await API.getProjects();
         },
         onNavigate(link) {
             this.$emit('navigate', link)
@@ -83,5 +129,15 @@ export default {
 #admin {
     position: absolute;
     width: 100%;
+
+    & > button {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &.modal {
+            width: auto;
+        }
+    }
 }
 </style>

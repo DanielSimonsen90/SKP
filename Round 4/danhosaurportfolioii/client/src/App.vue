@@ -33,15 +33,12 @@ import { contact, locationCollection, projects, languages } from './data';
 
 export default {
   name: 'App',
-  components: {
-    DanhoHeader, 
-    DanhoFooter
-  },
+  components: { DanhoHeader, DanhoFooter },
   async created() {
-    this.me = new Me(locationCollection, contact, await projects);
+    this.me.projects = await projects;
   },
   data: () => ({ 
-    me: null,
+    me: new Me(locationCollection, contact),
     projectLanguage: null,
     projectType: null,
     languageValue: localStorage.getItem('language') || 'Dansk'

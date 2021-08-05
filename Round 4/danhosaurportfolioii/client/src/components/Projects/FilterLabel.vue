@@ -27,11 +27,11 @@ export default {
             type = type == 'projectLanguage' ? 'language' : type;
             if (!this.me) return this.all;
 
-            return [this.all, ...this.me.projects.reduce((result, p) => {
+            return [this.all, ...this.me.projects?.reduce((result, p) => {
                 if (!result.includes(p[type]))
                     result.push(p[type])
                 return result;
-            }, []).sort()];
+            }, []).sort() || []];
         },
         valueChanged(e) {
             this.$emit('change', this.type, e.target.value);

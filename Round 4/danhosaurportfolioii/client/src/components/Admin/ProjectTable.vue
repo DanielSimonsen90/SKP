@@ -2,37 +2,36 @@
   <div id="project-table">
       <project-table-row :project="titles" :language="language" :clickable="false"/>
       <project-table-row v-for="(project, i) in projects.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())" :key="i"
-        :project="project" :language="language" :clickable="true" @delete="onProjectDelete" @navigate="onNavigate"
+        :project="project" :language="language" :clickable="true" 
+        @update="onProjectUpdate" @delete="onProjectDelete" @navigate="onNavigate"
       />
   </div>
 </template>
 
 <script>
 import { ProjectCollection } from 'models'
-
 import ProjectTableRow from './ProjectTableRow.vue';
 
-/**@props { language: Ma<string, string>, projects: ProjectCollection }
+/**@props { language: Map<string, string>, projects: ProjectCollection }
+ * @emits update(project: Project)
+ * @emits delete(project: Project)
  * @emits navigate(link: string)*/
 export default {
     components: { ProjectTableRow },
     name: 'project-table',
     props: {
         language: Map,
-        projects: ProjectCollection
+        projects: ProjectCollection,
     },
     computed: {
         titles() {
-            return Object.keys(this.projects[0]).map(prop => this.language.get(prop));
-        } 
+            return Object.keys(this.projects[0]).map(prop => { return this.language.get(prop) });
+        }
     },
     methods: {
-        onProjectDelete(project) {
-            alert("no don't delete");
-        },
-        onNavigate(link) {
-            this.$emit('navigate', link)
-        }
+        onProjectUpdate(project) { this.$emit('update', project); },
+        onProjectDelete(project) { this.$emit('delete', project); },
+        onNavigate(link) { this.$emit('navigate', link) }
     }
 }
 </script>
@@ -56,10 +55,15 @@ export default {
     justify-self: center;
     left: 5%;
     padding: 5px;
+    top: 10%;
 
     &:hover {
         background-color: darken($background-secondary, $theme-difference / 2.5);
         background-image: unset;
+    }
+
+    &.modal {
+        top: 25%;
     }
 }
 
