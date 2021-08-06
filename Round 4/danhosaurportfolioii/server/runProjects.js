@@ -875,7 +875,7 @@ router.get('/', async (req, res) => {
     for (const project of projects) {
         const path = `./projects/${project.name}.png`;
         if (fs.existsSync(path)) {
-            project.image = fs.readFileSync(path);
+            project.image = fs.readFileSync(path).toString('base64');
         }
         
         project._id = projects.indexOf(project);

@@ -62,12 +62,29 @@ export class API {
     static url = `http://localhost:${port}/api/projects`
     /**@param {Project} project*/
     static async createProject(project) {
-        return axios.post(API.url, { 
-            postData: JSON.stringify({
-                ...project,
-                _id: (await this.getProjects()).length
-            }) 
-        })
+        const data = {
+            ...project,
+            _id: (await this.getProjects()).length
+        }
+        await axios.post(API.url, { 
+            postData: JSON.stringify(data)
+        });
+        const projectObj = await this.getProject(data._id);
+        return projectObj;
+    }
+    /**@param {number} id @returns {Promise<Project>}*/
+    static async getProject(id) {
+        const response = await axios.get(`${API.url}/${id}`);
+        const projectData = response.data;
+        const { year, month, day } = projectData.createdAt;
+        let project = new Project(projectData.name, {
+            ...projectData,
+            createdAt: new DanhoDate(year, month, day),
+            image: projectData.image && Buffer.from(projectData.image)
+        });
+        project.link ?? (projectData.link != 'No link' && projectData.link);
+
+        return project;
     }
     /**@returns {Promise<Project[]>}*/
     static async getProjects() {
@@ -77,7 +94,7 @@ export class API {
             let result = new Project(item.name, {
                 ...item,
                 createdAt: new DanhoDate(year, month, day),
-                image: item.image ? item.image.data ? Buffer.from(item.image.data).toString('base64') : Buffer.from(item.image) : null
+                image: item.image && Buffer.from(item.image)
             });
             result.link = item.link;
             return result;
@@ -155,6 +172,7 @@ const Dansk = new DanhoMap([
     ['loadingProjects', 'Indlæser projekter.'],
     ['name', 'Navn'],
     ['noFile', 'Intet billede valgt'],
+    ['noImage', 'Der er intet billede til'],
     ['noProjects', 'Der var ingen projekter til kriterierne.'],
     ['occupation', 'Beskæftigelse'],
     ['occupationStrings', ['I øjeblikket er jeg på', 'indtil']],
@@ -196,6 +214,7 @@ const English = new DanhoMap([
     ['loadingProjects', 'Loading projects.'],
     ['languagePlaceholder', 'This is a nice description for my new project.'],
     ['noFile', 'No image selected.'],
+    ['noImage', 'There is no image for'],
     ['noProjects', 'There were no projecs for the criteria.'],
     ['occupationStrings', ["I'm current at", 'until']],
     ['previousImage', 'Previous image'],

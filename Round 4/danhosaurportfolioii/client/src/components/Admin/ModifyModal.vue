@@ -18,7 +18,7 @@
             <div :id="`project-${crud}-required-2`" class="split-3 project-modify-required-2">
                 <label class="project-filters split-item" :id="`project-${crud}-filter-${type}`" v-for="(type, i) in projectFilters" :key="i">
                     <p>{{ project ? project[type] : language.get(type) }}</p>
-                    <input :id="`project-${crud}-${type}`" type="text" :list="`filter-data-${type}`" required :value="project ? project[type] : ''">
+                    <input :id="`project-${crud}-${type}`" type="text" :list="`filter-data-${crud}-${type}`" required :value="project ? project[type] : ''">
                     <datalist :id="`filter-data-${crud}-${type}`">
                         <option v-for="(item, j) in getProjectFilterOptions(type)" :key="j">{{ item }}</option>
                     </datalist>
@@ -76,11 +76,11 @@
             <legend>{{ language.get('projectImage') }}</legend>
             <p :id="`${crud}-file-title`">{{ imageValue }}</p>
             <button :id="`${crud}-open-file-button`" @click="onOpenFileButtonClick">{{ language.get('uploadFile') }}</button>
-            <input type="file" :id="`project-${crud}-image`" accept="image/png, img/jpg, img/jpeg" style="display: none" @change="onOpenFileChange"/>
+            <input type="file" :id="`project-${crud}-file`" accept="image/png, img/jpg, img/jpeg" style="display: none" @change="onOpenFileChange"/>
         </fieldset>
         
-        <div class="project-modify-image-container" v-if="imageValue != language.get('noFile')">
-            <img :src="`data:image/png;base64,${this.image}`" />
+        <div class="project-modify-image-container">
+            <img :id="`project-${crud}-image`" :src="`data:image/png;base64,${this.imageDisplay}`" :style="`visibility: ${imageValue != language.get('noFile') ? 'visible' : 'hidden'};`"/>
         </div>
       </fieldset>
 
@@ -123,21 +123,27 @@ export default {
         }
     },
     asyncComputed: {
+        async imageDisplay() {
+            return this.image();
+        }
+    },
+    methods: {
+        /**@returns {Promise<string>}*/
         async image() {
             return new Promise(resolve => {
                 if (this.imageValue == this.language.get('previousImage')) {
                     return resolve(this.project.image);
                 }
 
-                if (!this.get('image') || !this.get('image').files[0]) return null;
+                if (!this.get('file') || !this.get('file').files[0]) return null;
 
                 const reader = new FileReader();
-                reader.readAsArrayBuffer(this.get('image').files[0]);
-                reader.addEventListener('load', () => resolve(Buffer.from(reader.result)))
+                reader.readAsArrayBuffer(this.get('file').files[0]);
+                reader.addEventListener('load', () => {
+                    resolve(Buffer.from(reader.result).toString('base64'))
+                })
             });
-        }
-    },
-    methods: {
+        },
         /**@param {'language' | 'projectType'} type*/
         getProjectFilterOptions(type) {
             return this.me.projects?.reduce((result, p) => {
@@ -189,31 +195,37 @@ export default {
                 resultBuilder[key] = value;
             }
 
-            const image = await this.image;
+            const image = await this.image();
 
             const { name } = resultBuilder;
             const shell = new Project(name, { ...resultBuilder, 
-                description, 
                 createdAt: new DanhoDate(...requiredObj.createdAt.split('-').map(s => parseInt(s))),
                 hasLink: get('hasLink').checked, 
                 baseLink: get('baseLink').value, 
                 spareTime: get('spareTime').checked, 
-                image,
-                collab,
+                image, collab, description
             });
-            shell._id = projects.length;
 
-            console.log('returning');
-            return Object.assign(this.project, shell);
+            shell._id = this.crud == 'create' ? projects.length : this.project._id;
+
+            const result = Object.assign(this.project || {}, shell);
+            return result;
         },
         onOpenFileButtonClick() { 
-            document.getElementById(`project-${this.crud}-image`).click()
+            document.getElementById(`project-${this.crud}-file`).click()
         },
-        onOpenFileChange(e) {
+        async onOpenFileChange(e) {
             const file = e.srcElement.value;
             const fileSplit = file.split('\\');
             const fileName = fileSplit[fileSplit.length - 1];
             document.getElementById(`${this.crud}-file-title`).textContent = fileName;
+
+            const image = await this.image();
+            if (!image) return;
+            
+            const img = document.getElementById(`project-${this.crud}-image`);
+            img.src = `data:image/png;base64,${image}`;
+            img.style.visibility = 'visible';
         }
     }
 }

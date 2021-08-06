@@ -3,11 +3,11 @@ const mongo = require('mongodb');
 const mongoConnectionString = `mongodb+srv://DanhosaurPortfolioIIApplication:database-admin@danhosaurportfolioii.x1ocs.mongodb.net/DanhosaurPortfolioIIDB?retryWrites=true&w=majority`;
 const router = express.Router();
 
-const log = (message) => console.log(`%c[API]: %c${message}`, "color: lime", "%cwhite");
+const log = (message) => console.log(`%c${new Date().toLocaleTimeString()} [API]: %c${message}`, "color: lime", "%cwhite");
 async function getProjects() {
     const client = await mongo.MongoClient.connect(mongoConnectionString, {
         useNewUrlParser: true,
-        useUnifiedTopology: true 
+        useUnifiedTopology: true,
     });
 
     return client.db('DanhosaurPortfolioIIDB').collection('projects');
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const projects = await getProjects();
-    await projects.updateOne({ _id: req.params.id }, req.body, { upsert: true });
+    await projects.update({ _id: req.body._id }, req.body, { upsert: true });
     log('Updating project');
     res.status(200).send();
 });

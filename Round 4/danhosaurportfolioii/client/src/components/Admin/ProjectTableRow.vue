@@ -3,7 +3,7 @@
       <div class="project-table-cell" v-for="([prop, v], i) in data" :key="i" :name="prop" :value="v" @click="onCellClick(data[i])">
           <p v-if="v != null && !['description', 'image', 'link', 'collab'].includes(prop)">{{ v }}</p>
           <a v-else-if="prop == 'link' && v && v != 'No link'" class="click-me" :href="v" target="_blank">[link]</a>
-          <p v-else-if="v && !['image', 'collab'].includes(prop)" class="click-me">[{{ language.get(prop) }}]</p>
+          <p v-else-if="v && !['image', 'collab', 'link'].includes(prop)" class="click-me">[{{ language.get(prop) }}]</p>
           <img v-else-if="prop == 'image' && v" class="project-image" :src="`data:image/png;base64,${project.image}`"/>
           <p v-else-if="prop == 'collab' && v" class="collab-cell click-me" @click="toGithub(v.githubLink)"><b>{{ v.github }}</b></p>
           <p v-else value="NA">N/A</p>
@@ -50,7 +50,7 @@ export default {
     computed: {
         data() {
             return Object.keys(this.project).map(prop => [prop, this.project[prop]]);
-        }
+        },
     },
     methods: {
         onCellClick([prop, value]) {

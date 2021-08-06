@@ -34,11 +34,12 @@ import { contact, locationCollection, projects, languages } from './data';
 export default {
   name: 'App',
   components: { DanhoHeader, DanhoFooter },
-  async created() {
-    this.me.projects = await projects;
+  async beforeCreate() {
+    this.me.projects = await projects; 
+    this.$forceUpdate();
   },
   data: () => ({ 
-    me: new Me(locationCollection, contact),
+    me: new Me(locationCollection, contact, []),
     projectLanguage: null,
     projectType: null,
     languageValue: localStorage.getItem('language') || 'Dansk'
@@ -74,6 +75,11 @@ export default {
 @import '@/scss/variables';
 @import '@/scss/mixins';
 @import '@/scss/partials';
+#app {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
 
 body {
   background: $background;

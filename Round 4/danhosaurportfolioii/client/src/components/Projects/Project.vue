@@ -8,10 +8,10 @@
               <br v-else />
             </div>
             <p class="project-collab" v-if="project.collab != null && project.collab != undefined">{{ collabText }} {{ project.collab.github }}</p>
-            <p class="project-link" v-if="project.link">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
+            <p class="project-link" v-if="project.link && project.link != 'No link'">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
           </div>
           <img class="project-image" :src="`data:image/png;base64,${project.image}`" v-if="fileExists" />
-          <p v-else>Der er intet billede til {{ project.name }}.</p>
+          <p v-else>{{ language.get('noImage') }} {{ project.name }}.</p>
       </div>
   </div>
 </template>
@@ -75,6 +75,8 @@ export default {
 @import '@/scss/variables';
 @import '@/scss/mixins';
 
+$max-height: 600px;
+
 .project {
     @extend %shadow-me;
     @extend %clickable;
@@ -84,6 +86,7 @@ export default {
     display: block;
     width: 75%;
     height: 25%;
+    max-height: $max-height;
 
     margin: 20px auto;
     padding: 10px;
@@ -104,12 +107,20 @@ export default {
 .project-info {
     @extend %rounded;
 
+    display: flex;
+    flex-direction: row;
     background: $background-secondary;
     border: 2px solid $theme-secondary;
     width: 100%;
     height: min-content;
+    max-height: $max-height - 100px;
+    position: relative;
     
-    > * { margin-left: 10px; display: inline-block; }
+    > * { 
+        margin-left: 10px; 
+        display: inline-block;
+        max-height: inherit;
+    }
 
     .project-description { grid-column: 1; grid-row: 1; }
     .project-collab { grid-column: 1; grid-row: 2; }
@@ -119,7 +130,8 @@ export default {
 .project-text {
     position: relative;
     vertical-align: top;
-    height: 100vh;
+    height: 100%;
+    max-height: inherit;
     font-size: 18px;
 }
 .project-link {
@@ -131,8 +143,6 @@ export default {
 }
 .project-image, .project-text {
     @extend %rounded;
-
     width: 49%;
-    height: 25%;
 }
 </style>

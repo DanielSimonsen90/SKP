@@ -12,17 +12,20 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 import ModifyModal from './ModifyModal.vue';
+import ProjectTable from './ProjectTable.vue';
 
 import { Me, Project } from 'models';
 import { API } from '../../data';
-import ProjectTable from './ProjectTable.vue';
 
-/**@param {'create' | 'update' | 'delete'} type
+/**@param {Vue} component
+ * @param {'create' | 'update' | 'delete'} type
  * @param {Project} project
  * @param {Project} preProject*/
-function crudLog(type, project, preProject) {
-    const message = `Successfully ${type}d ${project.name}${preProject?.name != project.name ? `(${preProject.name})` : ''} (${project._id})`;
+function crudLog(component, type, project, preProject) {
+    const message = `Successfully ${type}d ${project.name}${preProject?.name && preProject.name != project.name ? `(${preProject.name})` : ''} (${project._id})`;
     const crudMap = new Map([
         ['create', 'green'], 
         ['update', 'yellow'], 
@@ -30,6 +33,11 @@ function crudLog(type, project, preProject) {
     ]);
 
     console.log(`%c[Portfolio]: %c${message}`, "color: cornflowerblue", crudMap.get(type));
+
+    if (component.$props.me) API.getProjects().then(projects => {
+        component.$props.me.projects = projects;
+        component.$forceUpdate();
+    });
 }
 
 /**@props { language: Map<string, string> }
@@ -93,10 +101,8 @@ export default {
         /**@param {Project} project*/
         async onProjectCreate(project) {
             await API.createProject(project);
-            crudLog('create', project);
+            crudLog(this, 'create', project);
             this.removeAppListenAndToggle();
-
-            if (this.me) this.me.projects = await API.getProjects();
         },
         onUpdateRequest(project) {
             this.project = project;
@@ -105,18 +111,13 @@ export default {
         async onProjectUpdate(project) {
             console.log({ pre: this.project, current: project });
             await API.updateProject(project);
-            crudLog('update', project, this.project);
+            crudLog(this, 'update', project, this.project);
             this.project = null;
             this.removeAppListenAndToggle();
-
-            if (this.me) this.me.projects = await API.getProjects();
-
         },
         async onProjectDelete(project) {
             await API.deleteProject(project);
-            crudLog('delete', project);
-
-            if (this.me) this.me.projects = await API.getProjects();
+            crudLog(this, 'delete', project);
         },
         onNavigate(link) {
             this.$emit('navigate', link)
