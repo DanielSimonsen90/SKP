@@ -8,7 +8,11 @@
 
 <script>
 export default {
-
+    methods: {
+        onSubmit() {
+            const adminUsername = document.getElementById('admin-username');
+        }
+    }
 }
 </script>
 
