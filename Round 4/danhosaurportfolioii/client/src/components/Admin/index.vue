@@ -1,30 +1,31 @@
 <template>
   <div id="admin">
-      <modify-modal :crud="'create'" :language="language" :me="me" @create="onProjectCreate"/>
-      <modify-modal :crud="'update'" :language="language" :me="me" @update="onProjectUpdate" :project="project"/>
+      <div id="admin-content" v-if="loggedIn">
+        <modify-modal :crud="'create'" :language="language" :projects="projects" @create="onProjectCreate"/>
+        <modify-modal :crud="'update'" :language="language" :projects="projects" @update="onProjectUpdate" :project="project"/>
 
-      <button @click="openModal('project-create')">{{ language.get('create') }} {{ language.get('project') }}</button>
-      <project-table v-if="projects"
-        :projects="projects" :language="language" :me="me" 
-        @navigate="onNavigate" @update="onUpdateRequest" @delete="onProjectDelete"
-      />
+        <button @click="openModal('project-create')">{{ language.get('create') }} {{ language.get('project') }}</button>
+        <project-card-container v-if="projects && projects.length"
+            :projects="projects" :language="language" :languageValue="languageValue"
+            @navigate="onNavigate" @update="onUpdateRequest" @delete="onProjectDelete"
+        />
+      </div>
+      <admin-login v-else @admin-login="onLoggedIn" />
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-
 import ModifyModal from './ModifyModal.vue';
-import ProjectTable from './ProjectTable.vue';
+import ProjectCardContainer from './ProjectCardContainer.vue';
+import AdminLogin from './Login.vue';
 
-import { Me, Project } from 'models';
+import { ProjectCollection, Project } from 'models';
 import { API } from '../../data';
 
-/**@param {Vue} component
- * @param {'create' | 'update' | 'delete'} type
+/**@param {'create' | 'update' | 'delete'} type
  * @param {Project} project
  * @param {Project} preProject*/
-function crudLog(component, type, project, preProject) {
+function crudLog(type, project, preProject) {
     const message = `Successfully ${type}d ${project.name}${preProject?.name && preProject.name != project.name ? `(${preProject.name})` : ''} (${project._id})`;
     const crudMap = new Map([
         ['create', 'green'], 
@@ -33,30 +34,26 @@ function crudLog(component, type, project, preProject) {
     ]);
 
     console.log(`%c[Portfolio]: %c${message}`, "color: cornflowerblue", crudMap.get(type));
-
-    if (component.$props.me) API.getProjects().then(projects => {
-        component.$props.me.projects = projects;
-        component.$forceUpdate();
-    });
 }
 
 /**@props { language: Map<string, string> }
- * @emits navigate(link: string)*/
+ * @emits navigate(link: string)
+ * @emits refresh(refreshComponent: () => void)*/
 export default {
-    components: { ProjectTable, ModifyModal },
+    components: { ProjectCardContainer, ModifyModal, AdminLogin },
     props: {
         language: Map,
-        me: Me
+        projects: ProjectCollection,
+        languageValue: String
     },
     data: () => ({
-        project: null
+        project: null,
+        loggedIn: false
     }),
-    asyncComputed: {
-        async projects() {
-            return this.me?.projects || await API.getProjects();
-        }
-    },
     methods: {
+        onLoggedIn(admin) {
+            this.loggedIn = true;
+        },
         openModal(modalWrapper) {
             const admin = document.getElementById('admin');
             const wrapper = document.getElementById(modalWrapper);
@@ -101,8 +98,9 @@ export default {
         /**@param {Project} project*/
         async onProjectCreate(project) {
             await API.createProject(project);
-            crudLog(this, 'create', project);
+            crudLog('create', project);
             this.removeAppListenAndToggle();
+            this.updateProjects();
         },
         onUpdateRequest(project) {
             this.project = project;
@@ -111,16 +109,21 @@ export default {
         async onProjectUpdate(project) {
             console.log({ pre: this.project, current: project });
             await API.updateProject(project);
-            crudLog(this, 'update', project, this.project);
+            crudLog('update', project, this.project);
             this.project = null;
             this.removeAppListenAndToggle();
+            this.updateProjects();
         },
         async onProjectDelete(project) {
             await API.deleteProject(project);
-            crudLog(this, 'delete', project);
+            crudLog('delete', project);
+            this.updateProjects();
         },
         onNavigate(link) {
             this.$emit('navigate', link)
+        },
+        async updateProjects() {
+            this.$emit('refresh');
         }
     }
 }
@@ -130,8 +133,10 @@ export default {
 #admin {
     position: absolute;
     width: 100%;
+    height: inherit;
+    left: 0;
 
-    & > button {
+    > button {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);

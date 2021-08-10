@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ProjectCollection } from 'models'
+import { ProjectCollection, Project, DanhoDate } from 'models'
 import ProjectTableRow from './ProjectTableRow.vue';
 
 /**@props { language: Map<string, string>, projects: ProjectCollection }
@@ -25,7 +25,20 @@ export default {
     },
     computed: {
         titles() {
-            return Object.keys(this.projects[0]).map(prop => { return this.language.get(prop) });
+            const date = new Date();
+            const dummy = new Project('Dummy', {
+                language: 'Vue.js',
+                projectType: 'Website',
+                createdAt: new DanhoDate(date.getFullYear(), date.getMonth() + 1, date.getDate()),
+                description: "I'm dumb",
+                display: false,
+                image: null,
+                hasLink: false,
+                baseLink: '',
+                spareTime: false,
+                collab: null
+            });
+            return Object.keys({...dummy, _id: -1 }).map(prop => { return this.language.get(prop) });
         }
     },
     methods: {

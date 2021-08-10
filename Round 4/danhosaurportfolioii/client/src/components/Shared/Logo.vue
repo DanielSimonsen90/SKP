@@ -47,6 +47,7 @@ export default {
 #logo-container {
     display: inline-block;
     max-width: fit-content;
+    height: 100%;
 }
 
 #logo {

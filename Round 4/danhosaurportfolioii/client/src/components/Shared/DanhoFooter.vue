@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer">
     <p id="copyright">© {{ new Date().getFullYear() }}</p>
     <p id="point-1">•</p>
     <p id="company-name">{{ me && me.name }}</p>
@@ -61,7 +61,7 @@ export default {
 @import '@/scss/variables';
 @import '@/scss/partials';
 
-footer {
+.footer {
   @extend %non-content;
 
   grid-template-columns: 4% $footer-point-space 10% $footer-point-space 17.5% $footer-point-space 15% $footer-point-space 17.5%;

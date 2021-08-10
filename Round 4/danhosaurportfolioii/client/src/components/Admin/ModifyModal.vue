@@ -25,7 +25,7 @@
                 </label>
                 <label :id="`project-${crud}-createdAt-container`">
                     <p>{{ language.get('createdAt') }}</p>
-                    <input :id="`project-${crud}-createdAt`" type="date" required :value="project ? project.createdAt.toString('-').split('-').reverse().join('-') : currentDate">
+                    <input :id="`project-${crud}-createdAt`" type="date" required :value="project ? project.createdAt.toStringReverse() : currentDate">
                 </label>
             </div>
 
@@ -72,16 +72,15 @@
             </label>
         </fieldset>
 
-        <fieldset :id="`project-${crud}-file-container`" class="project-modify-option">
+        <fieldset :id="`project-${crud}-file-container`" class="project-modify-option image-option">
             <legend>{{ language.get('projectImage') }}</legend>
-            <p :id="`${crud}-file-title`">{{ imageValue }}</p>
+            <div class="project-modify-image-container">
+                <p :id="`${crud}-file-title`">{{ imageValue }}</p>
+                <img :id="`project-${crud}-image`" :src="`data:image/png;base64,${this.imageDisplay}`" :style="`visibility: ${imageValue != language.get('noFile') ? 'visible' : 'hidden'};`"/>
+            </div>
             <button :id="`${crud}-open-file-button`" @click="onOpenFileButtonClick">{{ language.get('uploadFile') }}</button>
             <input type="file" :id="`project-${crud}-file`" accept="image/png, img/jpg, img/jpeg" style="display: none" @change="onOpenFileChange"/>
         </fieldset>
-        
-        <div class="project-modify-image-container">
-            <img :id="`project-${crud}-image`" :src="`data:image/png;base64,${this.imageDisplay}`" :style="`visibility: ${imageValue != language.get('noFile') ? 'visible' : 'hidden'};`"/>
-        </div>
       </fieldset>
 
 
@@ -92,16 +91,16 @@
 
 <script>
 import { languages, API } from '../../data';
-import { Me, Project, DanhoDate } from 'models';
+import { ProjectCollection, Project, DanhoDate } from 'models';
 
-/**@props { language: Map<string, string>, me: Me }
+/**@props { language: Map<string, string>, projects: ProjectCollection }
  * @emits create(project: Project)
  * @emits update(project: Project)*/
 export default {
     name: 'modify-modal',
     props: {
         language: Map,
-        me: Me,
+        projects: ProjectCollection,
         project: Project,
         crud: String /*'create' | 'update'*/
     },
@@ -135,7 +134,7 @@ export default {
                     return resolve(this.project.image);
                 }
 
-                if (!this.get('file') || !this.get('file').files[0]) return null;
+                if (!this.get('file') || !this.get('file').files[0]) resolve(null);
 
                 const reader = new FileReader();
                 reader.readAsArrayBuffer(this.get('file').files[0]);
@@ -146,7 +145,7 @@ export default {
         },
         /**@param {'language' | 'projectType'} type*/
         getProjectFilterOptions(type) {
-            return this.me.projects?.reduce((result, p) => {
+            return this.projects.reduce((result, p) => {
                 if (!result.includes(p[type]))
                     result.push(p[type]);
                 return result;
@@ -208,6 +207,14 @@ export default {
 
             shell._id = this.crud == 'create' ? projects.length : this.project._id;
 
+            if (!shell._id) {
+                alert(`ID is null`);
+                return console.log({
+                    projectsLength: projects.length,
+                    projectId: this.project._id
+                });
+            }
+
             const result = Object.assign(this.project || {}, shell);
             return result;
         },
@@ -239,12 +246,11 @@ export default {
 .modal.project-modify {
     margin: 0 auto;
     z-index: 4;
-    @include height-width(125%, 100%);
+    @include height-width(132%, 100%);
 }
 
 .project-modify {
     display: none;
-
 
     & > * { position: absolute; height: 92.5%; }
     &-required, &-optional { 
@@ -281,7 +287,7 @@ export default {
             height: 62.5%;
 
             input { height: 100%; }
-            textarea { max-height: 100%; height: 80%; }
+            textarea { max-height: 100%; height: 70%; }
             p { text-align: center; }
 
             & > * { position: relative; }
@@ -328,6 +334,10 @@ export default {
             margin-top: 7.5%;
         }
     }
+
+    &.image-option {
+        height: 37.5%;
+    }
 }
 
 .project-modify-github {
@@ -343,8 +353,14 @@ export default {
     }
 }
 
-.project-modify-image-container > img {
-    @include height-width(27.5%, 100%);
+.project-modify-image-container {
+    display: block;
+    height: 85%;
+
+    > img {
+        @include height-width(100%, 100%);
+        max-height: 100px;
+    }
 }
 
 label {

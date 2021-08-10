@@ -70,11 +70,12 @@ export default {
 <style lang="scss">
 @import '@/scss/variables';
 @import '@/scss/partials';
+@import '@/scss/mixins';
 
 #about {
     position: absolute;
-    min-width: 99%;
-    min-height: 72%;
+    @include min-height-width(72%, 99%);
+    height: inherit;
     text-align: left;
     left: 0;
 
@@ -99,7 +100,7 @@ export default {
 
     color: $theme-secondary;
     text-decoration: none;
-    font-size: 55px;
+    font-size: 50px;
     text-align: center;
 
     &:hover {
@@ -110,39 +111,5 @@ export default {
 
 .article-content {
     height: 100%;
-}
-
-fieldset {
-    @extend %hoverable-border;
-    @extend %shadow-me;
-
-    display: inline;
-
-    background-color: $fieldset-background;
-    border-color: $theme-tertiary;
-
-    word-wrap: break-word;
-    margin: 5px;
-
-    
-    &:hover {
-        border-color: $theme-secondary;
-
-        legend {
-            @extend %hoverable-color;
-
-            color: $theme-primary !important;
-        }
-    }
-}
-legend {
-    color: $theme-secondary;
-    font-weight: bold;
-    font-size: 150%;
-
-
-    &:hover {
-        color: $theme-primary;
-    }
 }
 </style>

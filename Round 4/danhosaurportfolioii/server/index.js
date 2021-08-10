@@ -8,6 +8,7 @@ const cors = require('cors');
 app.use(cors());
 app.use('/api/projects', require('./routes/api/projects'));
 app.use('/api/projects/:id', require('./routes/api/projects'));
+app.use('/api/admins', require('./routes/api/admins'));
 // app.use('/postProjects', require('./runProjects'))
 
 require('dotenv').config();

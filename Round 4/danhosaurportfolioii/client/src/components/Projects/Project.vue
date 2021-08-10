@@ -109,6 +109,7 @@ $max-height: 600px;
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     background: $background-secondary;
     border: 2px solid $theme-secondary;
     width: 100%;
@@ -130,16 +131,14 @@ $max-height: 600px;
 .project-text {
     position: relative;
     vertical-align: top;
-    height: 100%;
-    max-height: inherit;
+    height: $max-height;
     font-size: 18px;
 }
 .project-link {
     @extend %click-me;
     position: relative;
-    bottom: 0;
     display: inline-block;
-    vertical-align: bottom;
+    bottom: 0;
 }
 .project-image, .project-text {
     @extend %rounded;

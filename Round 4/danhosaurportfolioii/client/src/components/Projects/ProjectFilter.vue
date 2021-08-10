@@ -2,8 +2,24 @@
   <fieldset id="projects-filter" :style="`visibility: ${visibility};`">
       <legend>{{ language.get('filterTitle') }}</legend>
       <content>
-        <filter-label :type="'projectLanguage'" :inputValue="projectLanguage" :display="language.get('language')" :me="me" @change="onChange"/>
-        <filter-label :type="'projectType'" :inputValue="projectType" :display="language.get('projectType')" :me="me" @change="onChange"/>
+        <filter-label 
+            :type="'projectLanguage'" 
+            :inputValue="projectLanguage" 
+            :display="language.get('language')" 
+            :me="me"
+            :filterFrom="{ projectType }"
+            
+            @change="onChange"
+        />
+        <filter-label 
+            :type="'projectType'" 
+            :inputValue="projectType" 
+            :display="language.get('projectType')" 
+            :me="me" 
+            :filterFrom="{ projectLanguage }"
+            
+            @change="onChange"
+        />
       </content>
   </fieldset>
 </template>
@@ -50,20 +66,29 @@ export default {
     display: flex;
     justify-content: center;
     position: inherit;
-    @include height-width(60%, 50%);
+    @include height-width(80%, 40%);
+    max-height: 50px;
     left: 50%;
     transform: translateX(-50%);
 
     label { display: inline-block; }
     legend { margin: 0 auto; }
-    content { 
-        width: 100%; 
+    content {
+        @include height-width(100%, 100%);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-        label { 
-            width: 50%;
+        label {
+            display: flex;
+            flex-direction: row;
             margin: 0;
+            padding-right: 2%;
 
-            b { margin-left: 0; }
+            b { 
+                display: block;
+                width: max-content;
+            }
         } 
     }
 }

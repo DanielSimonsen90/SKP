@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <logo title="Go home, you're drunk"
       :hovering="logoHover" :width="100" 
       @click="navigateTo('Home')"
@@ -74,12 +74,14 @@ export default {
   @import '@/scss/variables';
   @import '@/scss/partials';
 
-  header {
+  .header {
     @extend %non-content;
 
     grid-template-columns: 5% auto 25%;
     grid-template-rows: 100%;
     align-items: center;
+    height: 9%;
+    max-height: 60px;
 
     &:hover {
       color: lighten($color-hover, 10%);
@@ -103,7 +105,7 @@ export default {
   #header-navigation .link-item {
     @extend %hoverable-background;
 
-    font-size: 25px;
+    font-size: 27.5px;
     padding: $link-item-padding-top-bottom $link-item-margin + 2%;
 
     &:hover { 

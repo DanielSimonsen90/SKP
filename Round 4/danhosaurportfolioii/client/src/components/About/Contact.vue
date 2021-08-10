@@ -29,13 +29,13 @@ export default {
 <style lang="scss">
 @import '@/scss/variables';
 @import '@/scss/partials';
+@import '@/scss/mixins';
 
 #contact {
     display: block;
     position: relative;
     top: -5%;
-    height: max-content;
-    width: 58%;
+    @include height-width(max-content, 58%);
 
     grid-column: 3;
     grid-row: 2;

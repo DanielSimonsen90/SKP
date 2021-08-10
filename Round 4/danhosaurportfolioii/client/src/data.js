@@ -1,4 +1,4 @@
-import { LocationCollection, ScheduleItem, Project, DanhoDate } from 'models'
+import { LocationCollection, ScheduleItem, Project, DanhoDate, ProjectCollection } from 'models'
 
 export const contact = {
     github: "DanielSimonsen90",
@@ -55,18 +55,20 @@ export const notFoundRoutes = makeRoutes(['*'], NotFound);
 export const routes = [homeRoutes, aboutRoutes, projectsRoutes, planRoutes, adminRoutes, imagesRoutes, notFoundRoutes].reduce((result, route) => result.concat(...route));
 
 import axios from 'axios';
-// import { port } from '../../server/index';
 const port = 8081;
 
 export class API {
-    static url = `http://localhost:${port}/api/projects`
+    static apiUrl = `http://localhost:${port}/api`;
+    static get adminUrl() { return `${API.apiUrl}/admins` }
+    static get projectsUrl() { return `${API.apiUrl}/projects` }
+
     /**@param {Project} project*/
     static async createProject(project) {
         const data = {
             ...project,
             _id: (await this.getProjects()).length
         }
-        await axios.post(API.url, { 
+        await axios.post(API.projectsUrl, { 
             postData: JSON.stringify(data)
         });
         const projectObj = await this.getProject(data._id);
@@ -74,7 +76,7 @@ export class API {
     }
     /**@param {number} id @returns {Promise<Project>}*/
     static async getProject(id) {
-        const response = await axios.get(`${API.url}/${id}`);
+        const response = await axios.get(`${API.projectsUrl}/${id}`);
         const projectData = response.data;
         const { year, month, day } = projectData.createdAt;
         let project = new Project(projectData.name, {
@@ -88,7 +90,7 @@ export class API {
     }
     /**@returns {Promise<Project[]>}*/
     static async getProjects() {
-        const response = await axios.get(API.url);
+        const response = await axios.get(API.projectsUrl);
         return response.data.map(item => {
             const { year, month, day } = item.createdAt;
             let result = new Project(item.name, {
@@ -97,17 +99,33 @@ export class API {
                 image: item.image && Buffer.from(item.image)
             });
             result.link = item.link;
+            result._id = item._id;
             return result;
         });
     }
     static updateProject(updated) {
-        return axios.put(`${API.url}/${updated._id}`, updated);
+        return axios.put(`${API.projectsUrl}/${updated._id}`, updated);
     }
     static deleteProject(project) {
-        return axios.delete(`${API.url}/${project._id}`)
+        return axios.delete(`${API.projectsUrl}/${project._id}`)
+    }
+
+    static async createAdmin(admin) {
+        const data = {
+            ...admin,
+            _id: (await this.getAdmins()).length
+        }
+        await axios.post(API.adminUrl, { 
+            postData: JSON.stringify(data)
+        });
+        return data;
+    }
+    static async getAdmins() {
+        const response = await axios.get(API.adminUrl);
+        return response.data;
     }
 }
-export const projects = API.getProjects();
+export const projects = new ProjectCollection(contact.github, locationCollection)
 
 /**@param {Me} me*/
 const getWhoDisContentDansk = (me) => [
