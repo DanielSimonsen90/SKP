@@ -93,8 +93,7 @@ export default {
 
 #app {
   position: fixed;
-  height: 100%;
-  width: 100%;
+  @include height-width(100%, 100%);
 
   > header, > footer { background: $background-secondary; }
   > header { top: 0; position: sticky }
@@ -113,13 +112,12 @@ body {
 }
 
 #main-content {
-  @include max-height-width(75vh, unset);
+  @include max-height-width(83vh, unset);
   @include height-width(100%, 100%);
   display: block;
   top: 15%;
   text-align: center;
   margin: 0 auto;
-  overflow: auto;
   font-size: 18px;
 
   & > * {
@@ -130,6 +128,11 @@ body {
 
 @include scroll-bar();
 @include popup-modal();
+
+content {
+  overflow: auto;
+  display: block;
+}
 
 label {
   width: 100%;
@@ -166,6 +169,7 @@ button, input[type=file] {
 fieldset {
   @extend %hoverable-border;
   @extend %shadow-me;
+  @extend %rounded;
 
   display: inline;
 

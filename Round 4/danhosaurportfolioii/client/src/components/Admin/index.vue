@@ -6,7 +6,7 @@
 
         <button @click="openModal('project-create')">{{ language.get('create') }} {{ language.get('project') }}</button>
         <project-card-container v-if="projects && projects.length"
-            :projects="projects" :language="language" :languageValue="languageValue"
+            :projects="projects" :language="language" :languageValue="languageValue" :displayButtons="true"
             @navigate="onNavigate" @update="onUpdateRequest" @delete="onProjectDelete"
         />
       </div>
@@ -55,7 +55,7 @@ export default {
             this.loggedIn = true;
         },
         openModal(modalWrapper) {
-            const admin = document.getElementById('admin');
+            const admin = document.getElementById('admin-content');
             const wrapper = document.getElementById(modalWrapper);
             const wrapperContent = document.getElementById(`${modalWrapper}-content`);
 
@@ -136,7 +136,11 @@ export default {
     height: inherit;
     left: 0;
 
-    > button {
+    button {
+        min-height: 35px;
+    }
+
+    #admin-content > button {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -145,5 +149,9 @@ export default {
             width: auto;
         }
     }
+}
+
+#admin-content.modal {
+    height: 200%;
 }
 </style>

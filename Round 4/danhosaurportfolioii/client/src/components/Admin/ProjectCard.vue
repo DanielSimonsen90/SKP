@@ -25,7 +25,7 @@
         <img v-if="project.image" class="project-image" @click="onImageClicked" :src="`data:image/png;base64,${project.image}`">
         <p v-else>{{ language.get('noImage') }} <br /> <b>{{ project.name }}</b>.</p>
       </div>
-      <footer>
+      <footer v-if="displayButtons">
           <button type="update" @click="onUpdateClicked">{{ language.get('update') }}</button>
           <button type="delete" @click="onDeleteClicked">{{ language.get('delete') }}</button>
       </footer>
@@ -44,7 +44,8 @@ export default {
     props: {
         project: Project,
         language: Map,
-        languageValue: String
+        languageValue: String,
+        displayButtons: Boolean
     },
     data: (_this) => {
         const { display, spareTime } = _this.project;

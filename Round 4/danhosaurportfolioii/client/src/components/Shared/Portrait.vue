@@ -28,7 +28,7 @@ export default {
     position: absolute;
 
     width: 80%;
-    border-radius: 100%;
+    border-radius: 50%;
 
     background: darken($color-hoverable, 27%);
     border-color: darken($theme-primary, $theme-difference * 1.5);

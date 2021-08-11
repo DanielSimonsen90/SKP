@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { Me, Item } from 'models';
+import { Me, Item, ProjectCollection } from 'models';
 import { locationCollection } from '../../data';
 
 import WhoDis from './Who.vue'
@@ -26,7 +26,10 @@ export default {
     components: { WhoDis, Portrait, Sparetime, Contact },
     props: {
         me: Me,
-        language: Map
+        language: Map,
+
+        projects: ProjectCollection,
+        languageValue: String
     },
     computed: {
         whoDis(_this) {

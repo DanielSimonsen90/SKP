@@ -133,6 +133,7 @@ $max-height: 600px;
     vertical-align: top;
     height: $max-height;
     font-size: 18px;
+    overflow: auto;
 }
 .project-link {
     @extend %click-me;

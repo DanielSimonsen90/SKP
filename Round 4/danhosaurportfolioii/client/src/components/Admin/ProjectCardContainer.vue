@@ -1,7 +1,7 @@
 <template>
   <div id="project-card-container">
     <project-card v-for="(project, i) in projects.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())" :key="i"
-        :language="language" :languageValue="languageValue" :project="project"
+        :language="language" :languageValue="languageValue" :project="project" :displayButtons="displayButtons"
         @navigate="onNavigate" @update="onUpdateRequest" @delete="onDelete"
   />
 </div>
@@ -23,7 +23,8 @@ export default {
     props: {
         projects: ProjectCollection,
         language: Map,
-        languageValue: String
+        languageValue: String,
+        displayButtons: Boolean
     },
     methods: {
         onNavigate(link) {

@@ -71,12 +71,17 @@
     @extend %hoverable-background;
     @extend %hoverable-border;
     @extend %shadow-me;
+    @extend %rounded;
 
-    display: grid;
+    display: flex;
+    flex-direction: row;
     width: 98.8%;
-    align-items: center;
     margin: .5%;
     
+    > * {
+        height: 100%;
+    }
+
     &:hover {
         background-image: unset;
     }

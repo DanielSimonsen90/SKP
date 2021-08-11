@@ -47,7 +47,5 @@ export default {
 </script>
 
 <style lang="scss">
-.project-filter-input {
-    height: 16px;
-}
+
 </style>

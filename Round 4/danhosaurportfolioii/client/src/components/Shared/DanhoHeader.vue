@@ -76,10 +76,9 @@ export default {
 
   .header {
     @extend %non-content;
-
-    grid-template-columns: 5% auto 25%;
-    grid-template-rows: 100%;
+    justify-content: space-between;
     align-items: center;
+
     height: 9%;
     max-height: 60px;
 
@@ -88,29 +87,28 @@ export default {
 
       #logo-container #logo { opacity: 0.6; }
     }
-    
-    nav { grid-column: 3; }
 
-    #logo-container { 
-      grid-column: 1;
+    #logo-container #logo {
+      opacity: 0.2;
 
-      #logo {
-        opacity: 0.2;
-
-        &:hover { opacity: 1; }
-      }
+      &:hover { opacity: 1; }
     }
   }
   
-  #header-navigation .link-item {
-    @extend %hoverable-background;
+  #header-navigation {
+    width: 25%;
+    height: 90%;
 
-    font-size: 27.5px;
-    padding: $link-item-padding-top-bottom $link-item-margin + 2%;
+    .link-item {
+      @extend %hoverable-background;
 
-    &:hover { 
-      background-color: lighten($background-hover, 3%);
-      padding: $link-item-padding-top-bottom + 1% $link-item-margin + 2%;
+      font-size: 27.5px;
+      padding: $link-item-padding-top-bottom $link-item-margin + 2%;
+
+      &:hover { 
+        background-color: lighten($background-hover, 3%);
+        padding: $link-item-padding-top-bottom + 1% $link-item-margin + 2%;
+      }
     }
   }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <fieldset id="admin-login">
       <legend>Admin Login</legend>
-      <input id="admin-username" type="text">
-      <button id="login-button" @click="onSubmit">Login</button>
+      <input id="admin-username" type="text" @keypress="onTextChanged">
+      <button id="login-button" @click="onSubmit" disabled>Login</button>
   </fieldset>
 </template>
 
@@ -39,6 +39,12 @@ export default {
             }
 
             this.$emit('admin-login', admin);
+        },
+        onTextChanged({ target }) {
+            const loginButton = document.getElementById('login-button');
+            if (loginButton.disabled && target.value || !loginButton.disabled && !target.value) {
+                loginButton.toggleAttribute('disabled')
+            }
         }
     }
 }
@@ -46,13 +52,13 @@ export default {
 
 <style lang="scss">
 @import '@/scss/mixins';
+@import '@/scss/variables';
 
 #admin-login {
     position: fixed;
-    top: 45%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    @include height-width(25%, 25%);
+    @include tblr(45%, unset, 50%, unset);
+    @include height-width(19%, 25%);
 
     display: flex;
     flex-direction: column;
@@ -64,10 +70,23 @@ export default {
     }
 
     button {
-        position: absolute;
-        @include tblr(unset, 5%, 5%, 0);
+        position: relative;
+        @include tblr(unset, -25%, 5%, 0);
         margin: 1%;
         width: 90%;
+
+        &[disabled=disabled] {
+            background-color: lighten($background-secondary, $theme-difference / 1);
+
+            &:hover {
+                background-color: unset;
+            }
+        }
     }
+}
+
+#admin-username {
+    position: relative;
+    top: 5%;
 }
 </style>

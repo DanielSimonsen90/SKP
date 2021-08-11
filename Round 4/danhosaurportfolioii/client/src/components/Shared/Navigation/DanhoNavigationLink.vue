@@ -35,6 +35,8 @@ export default {
     display: inline-block;
     margin-left: $link-item-margin;
     margin-right: $link-item-margin;
+    min-height: 25px;
+    min-width: 50px;
 
     &:hover {
       text-decoration: underline;

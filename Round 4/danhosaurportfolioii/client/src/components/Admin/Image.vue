@@ -1,5 +1,5 @@
 <template>
-  <img :src="`data:image/png;base64,${project.image}`" class="project-image" v-if="project">
+  <img :src="`data:image/png;base64,${project.image}`" id="display-image" class="project-image" v-if="project">
 </template>
 
 <script>
@@ -21,6 +21,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/scss/mixins';
 
+#display-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include height-width(75%, 75%);
+    @include max-height-width(inherit, inherit);
+}
 </style>

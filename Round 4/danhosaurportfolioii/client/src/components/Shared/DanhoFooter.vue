@@ -1,27 +1,29 @@
 <template>
   <footer class="footer">
-    <p id="copyright">© {{ new Date().getFullYear() }}</p>
-    <p id="point-1">•</p>
-    <p id="company-name">{{ me && me.name }}</p>
-    <p id="point-2">•</p>
-    <danho-navigation id="footer-navigation"
-      :links="links"
-      @navigate="onNavigate"
-    />
-    <p id="point-3">•</p>
-    <danho-socials id="footer-socials"
-      :me="me" :language="language"
-    />
-    <p id="point-4">•</p>
-    <language-selector 
-      :language="language" :languageValue="languageValue" 
-      @change="onLanguageChanged" 
-    />
+    <content>
+      <p id="copyright">© {{ new Date().getFullYear() }}</p>
+      <p id="point-1">•</p>
+      <p id="company-name">{{ me && me.name }}</p>
+      <p id="point-2">•</p>
+      <danho-navigation id="footer-navigation"
+        :links="links"
+        @navigate="onNavigate"
+      />
+      <p id="point-3">•</p>
+      <danho-socials id="footer-socials"
+        :me="me" :language="language"
+      />
+      <p id="point-4">•</p>
+      <language-selector 
+        :language="language" :languageValue="languageValue" 
+        @change="onLanguageChanged" 
+      />
+    </content>
   </footer>
 </template>
 
 <script>
-import { Me } from 'models';
+import { Me, ProjectCollection } from 'models';
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
 import DanhoSocials from './Navigation/DanhoSocials.vue';
 import LanguageSelector from './LanguageSelector.vue';
@@ -63,26 +65,41 @@ export default {
 
 .footer {
   @extend %non-content;
-
-  grid-template-columns: 4% $footer-point-space 10% $footer-point-space 17.5% $footer-point-space 15% $footer-point-space 17.5%;
-  
-  //vertical horizontal
-  padding: 1% 0;
+  max-height: 25px;
+  min-width: 500px;
   justify-content: center; 
   justify-items: center;
+  font-size: 90%;
 
+  //vertical horizontal
+  padding: 1% 0;
 
-  & > * {
-    @include margin-block(0, 0);  
+  content {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-inline-start: 0;
-  }
+    flex-direction: row;
+    justify-content: center; 
+    justify-items: center;
+    width: 80%;
 
-  .link-item {
-    box-shadow: unset;
-    margin: 0 10px;
+    > * {
+      @include margin-block(0, 0);
+      @include height-width(100%, 100%); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-inline-start: 0;
+    }
+  
+    .link-item {
+      box-shadow: unset;
+      margin: 0 10px;
+      min-height: unset;
+    }
+    }
+
+  #company-name {
+    overflow: auto;
+    width: 133%;
   }
 }
 </style>

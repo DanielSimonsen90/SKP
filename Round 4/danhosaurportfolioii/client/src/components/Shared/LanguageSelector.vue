@@ -32,6 +32,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+#language-selector input {
+    font-size: inherit;
+    height: 10px;
+}
 </style>

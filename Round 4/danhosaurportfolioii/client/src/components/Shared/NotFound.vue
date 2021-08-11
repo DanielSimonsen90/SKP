@@ -27,6 +27,8 @@ export default {
 
 .error {
   @extend %clickable;
+  @extend %rounded;
+  @extend %shadow-me;
 
   position: absolute;
   background: rgb(77, 21, 32);
@@ -34,8 +36,9 @@ export default {
   border: 2px solid rgb(143, 29, 50);
   width: fit-content;
   min-height: max-content !important;
-  top: 33%;
-  left: 33%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 2%;
 
   &:hover h1 {
