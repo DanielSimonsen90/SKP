@@ -58,7 +58,7 @@ export default {
     position: fixed;
     transform: translate(-50%, -50%);
     @include tblr(45%, unset, 50%, unset);
-    @include height-width(19%, 25%);
+    @include height-width(23%, 25%);
 
     display: flex;
     flex-direction: column;

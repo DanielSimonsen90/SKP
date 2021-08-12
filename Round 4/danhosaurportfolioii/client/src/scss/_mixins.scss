@@ -41,7 +41,7 @@
 @mixin scroll-bar() {
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track {
-        @extend %hoverable;
+        @extend %hoverable-background;
         background: lighten($background, $theme-difference / 2);
       
         &:hover { 
@@ -49,7 +49,7 @@
         }
     }
     ::-webkit-scrollbar-thumb {
-        @extend %hoverable;
+        @extend %hoverable-background;
         background: lighten($background-secondary, $theme-difference * 2);
       
         &:hover { background: $theme-secondary; }
@@ -60,15 +60,16 @@
         @include tBlR(0, auto);
         @include height-width(99%, 99%);
 
-        position: absolute;
+        position: fixed;
         left: 0;
         z-index: 2;
         background-color: rgba(0, 0, 0, 0.5);
     }
 
     .modal-content {
-        @include tblr(0, 0, 25%, auto);
         position: relative;
+        margin: 0 auto;
+        top: 2.5%;
         z-index: 3;
         opacity: 0;
         visibility: hidden;

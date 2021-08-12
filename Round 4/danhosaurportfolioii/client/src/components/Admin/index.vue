@@ -19,7 +19,7 @@ import ModifyModal from './ModifyModal.vue';
 import ProjectCardContainer from './ProjectCardContainer.vue';
 import AdminLogin from './Login.vue';
 
-import { ProjectCollection, Project } from 'models';
+import { ProjectCollection, Project, Me } from 'models';
 import { API } from '../../data';
 
 /**@param {'create' | 'update' | 'delete'} type
@@ -44,7 +44,9 @@ export default {
     props: {
         language: Map,
         projects: ProjectCollection,
-        languageValue: String
+        languageValue: String,
+        
+        me: Me
     },
     data: () => ({
         project: null,

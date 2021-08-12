@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { Me, ProjectCollection } from 'models';
+import { Me } from 'models';
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
 import DanhoSocials from './Navigation/DanhoSocials.vue';
 import LanguageSelector from './LanguageSelector.vue';
@@ -99,7 +99,7 @@ export default {
 
   #company-name {
     overflow: auto;
-    width: 133%;
+    width: 200%;
   }
 }
 </style>

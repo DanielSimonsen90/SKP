@@ -7,25 +7,18 @@
 
     color: $color-click-me;
     text-decoration: underline;
+    transition: font-weight $transition-hover;
 
     &:hover {
         font-weight: bold;
     }
 }
 
-%hoverable {
-    @import '@/scss/variables';
-    transition: $transition-hover;
-
-    &:hover {
-        transition: $transition-hover;
-    }
-}
 %hoverable-color {
     @import '@/scss/variables';
-    @extend %hoverable;
 
     color: $color-hoverable;
+    transition: color $color-hoverable;
 
     &:hover {
         color: $color-hover;
@@ -33,9 +26,9 @@
 }
 %hoverable-background {
     @import '@/scss/variables';
-    @extend %hoverable;
 
     background-color: $background-hoverable;
+    transition: color $transition-hover;
     transition-timing-function: ease-in-out;
 
     &:hover {
@@ -44,9 +37,9 @@
 }
 %hoverable-border {
     @import '@/scss/variables';
-    @extend %hoverable;
 
     border: $non-content-border;
+    transition: border-color $transition-hover;
 
     &:hover {
         border: $non-content-border-hover;
@@ -57,8 +50,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 %rounded {
-    $radius: .75rem;
-
+    @import '@/scss/variables';
     border-radius: $radius;
 
     &::-webkit-scrollbar { border-radius: $radius; }

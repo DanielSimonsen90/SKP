@@ -36,7 +36,7 @@
                         <textarea :id="`project-${crud}-description-${lang}`" :name="lang" 
                             cols="30" rows="10" 
                             :placeholder="languages.get(lang).get('languagePlaceholder')" 
-                            :value="project ? project.description[lang] : ''"
+                            :value="project ? project.description[lang].join('\n') : ''"
                         >
                         </textarea>
                     </label>
@@ -248,10 +248,6 @@ export default {
     margin: 0 auto;
     z-index: 4;
     @include height-width(100%, 100%);
-
-    > fieldset {
-        height: 50%;
-    }
 }
 
 .project-modify {
@@ -262,7 +258,8 @@ export default {
     &-options {
         display: flex;
         flex-direction: row;
-        min-height: 87.5%;
+        height: 100%;
+        max-height: 87.5%;
         position: relative;
         top: 25px;
     }
@@ -277,26 +274,22 @@ export default {
         display: flex;
         flex-direction: column;
 
-        @include max-height-width(100%, 50%);
+        @include max-height-width(100%, 60%);
 
-        legend {
-            width: max-content;
-        }
+        legend { width: max-content; }
     }
 
     &-required {
         width: 250%;
 
         & > * { position: relative; }
-        &-1 input { font-size: 24px; }
-        &-2 {
-            input { height: 20px; }
-        }
+        &-1 input { font-size: 24px; width: auto; }
+        &-2 input { height: 20px; }
         &-3 { 
             height: 55%;
 
-            input { height: 35; }
-            textarea { height: inherit; }
+            input { height: 35px; }
+            textarea { height: 85%; }
             p { text-align: center; }
 
             & > * { position: relative; }
@@ -327,17 +320,13 @@ export default {
     & > * { display: inherit; }
 }
 
-.project-modify-option {
-    margin: 4%;
-    
-    label  {
-        input[type=text] {
-            width: 90%;
-            text-align: center;
-        }
-        input[type=checkbox] {
-            margin-top: 7.5%;
-        }
+.project-modify-option label  {
+    input[type=text] {
+        width: 90%;
+        text-align: center;
+    }
+    input[type=checkbox] {
+        margin-top: 7.5%;
     }
 }
 

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { Me } from 'models';
+import { Me, ProjectCollection } from 'models';
 import { API } from '../../data';
 import Projects from './Projects.vue';
 
@@ -21,6 +21,7 @@ export default {
         languageValue: String,
         projectLanguage: String,
         projectType: String,
+        projects: ProjectCollection
     },
     created() {
         this.loadingProjects = this.language.get('loadingProjects');
@@ -56,7 +57,6 @@ export default {
         }
     },
     data: () => ({
-        projects: [],
         loadingProjects: null,
         interval: null
     }),

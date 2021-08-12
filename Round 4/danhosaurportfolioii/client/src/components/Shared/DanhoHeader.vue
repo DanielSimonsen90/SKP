@@ -47,8 +47,6 @@ export default {
   data: () => ({ logoHover: false }),
   computed: {
     filterVisibility() {
-      console.log(this.$route);
-
       return projectsRoutes.reduce((result, { path }) => {
         result.push(path.toLowerCase(), `${path.toLowerCase()}/`);
         return result;
@@ -96,7 +94,7 @@ export default {
   }
   
   #header-navigation {
-    width: 25%;
+    width: 27.5%;
     height: 90%;
 
     .link-item {
@@ -107,7 +105,6 @@ export default {
 
       &:hover { 
         background-color: lighten($background-hover, 3%);
-        padding: $link-item-padding-top-bottom + 1% $link-item-margin + 2%;
       }
     }
   }

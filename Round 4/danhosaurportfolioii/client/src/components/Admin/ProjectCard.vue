@@ -3,11 +3,13 @@
       <header>
           <div class="basic-info">
             <h1 class="project-name" :title="project.name">{{ project.name }}</h1>
-            <h5>{{ project.language }} • {{ project.projectType }}</h5>
-            <h5 class="project-createdAt">{{ project.createdAt.toString() }}</h5>
+            <div class="project-language-createdAt">
+                <h5>{{ project.language }} • {{ project.projectType }}</h5>
+                <h5 class="project-createdAt">{{ project.createdAt.toString() }}</h5>
+            </div>
           </div>
           <div class="checkboxes">
-              <p class="project-id">{{ project._id }}</p>
+              <p class="project-id">{{ displayButtons ? project._id : project.index + 1 }}</p>
               <label v-for="([title, value], i) in labelData" :key="i">
                   <p :value="value" :index="i">{{ title }}</p>
                   <input type="checkbox" :checked="value" disabled>
@@ -18,8 +20,8 @@
           <div class="description-container project-description" v-for="(sentence, i) in project.description[languageValue]" :key="i">
             <p>{{ sentence }}</p>
           </div>
-          <a v-if="project.link" class="project-link" target="_blank" :href="project.link">{{ language.get('project') }} Link</a>
           <p v-if="project.collab != null"><b>Collab with:</b> {{ project.collab.github }}</p>
+          <a v-if="project.link" class="project-link" target="_blank" :href="project.link">{{ language.get('project') }} Link</a>
       </content>
       <div id="project-image-container">
         <img v-if="project.image" class="project-image" @click="onImageClicked" :src="`data:image/png;base64,${project.image}`">
@@ -52,7 +54,7 @@ export default {
         const labelData = [
             [display ? _this.language.get('showing') : _this.language.get('hiding'), display],
             [_this.language.get('spareTime'), spareTime]
-        ];
+        ].filter(([title], i) => _this.displayButtons || i != 0)
 
         return {
             labelData
@@ -104,7 +106,11 @@ export default {
     header {
         display: flex;
         flex-direction: row;
-        height: 15%;
+        align-items: center;
+        justify-content: space-evenly;
+        position: relative;
+        width: 110%;
+        left: -6%;
     }
     content {
         @extend %hoverable-border;
@@ -126,9 +132,17 @@ export default {
             border-color: darken($background, $theme-difference / 4);
         }
 
+
         p {
             @include margin-block(1%, 1%);
         }
+
+        .project-link {
+            margin-top: 2%;
+            position: relative;
+            text-align: left;
+        }
+
         .description-container.project-description {
             margin-bottom: 5%;
         }
@@ -154,6 +168,11 @@ export default {
             top: 20%;
             height: 50%;
         }
+
+        &:not(footer) {
+            height: 50%;
+            max-height: 50%; 
+        }  
     }
     footer {
         display: flex;
@@ -177,12 +196,11 @@ export default {
 
 .basic-info {
     text-align: left;
-    width: 70%;
+    min-width: 215px;
+    max-width: 215px;
     padding: 1%;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 50% 50%;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
 
     h1, h5 {
         @include margin-block(0, 0);
@@ -190,41 +208,42 @@ export default {
 
     h1 {
         font-size: 24px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        word-wrap: initial;
+        word-break: break-all;
+        overflow: hidden auto;
         margin-bottom: 3%;
+        max-height: 32px;
         width: 100%;
-        height: 32px;
-        
-        grid-row: 1;
-        grid-column: 1 / 3;
     }
     h5 {
         display: inline-block;
-        height: 50%;
+        height: 20px;
         position: relative;
-        top: 0;
-
-        grid-row: 2;
-        grid-column: 1;
+        width: fit-content;
 
         &.project-createdAt {
-            grid-column: 2;
             float: right;
+            margin-left: 2%;
         }
+    }
+
+    .project-language-createdAt {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
     }
 }
 .checkboxes {
     position: relative;
-    top: -25%;
-    right: -7.5%;
-    width: 35%;
+    width: 52%;
+    top: -10%;
     text-align: right;
-    float: right;
 
     label {
-        display: inline;
-        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
 
         p[index="0"] {
             color: rgb(255, 91, 91);
@@ -232,6 +251,10 @@ export default {
             &[value=true] {
                 color: rgb(159, 255, 159);
             }
+        }
+        input {
+            margin-right: 0;
+            margin-bottom: 0;
         }
     }
     .project-id {

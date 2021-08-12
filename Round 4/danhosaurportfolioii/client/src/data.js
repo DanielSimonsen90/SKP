@@ -59,6 +59,7 @@ const port = 8081;
 
 export class API {
     static apiUrl = `http://localhost:${port}/api`;
+    // static apiUrl = `https://danhosaurportfolio-api.azure-api.net/api;`
     static get adminUrl() { return `${API.apiUrl}/admins` }
     static get projectsUrl() { return `${API.apiUrl}/projects` }
 
@@ -189,6 +190,7 @@ const Dansk = new DanhoMap([
     ['links', ['Hjem', 'Om', 'Projekter', 'Plan']],
     ['linkTexts', ['Se', 'på Github']],
     ['loadingProjects', 'Indlæser projekter.'],
+    ['myLast', 'Mine seneste'],
     ['name', 'Navn'],
     ['noFile', 'Intet billede valgt'],
     ['noImage', 'Der er intet billede til'],
@@ -233,6 +235,7 @@ const English = new DanhoMap([
     ['linkTexts', ['See', 'on Github']],
     ['loadingProjects', 'Loading projects.'],
     ['languagePlaceholder', 'This is a nice description for my new project.'],
+    ['myLast', 'My last'],
     ['noFile', 'No image selected.'],
     ['noImage', 'There is no image for'],
     ['noProjects', 'There were no projecs for the criteria.'],

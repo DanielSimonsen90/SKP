@@ -8,10 +8,10 @@
               <br v-else />
             </div>
             <p class="project-collab" v-if="project.collab != null && project.collab != undefined">{{ collabText }} {{ project.collab.github }}</p>
-            <p class="project-link" v-if="project.link && project.link != 'No link'">{{ linkTexts[0] }} {{ project.name }} {{ linkTexts[1] }}</p>
+            <p class="project-link" v-if="project.link && project.link != 'No link'">{{ linkTexts[0] }} <b>{{ project.name }}</b> {{ linkTexts[1] }}</p>
           </div>
           <img class="project-image" :src="`data:image/png;base64,${project.image}`" v-if="fileExists" />
-          <p v-else>{{ language.get('noImage') }} {{ project.name }}.</p>
+          <p v-else>{{ language.get('noImage') }}<br /><b>{{ project.name }}</b>.</p>
       </div>
   </div>
 </template>
@@ -80,9 +80,12 @@ $max-height: 600px;
 .project {
     @extend %shadow-me;
     @extend %clickable;
-    @extend %hoverable;
     @extend %rounded;
 
+    transition: 
+        background-color $transition-hover, 
+        color $transition-hover,
+        border-color $transition-hover;
     display: block;
     width: 75%;
     height: 25%;
@@ -123,10 +126,10 @@ $max-height: 600px;
         max-height: inherit;
     }
 
-    .project-description { grid-column: 1; grid-row: 1; }
-    .project-collab { grid-column: 1; grid-row: 2; }
-    .project-link { grid-column: 1; grid-row: 3; }
-    .project-image { grid-column: 2; grid-row: 1 / 3; }
+    .project-text + p {
+        width: 49%;
+        text-align: center;
+    }
 }
 .project-text {
     position: relative;
@@ -137,9 +140,19 @@ $max-height: 600px;
 }
 .project-link {
     @extend %click-me;
-    position: relative;
+    transition: font-weight $transition-hover;
+    position: absolute;
     display: inline-block;
     bottom: 0;
+    text-align: center;
+    width: 100%;
+
+    b {
+        transition: font-size $transition-hover;
+    }
+    &:hover b {
+        font-size: 22px;
+    }
 }
 .project-image, .project-text {
     @extend %rounded;

@@ -77,10 +77,9 @@ export default {
       const projects = await API.getProjects();
       const me = new Me(locationCollection, contact, new ProjectCollection(
         contact.github, locationCollection
-      ).append(...projects));
+      ).append(...projects).sort((a, b) => a._id - b._id));
 
       Vue.set(this, 'me', me);
-      console.log('Refreshed');
     }
   }
 }
@@ -112,7 +111,7 @@ body {
 }
 
 #main-content {
-  @include max-height-width(83vh, unset);
+  @include max-height-width(79vh, unset);
   @include height-width(100%, 100%);
   display: block;
   top: 15%;
@@ -147,6 +146,7 @@ input, textarea {
   color: darken($color, $theme-difference);
   resize: none;
   padding: 2px;
+  border-radius: $radius / 1.5;
   
   &:hover, &:focus {
     background-color: lighten($background-secondary, $theme-difference * 1.1);
@@ -162,6 +162,7 @@ button, input[type=file] {
     @extend %shadow-me;
     @extend %clickable;
 
+    border-radius: $radius / 1.5;
     background: $background-secondary;
     margin: 1%;
 }
