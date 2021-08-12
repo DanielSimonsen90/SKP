@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { Me } from 'models';
+import { Me } from 'danhosaurportfolio-models';
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
 import DanhoSocials from './Navigation/DanhoSocials.vue';
 import LanguageSelector from './LanguageSelector.vue';

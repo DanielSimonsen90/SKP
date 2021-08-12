@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { Me, Item, ProjectCollection } from 'models';
+import { Me, Item, ProjectCollection } from 'danhosaurportfolio-models';
 import { locationCollection } from '../../data';
 
 import WhoDis from './Who.vue'

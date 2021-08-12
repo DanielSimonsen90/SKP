@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ProjectCollection } from 'models';
+import { ProjectCollection } from 'danhosaurportfolio-models';
 import ProjectCard from './ProjectCard.vue'
 
 /**

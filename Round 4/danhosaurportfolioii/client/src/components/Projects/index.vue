@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { Me, ProjectCollection } from 'models';
+import { Me, ProjectCollection } from 'danhosaurportfolio-models';
 import { API } from '../../data';
 import Projects from './Projects.vue';
 

@@ -26,7 +26,7 @@
 
 <script>
 import FilterLabel from './FilterLabel.vue';
-import { Me } from 'models';
+import { Me } from 'danhosaurportfolio-models';
 
 /**@props { title: string, visibility: string, language: string, projectType: string, me: Me }
  * @emits project-filter-change(type, value)*/

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { Project } from 'models';
+import { Project } from 'danhosaurportfolio-models';
 
 /**@props { project: Proejct, language: Map<string, string>, languageValue: string }
  * @emits navigate(link: string)

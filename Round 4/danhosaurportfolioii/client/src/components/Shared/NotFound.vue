@@ -6,13 +6,16 @@
 </template>
 
 <script>
-import { Me } from 'models'
+import { Me, ProjectCollection } from 'danhosaurportfolio-models'
 
 /**@props: { me: Me }
  * @emits navigate('Home')*/
 export default {
   props: {
-    me: Me
+    me: Me,
+    language: Map,
+    languageValue: String,
+    projcets: ProjectCollection
   },
   methods: {
     onClick() {

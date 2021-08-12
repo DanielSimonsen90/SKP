@@ -92,7 +92,7 @@
 
 <script>
 import { languages, API } from '../../data';
-import { ProjectCollection, Project, DanhoDate } from 'models';
+import { ProjectCollection, Project, DanhoDate } from 'danhosaurportfolio-models';
 
 /**@props { language: Map<string, string>, projects: ProjectCollection }
  * @emits create(project: Project)

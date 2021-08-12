@@ -32,7 +32,7 @@ import DanhoHeader from './components/Shared/DanhoHeader.vue';
 import DanhoFooter from './components/Shared/DanhoFooter.vue';
 
 import Vue from 'vue';
-import { Me, ProjectCollection } from 'models';
+import { Me, ProjectCollection } from 'danhosaurportfolio-models';
 import { contact, locationCollection, API, languages, projects } from './data';
 
 export default {

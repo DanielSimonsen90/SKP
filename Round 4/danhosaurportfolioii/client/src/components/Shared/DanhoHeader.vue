@@ -24,7 +24,7 @@ import Logo from './Logo.vue'
 import DanhoNavigation from './Navigation/DanhoNavigation.vue';
 import ProjectFilter from '../Projects/ProjectFilter.vue';
 
-import { Me } from 'models'
+import { Me } from 'danhosaurportfolio-models'
 
 import { projectsRoutes } from '../../data';
 

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Project } from 'models';
+import { Project } from 'danhosaurportfolio-models';
 
 /**@props { project: Project, collabText: string, linkTexts: Array<string>, language: Map<string, string> }
  * @emits navigate(link: string)*/

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { Me, ProjectCollection } from 'models';
+import { Me, ProjectCollection } from 'danhosaurportfolio-models';
 import WhoDis from '../About/Who.vue';
 import ProjectCardContainer from '../Admin/ProjectCardContainer.vue';
 import Portrait from '../Shared/Portrait.vue';

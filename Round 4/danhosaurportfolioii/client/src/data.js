@@ -1,4 +1,4 @@
-import { LocationCollection, ScheduleItem, Project, DanhoDate, ProjectCollection } from 'models'
+import { LocationCollection, ScheduleItem, Project, DanhoDate, ProjectCollection } from 'danhosaurportfolio-models'
 
 export const contact = {
     github: "DanielSimonsen90",
@@ -58,8 +58,8 @@ import axios from 'axios';
 const port = 8081;
 
 export class API {
-    static apiUrl = `http://localhost:${port}/api`;
-    // static apiUrl = `https://danhosaurportfolio-api.azure-api.net/api;`
+    // static apiUrl = `http://localhost:${port}/api`;
+    static apiUrl = `https://happy-benz-4ed3b9.netlify.app/api;`
     static get adminUrl() { return `${API.apiUrl}/admins` }
     static get projectsUrl() { return `${API.apiUrl}/projects` }
 

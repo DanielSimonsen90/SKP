@@ -19,7 +19,7 @@ import ModifyModal from './ModifyModal.vue';
 import ProjectCardContainer from './ProjectCardContainer.vue';
 import AdminLogin from './Login.vue';
 
-import { ProjectCollection, Project, Me } from 'models';
+import { ProjectCollection, Project, Me } from 'danhosaurportfolio-models';
 import { API } from '../../data';
 
 /**@param {'create' | 'update' | 'delete'} type

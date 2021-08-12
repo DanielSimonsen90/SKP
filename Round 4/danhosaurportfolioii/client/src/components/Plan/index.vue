@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { Me } from 'models';
+import { Me } from 'danhosaurportfolio-models';
 import { locationCollection } from '../../data';
 
 export default {

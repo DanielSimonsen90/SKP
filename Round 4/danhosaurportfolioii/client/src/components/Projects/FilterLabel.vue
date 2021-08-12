@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { Me } from 'models';
+import { Me } from 'danhosaurportfolio-models';
 
 /**@props: { display: String, type: 'projectLanguage' | 'projectType', all: String, me: Me }
  * @emits change(type: 'language' | 'projectType', value: String)*/
