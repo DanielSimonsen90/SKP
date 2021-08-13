@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import LoginConainer from './LoginContainer'
+import LoginProvider from 'providers/LoginProvider'
+import { useUserUpdate } from 'providers/UserProvider'
 
-export default class Login extends Component {
-    render() {
-        return (
-            <div id="login-page">
-                <h1>Log into {this.props.appName}.</h1>
-                <LoginConainer loggedIn={this.props.loggedIn} />
-            </div>
-        )
-    }
+export default function Login({ appName }) {
+    const setUser = useUserUpdate();
+
+    return (
+        <div id="login-page">
+            <h1>Log into {appName}.</h1>
+            <LoginProvider>
+                <LoginConainer loggedIn={setUser} />
+            </LoginProvider>
+        </div>
+    )
 }
