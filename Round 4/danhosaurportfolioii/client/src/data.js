@@ -58,8 +58,8 @@ import axios from 'axios';
 const port = 8081;
 
 export class API {
-    // static apiUrl = `http://localhost:${port}/api`;
-    static apiUrl = `https://happy-benz-4ed3b9.netlify.app/api;`
+    static apiUrl = `http://localhost:${port}/api`;
+    // static apiUrl = `https://happy-benz-4ed3b9.netlify.app/api;`
     static get adminUrl() { return `${API.apiUrl}/admins` }
     static get projectsUrl() { return `${API.apiUrl}/projects` }
 
@@ -183,6 +183,7 @@ const Dansk = new DanhoMap([
     ['filterTitle', 'Projekt Filter'],
     ['hasLink', 'Er på Github'],
     ['homeTitle', 'Daniel Simonsens Portfolie'],
+    ['hovedforløb', 'Hovedforløb'],
     ['image', 'Billede'],
     ['images', 'Billeder'],
     ['language', 'Sprog'],
@@ -206,6 +207,7 @@ const Dansk = new DanhoMap([
     ['projectNamePlaceholder', 'Mit super fede projekt'],
     ['projectOptional', 'Valgfrit'],
     ['projectType', 'Projekt Type'],
+    ['skolepraktik', 'Skolepraktik'],
     ['spareTime', 'Fritid'],
     ['spareTimeDiscord', "Jeg bruger meget af min tid på Discord. Dette inkluderer min interesse for Discord bots, måden Discord er sat op på via components, og generelle permission handling."],
     ['spareTimeFLStudio', "Jeg tilbringer nogle gange min fritid på at lave min egen musik, som jeg sætter på services from Spotify & SoundCloud."],
@@ -230,6 +232,7 @@ const English = new DanhoMap([
     ['filterTitle', 'Project Filter'],
     ['hasLink', 'Is on Github'],
     ['homeTitle', "Daniel Simonsen's Portfolio"],
+    ['hovedforløb', 'School module'],
     ['images', 'Images'],
     ['links', ['Home', 'About', 'Projects', 'Plan']],
     ['linkTexts', ['See', 'on Github']],
@@ -246,6 +249,7 @@ const English = new DanhoMap([
     ['projectNamePlaceholder', 'My super amazing project'],
     ['projectOptional', 'Optional'],
     ['projectType', 'Project Type'],
+    ['skolepraktik', 'Internship module'],
     ['spareTimeTitle', 'Sparetime'],
     ['spareTimeDiscord', "I use a lot of my time on Discord. This includes my interest for Discord bots, the way Discord is built using components and general permission handling."],
     ['spareTimeFLStudio', "I occationally use my time on making my own music, that I release on services such as Spotify & SoundCloud."],

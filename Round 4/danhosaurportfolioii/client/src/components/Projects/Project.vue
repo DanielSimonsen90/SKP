@@ -4,7 +4,8 @@
       <div class="project-info">
           <div class="project-text">
             <div class="project-description" v-for="(sentence, i) in project.description[languageValue]" :key="i">
-              <p v-if="sentence">{{ sentence }}</p>
+              <a v-if="sentence && sentence.startsWith('http')" class="link-item" :href="sentence">{{ language.get('whoDisSeeMyProject')(project.name) }}</a>
+              <p v-else-if="sentence">{{ sentence }}</p>
               <br v-else />
             </div>
             <p class="project-collab" v-if="project.collab != null && project.collab != undefined">{{ collabText }} {{ project.collab.github }}</p>

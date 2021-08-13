@@ -10,6 +10,7 @@
     transition: font-weight $transition-hover;
 
     &:hover {
+        color: lighten($color-click-me, $theme-difference);
         font-weight: bold;
     }
 }

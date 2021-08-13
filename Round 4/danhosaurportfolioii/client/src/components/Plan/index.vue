@@ -9,7 +9,7 @@
       <tr :class="`plan-item ${plan.course.split(' ')[0]}`" v-for="(plan, i) in plans" :key="i">
         <td>{{ plan.start }}</td>
         <td>{{ plan.end }}</td>
-        <td>{{ plan.course }}</td>
+        <td>{{ planCourse(plan.course) }}</td>
       </tr>
     </table>
   </div>
@@ -26,7 +26,13 @@ export default {
     },
     data: () => ({
       plans: locationCollection.filter(p => p.start.getTime() > new Date().getTime() || p.end.getTime() > new Date().getTime())
-    })
+    }),
+    methods: {
+      planCourse(course) {
+        const [name, module] = course.split(' ');
+        return `${this.language.get(name.toLowerCase())} ${module}`;
+      }
+    }
 }
 </script>
 

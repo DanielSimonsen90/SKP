@@ -17,7 +17,7 @@ $color-hover: lighten($color, 5%);
 $color-hoverable: darken($color-hover, $theme-difference * 5);
 $color-click-me: rgb(155, 179, 211);
 
-$transition-hover: .25s;
+$transition-hover: .33s;
 $radius: .75rem;
 
 $non-content-border: 2px solid lighten($background, 2.5%);

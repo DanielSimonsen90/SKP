@@ -97,6 +97,7 @@ export default {
 }
 #occupation {
     @extend %click-me;
+    @extend %hoverable-color;
 
     grid-column: 1 / 3;
     grid-row: 2;
@@ -105,6 +106,7 @@ export default {
     text-decoration: none;
     font-size: 50px;
     text-align: center;
+    transition: color $transition-hover, text-decoration $transition-hover * 2;
 
     &:hover {
         color: $color-click-me;

@@ -31,10 +31,10 @@ export default {
     @extend %clickable;
     @extend %rounded;
     @extend %shadow-me;
+    @extend %hoverable-color;
 
     display: inline-block;
-    margin-left: $link-item-margin;
-    margin-right: $link-item-margin;
+    margin: auto $link-item-margin;
     min-height: 25px;
     min-width: 50px;
 
@@ -42,5 +42,10 @@ export default {
       text-decoration: underline;
       transition: $transition-hover / 2;
     }
+}
+
+content:not(footer > content) .link-item {
+    @extend %click-me;
+    box-shadow: unset;
 }
 </style>
