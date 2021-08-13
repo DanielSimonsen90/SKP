@@ -58,8 +58,8 @@ import axios from 'axios';
 const port = 8081;
 
 export class API {
-    static apiUrl = `http://localhost:${port}/api`;
-    // static apiUrl = `https://happy-benz-4ed3b9.netlify.app/api;`
+    // static apiUrl = `http://localhost:${port}/api`;
+    static apiUrl = `https://happy-benz-4ed3b9.netlify.app/api;`
     static get adminUrl() { return `${API.apiUrl}/admins` }
     static get projectsUrl() { return `${API.apiUrl}/projects` }
 
