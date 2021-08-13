@@ -33,7 +33,7 @@ import DanhoFooter from './components/Shared/DanhoFooter.vue';
 
 import Vue from 'vue';
 import { Me, ProjectCollection } from 'danhosaurportfolio-models';
-import { contact, locationCollection, API, languages, projects } from './data';
+import { contact, locationCollection, API, languages } from './data';
 
 export default {
   name: 'App',
@@ -45,7 +45,7 @@ export default {
     me: new Me(locationCollection, contact, new ProjectCollection(contact.github, locationCollection)),
     projectLanguage: null,
     projectType: null,
-    languageValue: localStorage.getItem('language') || 'Dansk'
+    languageValue: localStorage.getItem('language') || this.$route.path.toLowerCase().includes('home') ? 'English' | 'Dansk'
   }),
   computed: {
     links() {
