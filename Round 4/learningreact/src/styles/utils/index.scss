@@ -1,0 +1,51 @@
+@import 'styles/utils/mixins';
+@import 'styles/utils/variables';
+@import 'styles/utils/partials';
+
+#portals {
+    position: fixed;
+    display: block !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    > * {
+        z-index: 100;
+    }
+
+    > div {
+        top: inherit;
+        left: inherit;
+        bottom: inherit;
+        right: inherit;
+        @include height-width(null, 100%);
+    }
+}
+.container {
+    @include height-width(null, inherit);
+    overflow: auto;
+    background-color: var(--background-color-primary-darker);
+    border: 1px solid var(--background-color-primary);
+
+    &-flex {
+        display: flex;
+        flex-direction: column;
+    }
+    &-popout {
+        z-index: 10;
+        position: absolute;
+
+    }
+}
+.icon {
+    @extend %round;
+    border-radius: 25em;
+    position: relative;
+
+    + .container {
+        @include height-width(min, null, 9vw);
+        @include height-width(null, fit-content);
+        @include height-width(max, 60vh, 15vw);
+    }
+}

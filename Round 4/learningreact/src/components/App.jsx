@@ -1,19 +1,21 @@
+import React from 'react';
+import 'styles/utils/index.scss';
 import 'styles/App.scss';
-import React, { useContext } from 'react';
 
-import Login from './Login';
-import Dashboard from './Dashboard';
-import UserProvider, { useUser } from 'providers/UserProvider';
+import UserProvider from 'providers/UserProvider';
+import AppNameProvider from 'providers/AppNameProvider';
+
+import Home from './Home';
 
 export default function App() {
-  const appName = 'Danho Reacts';
-  const user = useUser();
-  
   return (
     <div id="app">
+      <AppNameProvider>
       <UserProvider>
-        {user ? <Dashboard /> : <Login appName={appName} />}
+        <div id="portals"></div>
+        <Home />
       </UserProvider>
+      </AppNameProvider>
     </div>
   );
 }

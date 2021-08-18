@@ -16,16 +16,15 @@ export function useLoginsRemove() {
 
 export default function LoginProvider({ children }) {
     const [logins, setLogins] = useState((localStorage.getItem('logins') && JSON.parse(localStorage.getItem('logins'))) || [])
-
     useEffect(() => {
-        localStorage.setItem('logins', logins);
+        localStorage.setItem('logins', JSON.stringify(logins));
     }, [logins])
 
     function addLogin(login) {
-        setLogins([...logins, login]);
+        setLogins(preLogins => [...preLogins, login]);
     }
     function removeLogin(login) {
-        setLogins(logins.filter(l => l != login));
+        setLogins(preLogins => preLogins.filter(l => l != login));
     }
 
     return (

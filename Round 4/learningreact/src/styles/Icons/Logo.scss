@@ -1,0 +1,5 @@
+@import 'styles/utils/mixins';
+
+#logo {
+    @include hoverable(color, var(--color-primary-lighter));
+}

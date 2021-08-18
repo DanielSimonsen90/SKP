@@ -1,0 +1,9 @@
+%clickable {
+    cursor: pointer;
+}
+%round {
+  border-radius: var(--border-radius);
+}
+%shadow {
+  box-shadow: .2vw .5vh .5vh #111;
+}

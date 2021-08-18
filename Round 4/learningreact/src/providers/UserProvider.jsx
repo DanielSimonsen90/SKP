@@ -1,34 +1,35 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
 
-const UserContext = createContext()
-const UserUpdateContext = createContext()
+const UserContext = createContext();
+const UserUpdateContext = createContext();
+const UserLogoutContext = createContext();
 
 export function useUser() {
   return useContext(UserContext);
 }
-export function useUserUpdate(){
+export function useUserUpdate() {
   return useContext(UserUpdateContext);
+}
+export function useUserLogout() {
+  return useContext(UserLogoutContext);
 }
 
 export default function UserProvider({ children }) {
-  const [user, setUser] = useState((localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) || null);
+  const localUser = localStorage.getItem('user');
+  const [user, setUser] = useState((localUser && JSON.parse(localUser)) || null);
 
   useEffect(() => {
-    // (function componentWillMount() {
-    
-    // })();
-    return function componentWillUnmount() {
-      if (user) localStorage.setItem('user', JSON.stringify(user));
-    }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (user) 
+      localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
 
   return (
     <UserContext.Provider value={user}>
-      <UserUpdateContext.Provider value={setUser}>
-        {children}
-      </UserUpdateContext.Provider>
+    <UserUpdateContext.Provider value={setUser}>
+    <UserLogoutContext.Provider value={() => setUser(null)}>
+      {children}
+    </UserLogoutContext.Provider>
+    </UserUpdateContext.Provider>
     </UserContext.Provider>
   )
 }
