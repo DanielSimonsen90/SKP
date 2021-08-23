@@ -1,8 +1,7 @@
-import { createElement } from 'react'
+import React from 'react'
 import BaseIcon from './BaseIcon';
 
-export default function OptionsSVG(props) {
-    const { fill } = props;
+export default function OptionsSVG({ fill, className, ...rest }) {
     const r = "16";
     const cx = "64"
     const canvasSize = 128;
@@ -17,14 +16,12 @@ export default function OptionsSVG(props) {
                 <circle r={r} cx={cx} cy={cy * 7} fill={fill} />
             </>
         )
-        
     }
 
-    return createElement(BaseIcon, {
-        ...defaultProps,
-        ...props,
-        className: props.className ? 
-            `${defaultProps.className} ${props.className}` : 
-            defaultProps.className
-    });
+    const _className = className ? 
+        `${defaultProps.className} ${className}` : 
+        defaultProps.className;
+    const iconProps = {...defaultProps, ...rest};
+
+    return <BaseIcon className={_className} {...iconProps} />
 }

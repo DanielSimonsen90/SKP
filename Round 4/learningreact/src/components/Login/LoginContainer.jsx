@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createElement } from 'react';
+import React, { useState, createElement } from 'react';
 import LoginInput from './LoginInput';
 import LoginButton from './LoginButton';
 import Container from 'components/Utils/Container';

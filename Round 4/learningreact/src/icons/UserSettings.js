@@ -1,4 +1,4 @@
-import React, { createElement } from 'react'
+import React from 'react'
 import BaseIcon from './BaseIcon'
 
 export default function UserSettingsSVG(props) {
@@ -47,8 +47,5 @@ export default function UserSettingsSVG(props) {
         return <></>;
     });
 
-    return createElement(BaseIcon, {
-        svgChildren,
-        ...props
-    })
+    return <BaseIcon svgChildren={svgChildren} {...props} />
 }

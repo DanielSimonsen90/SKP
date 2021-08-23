@@ -2,4 +2,7 @@
 
 #logo {
     @include hoverable(color, var(--color-primary-lighter));
+    margin: 1vh 1vw;
+    text-align: center;
+    align-self: center;
 }

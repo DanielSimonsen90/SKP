@@ -13,7 +13,7 @@ export default function DashboardHeader() {
     const fill = getVariable('--color-primary');
     const backgroundColor = getVariable('--background-color-primary-darker');
     const containerStyle = { 
-        top: '7.5vh',
+        top: '6.5vh',
         right: '0',
         width: '12.5vw',
         height: '15vh'
@@ -22,7 +22,11 @@ export default function DashboardHeader() {
     return (
         <header id="dashboard-header">
             <Logo />
-            <OptionsIcon fill={fill} className="header-options" containerStyle={containerStyle}>
+            <OptionsIcon fill={fill} 
+                className="header-options" 
+                containerStyle={containerStyle}
+                cloneQuery="#dashboard-header > .icon-options"
+            >
                 <ul>
                     <li onClick={() => redirect('/profile')}>
                         <UserSVG fill={fill} />
