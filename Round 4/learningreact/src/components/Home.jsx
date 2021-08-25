@@ -7,10 +7,10 @@ import Router, { Redirect, Route} from 'components/Utils/Router';
 
 export default function Home() {
     const user = useUser();
-    const routeOptions = [{ path: '/login', component: <Login /> }]
 
     return (
         <Router>
+            <Route path="/login" component={Login} />
             <Route render={() => (
                 user && window.location.pathname != '/login' ?
                     <Dashboard /> :

@@ -9,13 +9,15 @@ import Home from './Home';
 
 export default function App() {
   return (
-    <div id="app">
-      <AppNameProvider>
-      <UserProvider>
-        <div id="portals"></div>
-        <Home />
-      </UserProvider>
-      </AppNameProvider>
-    </div>
+    <>
+    <div id="portals"></div>
+      <div id="app">
+        <AppNameProvider>
+        <UserProvider>
+          <Home />
+        </UserProvider>
+        </AppNameProvider>
+      </div>
+    </>
   );
 }

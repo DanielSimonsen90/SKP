@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react'
 
 const AppName = createContext();
 
+/**@returns {"Danho Reacts"} */
 export function useAppName() {
     return useContext(AppName);
 }

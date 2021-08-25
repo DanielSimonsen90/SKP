@@ -9,6 +9,7 @@
     left: 0;
     bottom: 0;
     right: 0;
+    z-index: -1;
 
     > * {
         z-index: 100;
@@ -24,6 +25,7 @@
 }
 .container {
     @include height-width(null, inherit);
+    @include height-width(max, 100vh, 100vw);
     overflow: auto;
     background-color: var(--background-color-primary-darker);
     border: 1px solid var(--background-color-primary);
@@ -52,4 +54,40 @@
 div[type=clone], div[type=tooltip], div[type=popout] > * {
     display: inline-block;
     position: fixed;
+}
+div.tooltip {
+    @extend %clickable, %shadow, %round;
+    @include height-width(min, 3vh, 1vw);
+    @include height-width(max, 25vh, 25vw);
+    @include height-width(null, fit-content);
+    position: fixed;
+    padding: .5vh 1vw;
+    overflow: hidden;
+}
+
+.sidebar {
+    @include height-width(max, 80vh, 12.5vw);
+    @include height-width(null, auto, 100%);
+    @extend %round, %shadow;
+    font-weight: 600;
+    font-size: 18px;
+    position: fixed;
+    border: 2px solid var(--background-color-primary-lighter);
+}
+
+.settings-item {
+    border: unset;
+    padding: .25vh .25vw;
+
+    &:hover {
+        @include hoverable(color, 
+            var(--color-primary-lighter),
+            calc(var(--transition) + 1s)
+        );
+    }
+}
+
+.avatar {
+    @include height-width(null, 100%);
+    overflow: hidden;
 }

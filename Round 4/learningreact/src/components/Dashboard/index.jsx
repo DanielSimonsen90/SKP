@@ -6,6 +6,7 @@ import Router, { Route } from 'components/Utils/Router';
 import DashboardHeader from './Header';
 import Home from './Home';
 import Profile from 'components/Profile';
+import Settings from 'components/Settings';
 import useRedirect from 'hooks/useRedirect';
 
 export default function Dashboard() {
@@ -20,6 +21,7 @@ export default function Dashboard() {
       <div id="dashboard-content">
         <Router>
           <Route path="/profile" component={Profile} />
+          <Route path="/settings" component={Settings} />
           <Route path="/" component={Home} />
         </Router>
       </div>

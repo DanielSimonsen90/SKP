@@ -14,7 +14,7 @@ export default function Portal({ type, children, cloneQuery: query, ...rest }) {
     const portals = document.getElementById('portals');
     portals.replaceChildren()
     portals.appendChild(portal);
-
+    
     useEffect(() => {
         portals.style.zIndex = 100;
         return () => portals.removeAttribute('style')

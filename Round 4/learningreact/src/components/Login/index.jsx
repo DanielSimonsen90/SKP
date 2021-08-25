@@ -30,7 +30,7 @@ export default function Login() {
             {isLoggedIn ? (
             <>
                 <h2>You're already logged in as {user.username}.</h2>
-                <p>Do you want to sign out?</p>
+                <p>Do you want to log out?</p>
                 <button onClick={logout}>Log out</button>
                 <LoginButton submit={() => redirect('/dashboard')}>Take me back!!</LoginButton>
             </>

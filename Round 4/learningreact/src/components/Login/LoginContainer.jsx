@@ -1,4 +1,4 @@
-import React, { useState, createElement } from 'react';
+import React, { useState } from 'react';
 import LoginInput from './LoginInput';
 import LoginButton from './LoginButton';
 import Container from 'components/Utils/Container';
@@ -6,6 +6,8 @@ import Container from 'components/Utils/Container';
 import 'styles/Login/index.scss'
 import { useLogins } from 'providers/LoginProvider';
 import { useLoginsAdd } from 'providers/LoginProvider';
+
+import { Login } from '../../models';
 
 class InputData {
   /**@param {string} title @param {'text' | 'password'} type */
@@ -15,7 +17,7 @@ class InputData {
   }
 }
 
-export default function Login({ loggedIn }) {
+export default function LoginContainer({ loggedIn }) {
   const [logins, addLogin] = [useLogins(), useLoginsAdd()];
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -49,10 +51,9 @@ export default function Login({ loggedIn }) {
         .reduce((result, prop) => {
           result[prop] = loginData[prop];
           return result;
-        }, {})
+        }, new Login())
     };
 
-    console.log(logins);
     if (!logins.length || !logins.find(l => l.username == login.username)) {
       addLogin(login);
     }
@@ -64,20 +65,18 @@ export default function Login({ loggedIn }) {
   }
 
   return (
-    createElement(Container, { loggedIn, className: "login-container" }, 
-      <>
-        {inputData.map((data, i) => {
-          const { title, type } = data;
+    <Container loggedIn={loggedIn} className="login-container" style={{ backgroundColor: 'unset' }}>
+      {inputData.map((data, i) => {
+        const { title, type } = data;
 
-          return (
-            <LoginInput key={i}
-              title={title} type={type} value={loginData[title.toLowerCase()]}
-              onInputChange={(value, e) => onInputChange(data, value, e)} onKeyPress={(key, e) => onKeyPress(key, e)}
-            />
-          )
-        })}
-        <LoginButton value="Login" submit={onSubmit}/>
-      </>
-    )
+        return (
+          <LoginInput key={i}
+            title={title} type={type} value={loginData[title.toLowerCase()]}
+            onInputChange={(value, e) => onInputChange(data, value, e)} onKeyPress={(key, e) => onKeyPress(key, e)}
+          />
+        )
+      })}
+      <LoginButton value="Login" submit={onSubmit}/>
+    </Container>
   );
 }
