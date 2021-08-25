@@ -1,39 +1,56 @@
 import React, { useState } from 'react'
 import { useUser } from 'providers/UserProvider'
-import { ContainerFlex } from 'components/Utils/Container';
+import { Container, ContainerFlex } from 'components/Utils/Container';
 import ProfileSettings from './ProfileSettings';
 import Tooltip from 'components/Utils/Tooltip';
+import Router, { Route } from 'components/Utils/Router';
+import useRedirect from 'hooks/useRedirect';
 
 export default function Settings() {
     const user = useUser();
-    const [currentRoute, setCurrentRoute] = useState('Profile');
+    const redirect = useRedirect();
     const routes = new Map([
-        ['Profile', ProfileSettings],
-        ['Test', null]
+        ['profile', ProfileSettings],
+        ['test', null]
     ]);
     const sidebarOptions = [...routes.keys()].map(settingType => (
-        <li className="settings-item" key={settingType}
-            onClick={() => onSidebarItemClicked(settingType)}
-        >
-            {settingType}
-        </li>
+        <>
+            <Tooltip dock="right" query={`.settings-item[path="${settingType}"]`}>
+                <p>Edit your {settingType} here</p>
+            </Tooltip>
+            <li className="settings-item" key={settingType} path={settingType}
+                onClick={() => onSidebarItemClicked(settingType)}
+            >
+                {settingType.substring(0, 1).toUpperCase() + 
+                settingType.substring(1)}
+            </li>
+        </>
     ))
 
-    function onSidebarItemClicked(item) {
-
+    function onSidebarItemClicked(path) {
+        redirect(`/settings/${path.toLowerCase()}`)
     }
 
     return (
-        <div>
-            <Tooltip tooltip={"yo what's up guys my name is skinnypp"} query="#test" key="test" />
-            <p id="test" style={{ display: 'inline-block', position: 'absolute', left: '23vw' }}>Welcome to your settings, {user.username}!</p>
-
-            <ContainerFlex className="sidebar sidebar-settings">
-                <ul>
-                    {sidebarOptions}
-                </ul>
+        <ContainerFlex row="true" style={{
+            height: '100%',
+            width: '100%',
+            overflow: 'hidden'
+        }}>
+            <ContainerFlex className="sidebar sidebar-settings" style={{height: '100%', maxHeight: 'unset'}}>
+                <ul>{sidebarOptions}</ul>
             </ContainerFlex>
-            
-        </div>
+            <Container style={{
+                position: 'relative'
+            }}>
+                <Router>
+                    {[...routes.entries()].map(([path, component]) => (
+                        <Route to={`/settings/${path.toLowerCase()}`}
+                            component={component}
+                        />
+                    ))}
+                </Router>
+            </Container>
+        </ContainerFlex>
     )
 }

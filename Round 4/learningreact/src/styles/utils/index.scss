@@ -58,11 +58,12 @@ div[type=clone], div[type=tooltip], div[type=popout] > * {
 div.tooltip {
     @extend %clickable, %shadow, %round;
     @include height-width(min, 3vh, 1vw);
-    @include height-width(max, 25vh, 25vw);
+    @include height-width(max, 25vh, 12.5vw);
     @include height-width(null, fit-content);
     position: fixed;
-    padding: .5vh 1vw;
+    padding: .5vh .5vw;
     overflow: hidden;
+    z-index: 100;
 }
 
 .sidebar {

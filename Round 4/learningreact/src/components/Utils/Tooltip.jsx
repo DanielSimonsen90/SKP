@@ -19,7 +19,9 @@ import Container from 'components/Utils/Container';
  * }} props 
  */
 export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
-    const [style, setStyle] = useState({});
+    const [style, setStyle] = useState({
+        backgroundColor: 'var(--background-color-primary-darker)'
+    });
     const [tooltipSize, setTooltipSize] = useState({ height: 0, width: 0 });
     const [showing, setShowing] = useState(false);
     const selfRef = createRef();
@@ -55,26 +57,33 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
         if (tooltipSize.height && newTooltipSize.width == tooltipSize.width) return;
 
         setTooltipSize(newTooltipSize);
-        setStyle((() => {
-            switch (dock) {
-                default: case 'top': return {
-                    top: `calc(${bottom}px - ${top}px)`,
-                    left: `${right - left + width - tooltipSize.width / 2}px`,
-                }
-                case 'bottom': return {
-                    top: `calc(${bottom}px * 4 + ${top}px)`,
-                    left: `calc(${right}px * 2 + ${left}px)`,
-                };
-                case 'left': return {
-                    top: `calc(${bottom}px * 2 + ${top}px)`,
-                    left: `calc(${right}px - ${left}px)`
-                };
-                case 'right': return {
-                    top: `calc(${bottom}px * 2 + ${top}px)`,
-                    left: `calc(${right}px * 4 + ${left}px)`
-                };
+        setStyle(preStyle => ({ ...preStyle, ...(() => {
+            return {
+                top: `${bottom - height / 2 - tooltipSize.height / 2}px`,
+                left: `${right - width / 2 - tooltipSize.width / 2}px`,
+                ...(() => {
+                    switch (dock) {
+                        default: case 'top': return {
+                            top: `calc(${top - tooltipSize.height}px - 2vh)`,
+                            boxShadow: `0vw -.5vh .5vh #111`
+                        }
+                        case 'bottom': return {
+                            top: `calc(${bottom}px + 2vh)`,
+                            boxShadow: `0vw .5vh .5vh #111`
+                        };
+                        case 'right': return {
+                            left: `calc(${left + tooltipSize.width}px + 2vw)`,
+                            boxShadow: `.25vw 0px .5vh #111`
+                        };
+                        case 'left': return {
+                            left: `calc(${right - left}px - 2vw)`,
+                            boxShadow: `-.25vw 0px .5vh #111`
+                        };
+                    }
+                })()
             }
-        })())
+
+        })() }))
             
         tooltipFor.onmouseenter = () => setShowing(true);
         tooltipFor.onmouseleave = () => setShowing(false);
@@ -85,7 +94,7 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
 
     return (
         <div className="tooltip" value={tooltip} style={style} {...rest} ref={selfRef}>
-            <Container>
+            <Container style={{ backgroundColor: 'unset', border: 'unset' }}>
                 {children || tooltip}
             </Container>
             <polygon  />

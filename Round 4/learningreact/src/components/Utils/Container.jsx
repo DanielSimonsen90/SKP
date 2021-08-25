@@ -9,15 +9,18 @@ export default class ContainerComponent extends Component {
             ...classNames.filter(className => typeof className == 'string'), 
             props.className
         ].filter(v => v).join(' ');
+        this.style = this.props.style;
     }
 
     render() {
-        return <div {...this.props} className={this.classNames} />
+        return <div {...this.props} style={this.style} className={this.classNames} />
     }
 }
 export class ContainerFlexComponent extends ContainerComponent {
     constructor(props, ...classNames) {
-        super(props, 'container-flex', ...classNames)
+        super(props, 'container-flex', ...classNames);
+
+        if (props.row) this.style = {...this.props.style, flexDirection: 'row'}
     }
 }
 export class ContainerPopoutComponent extends ContainerComponent {
