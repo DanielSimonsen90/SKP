@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef, useCallback } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import Container from 'components/Utils/Container';
 
 /**
@@ -19,9 +19,7 @@ import Container from 'components/Utils/Container';
  * }} props 
  */
 export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
-    const [style, setStyle] = useState({
-        backgroundColor: 'var(--background-color-primary-darker)'
-    });
+    const [style, setStyle] = useState({});
     const [tooltipSize, setTooltipSize] = useState({ height: 0, width: 0 });
     const [showing, setShowing] = useState(false);
     const selfRef = createRef();
@@ -46,7 +44,6 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
             width: Math.round(rect.width),
             height: Math.round(rect.height),
         };
-    
         
         /**@type {{ height: number, width: number }}*/
         const newTooltipSize = {
@@ -54,7 +51,9 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
             width: selfRef.current?.offsetWidth || width
         }
 
-        if (tooltipSize.height && newTooltipSize.width == tooltipSize.width) return;
+        if (newTooltipSize.height == tooltipSize.height && 
+            newTooltipSize.width == tooltipSize.width) 
+        return;
 
         setTooltipSize(newTooltipSize);
         setStyle(preStyle => ({ ...preStyle, ...(() => {
@@ -89,7 +88,6 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
         tooltipFor.onmouseleave = () => setShowing(false);
     }, [dock, query, selfRef, tooltip, tooltipSize.height, tooltipSize.width])
 
-
     if (!showing) return null;
 
     return (
@@ -97,7 +95,6 @@ export default function Tooltip({ dock, query, tooltip, children, ...rest }) {
             <Container style={{ backgroundColor: 'unset', border: 'unset' }}>
                 {children || tooltip}
             </Container>
-            <polygon  />
         </div>
     )
 }

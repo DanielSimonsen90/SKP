@@ -6,7 +6,7 @@ import useRedirect from 'hooks/useRedirect';
 import OptionsIcon from 'components/Icons/OptionsIcon'
 import Logo from 'components/Icons/Logo';
 import UserSVG from 'icons/User'
-import UserSettingsSVG from 'icons/UserSettings';
+import SettingsSVG from 'icons/Settings';
 
 export default function DashboardHeader() {
     const redirect = useRedirect();
@@ -33,7 +33,7 @@ export default function DashboardHeader() {
                         <p>Profile</p>
                     </li>
                     <li onClick={() => redirect('/settings')}>
-                        <UserSettingsSVG fill={fill} backgroundColor={backgroundColor} />
+                        <SettingsSVG fill={fill} backgroundColor={backgroundColor} />
                         <p>Settings</p>
                     </li>
                 </ul>

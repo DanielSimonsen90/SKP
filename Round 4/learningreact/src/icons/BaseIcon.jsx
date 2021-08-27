@@ -43,11 +43,7 @@ export default class BaseIcon extends Component {
     }
 
     componentDidMount = () => this.mounted = true;
-    componentWillMount = () => this.mounted = false;
-
-    componentDidUpdate() {
-        console.log(this.lastAction)
-    }
+    componentWillUnmount = () => this.mounted = false;
 
     render() {
         return (

@@ -24,12 +24,16 @@
     }
 }
 .container {
+    @extend %round;
     @include height-width(null, inherit);
     @include height-width(max, 100vh, 100vw);
     overflow: auto;
     background-color: var(--background-color-primary-darker);
     border: 1px solid var(--background-color-primary);
 
+    &-inline-block {
+        display: inline-block;
+    }
     &-flex {
         display: flex;
         flex-direction: column;
@@ -38,6 +42,12 @@
         z-index: 10;
         position: absolute;
         margin-top: auto;
+    }
+    &-image {
+        @include height-width(max, 12.5%, 12.5%);
+        overflow: hidden;
+        margin: 1em;
+        border-radius: 50%;
     }
 }
 .icon {
@@ -60,6 +70,7 @@ div.tooltip {
     @include height-width(min, 3vh, 1vw);
     @include height-width(max, 25vh, 12.5vw);
     @include height-width(null, fit-content);
+    background-color: var(--background-color-primary-darker);
     position: fixed;
     padding: .5vh .5vw;
     overflow: hidden;
@@ -67,18 +78,21 @@ div.tooltip {
 }
 
 .sidebar {
-    @include height-width(max, 80vh, 12.5vw);
-    @include height-width(null, auto, 100%);
     @extend %round, %shadow;
+    @include height-width(max, 89vh, 12.5vw);
+    @include height-width(null, 100%);
     font-weight: 600;
     font-size: 18px;
-    position: fixed;
+    position: relative;
     border: 2px solid var(--background-color-primary-lighter);
+    margin-right: .5vw;
 }
 
-.settings-item {
+.sidebar-item {
+    border-radius: 4px;
     border: unset;
     padding: .25vh .25vw;
+    background-color: lighten(#222, 2%);
 
     &:hover {
         @include hoverable(color, 

@@ -1,7 +1,7 @@
 import React from 'react'
 import BaseIcon from './BaseIcon'
 
-export default function UserSettingsSVG(props) {
+export default function SettingsSVG(props) {
     const strokeWidth = 24;
     const one = 8;
     const two = 32; //16

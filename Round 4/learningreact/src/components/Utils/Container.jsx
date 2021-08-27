@@ -16,6 +16,11 @@ export default class ContainerComponent extends Component {
         return <div {...this.props} style={this.style} className={this.classNames} />
     }
 }
+export class ContainerInlineBlockComponent extends ContainerComponent {
+    constructor(props, ...classNames) {
+        super(props, 'container-inline-block', ...classNames);
+    }
+}
 export class ContainerFlexComponent extends ContainerComponent {
     constructor(props, ...classNames) {
         super(props, 'container-flex', ...classNames);
@@ -43,6 +48,9 @@ export class ContainerPopoutComponent extends ContainerComponent {
 
 export function Container(props) {
     return new ContainerComponent(props).render();
+}
+export function ContainerInlineBlock(props) {
+    return new ContainerInlineBlockComponent(props).render();
 }
 export function ContainerFlex(props) {
     return new ContainerFlexComponent(props).render();

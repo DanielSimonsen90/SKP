@@ -1,0 +1,8 @@
+@import 'styles/utils/mixins';
+
+.settings {
+    flex-direction: row;
+    @include height-width(null, 100%);
+    overflow: hidden;
+    background-color: unset;
+}

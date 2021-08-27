@@ -9,7 +9,7 @@ export default function PortalClone({ query, ...rest }) {
         .reduce((result, prop) => {
             result[prop] = `${Math.round(rect[prop]).toString()}px`;
             return result;
-        }, { backgroundColor: 'red' });
+        }, {});
     return (
         <div style={rectStyles} type="clone" {...rest} />
     )

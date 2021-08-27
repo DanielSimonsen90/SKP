@@ -12,6 +12,7 @@ export default class User {
         return LocalStorage.getItem(User, 'user');
     }
 
+    /**@param {string} username */
     constructor(username) {
         this.avatar = Images.avatars['default'];
         this.banner = Images.banners['default'];
