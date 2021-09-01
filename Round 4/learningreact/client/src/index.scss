@@ -1,0 +1,100 @@
+@import 'styles/utils/mixins';
+@import 'styles/utils/variables';
+
+#root {
+  position: absolute;
+  @include height-width(null, 100vh, 100vw);
+  z-index: 1;
+}
+
+html {
+  @extend %basic;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+label {
+  display: block;
+}
+input {
+  @extend %round, %shadow, %basic;
+  padding: .5%;
+  margin: .5%;
+
+  &:focus-visible {
+    outline-style: none;
+    border-color: var(--background-color-primary-lighter);
+  }
+}
+
+svg {
+  @extend %clickable;
+  @include height-width(max, 100%);
+  margin: .5vh .5vw;
+
+  circle, line {
+    @include hoverable(color, var(--color-primary-lighter));
+  }
+
+  &:hover > * {
+    transition: fill var(--transition);
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1vh;
+
+}
+li {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  border: 1px solid var(--background-color-primary-lighter);
+  margin: .5vh 0px;
+
+  &:hover {
+    @extend %clickable;
+    @include hoverable(color, var(--color-primary));
+    border-color: var(--background-color-primary);
+    background-color: var(--background-color-primary-lighter);
+  }
+
+  p {
+    display: inline;
+    width: auto;
+  } 
+}
+
+button {
+  @extend %clickable, %shadow;
+  @include hoverable(background-color, var(--background-color-primary-lighter));
+  background-color: var(--background-color-primary);
+  color: var(--color-primary);
+  padding: .5em;
+  border-radius: 6px;
+}

@@ -1,0 +1,38 @@
+@import 'styles/utils/mixins';
+@import 'styles/utils/partials';
+
+.track {
+    @extend %clickable, %shadow;
+    background-color: var(--background-color-primary-darker);
+    position: relative;
+    min-height: 75px;
+    max-height: 5vh;
+    overflow: hidden;
+    width: 32.5%;
+
+    h4 {
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+    }
+    img {
+        @include height-width(null, 100%, 50%);
+    }
+
+    &-info {
+        @include height-width(null, 100%);
+    }
+}
+
+#spotify-login-button {
+    @include hoverable(color, var(--color-spotify));
+    box-shadow: 0vw .5vh .5vh var(--color-spotify);
+    color: var(--color-primary-lighter);
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.audio-player {
+    .disabled {
+        color: var(--color-primary-darker);
+    }
+}
