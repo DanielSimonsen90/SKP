@@ -2,7 +2,7 @@ import React from 'react';
 import 'styles/Login/LoginInput.scss';
 
 export default function LoginInput({ title, type, onInputChange, onKeyPress, value }) {
-  const placeholder = `Enter ${title.toLowerCase()} here.`
+  const placeholder = `Enter ${title.toLowerCase()} here...`
     
   return (
     <label className="login-input">

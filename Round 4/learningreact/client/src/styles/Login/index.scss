@@ -1,6 +1,15 @@
+@import 'styles/utils/mixins';
+
+#login-page {
+    justify-content: center;
+    align-content: center;
+}
+
 .login-container {
-    height: 12.5%;
-    width: 20%;
+    // @include height-width(null, 15%, 30%);
+    @include height-width(max, 40%, 50%);
+    padding: .75em 1em;
+    font-size: 2em;
 
     display: grid;
     grid-template-areas: 
@@ -9,9 +18,8 @@
         "button button"
     ;
     grid-template-columns: 25% 75%;
-    grid-template-rows: 33% 33% 33%;
-
-    justify-items: center;
+    grid-template-rows: repeat(3, 33%);
+    justify-items: stretch;
 
     label { grid-column: 1 / 3; }
     label:first-of-type {
@@ -29,6 +37,8 @@
     .login-button {
         grid-area: button;
         margin: .5%;
-        width: 100%;        
+        width: 100%;
+        font-size: inherit;
+        line-height: 0;
     }
 }

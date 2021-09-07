@@ -1,25 +1,54 @@
 @import 'styles/utils/mixins';
 @import 'styles/utils/partials';
 
+#spotify-content {
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0 1em;
+    background-color: unset;
+}
+
 .track {
     @extend %clickable, %shadow;
     background-color: var(--background-color-primary-darker);
+    @include hoverable(background-color, --background-color-primary-lighter);
     position: relative;
     min-height: 75px;
     max-height: 5vh;
-    overflow: hidden;
     width: 32.5%;
+    overflow: hidden;
 
-    h4 {
+    @media (max-width: 1500px) {
+        width: 49%;
+    }
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    > * {
+        overflow: hidden;
         word-wrap: break-word;
+        height: 1.5rem;
         text-overflow: ellipsis;
     }
+
+    h4, h6 {
+        margin-block-end: 0;
+    }
+
+    h4 {
+        font-size: 1em;
+        display: block;
+    }
     img {
-        @include height-width(null, 100%, 50%);
+        @include height-width(null, 100%, 25%);
     }
 
     &-info {
         @include height-width(null, 100%);
+        border-radius: initial;
+        padding: .5em;
     }
 }
 

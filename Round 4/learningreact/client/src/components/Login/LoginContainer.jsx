@@ -65,7 +65,7 @@ export default function LoginContainer({ loggedIn }) {
   }
 
   return (
-    <Container loggedIn={loggedIn} className="login-container" style={{ backgroundColor: 'unset' }}>
+    <Container loggedIn={loggedIn} className="login-container">
       {inputData.map((data, i) => {
         const { title, type } = data;
 

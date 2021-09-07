@@ -76,12 +76,7 @@ export default function SpotifyDashboard({ code }) {
                         value={search} 
                     />
                 </Container>
-                <ContainerFlex row style={{
-                    width: '100%', 
-                    flexWrap: 'wrap',
-                    gap: '.5em',
-                    backgroundColor: 'unset'
-                }}>
+                <ContainerFlex id="spotify-content">
                     {searchResults.map(track => <Track value={track} key={track.url} play={onPlay}/>)}
                     {!searchResults.length && <Container>{lyrics}</Container>}
                 </ContainerFlex>

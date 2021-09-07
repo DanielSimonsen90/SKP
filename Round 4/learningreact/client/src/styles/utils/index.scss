@@ -79,7 +79,7 @@ div.tooltip {
 
 .sidebar {
     @extend %round, %shadow;
-    @include height-width(max, 89vh, 12.5vw);
+    @include height-width(max, 85vh, 12.5vw);
     @include height-width(null, 100%);
     font-weight: 600;
     font-size: 18px;
@@ -99,6 +99,15 @@ div.tooltip {
             var(--color-primary-lighter),
             calc(var(--transition) + 1s)
         );
+    }
+
+    p {
+        width: 100%;
+        text-align: left;
+
+        &:hover {
+            @include hoverable(text-align, center);
+        }
     }
 }
 

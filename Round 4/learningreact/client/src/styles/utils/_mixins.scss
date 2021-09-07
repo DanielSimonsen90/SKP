@@ -23,9 +23,9 @@
     }
 
 }
-@mixin hoverable($property, $value, $transition: var(--transition)) {
+@mixin hoverable($property, $value, $transition: var(--transition), $animation-style: ease) {
     @extend %clickable;
-    transition: $property $transition ease;
+    transition: $property $transition $animation-style;
 
     &:hover, &:focus {
         #{$property}: $value;

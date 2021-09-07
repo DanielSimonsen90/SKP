@@ -20,11 +20,8 @@ export default function Sidebar({ items, tooltipText, onClick, ...rest }) {
                                 <p>{tooltipText(item)}</p>
                             </Tooltip>
                         }
-                        <li className="sidebar-item" path={item}
-                            onClick={e => onClick(e, item)}
-                        >
-                            {item.substring(0, 1).toUpperCase() +
-                            item.substring(1)} 
+                        <li className="sidebar-item" path={item} onClick={e => onClick(e, item)}>
+                            <p>{item.substring(0, 1).toUpperCase() + item.substring(1)}</p>
                         </li>
                     </div>
                 ))}

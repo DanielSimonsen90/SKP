@@ -8,11 +8,11 @@ export default function Track({ value, play }) {
     return (
         <ContainerFlex row className="track" onClick={() => play(value)}>
             <img src={image} alt="" />
-            <ContainerFlex className="track-info" style={{ backgroundColor: 'unset' }}>
+            <Container className="track-info" style={{ backgroundColor: 'unset' }}>
                 <h4 title={title}>{title}</h4>
                 <p>{artists.map(a => a.name).join(', ')}</p>
                 <h6>{album.name}</h6>
-            </ContainerFlex>
+            </Container>
         </ContainerFlex>
     )
 }
