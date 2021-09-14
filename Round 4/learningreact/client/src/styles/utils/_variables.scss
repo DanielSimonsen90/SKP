@@ -1,0 +1,24 @@
+:root {
+    --theme-difference: 2.5%;
+    --transition: .25s;
+
+    --background-color-primary: #333;
+    --background-color-primary-lighter: #444;
+    --background-color-primary-darker: #222;
+
+    --background-color-secondary: rgb(24, 24, 24);
+    --background-color-secondary-lighter: rgb(28, 28, 28);
+    --background-color-secondary-darker: rgb(20, 20, 20);
+
+    --color-primary: #bbb;
+    --color-primary-lighter: #ddd;
+    --color-primary-darker: #aaa;
+
+    --border-radius: 10px;
+    --color-spotify: #1ed75f;
+
+    --interactive-button-opacity: .5;
+    --interactive-button-opacity-hover: .7;
+    --confirm: 125, 185, 101;
+    --cancel: 236, 109, 98;
+}

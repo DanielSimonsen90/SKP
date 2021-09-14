@@ -1,0 +1,18 @@
+@import 'styles/utils/mixins';
+
+.login-input {
+    @include height-width(null, 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    p {
+        display: inline-block;
+        width: max-content;
+        padding: 1%;
+    }
+    input {
+        font-size: inherit;
+        width: 100%;
+    }
+}

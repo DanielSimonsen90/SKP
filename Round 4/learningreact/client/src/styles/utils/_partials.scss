@@ -1,0 +1,14 @@
+%basic {
+  background-color: var(--background-color-primary);
+  color: var(--color-primary);
+}
+
+%clickable {
+  cursor: pointer;
+}
+%round {
+  border-radius: var(--border-radius);
+}
+%shadow {
+  box-shadow: 0vw .5vh .5vh #111;
+}

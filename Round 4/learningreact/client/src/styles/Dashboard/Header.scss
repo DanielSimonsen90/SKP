@@ -1,0 +1,22 @@
+@import 'styles/utils/partials';
+
+#dashboard-header {
+    @extend %round, %shadow;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    height: 7.5vh;
+    width: 97.5vw;
+    background-color: var(--background-color-primary-darker);
+    padding: 1.5vh .5vw;
+    margin: auto 2vw;
+    z-index: inherit;
+}
+
+.header-options {
+    li {
+        height: 5vh;
+        font-size: 1.75em;
+    }
+}

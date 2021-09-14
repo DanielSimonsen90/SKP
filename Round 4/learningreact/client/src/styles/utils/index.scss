@@ -1,0 +1,117 @@
+@import 'styles/utils/mixins';
+@import 'styles/utils/variables';
+@import 'styles/utils/partials';
+
+#portals {
+    position: fixed;
+    display: block !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+
+    > * {
+        z-index: 100;
+    }
+
+    > div {
+        top: inherit;
+        left: inherit;
+        bottom: inherit;
+        right: inherit;
+        @include height-width(null, 100%);
+    }
+}
+.container {
+    @extend %round, %shadow;
+    @include height-width(null, inherit);
+    @include height-width(max, 100%);
+    overflow: hidden auto;
+    background-color: var(--background-color-primary-darker);
+    border: 1px solid var(--background-color-primary);
+
+    &-inline-block {
+        display: inline-block;
+    }
+    &-flex {
+        display: flex;
+        flex-direction: column;
+    }
+    &-popout {
+        z-index: 10;
+        position: absolute;
+        margin-top: auto;
+    }
+    &-image {
+        @include height-width(max, 12.5%, 12.5%);
+        overflow: hidden;
+        margin: 1em;
+        border-radius: 50%;
+    }
+}
+.icon {
+    @extend %round;
+    border-radius: 25em;
+    position: relative;
+
+    + .container {
+        @include height-width(min, null, 9vw);
+        @include height-width(null, fit-content);
+        @include height-width(max, 60vh, 15vw);
+    }
+}
+div[type=clone], div[type=tooltip], div[type=popout] > * {
+    display: inline-block;
+    position: fixed;
+}
+div.tooltip {
+    @extend %clickable, %shadow, %round;
+    @include height-width(min, 3vh, 1vw);
+    @include height-width(max, 25vh, 12.5vw);
+    @include height-width(null, fit-content);
+    background-color: var(--background-color-primary-darker);
+    position: fixed;
+    padding: .5vh .5vw;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.sidebar {
+    @extend %round, %shadow;
+    @include height-width(max, 85vh, 12.5vw);
+    @include height-width(null, 100%);
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    border: 2px solid var(--background-color-primary-lighter);
+    margin-right: .5vw;
+}
+
+.sidebar-item {
+    border-radius: 4px;
+    border: unset;
+    padding: .25vh .25vw;
+    background-color: lighten(#222, 2%);
+
+    &:hover {
+        @include hoverable(color, 
+            var(--color-primary-lighter),
+            calc(var(--transition) + 1s)
+        );
+    }
+
+    p {
+        width: 100%;
+        text-align: left;
+
+        &:hover {
+            @include hoverable(text-align, center);
+        }
+    }
+}
+
+.avatar {
+    @include height-width(null, 100%);
+    overflow: hidden;
+}

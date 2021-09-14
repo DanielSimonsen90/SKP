@@ -1,0 +1,38 @@
+@import 'partials';
+
+@mixin height-width($type: null, $height: null, $width: null) {
+    @if ($type == null) {
+        height: $height;
+        
+        @if $width == null {
+            width: $height;
+        }
+        @else {
+            width: $width;
+        }
+    }
+    @else {
+        #{$type}-height: $height;
+
+        @if $width == null {
+            #{$type}-width: $height;
+        }
+        @else {
+            #{$type}-width: $width;
+        }
+    }
+
+}
+@mixin hoverable($property, $value, $transition: var(--transition), $animation-style: ease) {
+    @extend %clickable;
+    transition: $property $transition $animation-style;
+
+    &:hover, &:focus {
+        #{$property}: $value;
+    }
+}
+@mixin center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}

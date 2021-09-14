@@ -1,0 +1,31 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(14, 14, 14);
+    color: #bbb;
+}
+
+h3, h4, p {
+    display: inline-block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#store {
+    width: 100vw;
+    height: 100vh;
+}
+
+.product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    cursor: pointer;
+}
+
+.product:hover {
+    color: #ddd;
+}
