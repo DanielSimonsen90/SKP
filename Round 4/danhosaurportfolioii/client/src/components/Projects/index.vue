@@ -21,7 +21,6 @@ export default {
         languageValue: String,
         projectLanguage: String,
         projectType: String,
-        projects: ProjectCollection
     },
     created() {
         this.loadingProjects = this.language.get('loadingProjects');

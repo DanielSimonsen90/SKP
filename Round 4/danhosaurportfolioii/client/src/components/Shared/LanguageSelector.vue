@@ -16,10 +16,12 @@ import { languages } from '../../data';
 export default {
     props: {
         language: Map,
-        languageValue: String,
-        supportedLanguages: languages.keys()
+        languageValue: String
     },
     computed: {
+        supportedLanguages() {
+            return languages.keys();
+        },
         languageLabel() { 
             return this.language.get('language');
         }

@@ -41,18 +41,18 @@ export default {
   mounted() {
     this.refreshProjects();
   },
-  data: () => ({ 
+  data: (_this) => ({ 
     me: new Me(locationCollection, contact, new ProjectCollection(contact.github, locationCollection)),
     projectLanguage: null,
     projectType: null,
-    languageValue: localStorage.getItem('language') || this.$route.path.toLowerCase().includes('home') ? 'English' : 'Dansk'
+    languageValue: localStorage.getItem('language') || _this.$route.path.toLowerCase().includes('home') ? 'English' : 'Dansk'
   }),
   computed: {
     links() {
       return this.language.get('links');
     },
-    language() {
-      return languages.get(this.languageValue);
+    language(_this) {
+      return languages.get(_this.languageValue);
     },
     projects() {
       return this.me.projects;
@@ -74,10 +74,10 @@ export default {
       this.languageValue = language;
     },
     async refreshProjects() {
-      const projects = await API.getProjects();
+      const projects = await API.getProjects() ?? [];
       const me = new Me(locationCollection, contact, new ProjectCollection(
         contact.github, locationCollection
-      ).append(...projects).sort((a, b) => a._id - b._id));
+      ).append(...projects).sort((a, b) => a?._id - b?._id));
 
       Vue.set(this, 'me', me);
     }
