@@ -182,7 +182,7 @@ const Dansk = new DanhoMap([
     ['end', 'Slut'],
     ['filterTitle', 'Projekt Filter'],
     ['hasLink', 'Er på Github'],
-    ['homeTitle', 'Daniel Simonsens Portfolie'],
+    ['homeTitle', 'Daniel Simonsens Portefølje '],
     ['hovedforløb', 'Hovedforløb'],
     ['image', 'Billede'],
     ['images', 'Billeder'],

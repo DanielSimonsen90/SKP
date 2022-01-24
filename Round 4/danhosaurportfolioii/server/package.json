@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "./node_modules/.bin/netlify-lambda serve index.js",
+    "build": "./node_modules/.bin/netlify-lambda build index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,9 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.9"
+    "mongodb": "^3.6.9",
+    "netlify-lambda": "^2.0.15",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
