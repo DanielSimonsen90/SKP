@@ -1,0 +1,15 @@
+@import '../../../shared/scss/lib/variables';
+
+#occupation-string {
+    align-self: center;
+    padding: .5em 0 .25em;
+    font-weight: bold;
+    
+    &.link-item-hoverable {
+        color: $thm-tertiary;
+
+        &:hover {
+            color: $link-item-color-hover;
+        }
+    }
+}

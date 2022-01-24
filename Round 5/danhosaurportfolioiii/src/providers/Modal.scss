@@ -1,0 +1,49 @@
+@import 'components/shared/scss/lib/variables';
+@mixin max {
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.container.modal {
+    @include max();
+    position: fixed;
+    display: grid;
+    place-items: center;
+    inset: 0 0 0 0;
+    z-index: 100;
+    background-color: $bg-secondary-opacity;
+
+    &-content {
+        @include max();
+        height: fit-content;
+        width: fit-content;
+
+        // display: grid;
+        // grid-template-rows: 4em auto;
+        // align-items: center;
+
+        padding: 1em;
+        background-color: $bg-quaternary;
+        border-radius: $border-radius;
+
+        .image-container {
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: .5em;
+        }
+
+        img {
+            display: flex;
+            max-width: 90vw;
+            border-radius: $border-radius;
+        }
+    }
+
+    .modal-exit {
+        position: absolute;
+        top: .25em;
+        right: .5em;
+        cursor: pointer;
+        z-index: 101;
+    }
+}

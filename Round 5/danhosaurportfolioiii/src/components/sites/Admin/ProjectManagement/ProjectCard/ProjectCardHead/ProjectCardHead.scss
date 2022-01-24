@@ -1,0 +1,41 @@
+.project-card-head {
+    display: grid;
+    grid-template-columns: auto min-content;
+    grid-template-areas: 
+        "title id"
+        "title display"
+        "info spare-time"
+    ;
+    grid-gap: .25em 5px;
+
+    &, & > * {
+        justify-content: space-between;
+    }
+
+    $areas: (id, title, display, info, spare-time);
+    @each $prop in $areas {
+        &-#{$prop} {
+            grid-area: $prop;
+        }
+    }
+
+    &-id {
+        justify-self: flex-end;
+    }
+
+    &-title {
+        display: inline;
+        font-size: 2em;
+        height: 1.3em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1em;
+        font-size: 1em;
+    }
+}

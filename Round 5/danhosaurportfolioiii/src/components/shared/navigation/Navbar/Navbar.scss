@@ -1,0 +1,25 @@
+@import '../../scss/lib/mixins';
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+    width: 100%;
+    padding: .125em;
+
+    .link-item-hoverable {
+        padding: .5em;
+
+        &:hover {
+            @include gradient-background($bg-tertiary, $bg-secondary);
+            $border-radius: 6px;
+        }
+
+        &.current-page {
+            color: $thm-primary;
+            font-size: 1.75rem;
+        }
+    }
+}

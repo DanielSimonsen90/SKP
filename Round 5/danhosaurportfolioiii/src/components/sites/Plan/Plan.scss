@@ -1,0 +1,39 @@
+@import '../../shared/scss/lib';
+
+#plan-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    min-width: 80%;
+    margin: 2em;
+    
+    #occupation-string {
+        font-size: 2em;
+        padding: 0;
+    }
+}
+
+
+.Grundforløb  {
+    background-color: $bg-tertiary;
+    color: $clr-tertiary;
+}
+.Skolepraktik {
+    background-color: $bg-quaternary;
+    color: $thm-tertiary;
+}
+.Hovedforløb {
+    background-color: $bg-tertiary;
+    color: $thm-secondary;
+}
+.current-occupation {
+    @include gradient-background($bg-quinary, $bg-quaternary);
+    font-weight: bold;
+    text-decoration: underline;
+    color: $clr-secondary;
+
+    &:hover {
+        background-image: unset;
+    }
+}

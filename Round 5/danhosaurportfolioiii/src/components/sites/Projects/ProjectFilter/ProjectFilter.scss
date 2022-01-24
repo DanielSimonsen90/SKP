@@ -1,0 +1,39 @@
+@import 'components/shared/scss/lib/variables';
+
+%flexible {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+}
+
+.container.project-filter {
+    @extend %flexible;
+    flex-wrap: wrap;
+    position: relative;
+    top: -1vh;
+    width: fit-content;
+    padding: 2vh;
+    background-color: $bg-tertiary;
+    border-radius: 0px 0px 6px 6px;
+    border: 1px solid $thm-secondary;
+    border-top: unset;
+    
+    height: auto;
+
+    &.fixed {
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        height: auto;
+    }
+
+    .to-top {
+        width: fit-content;
+        font-size: 1em;
+        color: $link-item-color-hover;
+    }
+
+    label {
+        @extend %flexible;
+    }
+}

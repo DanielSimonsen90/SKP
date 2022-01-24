@@ -1,0 +1,45 @@
+@import '../../../shared/scss/lib/variables';
+
+.container.bookmark-list {
+    max-width: 16vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+
+    position: fixed;
+    left: 1em;
+    z-index: 2;
+    
+    flex-direction: column;
+    gap: 1em;
+    overflow-x: auto;
+    
+    border: 1px solid $bg-quaternary;
+    border-radius: $border-radius;
+    padding: .5em;
+}
+.bookmark-list {
+    align-items: flex-start;
+
+    h1 {
+        font-size: 2em;
+        color: $thm-primary;
+        text-decoration: underline;
+    }
+
+    &-item {
+        width: max-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .link-item { padding: 0 .5em; }
+        
+        .bookmark {
+            position: relative;
+            right: unset;
+            top: unset;
+            min-width: 17.5px;
+        }
+    }
+}

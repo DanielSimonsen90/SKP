@@ -1,0 +1,95 @@
+#info-container-create-project, 
+#info-container-update-project {
+    height: 85vh;
+    width: 65vw;
+
+    & .content {
+        display: grid;
+        grid-gap: 2vh;
+    }
+
+    & > fieldset > .content {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: 85% auto;
+        max-height: 100%;
+    }
+
+    .description label {
+        flex-direction: column;
+    }
+
+    .project-information-row {
+        width: 100%;
+        display: grid;
+        grid-auto-flow: row;
+        justify-items: center;
+        grid-gap: .5em 1em;
+    
+        &.description, 
+        &.language-project, 
+        &.name-display {
+            grid-auto-flow: column;
+        }
+    
+        &.language-project {
+            grid-row: 2;
+        }
+    }
+    
+    .project-optional-row {
+        display: grid;
+    
+        &.collab {
+            fieldset { padding-bottom: 0 }
+            content { grid-gap: 1vh; }
+        }
+    
+        &.checkboxes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+    
+            label {
+                display: flex;
+                align-items: center;
+                gap: .5em;
+            }
+        }
+
+        &.project-image .content {
+            grid-template-rows: auto;
+        }
+    }
+
+    .button-container, .description {
+        grid-column: 1 / span 2;
+    }
+    .button-container {
+        height: fit-content;
+        align-self: flex-end;
+    }
+
+    button {
+        padding-top: .25em;
+        padding-bottom: .25em;
+    }
+    label {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+    }
+    img {
+        max-width: 100%;
+    }
+}
+#info-container-project-information .content {
+    grid-template-rows: repeat(2, min-content) auto;
+
+    .description label {
+        gap: .25em;
+    }
+}
+#info-container-optional .content {
+    grid-template-rows: repeat(3, min-content) auto;
+}
+

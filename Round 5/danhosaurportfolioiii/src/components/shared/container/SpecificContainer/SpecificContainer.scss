@@ -1,0 +1,20 @@
+.img-container {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    border-radius: $border-radius;
+    border: 1px solid $bg-secondary;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: .5em;
+
+    background-color: $bg-secondary;
+}

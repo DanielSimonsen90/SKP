@@ -1,0 +1,16 @@
+@use '../partials';
+@use '../variables';
+@import '../../container/SpecificContainer/SpecificContainer.scss';
+
+.container {
+    @extend %shadow;
+    background-color: $bg-secondary;
+    width: 100%;
+    height: 100%;
+
+    &-flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }   
+}

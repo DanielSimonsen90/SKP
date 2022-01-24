@@ -1,0 +1,18 @@
+#info-container-socialstitle {
+    background-color: unset;
+    height: fit-content;
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 2em;
+    }
+
+    li {
+        min-height: 1.5rem;
+    }
+    ul {
+        flex: 0;
+        gap: 2em;
+    }
+}

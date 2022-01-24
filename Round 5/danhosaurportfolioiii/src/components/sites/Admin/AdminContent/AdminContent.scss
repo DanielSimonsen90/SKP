@@ -1,0 +1,16 @@
+@import '../../../shared/scss/lib/variables';
+
+#admin-content {
+    display: grid;
+    width: 100%;
+    height: 100%;
+
+    .container {
+        height: fit-content;
+        background-color: $bg-tertiary;
+
+        button {
+            padding: .25em;
+        }
+    }
+}
