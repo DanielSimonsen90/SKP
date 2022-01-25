@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useStateOnUpdate } from 'danholibraryrjs';
 import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models'
 import { api, useUpsertProject } from 'providers/MeProvider';
@@ -37,6 +37,25 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
 
     const onConstruct = () => upsertProject(projectProps);
 
+    useEffect(() => {
+        const setListener = (type: 'add' | 'remove', key?: string, callback?: () => void) => {
+            const listener = (e: KeyboardEvent) => {
+                if (e.key === key) {
+                    callback();
+                }
+            }   
+            if (type === 'add') document.addEventListener('keypress', listener);
+            else document.removeEventListener('keypress', listener);
+        }
+        setListener('add', 'Enter', onConstruct);
+        setListener('add', 'Escape', close);
+
+        return () => {
+            setListener('remove')
+            setListener('remove')
+        }
+    }, [])
+
     if (title === 'delete') return <DeleteModal title={title} project={project} close={close} />
 
     const crudProp = { 'data-crud-type': title };
@@ -46,10 +65,13 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
             {ProjectInformation}
             {ProjectOptional}
             <ButtonContainer>
-                <button onClick={onConstruct} disabled={!propsChanged}
-                    {...crudProp}
+                <button onClick={onConstruct} onKeyPress={e => e.key === 'Enter' && onConstruct()}
+                    disabled={!propsChanged} {...crudProp}
                 >{title.toPascalCase()}</button>
-                <button onClick={close}>Close</button>
+                <button onClick={close} onKeyPress={e => {
+                    console.log(e.key);
+                    
+                }}>Close</button>
             </ButtonContainer>
         </InfoContainer>
     )

@@ -12,12 +12,11 @@ type Props = BaseProps<HTMLImageElement> & {
 export default function ProjectImage({ project, allowClick = true, className, ...props }: Props) {
     const translate = useTranslate();
     const modal = useModal(<ProjectImageModal project={project} />);
-    
-    let source = project.image;
-    if (project.image === undefined || project.image.toString() === '[object Object]') return <p className="project-image">{translate('noImage')}</p>;
+
+    if (!project || project.image === undefined || project.image.toString() === '[object Object]') return <p className="project-image">{translate('noImage')}</p>;
     if (project.image.toString() === '[object Object]') console.log('[object Object]:', project.image);
     
-    const src = `data:image/png;base64,${source}`
+    const src = `data:image/png;base64,${project.image}`
 
     return <img className={`project-image${className ? ` ${className}` : ''}`} 
         src={src} {...props} data-clickable={allowClick}

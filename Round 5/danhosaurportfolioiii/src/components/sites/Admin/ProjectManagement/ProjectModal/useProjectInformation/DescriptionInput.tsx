@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TranslationObj } from "providers/LanguageProvider";
 import { InputProps } from "../Label";
 
-export function useDescription({ Dansk = '', English = '' }: TranslationObj = { Dansk: '', English: '' }) {
+export function useDescription({ Dansk = [''], English = [''] }: TranslationObj = { Dansk: [''], English: [''] }) {
     const [dansk, setDansk] = useState<Array<string>>(Dansk);
     const [english, setEnglish] = useState<Array<string>>(English);
 

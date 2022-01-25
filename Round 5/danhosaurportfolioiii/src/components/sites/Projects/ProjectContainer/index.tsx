@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Project } from 'danhosaurportfolio-models';
 import { useEffectOnce } from 'danholibraryrjs';
 import { useMe, useSetProjects } from 'providers/MeProvider';
