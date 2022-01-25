@@ -14,11 +14,9 @@ export type ModalProps = {
     close(): void
 }
 export function useModal(modalValue: Component) {
-    const [push, pop, size] = useContext(ModalContext);
+    const [push, close, size] = useContext(ModalContext);
 
-    const close = () => pop();
-
-    console.log('useModalUpdate', size);
+    console.log('useModal return', size);
     
 
     const modalWrapper = (
@@ -44,15 +42,12 @@ export function useModal(modalValue: Component) {
 
 export default function ModalProvider({ children }: BaseProps) {
     const { value, push, pop, size } = useStateStack<Component>(null, { capacity: 5 });
-    const isVisible = useMemo(() => size > 0, [size]);
 
-    useEffect(() => {
-        console.log('ModalProvider, useEffect', {isVisible, stack: { value, size }});
-    })
+    console.log('ModalProvider, return', { stack: { value, size }});
 
     return (
         <ModalContext.Provider value={[push, pop, size]}>
-            {isVisible && value}
+            {value}
             {children}
         </ModalContext.Provider>
     );
