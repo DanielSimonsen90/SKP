@@ -75,10 +75,11 @@
 
 img.project-image {
     grid-area: image;
-    max-width: 95%;
+    max-width: 100%;
     height: 35vh;
     width: 100%;
     border-radius: $border-radius;
+    height: 100%;
 
     &[data-clickable=true] {
         cursor: pointer;
@@ -86,4 +87,5 @@ img.project-image {
 }
 p.project-image {
     align-self: center;
+    text-align: center;
 }

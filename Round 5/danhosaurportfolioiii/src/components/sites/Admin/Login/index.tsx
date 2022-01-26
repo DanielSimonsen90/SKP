@@ -14,7 +14,7 @@ export default function Login() {
     const { setAdmin } = useAdmin();
     const findAdmin = useFindAdmin();
     const redirect = useRedirect();
-    const modal = useModal((
+    const [visible, setModalVisibility] = useModal((
         <div className='admin-login-modal'>
             <h1>Invalid username 🤔</h1>
             <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
@@ -30,7 +30,7 @@ export default function Login() {
     const login = async () => {
         setIsLogginIn(true)
         if (!isValid) {
-            modal('show');
+            setModalVisibility('show');
             resetForm();
         }
 

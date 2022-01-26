@@ -57,7 +57,8 @@
         }
 
         &.project-image .content {
-            grid-template-rows: auto;
+            display: flex;
+            justify-content: center;
         }
     }
 
@@ -80,6 +81,7 @@
     }
     img {
         max-width: 100%;
+        height: auto;
     }
 }
 #info-container-project-information .content {

@@ -11,7 +11,7 @@ type Props = BaseProps<HTMLImageElement> & {
 
 export default function ProjectImage({ project, allowClick = true, className, ...props }: Props) {
     const translate = useTranslate();
-    const modal = useModal(<ProjectImageModal project={project} />);
+    const [visible, setModalVisibility] = useModal(<ProjectImageModal project={project} />);
 
     if (!project || project.image === undefined || project.image.toString() === '[object Object]') return <p className="project-image">{translate('noImage')}</p>;
     if (project.image.toString() === '[object Object]') console.log('[object Object]:', project.image);
@@ -23,7 +23,7 @@ export default function ProjectImage({ project, allowClick = true, className, ..
         alt="Project preview failed to load..."
         onClick={e => { 
             // e.stopPropagation();
-            if (allowClick) modal('show');
+            if (allowClick) setModalVisibility('show');
          }} 
     />
 }

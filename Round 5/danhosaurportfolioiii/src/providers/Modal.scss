@@ -7,18 +7,21 @@
 .container.modal {
     @include max();
     position: fixed;
-    display: grid;
-    place-items: center;
     inset: 0 0 0 0;
     z-index: 100;
+    display: grid;
+    place-items: center;
     background-color: $bg-secondary-opacity;
 
     &-content {
         @include max();
         height: fit-content;
         width: fit-content;
+        max-width: 80vw;
+        max-height: 90vh;
 
-        // display: grid;
+        display: grid;
+        place-items: center;
         // grid-template-rows: 4em auto;
         // align-items: center;
 
@@ -29,6 +32,7 @@
         .image-container {
             max-height: 75vh;
             overflow-y: auto;
+            height: 100%;
             padding: .5em;
         }
 

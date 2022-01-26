@@ -19,7 +19,7 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
     const [createdAtTimestamp, setCreatedAtTimestamp] = useState(project?.createdAt.getTime() || Date.now())
     const createdAt = useMemo(() => {
         const date = new Date(createdAtTimestamp);
-        return new DanhoDate(date.getFullYear(), date.getMonth(), date.getDate())
+        return new DanhoDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
     }, [createdAtTimestamp]);
     const { dansk, setDansk, english, setEnglish } = useDescription(project?.description);
     const [didChange, setDidChange] = useState(false);

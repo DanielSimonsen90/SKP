@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useStateOnUpdate } from 'danholibraryrjs';
+import { useEnterEsc, useStateOnUpdate } from 'danholibraryrjs';
 import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models'
 import { api, useUpsertProject } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
@@ -23,6 +23,10 @@ export type ProjectModalHookProps = Omit<ProjectModalProps, 'close'>
 
 export default function ProjectModal({ title, project, close }: ProjectModalProps) {
     // console.log(project);
+    useEnterEsc({
+        onEnter: () => onConstruct(),
+        onEsc: close
+    })
 
     const [ProjectInformation, infoChanged, projectInfoProps] = useProjectInformation({ project, title: 'Project Information' })
     const [ProjectOptional, optionalChanged, projectOptionalProps] = useProjectOptional({ project, title: 'Optional' });
@@ -37,41 +41,17 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
 
     const onConstruct = () => upsertProject(projectProps);
 
-    useEffect(() => {
-        const setListener = (type: 'add' | 'remove', key?: string, callback?: () => void) => {
-            const listener = (e: KeyboardEvent) => {
-                if (e.key === key) {
-                    callback();
-                }
-            }   
-            if (type === 'add') document.addEventListener('keypress', listener);
-            else document.removeEventListener('keypress', listener);
-        }
-        setListener('add', 'Enter', onConstruct);
-        setListener('add', 'Escape', close);
-
-        return () => {
-            setListener('remove')
-            setListener('remove')
-        }
-    }, [])
-
     if (title === 'delete') return <DeleteModal title={title} project={project} close={close} />
 
     const crudProp = { 'data-crud-type': title };
     
     return (
-        <InfoContainer title={`${title} Project`}>
+        <InfoContainer title={`${title} Project`} onKeyPress={e => console.log(e)}>
             {ProjectInformation}
             {ProjectOptional}
             <ButtonContainer>
-                <button onClick={onConstruct} onKeyPress={e => e.key === 'Enter' && onConstruct()}
-                    disabled={!propsChanged} {...crudProp}
-                >{title.toPascalCase()}</button>
-                <button onClick={close} onKeyPress={e => {
-                    console.log(e.key);
-                    
-                }}>Close</button>
+                <button onClick={onConstruct} disabled={!propsChanged} {...crudProp}>{title.toPascalCase()}</button>
+                <button onClick={close}>Close</button>
             </ButtonContainer>
         </InfoContainer>
     )
@@ -104,7 +84,7 @@ function DeleteModal({ title, project, close }: ProjectModalProps) {
     }
 
     return (
-        <InfoContainer title={title}>
+        <InfoContainer title={title} onKeyPress={e => console.log(e.key)}>
             {content}
         </InfoContainer>
     )

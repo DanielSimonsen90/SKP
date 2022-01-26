@@ -39,11 +39,19 @@ button {
 
     @each $key, $value in $cruds {
         &[data-crud-type=#{$key}] {
-            @include transition(color);
+            $value-mix-percentage: 15%;
+            $value-mix: mix($value, $bg-secondary, $value-mix-percentage);
+
+            @include transition(color, background-color, border-color);
             color: mix($value, $clr-primary, 75%);
+            background-color: $value-mix;
+            @debug calc($value-mix-percentage * (100 / 10));
+            border-color: mix($value, $bg-primary, $value-mix-percentage);
     
             &:hover {
                 color: $value;
+                border-color: mix($value, $bg-tertiary, 75%);;
+                background: radial-gradient(circle, $bg-secondary 0%, $value-mix 25%)
             }
         }
     }
