@@ -5,8 +5,8 @@ import { useTranslate } from './LanguageProvider';
 import myData from '../me.json'
 
 export const { email, github, phone, linkedin } = myData;
-export const api = new API("localhost:8081");
 export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, activity));
+export const api = new API("localhost:8081");
 const locationCollection = new LocationCollection();
 const contact = { email, phone, github, linkedin };
 const dummyMe = new Me(locationCollection, contact, dummySpareTime, api);
@@ -40,8 +40,8 @@ export function useSetSpareTime() {
 export function useSetProjects() {
     const [me, setMe] = useMyState();
 
-    return async () => {
-        if (me.projects.length) return me.projects;
+    return async (force = false) => {
+        if (me.projects.length && !force) return me.projects;
 
         return dummyMe.projects.fetchProjects().then(projects => {
             setMe(me => ({ ...me, projects }) as Me);
@@ -52,12 +52,11 @@ export function useSetProjects() {
 
 export function useUpsertProject() {
     const { projects } = useMe();
+    const setProjects = useSetProjects();
 
-    return (project: Project) => 
-        (!projects.some(p => p._id === project._id) ? 
-            api.create : 
-            api.update
-        )('projects', project);
+    return (project: Project) => (!projects.some(p => p._id === project._id) ? 
+        api.create('projects', project) : 
+        api.update('projects', project)).then(() => setProjects(true))
 }
 
 export default function MeProvider({ children }: BaseProps) {

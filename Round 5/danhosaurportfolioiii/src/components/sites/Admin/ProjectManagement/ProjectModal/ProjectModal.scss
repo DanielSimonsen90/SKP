@@ -1,9 +1,11 @@
+@import 'components/shared/scss/lib';
+
 #info-container-create-project, 
 #info-container-update-project {
     height: 85vh;
     width: 65vw;
 
-    & .content {
+    .content {
         display: grid;
         grid-gap: 2vh;
     }
@@ -39,9 +41,9 @@
     .project-optional-row {
         display: grid;
     
-        &.collab {
-            fieldset { padding-bottom: 0 }
-            content { grid-gap: 1vh; }
+        &.collab .content { 
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 1vh; 
         }
     
         &.checkboxes {
@@ -58,6 +60,7 @@
 
         &.project-image .content {
             display: flex;
+            flex-direction: column;
             justify-content: center;
         }
     }
@@ -78,10 +81,14 @@
         display: flex;
         align-items: center;
         gap: .5em;
+
+        input {
+            flex: 1 0 max-content;
+        }
     }
     img {
         max-width: 100%;
-        height: auto;
+        // max-height: 12.5vh;
     }
 }
 #info-container-project-information .content {
@@ -94,4 +101,3 @@
 #info-container-optional .content {
     grid-template-rows: repeat(3, min-content) auto;
 }
-

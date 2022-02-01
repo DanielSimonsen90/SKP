@@ -5,10 +5,10 @@ import './AboutMe.scss'
 
 export default function AboutMe() {
     return (
-        <div id="about-me-page">
+        <main id="about-me-page">
             <Intro />
             <Portrait uwuVerySecret={true} />
             <SpareTime />
-        </div>
+        </main>
     )
 }

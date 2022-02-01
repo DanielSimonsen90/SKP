@@ -3,11 +3,10 @@
     width: 100%;
 
     display: grid;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
+    place-items: center;
     border-radius: $border-radius;
     border: 1px solid $bg-secondary;
+    overflow-y: auto;
 }
 
 .button-container {

@@ -39,19 +39,44 @@ button {
 
     @each $key, $value in $cruds {
         &[data-crud-type=#{$key}] {
-            $value-mix-percentage: 15%;
+            $value-mix-percentage: 50%;
             $value-mix: mix($value, $bg-secondary, $value-mix-percentage);
 
             @include transition(color, background-color, border-color);
-            color: mix($value, $clr-primary, 75%);
-            background-color: $value-mix;
-            @debug calc($value-mix-percentage * (100 / 10));
-            border-color: mix($value, $bg-primary, $value-mix-percentage);
+            
+            &.primary {
+                color: $clr-primary;
+                background-color: $value-mix;
+                border: unset;
+            }
+            &.secondary {
+                color: mix($value, $clr-primary, 75%);
+                background-color: transparent;
+                border-color: mix($value, $bg-primary, $value-mix-percentage);
+            }
+            &.tertiary {
+                color: mix($value, $clr-secondary, $value-mix-percentage / 1.5);
+                border-color: mix($value, $bg-secondary, $value-mix-percentage / 1.5);
+            }
+
     
             &:hover {
-                color: $value;
-                border-color: mix($value, $bg-tertiary, 75%);;
-                background: radial-gradient(circle, $bg-secondary 0%, $value-mix 25%)
+                background: unset;
+
+                &.primary {
+                    // background: radial-gradient(circle, $value-mix 0%, $value 100%)
+                    background-color: mix($value, $value-mix, $value-mix-percentage);
+                }
+                &.secondary {
+                    color: $value;
+                    background-color: mix($value, $bg-tertiary, 15%);
+                    border-color: mix($value, $bg-tertiary, 75%);
+                }
+                &.tertiary {
+                    color: mix($value, $clr-primary, $value-mix-percentage * 1.5);
+                    background: mix($value, $bg-tertiary, 5%);
+                    border-color: mix($value, $bg-tertiary, 75%);;
+                }
             }
         }
     }

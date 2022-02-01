@@ -12,6 +12,7 @@
         height: 100%;
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
         padding: 0em .5em 1em;
     }
 }
@@ -20,12 +21,13 @@ div.spare-time-item {
     background-color: unset;
     box-shadow: unset;
     font-size: 1.1em;
+    width: 54ch;
 
     flex-direction: column;
     align-items: flex-start;
     gap: .5em;
 
-    margin: 0em .25em;
+    // margin: 0em .25em;
     padding: .5em .5em;
     height: initial;
     

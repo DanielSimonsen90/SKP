@@ -16,18 +16,18 @@ export default function ProjectCard({ project, onUpdate, onDelete }: Props) {
   const [language] = useLanguage();
 
   return (
-    <Container className='project-card'>
+    <Container className='project-card' id={project.name.replaceAll(' ', '%20')}>
       <ProjectCardHead project={project} />
       <textarea className='project-card-mid-top' 
         readOnly
         value={project.description[language]} 
       />
       <ImageContainer className='project-card-mid-bottom'>
-        <ProjectImage project={project} allowClick={true} />
+        <ProjectImage project={project} modalable={true} />
       </ImageContainer>
       <ButtonContainer className='project-card-bottom'>
-        <button data-crud-type="update" onClick={() => onUpdate(project)}>Update</button>
-        <button data-crud-type="delete" onClick={() => onDelete(project)}>Delete</button>
+        <button data-crud-type="update" className='primary' onClick={() => onUpdate(project)}>Update</button>
+        <button data-crud-type="delete" className='secondary' onClick={() => onDelete(project)}>Delete</button>
       </ButtonContainer>
     </Container>
   );

@@ -34,7 +34,7 @@ export default function ProjectContainer({
                 onUpdate={onProjectUpdate} onDelete={onProjectDelete}
             /> 
         )
-    , [languageFilter, projectFilter, me])
+    , [languageFilter, projectFilter, me, me.projects])
 
     useEffectOnce(() => { if (!me.projects.length) setProjects(); })
 

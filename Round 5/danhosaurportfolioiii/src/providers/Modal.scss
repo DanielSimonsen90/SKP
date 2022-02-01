@@ -14,7 +14,6 @@
     background-color: $bg-secondary-opacity;
 
     &-content {
-        @include max();
         height: fit-content;
         width: fit-content;
         max-width: 80vw;
@@ -22,12 +21,11 @@
 
         display: grid;
         place-items: center;
-        // grid-template-rows: 4em auto;
-        // align-items: center;
 
-        padding: 1em;
+        padding: 1.5rem;
         background-color: $bg-quaternary;
         border-radius: $border-radius;
+        box-shadow: 0px 1vh 5vh black;
 
         .image-container {
             max-height: 75vh;
@@ -37,7 +35,7 @@
         }
 
         img {
-            display: flex;
+            // display: flex;
             max-width: 90vw;
             border-radius: $border-radius;
         }
@@ -45,8 +43,7 @@
 
     .modal-exit {
         position: absolute;
-        top: .25em;
-        right: .5em;
+        inset: .25rem .25rem auto auto;
         cursor: pointer;
         z-index: 101;
     }

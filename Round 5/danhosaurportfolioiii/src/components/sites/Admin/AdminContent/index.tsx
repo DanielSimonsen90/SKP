@@ -25,7 +25,7 @@ export default function AdminContent() {
 
     return (
         <div id='admin-content'>
-            <Navbar routes={routes} includeLogo={false}>
+            <Navbar routes={routes} includeLogo={false} className='admin-nav'>
                 <button onClick={() => logout()}>Logout</button>
             </Navbar>
             <Router routes={routes} fallback={AdminDashboard} />

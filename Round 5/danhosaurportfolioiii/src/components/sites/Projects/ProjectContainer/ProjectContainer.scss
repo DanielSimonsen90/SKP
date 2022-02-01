@@ -4,7 +4,7 @@
     width: 100%;
     justify-items: center;
     grid-gap: 1em;
-    overflow: hidden auto;
+    overflow: hidden;
 
     &[data-render-cards=true] {
         grid-template-columns: repeat(4, auto);

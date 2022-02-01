@@ -44,7 +44,7 @@ export default function Login() {
     }
 
     const form = (<>
-        <input type="text" value={username} placeholder="So you're an admin, huh?"
+        <input type="password" value={username} placeholder="So you're an admin, huh?"
             onChange={e => setUsername(e.target.value)}
             onKeyPress={e => e.key === 'Enter' && login()}
         />

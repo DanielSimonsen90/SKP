@@ -6,10 +6,11 @@ export type FilterTypes = 'language' | 'projectType'
 type Props = {
     value: string,
     onChange: (v: string) => void;
-    type: FilterTypes
+    type: FilterTypes,
+    bold?: boolean
 }
 
-export default function FilterLabel({ value, onChange, type }: Props) {
+export default function FilterLabel({ value, onChange, type, bold = false }: Props) {
     const translate = useTranslate();
     const { projects } = useMe();
 
@@ -23,7 +24,7 @@ export default function FilterLabel({ value, onChange, type }: Props) {
     
     return (
         <label>
-            <b>{translate(type)}</b>
+            {(bold && <b>{translate(type)}</b>) || <p>{translate(type)}</p>}
             <input type="text" list={id} 
                 value={value} onChange={e => onChange(e.target.value)} 
                 placeholder={translate('all')}

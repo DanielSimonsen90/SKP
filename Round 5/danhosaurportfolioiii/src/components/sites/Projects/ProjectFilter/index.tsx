@@ -31,13 +31,11 @@ export default function ProjectFilter(props: Props) {
 
     return (
         <Container className={`project-filter ${shouldStick ? 'fixed' : ''}`}>
-            <FilterLabel type='language' 
-                value={languageFilter} 
-                onChange={setLanguageFilter}
+            <FilterLabel type='language' bold={true}
+                value={languageFilter} onChange={setLanguageFilter}
             />
-            <FilterLabel type='projectType' 
-                value={projectFilter} 
-                onChange={setProjectFilter}
+            <FilterLabel type='projectType' bold={true}
+                value={projectFilter} onChange={setProjectFilter}
             />
             {shouldStick && <ToTop />}
         </Container>

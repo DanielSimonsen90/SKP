@@ -31,7 +31,7 @@ export default function Plan() {
     }
 
     return (
-        <div id="plan-page">
+        <main id="plan-page">
             <div>
                 <h1>{translate('educationPlanTitle')[planState]}</h1>
                 <Occupation link={false} />
@@ -47,6 +47,6 @@ export default function Plan() {
                     {tableData.map((item, i) => <PlanRow key={i} item={item} className={item.course === 'Grundforløb' ? item.course : item.course.substring(0, item.course.length - 2)} />)}
                 </tbody>
             </table>
-        </div>
+        </main>
     )
 }

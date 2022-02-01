@@ -4,6 +4,7 @@ import ProjectModal from './ProjectModal';
 import ProjectContainer from '../../Projects/ProjectContainer';
 import './ProjectManagement.scss';
 import { useMe } from 'providers/MeProvider';
+import { useEffect } from 'react';
 
 export type ModalTitles = 'create' | 'update' | 'delete' | string;
 
@@ -16,10 +17,14 @@ export default function ProjectManagement() {
         setModalVisible('show', <ProjectModal project={project} title={title} close={modalClose} />)
     }
 
+    useEffect(() => {
+        console.log('projects changed');
+    }, [projects])
+
     return (
         <div id='project-management'>
-            {projects.length && (
-                <button onClick={() => openModal('create')} data-crud-type="create">Create Project</button>
+            {projects.length > 0 && (
+                <button className='tertiary' onClick={() => openModal('create')} data-crud-type="create">Create Project</button>
             )}
             <ProjectContainer renderCards={true} 
                 onProjectUpdate={p => openModal('update', p)}

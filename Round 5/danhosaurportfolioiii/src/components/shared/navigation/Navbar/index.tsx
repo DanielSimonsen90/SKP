@@ -11,7 +11,7 @@ type Props = BaseProps & RouteProps & {
     fromFooter?: boolean
 }
 
-export default function Navbar({ routes, children, includeLogo = true, fromFooter = false, ...props }: Props) {
+export default function Navbar({ routes, children, className, includeLogo = true, fromFooter = false, ...props }: Props) {
     const translate = useTranslate();
     const [route, redirect] = useRoute();
     
@@ -32,7 +32,7 @@ export default function Navbar({ routes, children, includeLogo = true, fromFoote
         <ul className='navbar'>{content}</ul>
     ) : (
         <Container>
-            <header className='navbar' {...props}>
+            <header className={`navbar${className ? ` ${className}` : ''}`} {...props}>
                 {content}
             </header>
         </Container>

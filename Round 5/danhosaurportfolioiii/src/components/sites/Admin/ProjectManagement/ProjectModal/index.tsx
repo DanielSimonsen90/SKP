@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useEnterEsc, useStateOnUpdate } from 'danholibraryrjs';
-import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models'
-import { api, useUpsertProject } from 'providers/MeProvider';
+import { useEnterEsc, useRedirect, useStateOnUpdate } from 'danholibraryrjs';
+import { Project, IProject, ProgrammingLanguage, API } from 'danhosaurportfolio-models'
+import { useUpsertProject, api } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
 import InfoContainer from 'components/shared/container/InfoContainer';
 import { ButtonContainer } from 'components/shared/container/SpecificContainer';
@@ -22,11 +22,8 @@ export type ProjectModalProps = ModalProps & {
 export type ProjectModalHookProps = Omit<ProjectModalProps, 'close'>
 
 export default function ProjectModal({ title, project, close }: ProjectModalProps) {
-    // console.log(project);
-    useEnterEsc({
-        onEnter: () => onConstruct(),
-        onEsc: close
-    })
+    const redirect = useRedirect();
+    useEnterEsc({ onEnter: () => onConstruct(), onEsc: close })
 
     const [ProjectInformation, infoChanged, projectInfoProps] = useProjectInformation({ project, title: 'Project Information' })
     const [ProjectOptional, optionalChanged, projectOptionalProps] = useProjectOptional({ project, title: 'Optional' });
@@ -34,12 +31,59 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
         Object.assign({}, project, projectInfoProps, projectOptionalProps) as Project, 
     [projectInfoProps, ProjectOptional]);
     const propsChanged = useStateOnUpdate(false, 
-        () => Object.keys(projectProps).some(key => project && projectProps[key] !== project[key]), 
+        () => Object.keys(projectProps).some(prop => {
+            if (!project) return true;
+
+            // console.log({
+            //     project, projectProps
+            // });
+
+            const projectExists = project !== null || project !== undefined;
+            const propsUnequal = projectProps[prop] !== project[prop];
+            const propIsObj = typeof project[prop] === 'object';
+            const propObjKeysUnequal = () => {
+                try {
+                    Object.keys(project[prop]).some(key => {
+                        try {
+                            return project[prop][key] !== projectProps[prop][key]
+                        } catch (err) {
+                            console.error(err, {
+                                project: project[prop],
+                                value: projectProps[prop],
+                                key
+                            });
+                            return false;
+                        }
+                    })
+                } catch (err) {
+                    // console.error(err, {
+                    //     project: project[prop],
+                    //     value: projectProps[prop],
+                    //     prop
+                    // })   
+                    return false;
+                }
+            }
+
+            const value = projectExists && propsUnequal && (propIsObj ? propObjKeysUnequal() : true);
+            if (value) {
+                console.log('Changed properties', {
+                    booleans: {
+                        projectExists, propsUnequal, propIsObj, 
+                        propObjKeysUnequal: propObjKeysUnequal()
+                    },
+                    project: project[prop],
+                    value: projectProps[prop]
+                });
+                return true;
+            }
+            return false;
+        }), 
         [infoChanged, optionalChanged]
     );
     const upsertProject = useUpsertProject();
 
-    const onConstruct = () => upsertProject(projectProps);
+    const onConstruct = () => upsertProject(projectProps).then(close);
 
     if (title === 'delete') return <DeleteModal title={title} project={project} close={close} />
 
@@ -50,8 +94,8 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
             {ProjectInformation}
             {ProjectOptional}
             <ButtonContainer>
-                <button onClick={onConstruct} disabled={!propsChanged} {...crudProp}>{title.toPascalCase()}</button>
-                <button onClick={close}>Close</button>
+                <button className='primary' onClick={onConstruct} disabled={!propsChanged} {...crudProp}>{title.toPascalCase()}</button>
+                <button className='secondary' onClick={close} data-crud-type='delete' >Close</button>
             </ButtonContainer>
         </InfoContainer>
     )
@@ -65,12 +109,12 @@ function DeleteModal({ title, project, close }: ProjectModalProps) {
             ?
         </h1>
         <ButtonContainer>
-            <button onClick={() => onChoice('no')}>Cancel</button>
-            <button onClick={() => onChoice('yes')} data-crud-type="delete">Delete</button>
+            <button className="secondary" onClick={() => onChoice('no')}>Cancel</button>
+            <button className="primary" onClick={() => onChoice('yes')} data-crud-type="delete">Delete</button>
         </ButtonContainer> 
     </>);
     const loadingModal = <h1>Deleing project...</h1>;
-    const deletedModal = <h1>{project.name} was deleted form the database.</h1>
+    const deletedModal = <h1>{project.name} was deleted from the database.</h1>
 
     const [content, setContent] = useState(defaultModal)
 

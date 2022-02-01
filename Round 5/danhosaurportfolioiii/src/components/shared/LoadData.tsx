@@ -1,7 +1,6 @@
+import { createRef, DependencyList, useState, useEffect } from 'react';
 import { useEffectOnce, useLoadData, UseLoadDataProps } from 'danholibraryrjs';
-import React, { createRef, DependencyList, useState } from 'react'
-import { useEffect } from 'react';
-import { useTranslate } from '../../providers/LanguageProvider'
+import { useTranslate } from 'providers/LanguageProvider';
 
 type Props<T> = Omit<UseLoadDataProps<T>, 'loadingComponent' | 'errorComponent'> & {
     loadData(): Promise<T>;
@@ -20,7 +19,7 @@ export default function LoadData<T>({ loadData, dependencies, onLoadedChanged, v
     const errorComponent = <h1 ref={loadingProjects} style={style}>{errorMessage || translate('unableToFetch')}</h1>;
     const loadingComponent = <h1 ref={loadingProjects} style={style}>{loadMessage || translate('loadingProjects')}...</h1>;
 
-    const component = useLoadData(loadData, { 
+    const [component, loading] = useLoadData(loadData, { 
         errorComponent, valueComponent, loadingComponent
      }, dependencies)
     const [loaded, setLoaded] = useState(0);
