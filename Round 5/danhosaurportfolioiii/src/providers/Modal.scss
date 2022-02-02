@@ -4,6 +4,12 @@
     max-width: 100vw;
 }
 
+@mixin betterminmax($property, $min-value, $default-value, $max-value) {
+    min-#{$property}: $min-value;
+    #{$property}: $default-value;
+    max-#{$property}: $max-value;
+}
+
 .container.modal {
     @include max();
     position: fixed;
@@ -14,10 +20,8 @@
     background-color: $bg-secondary-opacity;
 
     &-content {
-        height: fit-content;
-        width: fit-content;
-        max-width: 80vw;
-        max-height: 90vh;
+        @include betterminmax(height, 45vh, fit-content, 90vh);
+        @include betterminmax(width, 50vw, fit-content, 80vw);
 
         display: grid;
         place-items: center;
@@ -30,13 +34,14 @@
         .image-container {
             max-height: 75vh;
             overflow-y: auto;
-            height: 100%;
             padding: .5em;
         }
 
         img {
             // display: flex;
-            max-width: 90vw;
+            // min-width: 90vw;
+            max-width: 100%;
+
             border-radius: $border-radius;
         }
     }

@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { DanhoDate, IProgrammingLanguage, ProgrammingLanguage } from "danhosaurportfolio-models";
 import InfoContainer from "components/shared/container/InfoContainer";
-import FilterLabel from "components/sites/Projects/FilterLabel";
-import DescriptionInput, { useDescription } from "./DescriptionInput";
+import FilterInput from "components/sites/Projects/FilterInput";
+import DescriptionInput from "./DescriptionInput";
 import { ConstructableProps, Omid, ProjectModalHookProps, UseProjectModifyReturn } from "..";
 import Label from "../Label";
+import { useStateOnUpdate } from "danholibraryrjs";
 
 type ProjectType = IProgrammingLanguage[ProgrammingLanguage];
 export type UseProjectInformationProps = Omid<ConstructableProps, 
@@ -21,19 +22,37 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
         const date = new Date(createdAtTimestamp);
         return new DanhoDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
     }, [createdAtTimestamp]);
-    const { dansk, setDansk, english, setEnglish } = useDescription(project?.description);
-    const [didChange, setDidChange] = useState(false);
+    const [dansk, setDansk] = useState(project?.description.Dansk || new Array<string>());
+    const [english, setEnglish] = useState(project?.description.English || new Array<string>());
+    const didChange = useStateOnUpdate(false, () => {
+        if (!project) return true;
+
+        return (
+            project.name !== name || 
+            project.display !== display ||
+            project.language !== language ||
+            project.projectType !== projectType ||
+            project.createdAt.getTime() !== createdAtTimestamp ||
+            project.description.Dansk.some((sentence, i) => dansk[i] !== sentence) || 
+            project.description.English.some((sentence, i) => english[i] !== sentence)
+        )
+    }, [name, display, language, projectType, createdAtTimestamp, dansk, english]);
 
     const component = (
         <InfoContainer title="Project Information">
             <div className='name-display project-information-row'>
-                <Label title="Name" type="text" value={name} onChange={setName} />
+                <Label title="Name" type="text" value={name} onChange={setName} required={true} />
                 <Label title="Display" type="checkbox" value={display} onChange={setDisplay} />
-                <Label title="Created at" type="date" value={createdAt.toStringReverse()} onChange={s => setCreatedAtTimestamp(new Date(typeof s === 'function' ? s(createdAt.toString()) : s).getTime())} />
+                <Label title="Created at" type="date" value={createdAt.toStringReverse()} onChange={s => 
+                    setCreatedAtTimestamp(new Date(
+                        typeof s === 'function' ? s(createdAt.toString()) : s
+                    ).getTime())} 
+                    required={true}
+                />
             </div>
             <div className='language-project project-information-row'>
-                <FilterLabel type='language' value={language} onChange={lang => setLanguage(lang as ProgrammingLanguage)} />
-                <FilterLabel type='projectType' value={projectType} onChange={type => setProjectType(type as ProjectType)} />
+                <FilterInput type='language' value={language} onChange={lang => setLanguage(lang as ProgrammingLanguage)} required={true} />
+                <FilterInput type='projectType' value={projectType} onChange={type => setProjectType(type as ProjectType)} required={true} />
             </div>
             <div className="description project-information-row">
                 <DescriptionInput title="Description: Dansk" value={dansk.join('\n')} onChange={s => setDansk(typeof s === 'function' ? s(dansk.join('\n')).split('\n') : s.split('\n'))} />
@@ -41,10 +60,6 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
             </div>
         </InfoContainer>
     )
-
-    useEffect(() => {
-        if (!didChange) setDidChange(true);
-    }, [name, display, language, projectType, createdAtTimestamp, dansk, english])
 
     return [component, didChange, {
         name, display, language, projectType, createdAt, 

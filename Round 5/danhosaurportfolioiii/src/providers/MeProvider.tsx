@@ -6,7 +6,7 @@ import myData from '../me.json'
 
 export const { email, github, phone, linkedin } = myData;
 export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, activity));
-export const api = new API("localhost:8081");
+export const api = new API("localhost:8081", github);
 const locationCollection = new LocationCollection();
 const contact = { email, phone, github, linkedin };
 const dummyMe = new Me(locationCollection, contact, dummySpareTime, api);

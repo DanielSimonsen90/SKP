@@ -37,6 +37,14 @@ button {
         color: $clr-primary;
     }
 
+    &[disabled] {
+        cursor: no-drop;
+        background: unset;
+        background-color: inherit !important;
+        color: gray;
+        text-decoration: none;
+    }
+
     @each $key, $value in $cruds {
         &[data-crud-type=#{$key}] {
             $value-mix-percentage: 50%;
@@ -112,7 +120,7 @@ fieldset {
 
     legend {
         color: $thm-secondary;
-        font-size: 24px;
+        font-size: 2em;
         font-weight: bold;
     }
 }
@@ -157,6 +165,7 @@ td { font-size: 2em; }
 
 textarea {
     height: 100%;
+    width: 100%;
     
     background-color: $bg-quaternary;
     color: $clr-secondary;

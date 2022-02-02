@@ -11,18 +11,15 @@ export type UseProjectOptionalProps = Omid<ConstructableProps, keyof UseProjectI
 export type UseProjectOptionalReturn = UseProjectModifyReturn<UseProjectOptionalProps>
 
 export default function useProjectOptional({ project }: ProjectModalHookProps): UseProjectOptionalReturn {
-    const [basePath, setBasePath] = useState("");
-    const [isOnGithub, setIsOnGithub] = useState(false);
+    const [baseLink, setBaseLink] = useState(project?.baseLink || "");
+    const [isOnGithub, setIsOnGithub] = useState(project?.baseLink !== undefined);
     const [isSpareTime, setisSpareTime] = useState(project?.spareTime || false);
-    const [collabGithub, setCollabGithub] = useState("")
-    const [collabRepo, setCollabRepo] = useState("");
+    const [collabGithub, setCollabGithub] = useState(project?.collab?.github || "")
+    const [collabRepo, setCollabRepo] = useState(project?.collab?.repo || "");
     const [image, setImage] = useState(project?.image || "")
     
-    const didChange = useStateOnUpdate(false, () => true, [basePath, isOnGithub, isSpareTime, collabGithub, collabRepo, image]);
-    const hasLink = useStateOnUpdate(false, state => {
-        if (hasLink || isOnGithub || basePath) return hasLink;
-        return state;
-    }, [basePath, isOnGithub])
+    const didChange = useStateOnUpdate(false, () => true, [baseLink, isOnGithub, isSpareTime, collabGithub, collabRepo, image]);
+    const hasLink = useStateOnUpdate(false, () => hasLink || isOnGithub || baseLink !== "", [baseLink, isOnGithub])
 
     const collab = useMemo(() => collabGithub || collabRepo ? 
         new Collab(collabGithub, collabRepo) : null, 
@@ -33,7 +30,7 @@ export default function useProjectOptional({ project }: ProjectModalHookProps): 
     const component = (
         <InfoContainer title="Optional">
             <div className="base-link project-optional-row">
-                <Label title="Base path" type="text" value={basePath} onChange={setBasePath} />
+                <Label title="Base path" type="text" value={baseLink} onChange={setBaseLink} />
             </div>
             <div className="checkboxes project-optional-row">
                 <Label title="Is on Github" type="checkbox" value={isOnGithub} onChange={setIsOnGithub} />
@@ -50,6 +47,6 @@ export default function useProjectOptional({ project }: ProjectModalHookProps): 
     return [component, didChange, {
         collab, image, hasLink,
         spareTime: isSpareTime, 
-        baseLink: basePath
+        baseLink: baseLink
     }]
 }

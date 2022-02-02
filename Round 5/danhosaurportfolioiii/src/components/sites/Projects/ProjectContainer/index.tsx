@@ -27,22 +27,21 @@ export default function ProjectContainer({
         .filter(p => renderCards || !languageFilter || (languageFilter === all || p.language === languageFilter))
         .filter(p => renderCards || !projectFilter || (projectFilter === all || p.projectType === projectFilter))
         .filter(p => renderCards || p.display)
-        .reverse()
-        .map(p => !renderCards ? 
-            <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
-            <ProjectCard project={p} key={`${p.name}:${p._id}`} 
-                onUpdate={onProjectUpdate} onDelete={onProjectDelete}
-            /> 
-        )
-    , [languageFilter, projectFilter, me, me.projects])
+        .reverse(), 
+    [languageFilter, projectFilter, me, me.projects])
 
     useEffectOnce(() => { if (!me.projects.length) setProjects(); })
 
     return (
         <div className='project-container' data-render-cards={renderCards}>
-            {(projects.length && projects) || (
-                <h1>{translate('noProjects')}</h1>
-            )}
+            {(projects.length && projects.map(p => 
+                !renderCards ? 
+                    <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
+                    <ProjectCard project={p} key={`${p.name}_${p._id}`} 
+                        onUpdate={onProjectUpdate} onDelete={onProjectDelete}
+                    />
+                )) || <h1>{translate('noProjects')}</h1>
+            }
         </div>
     )
 }

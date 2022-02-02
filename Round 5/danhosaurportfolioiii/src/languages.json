@@ -5,6 +5,7 @@
         "bookmark": "Bogmærk",
         "bookmarks": "Bogmærker",
         "changeEducatonPlanState": "Skift uddannelsesplan",
+        "country-code": "dk",
         "course": "Forløb",
         "day": "Dag",
         "days": "Dage",
@@ -71,6 +72,7 @@
         "admin/management": "Admin Management",
         "admin/projects": "Project Management",
         "changeEducatonPlanState": "Change education plan",
+        "country-code": "us",
         "educationPlanTitle": {
             "future": "My education plan for the future",
             "full": "My entire education plan"

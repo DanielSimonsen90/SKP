@@ -1,0 +1,212 @@
+html, input {
+  background-color: var(--background-color-primary);
+  color: var(--color-primary);
+}
+
+input:hover, svg, svg circle, svg line, li:hover, button {
+  cursor: pointer;
+}
+
+input, button {
+  -webkit-box-shadow: 0vw .5vh .5vh #111;
+          box-shadow: 0vw .5vh .5vh #111;
+}
+
+:root {
+  --theme-difference: 2.5%;
+  --transition: .25s;
+  --background-color-primary: #333;
+  --background-color-primary-lighter: #444;
+  --background-color-primary-darker: #222;
+  --background-color-secondary: rgb(24, 24, 24);
+  --background-color-secondary-lighter: rgb(28, 28, 28);
+  --background-color-secondary-darker: rgb(20, 20, 20);
+  --color-primary: #bbb;
+  --color-primary-lighter: #ddd;
+  --color-primary-darker: #aaa;
+  --border-radius: 10px;
+  --color-spotify: #1ed75f;
+  --interactive-button-opacity: .5;
+  --interactive-button-opacity-hover: .7;
+  --confirm: 125, 185, 101;
+  --cancel: 236, 109, 98;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#root {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
+html {
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p {
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+label {
+  display: block;
+}
+
+input {
+  padding: .5%;
+  margin: .5%;
+  border-radius: 5px;
+  border: 1px solid var(--background-color-primary);
+}
+
+input:hover {
+  -webkit-transition: background-color var(--transition) ease;
+  transition: background-color var(--transition) ease;
+  -webkit-transition: color var(--transition) ease;
+  transition: color var(--transition) ease;
+  cursor: text;
+}
+
+input:hover:hover, input:hover:focus {
+  background-color: var(--background-color-primary-lighter);
+}
+
+input:hover:hover, input:hover:focus {
+  color: var(--color-primary-lighter);
+}
+
+input:focus-visible {
+  outline-style: none;
+  border-color: var(--background-color-primary-lighter);
+}
+
+svg {
+  max-height: 100%;
+  max-width: 100%;
+  margin: .5vh .5vw;
+}
+
+svg circle, svg line {
+  -webkit-transition: color var(--transition) ease;
+  transition: color var(--transition) ease;
+}
+
+svg circle:hover, svg circle:focus, svg line:hover, svg line:focus {
+  color: var(--color-primary-lighter);
+}
+
+svg:hover > * {
+  -webkit-transition: fill var(--transition);
+  transition: fill var(--transition);
+}
+
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  padding: 1vh;
+}
+
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  list-style: none;
+  border: 1px solid var(--background-color-primary-lighter);
+  margin: .5vh 0px;
+}
+
+li:hover {
+  -webkit-transition: color var(--transition) ease;
+  transition: color var(--transition) ease;
+  border-color: var(--background-color-primary);
+  background-color: var(--background-color-primary-lighter);
+}
+
+li:hover:hover, li:hover:focus {
+  color: var(--color-primary);
+}
+
+li p {
+  display: inline;
+  width: auto;
+}
+
+button {
+  -webkit-transition: background-color var(--transition) ease;
+  transition: background-color var(--transition) ease;
+  -webkit-transition: color var(--transition) ease;
+  transition: color var(--transition) ease;
+  -webkit-transition: border-color var(--transition) ease;
+  transition: border-color var(--transition) ease;
+  background-color: var(--background-color-primary);
+  color: var(--color-primary);
+  border: 1px solid var(--background-color-secondary);
+  padding: .5em;
+  margin: .25em;
+  border-radius: 6px;
+}
+
+button:hover, button:focus {
+  background-color: var(--background-color-primary-lighter);
+}
+
+button:hover, button:focus {
+  color: var(--color-primary-lighter);
+}
+
+button:hover, button:focus {
+  border-color: var(--background-color-primary-lighter);
+}
+
+button.confirm {
+  background-color: rgba(var(--confirm), var(--interactive-button-opacity));
+}
+
+button.confirm:hover {
+  background-color: rgba(var(--confirm), var(--interactive-button-opacity-hover));
+}
+
+button.cancel {
+  background-color: rgba(var(--cancel), var(--interactive-button-opacity));
+}
+
+button.cancel:hover {
+  background-color: rgba(var(--cancel), var(--interactive-button-opacity-hover));
+}
+/*# sourceMappingURL=index.css.map */

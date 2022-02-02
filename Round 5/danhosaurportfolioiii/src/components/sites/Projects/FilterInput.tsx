@@ -1,16 +1,16 @@
-import { useMemo } from 'react'
+import { InputHTMLAttributes, useMemo } from 'react'
 import { useTranslate } from 'providers/LanguageProvider';
 import { useMe } from 'providers/MeProvider';
 
 export type FilterTypes = 'language' | 'projectType'
-type Props = {
+type Props = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
     value: string,
     onChange: (v: string) => void;
     type: FilterTypes,
     bold?: boolean
 }
 
-export default function FilterLabel({ value, onChange, type, bold = false }: Props) {
+export default function FilterInput({ value, onChange, type, bold = false, ...props }: Props) {
     const translate = useTranslate();
     const { projects } = useMe();
 
@@ -25,7 +25,7 @@ export default function FilterLabel({ value, onChange, type, bold = false }: Pro
     return (
         <label>
             {(bold && <b>{translate(type)}</b>) || <p>{translate(type)}</p>}
-            <input type="text" list={id} 
+            <input type="text" list={id} {...props}
                 value={value} onChange={e => onChange(e.target.value)} 
                 placeholder={translate('all')}
             />

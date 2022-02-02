@@ -7,12 +7,13 @@ export type InputProps<S extends LabelState, T extends HTMLInputTypeAttribute> =
     type: T,
     value: S,
     onChange: UseStateSetState<S>
+    required?: boolean,
 }
 
 export default function Label<
     S extends LabelState, 
     T extends HTMLInputTypeAttribute
->({ title, type, value, onChange }: InputProps<S, T>) {
+>({ title, type, value, onChange, required = false }: InputProps<S, T>) {
     const inputValue = (
         typeof value === 'boolean' ? "" : 
         value instanceof Date ? value.toString() : 
@@ -23,10 +24,16 @@ export default function Label<
     return (
         <label>
             <p>{title}</p>
-            <input type={type}
-                value={inputValue}
-                checked={inputChecked}
-                onChange={e => onChange((e.currentTarget.value || e.currentTarget.checked) as S)} 
+            <input type={type} required={required}
+                value={inputValue} checked={inputChecked}
+                onChange={e => onChange((e.currentTarget.value || e.currentTarget.checked) as S)}
+                onKeyDown={e => {
+                    if (type === 'checkbox' && (e.key === 'Enter' || e.key === 'NumpadEnter')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        onChange(true as S);
+                    }
+                }}
             />
         </label>
     )

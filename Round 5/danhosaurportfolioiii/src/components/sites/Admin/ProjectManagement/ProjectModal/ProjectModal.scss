@@ -36,6 +36,10 @@
         &.language-project {
             grid-row: 2;
         }
+
+        &.description label {
+            width: 100%;
+        }
     }
     
     .project-optional-row {
@@ -100,4 +104,27 @@
 }
 #info-container-optional .content {
     grid-template-rows: repeat(3, min-content) auto;
+}
+
+#info-container-delete {
+    legend {
+        font-size: 3em;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .button-container {
+        height: fit-content;   
+        background-color: unset;
+        box-shadow: unset;
+    }
+    u {
+        margin-left: .5ch;
+    }
+    h1 {
+        text-align: center;
+    }
 }

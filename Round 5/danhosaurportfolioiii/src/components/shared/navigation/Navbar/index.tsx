@@ -17,8 +17,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
     
     const navbarRoutes = routes.map(([path]) => path.substring(1)).reverse().map(path => (
         <LinkItem key={path} className={route.toLowerCase() === `/${path.toLowerCase()}` ? 'current-page' : ''} 
-            title={translate(path) || translate('home')}
-            onClick={() => redirect(path.replaceAll(' ', '').toLowerCase())} 
+            title={translate(path) || translate('home')} link={path.replaceAll(' ', '').toLowerCase()}
         />
     ));
 

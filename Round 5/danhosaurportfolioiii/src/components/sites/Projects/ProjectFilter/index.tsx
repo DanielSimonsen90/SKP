@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { Container, useEffectOnce } from 'danholibraryrjs';
 import ToTop from 'components/shared/navigation/ToTop';
 import { LanguageFilter } from '..';
-import FilterLabel from '../FilterLabel';
+import FilterInput from '../FilterInput';
 import './ProjectFilter.scss'
 
 type SetState = Dispatch<SetStateAction<string>>;
@@ -31,10 +31,10 @@ export default function ProjectFilter(props: Props) {
 
     return (
         <Container className={`project-filter ${shouldStick ? 'fixed' : ''}`}>
-            <FilterLabel type='language' bold={true}
+            <FilterInput type='language' bold={true}
                 value={languageFilter} onChange={setLanguageFilter}
             />
-            <FilterLabel type='projectType' bold={true}
+            <FilterInput type='projectType' bold={true}
                 value={projectFilter} onChange={setProjectFilter}
             />
             {shouldStick && <ToTop />}

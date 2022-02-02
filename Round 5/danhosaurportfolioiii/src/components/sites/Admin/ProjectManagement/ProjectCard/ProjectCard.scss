@@ -16,6 +16,7 @@
 
 .project-card {
     @include linear-gradient();
+    @include transition(background);
     
     display: grid;
     grid-gap: .5em 0em;
@@ -23,6 +24,10 @@
     padding: 1em;
     border-radius: $border-radius;
     border: 2px solid $bg-quaternary;
+
+    &:hover {
+        @include linear-gradient($bg-quinary, $bg-quaternary);
+    }
     
     &-mid {
         &-top, &-bottom {

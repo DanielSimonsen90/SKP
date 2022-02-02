@@ -12,6 +12,9 @@ const LanguageContext = createContext<UseStateReturn<SupportedLanguages>>(["Engl
 export function useLanguage() {
     return useContext(LanguageContext);
 }
+export function useTranslationObj(): TranslationObj {
+    return data;
+}
 export function useTranslate<T = string>() {
     const [language] = useLanguage();
     return (key: string): T => (
@@ -22,8 +25,8 @@ export function useTranslate<T = string>() {
 export function useTranslateProgrammingLanguages() {
     return useTranslate<LanguagesObj>()("languages");
 }
-export function useLanguages() {
-    return Object.keys(data);
+export function useLanguages(): Array<SupportedLanguages> {
+    return Object.keys(data) as Array<SupportedLanguages>;
 }
 
 export default function LanguageProvider({ children }: BaseProps) {
