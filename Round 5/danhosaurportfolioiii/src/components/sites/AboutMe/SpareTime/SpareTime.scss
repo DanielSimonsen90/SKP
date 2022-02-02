@@ -1,0 +1,56 @@
+@import '../../../shared/scss/lib/mixins';
+
+#info-container-sparetimetitle {
+    grid-area: sparetime;
+
+    &:hover div.spare-time-item + div.spare-time-item {
+        @include transition(border-color);
+        border-left: 2px dotted $thm-secondary;
+    }
+    
+    .content {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0em .5em 1em;
+    }
+}
+
+div.spare-time-item {
+    background-color: unset;
+    box-shadow: unset;
+    font-size: 1.1em;
+    width: 54ch;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5em;
+
+    // margin: 0em .25em;
+    padding: .5em .5em;
+    height: initial;
+    
+    &:hover {
+        @include transition(background-color, border-radius);
+        background-color: $bg-quaternary;
+        border-radius: $border-radius;
+    }
+
+    & + & {
+        border-left: 1px dashed $thm-tertiary;
+        padding-left: 1em;
+        margin: 0;
+    }
+
+    .link-item {
+        justify-content: flex-start;
+    }
+}
+
+div.spare-time-item-top {
+    flex-direction: row;
+    align-items: center;
+    max-height: 32px;
+    margin-bottom: .125em;
+}

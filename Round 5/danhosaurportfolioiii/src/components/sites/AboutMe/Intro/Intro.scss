@@ -1,0 +1,46 @@
+@import '../../../shared/scss/lib';
+
+#info-container-introtitle {
+    .content {
+        flex-direction: column;
+    }
+
+    .intro-text {
+        margin-right: .5em;
+        margin-bottom: 1em;
+        font-size: 1.2em;
+
+        p:nth-last-child(2) {
+            display: inline;
+        }
+    }
+
+    .project-container {
+        display: inline-flex;
+        flex-direction: row;
+        width: min-content;
+        margin-top: inherit;
+        gap: .25em;
+        
+        a { font-size: 1.2rem; }
+    }
+
+    .experience-languages-container {
+        display: flex;
+
+        .languages {
+            &::before { content: ':'; }
+
+            display: flex;
+            flex-direction: row;
+            gap: .25em;
+
+            li {
+                font-size: 1em;
+
+                &::after { content: ', '; }
+                &:last-child::after { content: '' }
+            }
+        }
+    }
+}

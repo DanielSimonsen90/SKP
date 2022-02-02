@@ -1,0 +1,15 @@
+@import './lib/variables';
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track {
+    background: $bg-tertiary;
+  
+    &:hover { 
+        background: $bg-quaternary;
+    }
+}
+::-webkit-scrollbar-thumb {
+    background: $bg-quinary;
+  
+    &:hover { background: lighten($bg-tertiary, 25%) }
+}

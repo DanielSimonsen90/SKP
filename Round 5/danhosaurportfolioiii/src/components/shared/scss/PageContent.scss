@@ -1,0 +1,10 @@
+.page-content {
+    display: grid;
+    grid-template-rows: minmax(75vh, auto);
+    margin: .5rem;
+    overflow-y: auto;
+    width: auto;
+    min-height: 85vh;
+    padding: .5rem;
+    border-radius: 6px;
+}

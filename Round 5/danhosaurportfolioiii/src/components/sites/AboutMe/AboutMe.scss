@@ -1,0 +1,9 @@
+#about-me-page {
+    display: grid;
+    grid-template-areas: 
+        "intro portrait"
+        "sparetime sparetime"
+    ;
+    grid-template-columns: 75% auto;
+    gap: .5em 1em;
+}

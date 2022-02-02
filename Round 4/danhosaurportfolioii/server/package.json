@@ -21,6 +21,7 @@
     "serverless-http": "^2.7.0"
   },
   "devDependencies": {
+    "@types/mongodb": "^4.0.7",
     "nodemon": "^2.0.9"
   }
 }

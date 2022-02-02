@@ -1,0 +1,127 @@
+{
+    "Dansk": {
+        "aboutme": "Om Mig",
+        "all": "Alle",
+        "bookmark": "Bogmærk",
+        "bookmarks": "Bogmærker",
+        "changeEducatonPlanState": "Skift uddannelsesplan",
+        "country-code": "dk",
+        "course": "Forløb",
+        "day": "Dag",
+        "days": "Dage",
+        "educationPlanTitle": {
+            "future": "Min uddannelsesplan i fremtiden",
+            "full": "Hele min uddannelsesplan"
+        },
+        "portfolio": "Portefølje",
+        "home": "Hjem",
+        "project": "Projekt",
+        "projects": "Projekter",
+        "intro": [
+            "Mit navn er $name og jeg er en $age årig datatekniker elev på $school.",
+            "Jeg har $experienceYears års erfaring med programming, og bruger meget af min fritid på forskellige proejkter.",
+            "Jeg er stor fan af Objekt Orienteret Programmering og Komponent-baseret strukture, og bruger meget af min tid på at lave alt så fleksibelt og generisk som muligt.",
+            "Mit ynglingssprog er $favoriteLanguage, men jeg har også erfaring med $experienceLanguages.",
+            "",
+            "Nogle af mine ynglingsprojekter er: "
+        ],
+        "introTitle": "Hvem er jeg?",
+        "loadingProjects": "Indlæser projekter",
+        "language": "Sprog",
+        "languages": {
+            "format": {
+                "CSharp": "C#",
+                "Website": "HTML/(S)CSS"
+            },
+            "unformat": {
+                "C#": "CSharp",
+                "HTML/(S)CSS": "Website"
+            }
+        },
+        "month": "Måned",
+        "months": "Måneder",
+        "noImage": "Intet billede",
+        "noProjects": "Der findes ingen projekter med disse kriterier.",
+        "occupationString": "I øjeblikket er jeg på $module intil $date",
+        "otherLanguages": "Andre sprog",
+        "projectType": "Projekt Type",
+        "seeMyProject": "Se $projectName her",
+        "socialsTitle": "Kontakt Mig",
+        "spareTime": {
+            "discord": [
+                "Jeg bruger det meste af min tid på Discord. Jeg elsker dens funktioner og har prøvet at lave mine egne programmer baseret på Discord.",
+                "Det projekt jeg er mest stolt af, er min Discord bot \"Pingu\", som jeg har skrevet i JavaScript, men bliver omskrevet til TypeScript. Pingu er et projekt, hvor jeg blander forskellige funktioner fra andres Discord bots ind i min. Hvis jeg finder en fed funktion, vil jeg prøve mit bedste på at lave den funktion selv, både for at udfordre mig selv, men også så jeg kun behøver én bot.",
+                "Discord er den størstedel af grunden til min interesse for css og React.js, derfor bruger jeg min tid på at studerer hvordan Discord er struktureret i både deres komponenter men også deres styles."
+            ],
+            "overwatch": [
+                "Overwatch er mit foretrukkende spil, når jeg vil spille noget. Jeg har stor glæde af Overwatch, og gemmer de fleste af mine fremhævelser og de sjove øjeblikke.",
+                "Jeg nytder netop Overwatch, fordi der altid er noget jeg kan gøre bedre og der er altid nye minder at skabe."
+            ],
+            "fruityloopsstudio": [
+                "Grunden til at jeg elsker programmering er fordi jeg nyder at lave ting fra bunden. Jeg nyder at se mig arbejde og følge dens progression, og nyde det endelige produkt.",
+                "Jeg har det på samme måde med musikproduktion, hvilket er dét jeg bruger FL Studio til. Jeg har lavet musik på FL Studio siden 2017, og har elsket det lige siden. Det er klart min ynglingshobby, og en jeg altid kan blive bedre til.",
+                "Selvom jeg primært laver musik for mig selv, uploader jeg også mine sange til forskellige platforme som Spotify, SoundCloud & YouTube."
+            ]
+        },
+        "spareTimeTitle": "Fritid",
+        "top": "Til toppen",
+        "unableToFetch": "Kunne ikke hente dataen!"
+    },
+    "English": {
+        "aboutme": "About Me",
+        "admin/management": "Admin Management",
+        "admin/projects": "Project Management",
+        "changeEducatonPlanState": "Change education plan",
+        "country-code": "us",
+        "educationPlanTitle": {
+            "future": "My education plan for the future",
+            "full": "My entire education plan"
+        },
+        "intro": [
+            "My name is $name and I'm a $age year old datatechnician student at $school.",
+            "I have $experienceYears years experience with programming, and use a lot of my time on different projects.",
+            "I'm a big fan of Object Oriented Programming and Component-based structures, and use a lot of my time to make everything flexible and generic.",
+            "My favorite language is $favoriteLanguage, but I also have experience with $experienceLanguages.",
+            "",
+            "Some of my personal favorite projects are: "
+        ],
+        "introTitle": "Who am I?",
+        "languages": {
+            "format": {
+                "CSharp": "C#",
+                "Website": "HTML/(S)CSS"
+            },
+            "unformat": {
+                "C#": "CSharp",
+                "HTML/(S)CSS": "Website"
+            }
+        },
+        "loadingProjects": "Loading projects",
+        "noImage": "No image found.",
+        "noProjects": "There are no projects with these criteria.",
+        "occupationString": "Currently I'm at $module until $date.",
+        "otherLanguages": "Other languages",
+        "projectType": "Project Type",
+        "seeMyProject": "See $projectName here",
+        "socialsTitle": "Contact Me",
+        "spareTime": {
+            "discord": [
+                "I use most of my spare time on Discord. I love its features and tried to make my own programs based on Discord.", 
+                "The project I'm the most proud of, is my Discord bot \"Pingu\" that is written in JavaScript, but being converted into TypeScript. Pingu is a project, where I combine different Discord bots' features into it. If I find a cool feature a Discord bot has, I will try my best to make that feature myself to challenge myself and to get rid of multiple bots, so I only have Pingu in the end.",
+                "Discord is my biggest inspiration for learning css and React.js, so I also use my time to study how Discord structured their components and manage their styles."
+            ],
+            "overwatch": [
+                "Overwatch is my preferred game, when I want to play something. I have much joy with Overwatch, and save most of my highlights and funny moments with the friends I play with, then incorporate all of these clips into a montage, that I upload to YouTube.",
+                "I specifically enjoy Overwatch, because there's always something I can improve on and there are always new memories waiting to be made."
+            ],
+            "fruityloopsstudio": [
+                "The reason I love programming is because I enjoy making things from the scratch. I enjoy looking at my work and follow its progressionline, and enjoy the final product.",
+                "I feel the same with music production, to which I use FL Studio. I've made music on FL Studio since 2017, and been loving it ever since. It's byfar my most enjoyable hobby, and one that I can always improve on.",
+                "Even though I primarily make music for my own enjoyment, I do upload my stuff to various platforms like Spotify, SoundCloud & YouTube."
+            ]
+        },
+        "spareTimeTitle": "Spare Time",
+        "top": "To the top",
+        "unableToFetch": "Unable to fetch the data!"
+    }
+}

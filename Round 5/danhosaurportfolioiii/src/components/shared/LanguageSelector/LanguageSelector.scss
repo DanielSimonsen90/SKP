@@ -1,0 +1,10 @@
+#language-selector {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    flex-shrink: 1;
+
+    input {
+        max-width: 7vw;
+    }
+}

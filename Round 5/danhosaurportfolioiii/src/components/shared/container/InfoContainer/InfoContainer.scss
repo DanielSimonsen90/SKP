@@ -1,0 +1,23 @@
+.info-container {
+    &.container {
+        background-color: unset;
+        box-shadow: unset;
+    }
+
+    &-flex {
+        .content, ul {
+            display: flex;
+            flex: 1 0 100%;
+            justify-content: space-between;
+        }
+
+        ul {
+            flex-direction: row;
+        }
+    }
+
+    fieldset, .content {
+        height: inherit;
+        min-height: 100%;
+    }
+}

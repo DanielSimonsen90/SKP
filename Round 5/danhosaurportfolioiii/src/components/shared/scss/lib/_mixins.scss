@@ -1,0 +1,16 @@
+@import './variables';
+
+@mixin transition($properties...) {
+    $result: ();
+    
+    @each $prop in $properties {
+        $value: $prop $transition-time $transition-animation;
+        $result: append($result, $value, "comma")
+    }
+    
+    transition: $result;
+}
+
+@mixin gradient-background($middle: $bg-secondary, $gradient: $bg-primary) {
+    background: radial-gradient(circle, $middle 33%, $gradient 75%);
+}

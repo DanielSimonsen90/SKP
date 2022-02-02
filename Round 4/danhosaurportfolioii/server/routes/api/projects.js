@@ -1,11 +1,11 @@
 const express = require('express');
-const mongo = require('mongodb');
+const connect = require('mongodb');
 const mongoConnectionString = `mongodb+srv://DanhosaurPortfolioIIApplication:database-admin@danhosaurportfolioii.x1ocs.mongodb.net/DanhosaurPortfolioIIDB?retryWrites=true&w=majority`;
 const router = express.Router();
 
 const log = (message) => console.log(`%c${new Date().toLocaleTimeString()} [API]: %c${message}`, "color: lime", "%cwhite");
 async function getProjects() {
-    const client = await mongo.MongoClient.connect(mongoConnectionString, {
+    const client = await connect(mongoConnectionString, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
@@ -15,34 +15,35 @@ async function getProjects() {
 
 router.post('/', async (req, res) => {
     const projects = await getProjects();
-    await projects.insertOne({ ...JSON.parse(req.body.postData) });
     log('Creating project');
+    await projects.insertOne({ ...JSON.parse(req.body.postData) });
     res.status(201).send();
 });
 
 router.get('/', async (req, res) => {
-    const projects = await getProjects();
     log('Sending projects');
+    const projects = await getProjects();
     res.send(await projects.find({}).toArray());
 });
 router.get('/:id', async (req, res) => {
     const projects = await getProjects();
-    const project = await projects.findOne({ _id: parseInt(req.params.id) });
     log('Sending project');
+    const project = await projects.findOne({ _id: parseInt(req.params.id) });
     res.send(JSON.stringify(project))
 })
 
 router.put('/:id', async (req, res) => {
     const projects = await getProjects();
-    await projects.update({ _id: req.body._id }, req.body, { upsert: true });
     log('Updating project');
+    await projects.update({ _id: req.body._id }, req.body, { upsert: true });
     res.status(200).send();
 });
 
 router.delete('/:id', async (req, res) => {
     const projects = await getProjects();
-    await projects.deleteOne({ _id: req.params.id });
     log('Deleting project');
+    console.log(req.params)
+    await projects.findOneAndDelete({ _id: Number.parseInt(req.params.id) })
     res.status(200).send();
 });
 

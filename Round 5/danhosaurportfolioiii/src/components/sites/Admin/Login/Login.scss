@@ -1,0 +1,37 @@
+#admin-page {
+    display: grid;
+    place-items: center;
+
+    .info-container {
+        max-width: 50vw;
+        height: auto;
+
+        * {
+            text-align: center;
+        }
+
+        legend {
+            font-size: 3em;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+
+            input {
+                font-size: 3em;
+            }
+        }
+    }
+}
+
+.admin-login-modal {
+    display: grid;
+    gap: 1em;
+    padding: 1em;
+
+    p {
+        font-size: 2em;
+    }
+}

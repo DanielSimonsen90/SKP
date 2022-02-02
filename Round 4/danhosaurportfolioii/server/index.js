@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
     res.send('Hello there!');
 })
 
-const prefix = '/.netlifly/functions';
+// const prefix = '/.netlifly/functions';
+const prefix = ''
 app.use(prefix, router)
 app.use(`${prefix}/helloworld`, require('./helloworld'));
 app.use(`${prefix}/api/projects`, require('./routes/api/projects'));
@@ -22,8 +23,8 @@ app.use(`${prefix}/api/admins`, require('./routes/api/admins'));
 // app.use(`${prefix}/postProjects`, require('./runProjects'))
 
 require('dotenv').config();
-// const port = process.env.PORT || 5000;
-// app.listen(port, () => console.log(`Server started on port ${port}!`));
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Server started on port ${port}!`));
 
 module.exports = app;
 module.exports.port = port;
