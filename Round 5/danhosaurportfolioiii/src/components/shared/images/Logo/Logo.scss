@@ -3,7 +3,11 @@
     width: 100%;
 
     img.icon {
-        max-height: 42px;
-        max-width: 42px;
+        --size: 3rem;
     }
+}
+img.icon {
+    --size: 25px;
+    max-height: var(--size);
+    max-width: var(--size);
 }

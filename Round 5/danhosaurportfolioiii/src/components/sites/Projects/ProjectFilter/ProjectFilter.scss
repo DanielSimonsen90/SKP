@@ -1,39 +1,76 @@
-@import 'components/shared/scss/lib/variables';
-
-%flexible {
-    display: flex;
-    flex-direction: row;
-    gap: .5em;
-}
+@import 'components/shared/scss/lib/partials';
 
 .container.project-filter {
     @extend %flexible;
     flex-wrap: wrap;
+
+    $animation-time: 250ms;
+    --animation-time: #{$animation-time};
+
     position: relative;
     top: -1vh;
+
+    height: auto;
     width: fit-content;
     padding: 2vh;
-    background-color: $bg-tertiary;
-    border-radius: 0px 0px 6px 6px;
-    border: 1px solid $thm-secondary;
+    background-color: var(--bg-tertiary);
+    
+    border-radius: 0px 0px var(--border-radius) var(--border-radius);
+    border: 1px solid var(--thm-secondary);
     border-top: unset;
     
-    height: auto;
-
-    &.fixed {
+    &.fixed {        
+        box-shadow: 0px 10px 10px var(--shadow-clr);
+        
         position: fixed;
         z-index: 2;
         top: 0;
         height: auto;
+
+        @include animate(top-to-top);
+
+        @include mq(tiny) {
+            justify-content: center;
+        }
+
+        &.animation-reverse {
+            @include animate(top-to-top-reverse)
+        }
     }
 
     .to-top {
         width: fit-content;
         font-size: 1em;
-        color: $link-item-color-hover;
+        color: var(--link-item-color-hover);
     }
 
     label {
         @extend %flexible;
     }
+    @include mq(tiny) {
+        display: grid;
+        grid-template-areas: "language totop projecttype";
+        justify-items: center;
+
+        label {
+            display: grid;
+            grid-auto-flow: row;
+
+            b { justify-self: center; }
+        }
+
+        li:last-child {
+            grid-area: totop;
+            align-self: baseline;
+        }
+    }
+    @include mq(micro) {
+        grid-template-areas: "language" "projecttype" "totop";
+        grid-auto-columns: 1fr;
+
+        &, label {
+            width: 100%;
+        }
+    }
+
 }

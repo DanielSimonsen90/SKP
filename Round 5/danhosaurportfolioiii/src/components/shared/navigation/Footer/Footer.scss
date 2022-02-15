@@ -1,15 +1,69 @@
+@import 'components/shared/scss/lib';
+
 .footer {
     min-height: 7.5vh;
 
-    // .image-container, .link-item {
     * {
         width: auto !important;
-        font-size: 1.25rem;
+        font-size: 1em;
+
+        @include mq(micro) {
+            font-size: 1em;
+        }
     }
+
     .navbar {
         max-width: 25vw;
     }
+    
     #occupation-string {
         padding: 0;
+    }
+
+    @include mq(medium) {
+        display: grid;
+        grid-template-areas: 
+            "logo occupation occupation copyright"
+            "navigation navigation navigation navigation"
+            "totop totop language language"
+        ;
+
+        gap: .25em;
+
+        #copyright {
+            width: fit-content;
+            text-align: center;
+        }
+
+        .navbar {
+            max-width: 100%;
+            grid-area: navigation;
+        }
+        #occupation-string {
+            grid-area: occupation;
+            font-size: 1.2em;
+        }
+
+        .to-top {
+            grid-area: totop;
+            word-break: break-word;
+        }
+        #language-selector {
+            grid-area: language;
+            justify-content: center;
+
+            input {
+                max-width: 50%;
+            }
+        }
+    }
+    @include mq(micro) {
+        grid-template-areas: 
+            "logo" 
+            "copyright"
+            "totop" 
+            "occupation"
+            "language"
+        ;
     }
 }

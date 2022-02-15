@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useEnterEsc, useRedirect, useStateOnUpdate } from 'danholibraryrjs';
+import { Button, CRUD, useEnterEsc, useRedirect, useStateOnUpdate } from 'danholibraryrjs';
 import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models'
 import { useUpsertProject, api, github, useSetProjects } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
@@ -99,8 +99,6 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
 
     if (title === 'delete') return <DeleteModal title={title} project={project} close={close} />
 
-    const crudProp = { 'data-crud-type': title };
-    
     return (
         <form action="post" onSubmit={e => {
             e.preventDefault();
@@ -110,8 +108,8 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
                 {ProjectInformation}
                 {ProjectOptional}
                 <ButtonContainer>
-                    <button className='primary' type='submit' disabled={!propsChanged} {...crudProp}>{title.toPascalCase()}</button>
-                    <button className='secondary' onClick={close} data-crud-type='delete'>Close</button>
+                    <Button importance='primary' type="submit" disabled={!propsChanged} crud={title as CRUD}>{title.toPascalCase()}</Button>
+                    <Button importance='secondary' onClick={close} crud='delete'>Close</Button>
                 </ButtonContainer>
             </InfoContainer>
         </form>

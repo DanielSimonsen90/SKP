@@ -1,18 +1,23 @@
 {
     "Dansk": {
         "aboutme": "Om Mig",
+        "admin/management": "Admin Panel",
+        "admin/projects": "Project Panel",
         "all": "Alle",
         "bookmark": "Bogmærk",
         "bookmarks": "Bogmærker",
-        "changeEducatonPlanState": "Skift uddannelsesplan",
+        "changeDirection": "Skift retning",
+        "changeEducationPlanState": "Skift uddannelsesplan",
         "country-code": "dk",
         "course": "Forløb",
         "day": "Dag",
         "days": "Dage",
+        "duration": "Varighed",
         "educationPlanTitle": {
             "future": "Min uddannelsesplan i fremtiden",
             "full": "Hele min uddannelsesplan"
         },
+        "end": "Slut",
         "portfolio": "Portefølje",
         "home": "Hjem",
         "project": "Projekt",
@@ -42,7 +47,7 @@
         "months": "Måneder",
         "noImage": "Intet billede",
         "noProjects": "Der findes ingen projekter med disse kriterier.",
-        "occupationString": "I øjeblikket er jeg på $module intil $date",
+        "occupationString": "I øjeblikket er jeg på $module indtil $date",
         "otherLanguages": "Andre sprog",
         "projectType": "Projekt Type",
         "seeMyProject": "Se $projectName her",
@@ -65,7 +70,8 @@
         },
         "spareTimeTitle": "Fritid",
         "top": "Til toppen",
-        "unableToFetch": "Kunne ikke hente dataen!"
+        "unableToFetch": "Kunne ikke hente dataen!",
+        "viewEducationPlan": "Se min uddannelsesplan her"
     },
     "English": {
         "aboutme": "About Me",
@@ -81,9 +87,9 @@
             "My name is $name and I'm a $age year old datatechnician student at $school.",
             "I have $experienceYears years experience with programming, and use a lot of my time on different projects.",
             "I'm a big fan of Object Oriented Programming and Component-based structures, and use a lot of my time to make everything flexible and generic.",
-            "My favorite language is $favoriteLanguage, but I also have experience with $experienceLanguages.",
+            "My favorite language is $favoriteLanguage, but I also have experience with: $experienceLanguages.",
             "",
-            "Some of my personal favorite projects are: "
+            "Some of my personal favorite projects are: $projects"
         ],
         "introTitle": "Who am I?",
         "languages": {
@@ -122,6 +128,7 @@
         },
         "spareTimeTitle": "Spare Time",
         "top": "To the top",
-        "unableToFetch": "Unable to fetch the data!"
+        "unableToFetch": "Unable to fetch the data!",
+        "viewEducationPlan": "View my education plan here"
     }
 }

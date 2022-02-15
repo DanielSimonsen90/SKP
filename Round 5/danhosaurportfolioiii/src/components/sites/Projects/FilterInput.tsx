@@ -17,7 +17,7 @@ export default function FilterInput({ value, onChange, type, bold = false, ...pr
     const values = useMemo(() => projects.reduce((result, acc) => {
         if (!result.includes(acc[type]) && acc.display) result.push(acc[type]);
         return result;
-    }, new Array<string>()).map(v => (
+    }, new Array<string>()).sort().map(v => (
         <option value={v} key={v} />
     )), [projects]);
     const id = `filter-data-${type}`;

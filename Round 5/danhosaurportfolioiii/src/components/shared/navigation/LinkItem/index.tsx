@@ -1,32 +1,49 @@
 import React from 'react';
+import Icon from 'react-fontawesome';
 import { BaseProps } from 'danholibraryrjs';
+import { useRedirect } from 'providers/RouteProvider';
 import './LinkItem.scss'
 
 type SelectEvent = React.MouseEvent<HTMLLIElement, MouseEvent> | React.KeyboardEvent<HTMLLIElement>;
 
-type Props = BaseProps<HTMLLIElement> & {
+type Props = Omit<BaseProps<HTMLLIElement>, 'onClick'> & {
     title?: string,
     link?: string,
     icon?: string,
-    newPage?: boolean, //false
-    hoverable?: boolean, //true
+    /**@default false*/
+    newPage?: boolean,
+    /**@default true */
+    hoverable?: boolean,
     onClick?: (props: Props, e: SelectEvent) => void
 }
 
 export default function LinkItem(props: Props) {
     const { className, title, link, onClick, children,
-        icon: iconPath, newPage = false, hoverable = true ,
+        icon: iconPath, newPage = false, hoverable = true,
         ...rest
     } = props;
-    const icon = iconPath && <img className='icon' src={iconPath.endsWith('.png') ? iconPath : iconPath + '.png'} alt={title} />;
-    const content = !title && !children ? null : link ? (
-        <a href={link} target={newPage ? "_blank" : "_self"} rel="noreferrer">{title || children}</a>
-    ) : <p>{title || children}</p>
+
+    const redirect = useRedirect();
+
+    const icon = iconPath && (iconPath.endsWith('.png') ? 
+        <img className='icon' src={iconPath} alt={title} /> : 
+        <Icon className='icon' name={iconPath} alt={title} />)
+    const content = (
+        !title && !children ? null : 
+        link ? 
+            <a tabIndex={-1} href={link} target={newPage ? "_blank" : "_self"} rel="noreferrer">{title || children}</a> : 
+            <p>{title || children}</p>
+    );
+
+    const onLinkItemPressed = (e: SelectEvent) => {
+        onClick?.(props, e);
+        if (link) redirect(link);
+    }
 
     return (
-        <li tabIndex={0} className={`link-item ${(hoverable && 'link-item-hoverable') || ''} ${className || ''}`} 
+        <li tabIndex={0} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
             onClick={e => onClick?.(props, e)}
-            onKeyPress={e => e.key === 'Enter' && onClick?.(props, e)}
+            onKeyDown={e => e.key === 'Enter' && onLinkItemPressed(e)}
             {...rest}
         >
             {icon}

@@ -5,6 +5,7 @@ import { LanguageFilter } from '.';
 import BookmarkList from './BookmarkList'
 import ProjectContainer from './ProjectContainer'
 import ProjectFilter from './ProjectFilter'
+import { useMe } from 'providers/MeProvider';
 
 export type FilterProps = {
     languageFilter: LanguageFilter | string
@@ -16,6 +17,7 @@ export default function ProjectsContent() {
     const translateLanguage = useTranslateProgrammingLanguages();
     const [languageFilter, setLanguageFilter] = useState<LanguageFilter>(translate('all') as LanguageFilter);
     const [projectFilter, setProjectFilter] = useState(translate('all'));
+    const me = useMe();
 
     useEffectOnce(() => {
         // console.log(window.location);
@@ -37,13 +39,15 @@ export default function ProjectsContent() {
 
     return (
         <div id="projects-page">
-            <ProjectFilter 
-                setLanguageFilter={setLanguageFilter} 
-                setProjectFilter={setProjectFilter} 
-                projectFilter={projectFilter} 
-                languageFilter={languageFilter} 
-            />
-            <BookmarkList />
+            {me.projects.length ? (<>
+                <ProjectFilter 
+                    setLanguageFilter={setLanguageFilter} 
+                    setProjectFilter={setProjectFilter} 
+                    projectFilter={projectFilter} 
+                    languageFilter={languageFilter} 
+                />
+                <BookmarkList />
+            </>) : null}
             <ProjectContainer 
                 projectFilter={projectFilter} 
                 languageFilter={languageFilter} 

@@ -33,14 +33,14 @@ export default function ProjectContainer({
     useEffectOnce(() => { if (!me.projects.length) setProjects(); })
 
     return (
-        <div className='project-container' data-render-cards={renderCards}>
+        <div className={`project-container${!projects.length ? ' no-projects' : ''}`} data-render-cards={renderCards}>
             {(projects.length && projects.map(p => 
                 !renderCards ? 
                     <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
                     <ProjectCard project={p} key={`${p.name}_${p._id}`} 
                         onUpdate={onProjectUpdate} onDelete={onProjectDelete}
                     />
-                )) || <h1>{translate('noProjects')}</h1>
+                )) || <h1>{me.projects.length ? translate('noProjects') : translate('unableToFetch')}</h1>
             }
         </div>
     )

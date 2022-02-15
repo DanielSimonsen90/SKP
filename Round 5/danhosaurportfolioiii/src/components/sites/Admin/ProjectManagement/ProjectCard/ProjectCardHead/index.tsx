@@ -14,12 +14,12 @@ export default function ProjectCardHead({
 }: Props) {
     return (
         <div className='project-card-head'>
-            <p className="project-card-head-id">{_id}</p>
             <h1 className="project-card-head-title" title={name}>{name}</h1>
-            <label>
+            <span className="project-card-head-id">{_id}</span>
+            <label className="project-card-head-display" >
                 {display ? 'Shown' : 'Hidden'}
                 <input type="checkbox" 
-                    className="project-card-head-display" name="display" id="display"
+                    name="display" id="display"
                     disabled={true} checked={display} 
                 />
             </label>
@@ -28,10 +28,10 @@ export default function ProjectCardHead({
                 <p>{projectType}</p>
                 <p>{createdAt.toString()}</p>
             </h3>
-            <label>
+            <label className="project-card-head-spare-time">
                 SpareTime
                 <input type="checkbox" 
-                    className="project-card-head-spare-time" name="spare-time" id="spare-time" 
+                     name="spare-time" id="spare-time" 
                     disabled={true} checked={spareTime}    
                 />
             </label>

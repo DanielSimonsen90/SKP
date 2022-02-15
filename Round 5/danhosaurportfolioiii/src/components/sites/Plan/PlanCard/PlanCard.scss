@@ -1,0 +1,35 @@
+@import 'components/shared/scss/lib/partials';
+
+#plan-page .plan-card {
+    @extend %shadow;
+
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    border-width: 2px;
+
+    display: grid;
+    grid-gap: .5em;
+
+    h1 { 
+        font-size: 2em;
+        text-decoration-color: var(--thm-primary);
+    }
+
+    .start-end, h2 {
+        color: var(--clr-secondary);
+    }
+
+    .start-end {
+        display: grid;
+        grid-auto-flow: column;
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+
+    &:not([data-current-occupation=true]) {
+        color: var(--thm-primary);
+    }
+}

@@ -6,12 +6,23 @@
     }
 
     .intro-text {
-        margin-right: .5em;
-        margin-bottom: 1em;
-        font-size: 1.2em;
+        font-size: 1.5rem;
+        word-wrap: break-word;
+
+        .link-item {
+            font-size: inherit;   
+        }
 
         p:nth-last-child(2) {
             display: inline;
+        }
+
+        @include mq(tiny) {
+            word-break: break-word;
+
+            p {
+                margin-bottom: .5em;
+            }
         }
     }
 
@@ -21,26 +32,15 @@
         width: min-content;
         margin-top: inherit;
         gap: .25em;
-        
-        a { font-size: 1.2rem; }
     }
 
-    .experience-languages-container {
-        display: flex;
-
-        .languages {
-            &::before { content: ':'; }
-
-            display: flex;
-            flex-direction: row;
-            gap: .25em;
-
-            li {
-                font-size: 1em;
-
-                &::after { content: ', '; }
-                &:last-child::after { content: '' }
-            }
-        }
+    .experienced-language {
+        display: inline;
+        font-size: 1rem;
     }
+}
+
+.other-languages {
+    margin-left: .5em;
+    display: inline-block;
 }

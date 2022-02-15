@@ -8,6 +8,7 @@ import Bookmark from '../Bookmark'
 import './Project.scss'
 import ProjectLink from './ProjectLink'
 import ProjectImageModal from './ProjectImageModal'
+import ProjectLanguage from './ProjectLanguage'
 
 type Props = {
     project: Project
@@ -32,17 +33,25 @@ export default function ProjectComponent({ project }: Props) {
     }
 
     return (
-        <Container className='project' type="flex" id={project.name.replaceAll(' ', '%20')}>
-            <h1>{project.name}</h1>
-            <h2>{project.createdAt.toString()} • {project.language.toString()} • {project.projectType.toString()}</h2>
-            <Bookmark project={project} />
-            <div className="project-info">
+        <article className='project container-flex container' id={project.name.replaceAll(' ', '%20')}>
+            <header>
+                <h1>{project.name}</h1>
+                <h2>
+                    <span>{project.createdAt.toString()}</span>
+                    <span> • </span>
+                    <ProjectLanguage language={project.language} />
+                    <span> • </span>
+                    <span>{project.projectType.toString()}</span>
+                </h2>
+                <Bookmark project={project} />
+            </header>
+            <section className="project-info">
                 <div className="project-description">
                     {project.description[language].map(handleSentenceMapping)}
                 </div>
                 <ProjectLink project={project} />
                 <ProjectImage project={project} />
-            </div>
-        </Container>
+            </section>
+        </article>
     )
 }

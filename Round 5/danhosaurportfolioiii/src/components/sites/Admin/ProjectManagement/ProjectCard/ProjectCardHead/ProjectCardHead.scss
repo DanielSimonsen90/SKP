@@ -1,11 +1,11 @@
 .project-card-head {
     display: grid;
-    grid-template-columns: auto min-content;
     grid-template-areas: 
         "title id"
         "title display"
         "info spare-time"
     ;
+    grid-template-columns: 66% 33%;
     grid-gap: .25em 5px;
 
     &, & > * {
@@ -25,10 +25,11 @@
 
     &-title {
         display: inline;
-        font-size: 2em;
+        font-size: 2rem;
         height: 1.3em;
         text-overflow: ellipsis;
         overflow: hidden;
+        text-align: start;
     }
 
     &-info {
@@ -36,6 +37,6 @@
         flex-direction: row;
         justify-content: flex-start;
         gap: 1em;
-        font-size: 1em;
+        font-size: 1rem;
     }
 }

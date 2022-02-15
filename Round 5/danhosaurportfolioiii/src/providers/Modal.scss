@@ -1,14 +1,5 @@
+@import 'components/shared/scss/lib/mixins';
 @import 'components/shared/scss/lib/variables';
-@mixin max {
-    max-height: 100vh;
-    max-width: 100vw;
-}
-
-@mixin betterminmax($property, $min-value, $default-value, $max-value) {
-    min-#{$property}: $min-value;
-    #{$property}: $default-value;
-    max-#{$property}: $max-value;
-}
 
 .container.modal {
     @include max();
@@ -17,7 +8,9 @@
     z-index: 100;
     display: grid;
     place-items: center;
-    background-color: $bg-secondary-opacity;
+    background-color: var(--bg-secondary-opacity);
+    @include animate(fade-in, $animation-time);
+
 
     &-content {
         @include betterminmax(height, 45vh, fit-content, 90vh);
@@ -27,8 +20,8 @@
         place-items: center;
 
         padding: 1.5rem;
-        background-color: $bg-quaternary;
-        border-radius: $border-radius;
+        background-color: var(--bg-quaternary);
+        border-radius: var(--border-radius);
         box-shadow: 0px 1vh 5vh black;
 
         .image-container {
@@ -38,18 +31,21 @@
         }
 
         img {
-            // display: flex;
-            // min-width: 90vw;
             max-width: 100%;
-
-            border-radius: $border-radius;
+            border-radius: var(--border-radius);
         }
     }
 
     .modal-exit {
         position: absolute;
+        color: map-get($cruds, delete);
+        font-size: 1.5rem;
         inset: .25rem .25rem auto auto;
         cursor: pointer;
         z-index: 101;
+    }
+
+    &.animation-reverse {
+        @include animate(fade-out, $animation-time);
     }
 }

@@ -16,7 +16,7 @@ export default function Footer({ routes }: RouteProps) {
         <Container>
             <footer className='navbar footer'>
                 <Logo />
-                <p title={`Copyrighted by ${me.name}, ${currentYear}`}>© {currentYear} • {me.name}</p>
+                <p id="copyright" title={`Copyrighted by ${me.name}, ${currentYear}`}>© {currentYear} • {me.name}</p>
                 <Navbar routes={routes} includeLogo={false} fromFooter={true} />
                 <ToTop />
                 <Occupation />

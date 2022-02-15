@@ -1,8 +1,7 @@
+import { Arrayable } from 'danholibraryjs';
 import { BaseProps, Container } from 'danholibraryrjs';
 
 type HTMLElements = JSX.IntrinsicElements;
-type Arrayable<T> = T | Array<T>;
-
 type Props<T extends keyof HTMLElements> = BaseProps & Record<'children', Arrayable<HTMLElements[T]>>
 type InternalProps<ElementKey extends keyof HTMLElements> = Props<ElementKey> & Record<'type', ElementKey>
 

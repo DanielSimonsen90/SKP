@@ -5,7 +5,7 @@ import { useTranslate } from './LanguageProvider';
 import myData from '../me.json'
 
 export const { email, github, phone, linkedin } = myData;
-export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, activity));
+export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, [activity]));
 export const api = new API("localhost:8081", github);
 const locationCollection = new LocationCollection();
 const contact = { email, phone, github, linkedin };
@@ -27,7 +27,7 @@ export function useSetSpareTime() {
     const [me, setMe] = useMyState();
     const translate = useTranslate<Record<'discord' | 'overwatch' | 'flstudio', Array<string>>>();
     const spareTimeDescriptions = translate('spareTime');
-    const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase()];
+    const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase()] as Array<string>;
 
     return () => {
         if (dummySpareTime[0].description !== me.spareTime[0].description) return;

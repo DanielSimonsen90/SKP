@@ -1,34 +1,37 @@
-@import '../../scss/lib';
+@import '../../scss/lib/partials';
 
 .link-item {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    gap: .25em;
 
+    // width: fit-content;
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
-    color: $link-item-color;
+    font-size: 1.3rem;
 
-    &-hoverable {
+    &-hoverable a {
         @extend %pressable-hoverable;
-        
-        &:hover, &:focus {
-            color: $link-item-color-hover;
-        }
-        &:focus {
-            color: $link-item-color-focus;
-        }
+        color: var(--link-item-color);
+        &:hover { color: var(--link-item-color-hover); }
+        &:focus { color: var(--link-item-color-focus); }
+        // &:visited { color: var(--link-item-color-visited); }
+    }
+    &.click-me a {
+        text-decoration: underline;
+        color: var(--link-item-color-click-me);
     }
 
     .icon {
-        max-height: 25px;
-        max-width: 25px;
+        --size: 1.75rem;
         margin-right: 2%;
     }
 
-    a {
-        color: inherit;
+    a, p {
+        font-size: inherit;
         text-decoration: none;
+        // color: inherit;
     }
 }
