@@ -28,7 +28,7 @@
             "Jeg er stor fan af Objekt Orienteret Programmering og Komponent-baseret strukture, og bruger meget af min tid på at lave alt så fleksibelt og generisk som muligt.",
             "Mit ynglingssprog er $favoriteLanguage, men jeg har også erfaring med $experienceLanguages.",
             "",
-            "Nogle af mine ynglingsprojekter er: "
+            "Nogle af mine ynglingsprojekter er: $projects"
         ],
         "introTitle": "Hvem er jeg?",
         "loadingProjects": "Indlæser projekter",

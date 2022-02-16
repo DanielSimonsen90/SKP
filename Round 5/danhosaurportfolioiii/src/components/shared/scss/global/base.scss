@@ -142,8 +142,9 @@ input {
 fieldset {
     @extend %shadow;
     @include transition(color, background-color, border-color);
-
+    // @include betterminmax(width, auto, calc(100% - 1em), 100%);
     max-width: 100%;
+
     padding: 1em;
     padding-top: .5em;
     color: var(--clr-tertiary);
@@ -160,14 +161,14 @@ fieldset {
         }
     }
 
-    legend {
-        color: var(--thm-secondary);
-        font-size: 1.5rem;
-        font-weight: bold;
+}
+legend {
+    color: var(--thm-secondary);
+    font-size: 2rem;
+    font-weight: bold;
 
-        @include mq(tiny) {
-            font-size: 2rem;
-        }
+    @include mq(tiny) {
+        font-size: 2rem;
     }
 }
 

@@ -16,6 +16,10 @@
         border-radius: 1em;
         background-color: var(--bg-quaternary);
     }
+
+    @include mq(micro) {
+        max-width: calc(100vw - 3em);
+    }
 }
 
 .project {
@@ -29,13 +33,34 @@
         word-break: break-word;
         margin-bottom: .5rem;
     }
-    h1 { 
-        max-width: 80%;
+    h1 {
         color: var(--thm-primary); 
         font-size: 2rem;
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &:not(.bookmark) {
+                margin: 0 auto;
+            }
+        }
 
         @include mq(micro) {
             font-size: 1.8rem;
+        }
+        @include mq(nano) {
+            max-width: 100%;
+            font-size: 1.5rem;
+            text-align: start;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
         }
     }
     h2 {
@@ -70,8 +95,6 @@
         border-radius: var(--border-radius);
 
         @include mq(tiny) {
-            max-height: auto;
-
             grid-template-areas: "image" "description";
             grid-template-columns: 1fr;
             grid-template-rows: auto auto;
@@ -83,7 +106,9 @@
             }
         }
         @include mq(micro) {
-            .img-container {
+            grid-template-areas: "description";
+
+            .img-container, .project-image {
                 display: none;
             }
         }
@@ -94,11 +119,17 @@
         overflow-y: auto;
         word-break: break-word;
 
+        p {
+            padding: 0 .25rem;
+        }
         p:last-child {
             margin-bottom: 4rem;
 
             @include mq(tiny) {
                 margin-bottom: 7.5vh;
+            }
+            @include mq(nano) {
+                margin-bottom: 12.5vh;
             }
         }
 

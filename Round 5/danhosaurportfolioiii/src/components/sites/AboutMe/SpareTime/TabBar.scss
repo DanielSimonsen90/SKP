@@ -1,0 +1,9 @@
+.tab-bar {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius);
+
+    &-content {
+        // background-color: var(--bg-quaternary);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+}

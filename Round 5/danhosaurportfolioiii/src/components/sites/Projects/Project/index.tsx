@@ -1,14 +1,12 @@
-import { Container } from 'danholibraryrjs'
 import { Project } from 'danhosaurportfolio-models'
-import { useModal } from 'providers/ModalProvider'
 import { useLanguage, useTranslate } from 'providers/LanguageProvider'
 import LinkItem from 'components/shared/navigation/LinkItem'
 import ProjectImage from './ProjectImage'
 import Bookmark from '../Bookmark'
-import './Project.scss'
 import ProjectLink from './ProjectLink'
-import ProjectImageModal from './ProjectImageModal'
 import ProjectLanguage from './ProjectLanguage'
+import './Project.scss'
+import { useMediaQuery } from 'danholibraryrjs'
 
 type Props = {
     project: Project
@@ -17,6 +15,7 @@ type Props = {
 export default function ProjectComponent({ project }: Props) {
     const [language] = useLanguage();
     const translate = useTranslate();
+    const isMicro = useMediaQuery("400");
     const seeMyProject = (() => {
         const [start, end] = translate('seeMyProject').split('$projectName');
         return <>{start}<b>{project.name}</b>{end}</>
@@ -35,15 +34,17 @@ export default function ProjectComponent({ project }: Props) {
     return (
         <article className='project container-flex container' id={project.name.replaceAll(' ', '%20')}>
             <header>
-                <h1>{project.name}</h1>
-                <h2>
+                <h1>
+                    <span>{project.name}</span>
+                    <Bookmark project={project} />
+                </h1>
+                <h2> 
                     <span>{project.createdAt.toString()}</span>
-                    <span> • </span>
+                    {!isMicro && <span> • </span>}
                     <ProjectLanguage language={project.language} />
-                    <span> • </span>
+                    {!isMicro && <span> • </span>}
                     <span>{project.projectType.toString()}</span>
                 </h2>
-                <Bookmark project={project} />
             </header>
             <section className="project-info">
                 <div className="project-description">

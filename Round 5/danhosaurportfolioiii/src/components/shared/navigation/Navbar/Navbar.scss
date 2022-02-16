@@ -43,13 +43,16 @@ header .link-item {
     font-size: 1.25rem;
     height: 1.3rem;
 
-    p::after {
-        content: '';
-        position: absolute;
-        inset: auto auto .33rem 0;
-        width: 100%;
-        height: 2px;
-        background-color: var(--thm-primary);
+    // p::after {
+    //     content: '';
+    //     position: absolute;
+    //     inset: auto auto .33rem 0;
+    //     width: 100%;
+    //     height: 2px;
+    //     background-color: var(--thm-primary);
+    // }
+    p {
+        border-bottom: 2px solid var(--thm-primary);
     }
 }
 
