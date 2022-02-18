@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useEffectOnce } from 'danholibraryrjs';
+import { PlanLocation, ProgrammingLanguage } from 'danhosaurportfolio-models';
+import { useEffectOnce, UseStateSetState } from 'danholibraryrjs';
 import { useTranslate, useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
 import { LanguageFilter } from '.';
 import BookmarkList from './BookmarkList'
@@ -8,19 +9,24 @@ import ProjectFilter from './ProjectFilter'
 import { useMe } from 'providers/MeProvider';
 
 export type FilterProps = {
-    languageFilter: LanguageFilter | string
-    projectFilter: string
+    filter: FilterData,
+    setFilter: UseStateSetState<FilterData>
+}
+export type FilterData = {
+    name?: string,
+    language?: ProgrammingLanguage,
+    projectType?: string,
+    before?: Date,
+    after?: Date,
+    occupation?: PlanLocation
 }
 
 export default function ProjectsContent() {
-    const translate = useTranslate();
     const translateLanguage = useTranslateProgrammingLanguages();
-    const [languageFilter, setLanguageFilter] = useState<LanguageFilter>(translate('all') as LanguageFilter);
-    const [projectFilter, setProjectFilter] = useState(translate('all'));
     const me = useMe();
+    const [filter, setFilter] = useState<FilterData>({})
 
     useEffectOnce(() => {
-        // console.log(window.location);
         const { hash, search } = window.location;
 
         if (hash) {
@@ -28,30 +34,21 @@ export default function ProjectsContent() {
             document.getElementById(id)?.scrollIntoView({ block: 'center' });
         }
         if (search) {
-            const query = search.substring(1).split('&').map(v => v.split('=')) as Array<[string, string]>;
-            const set = {
-                language: setLanguageFilter,
-                projectType: setProjectFilter
-            }
-            query.forEach(([k, v])=> set[k](translateLanguage[v] || v));
+            const queryData = search.substring(1).split('&').map(v => v.split('=')).reduce((obj, [prop, value]) => {
+                obj[prop] = translateLanguage[value] || value;
+                return obj;
+            }, {} as FilterData);
+            setFilter(filter => ({ ...filter, ...queryData }))
         }
     })
 
     return (
         <div id="projects-page">
             {me.projects.length ? (<>
-                <ProjectFilter 
-                    setLanguageFilter={setLanguageFilter} 
-                    setProjectFilter={setProjectFilter} 
-                    projectFilter={projectFilter} 
-                    languageFilter={languageFilter} 
-                />
+                <ProjectFilter filter={filter} setFilter={setFilter} />
                 <BookmarkList />
             </>) : null}
-            <ProjectContainer 
-                projectFilter={projectFilter} 
-                languageFilter={languageFilter} 
-            />
+            <ProjectContainer filter={filter} />
         </div>
     )
 }

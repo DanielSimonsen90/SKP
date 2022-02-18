@@ -13,6 +13,32 @@
         "day": "Dag",
         "days": "Dage",
         "duration": "Varighed",
+        "filters": {
+            "name": {
+                "title": "Navn",
+                "description": "Navnet på projektet"
+            },
+            "language": {
+                "title": "Sprog",
+                "description": "Programmeringssprog"
+            },
+            "projectType": {
+                "title": "ProjektType",
+                "description": "Hvilken slags application der er lavet"
+            },
+            "before": {
+                "title": "Før",
+                "description": "Før dato: yyyy-MM-dd"
+            },
+            "after": {
+                "title": "Efter",
+                "description": "Efter dato: yyyy-MM-dd"
+            },
+            "occupation": {
+                "title": "Beskæftigelse",
+                "description": "Projekter jeg har lavet mens jeg var på <beskæftigelse>"
+            }
+        },
         "educationPlanTitle": {
             "future": "Min uddannelsesplan i fremtiden",
             "full": "Hele min uddannelsesplan"
@@ -79,6 +105,32 @@
         "admin/projects": "Project Management",
         "changeEducatonPlanState": "Change education plan",
         "country-code": "us",
+        "filters": {
+            "name": {
+                "title": "Name",
+                "description": "Name of the project"
+            },
+            "language": {
+                "title": "Language",
+                "description": "Programming language"
+            },
+            "projectType": {
+                "title": "ProjectType",
+                "description": "Which type of application was made"
+            },
+            "before": {
+                "title": "Before",
+                "description": "Before date: yyyy-MM-dd"
+            },
+            "after": {
+                "title": "After",
+                "description": "After date: yyyy-MM-dd"
+            },
+            "occupation": {
+                "title": "Occupation",
+                "description": "Projects made while I was in <occupation>"
+            }
+        },
         "educationPlanTitle": {
             "future": "My education plan for the future",
             "full": "My entire education plan"

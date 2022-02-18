@@ -32,6 +32,10 @@ p {
     > * { font-size: inherit; }
 }
 
+li {
+    display: block;
+}
+
 button {
     @extend %shadow, %pressable-hoverable;
     @include transition(color, border, background-color, shadow);

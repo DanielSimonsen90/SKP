@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
+import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models';
 import { Button, CRUD, useEnterEsc, useRedirect, useStateOnUpdate } from 'danholibraryrjs';
-import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models'
+import { BetterOmit } from 'danholibraryjs';
 import { useUpsertProject, api, github, useSetProjects } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
 import InfoContainer from 'components/shared/container/InfoContainer';
@@ -10,8 +11,7 @@ import useProjectOptional from './useProjectOptional';
 import { ModalTitles } from '..';
 import './ProjectModal.scss';
 
-export type Omid<T, Keys extends keyof T> = Omit<T, Keys>;
-export type ConstructableProps = Omid<Project & IProject<ProgrammingLanguage>, 
+export type ConstructableProps = BetterOmit<Project & IProject<ProgrammingLanguage>, 
     '_id' | 'toString' | 'link' | 'githubUsername'
 >
 export type UseProjectModifyReturn<P> = [component: JSX.Element, didChange: boolean, props: P]
@@ -19,7 +19,7 @@ export type ProjectModalProps = ModalProps & {
     project: Project | null,
     title: ModalTitles
 }
-export type ProjectModalHookProps = Omit<ProjectModalProps, 'close'>
+export type ProjectModalHookProps = BetterOmit<ProjectModalProps, 'close'>
 
 export default function ProjectModal({ title, project, close }: ProjectModalProps) {
     const redirect = useRedirect();

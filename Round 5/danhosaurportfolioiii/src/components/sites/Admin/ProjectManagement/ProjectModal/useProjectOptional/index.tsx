@@ -1,13 +1,14 @@
 import { useMemo, useState } from "react";
-import { useStateOnUpdate } from 'danholibraryrjs'
 import { Collab } from "danhosaurportfolio-models";
+import { useStateOnUpdate } from 'danholibraryrjs';
+import { BetterOmit } from "danholibraryjs";
 import InfoContainer from "components/shared/container/InfoContainer";
 import ProjectImage, { ImageSrcPrefix } from "components/sites/Projects/Project/ProjectImage";
-import { ConstructableProps, Omid, ProjectModalHookProps, UseProjectModifyReturn } from "..";
+import { ConstructableProps, ProjectModalHookProps, UseProjectModifyReturn } from "..";
 import { UseProjectInformationProps } from "../useProjectInformation";
 import Label from "../Label";
 
-export type UseProjectOptionalProps = Omid<ConstructableProps, keyof UseProjectInformationProps>
+export type UseProjectOptionalProps = BetterOmit<ConstructableProps, keyof UseProjectInformationProps>
 export type UseProjectOptionalReturn = UseProjectModifyReturn<UseProjectOptionalProps>
 
 export default function useProjectOptional({ project }: ProjectModalHookProps): UseProjectOptionalReturn {

@@ -11,7 +11,7 @@
     top: -1vh;
 
     height: auto;
-    width: fit-content;
+    width: 50vw;
     padding: 2vh;
     background-color: var(--bg-tertiary);
     
@@ -46,6 +46,9 @@
 
     label {
         @extend %flexible;
+        flex-direction: row;
+
+        input { flex: 1; }
     }
     @include mq(tiny) {
         display: grid;

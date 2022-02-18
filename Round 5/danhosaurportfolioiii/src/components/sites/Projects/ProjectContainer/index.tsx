@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Project } from 'danhosaurportfolio-models';
 import { useEffectOnce } from 'danholibraryrjs';
+import { Extensions } from 'danholibraryjs';
 import { useMe, useSetProjects } from 'providers/MeProvider';
 import { useTranslate } from 'providers/LanguageProvider';
 import ProjectComponent from '../Project';
@@ -15,7 +16,7 @@ type Props = Partial<FilterProps> & {
 }
 
 export default function ProjectContainer({ 
-    languageFilter = '', projectFilter = '', 
+    filter, setFilter,
     renderCards = false, onProjectUpdate, onProjectDelete
 }: Props) {
     const me = useMe();
@@ -24,11 +25,10 @@ export default function ProjectContainer({
     const all = translate('all');
     
     const projects = useMemo(() => me.projects
-        .filter(p => renderCards || !languageFilter || (languageFilter === all || p.language === languageFilter))
-        .filter(p => renderCards || !projectFilter || (projectFilter === all || p.projectType === projectFilter))
+        .filter(p => !Object.array(filter).length || Object.array(filter).every(([prop, value]) => p[prop] === value))
         .filter(p => renderCards || p.display)
         .reverse(), 
-    [languageFilter, projectFilter, me, me.projects])
+    [filter, me, me.projects])
 
     useEffectOnce(() => { if (!me.projects.length) setProjects(); })
 

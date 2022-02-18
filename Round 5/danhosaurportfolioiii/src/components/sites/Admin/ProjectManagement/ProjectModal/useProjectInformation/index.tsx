@@ -1,14 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { DanhoDate, IProgrammingLanguage, ProgrammingLanguage } from "danhosaurportfolio-models";
 import InfoContainer from "components/shared/container/InfoContainer";
-import FilterInput from "components/sites/Projects/FilterInput";
+import FilterInputList from "components/sites/Projects/ProjectFilter/FilterInputList";
 import DescriptionInput from "./DescriptionInput";
-import { ConstructableProps, Omid, ProjectModalHookProps, UseProjectModifyReturn } from "..";
+import { ConstructableProps, ProjectModalHookProps, UseProjectModifyReturn } from "..";
 import Label from "../Label";
 import { useStateOnUpdate } from "danholibraryrjs";
+import { BetterOmit } from "danholibraryjs";
 
 type ProjectType = IProgrammingLanguage[ProgrammingLanguage];
-export type UseProjectInformationProps = Omid<ConstructableProps, 
+export type UseProjectInformationProps = BetterOmit<ConstructableProps, 
     'collab' | 'image' | 'spareTime' | 'baseLink' | 'hasLink'
 >
 
@@ -51,8 +52,8 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
                 />
             </div>
             <div className='language-project project-information-row'>
-                <FilterInput type='language' value={language} onChange={lang => setLanguage(lang as ProgrammingLanguage)} required={true} />
-                <FilterInput type='projectType' value={projectType} onChange={type => setProjectType(type as ProjectType)} required={true} />
+                <FilterInputList type='language' value={language} onChange={lang => setLanguage(lang as ProgrammingLanguage)} required={true} />
+                <FilterInputList type='projectType' value={projectType} onChange={type => setProjectType(type as ProjectType)} required={true} />
             </div>
             <div className="description project-information-row">
                 <DescriptionInput title="Description: Dansk" value={dansk.join('\n')} onChange={s => setDansk(typeof s === 'function' ? s(dansk.join('\n')).split('\n') : s.split('\n'))} />
