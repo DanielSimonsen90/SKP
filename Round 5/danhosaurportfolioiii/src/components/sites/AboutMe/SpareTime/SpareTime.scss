@@ -1,11 +1,19 @@
 @import '../../../shared/scss/lib/mixins';
 
+$border-1: 1px dashed var(--thm-tertiary);
+$border-2: 2px dotted var(--thm-secondary);
+
 #info-container-sparetimetitle {
     grid-area: sparetime;
 
     &:hover div.spare-time-item + div.spare-time-item {
         @include transition(border-color);
-        border-left: 2px dotted $thm-secondary;
+        border-left: $border-2;
+
+        @include mq(small) {
+            border-left: unset;
+            border-top: $border-2;
+        }
     }
     
     .content {
@@ -13,44 +21,72 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        padding: 0em .5em 1em;
+        padding: 0em .5rem 1rem;
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        @include mq(small) {
+            flex-direction: column;
+        }
+    }
+
+    .spare-time-item-top {
+        min-height: 2rem;
+        margin-bottom: 0;
+        font-size: 2rem;
+        font-weight: bold;
+        gap: 0;
+
+        p {
+            font-size: inherit;
+        }
     }
 }
 
-div.spare-time-item {
+.spare-time-item {
     background-color: unset;
     box-shadow: unset;
     font-size: 1.1em;
-    width: 54ch;
+    width: 30vw;
 
-    flex-direction: column;
-    align-items: flex-start;
-    gap: .5em;
-
-    // margin: 0em .25em;
-    padding: .5em .5em;
+    padding: .5em;
     height: initial;
     
     &:hover {
         @include transition(background-color, border-radius);
-        background-color: $bg-quaternary;
-        border-radius: $border-radius;
+        background-color: var(--bg-quaternary);
+        border-radius: var(--border-radius);
     }
 
     & + & {
-        border-left: 1px dashed $thm-tertiary;
+        border-left: $border-1;
         padding-left: 1em;
         margin: 0;
+
+        @include mq(small) {
+            border-left: unset;
+            border-top: $border-1;
+        }
+    }
+
+    p ~ p {
+        margin-top: .5em;
     }
 
     .link-item {
         justify-content: flex-start;
-    }
-}
+        padding-left: 0;
+        margin-bottom: .5em;
+        width: 100%;
 
-div.spare-time-item-top {
-    flex-direction: row;
-    align-items: center;
-    max-height: 32px;
-    margin-bottom: .125em;
+        @include mq(small) {
+            justify-content: center;
+        }
+    }
+
+    @include mq(small) {
+        width: 100%;
+    }
 }

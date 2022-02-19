@@ -1,7 +1,8 @@
-@import './mixins';
+@import 'mixins';
+@import 'variables';
 
 %shadow {
-    box-shadow: 0px 3px 5px #222;
+    box-shadow: 0px 3px 5px var(--shadow-clr);
 }
 %pressable-hoverable {
     @include transition(color, text-decoration);
@@ -9,7 +10,12 @@
     &:hover {
         cursor: pointer;
         text-decoration: underline;
-        border-radius: 6px;
+        border-radius: var(--border-radius);
     }
 
+}
+%flexible {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }

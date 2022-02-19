@@ -1,4 +1,4 @@
-@import '../lib/variables';
+@import '../lib';
 
 * {
     box-sizing: border-box;
@@ -9,32 +9,47 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    @include reduced-motion(false) {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
-    background-color: $bg-primary;
-    color: $clr-primary;
+    background-color: var(--bg-primary);
+    color: var(--clr-primary);
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
+    text-align: center;
+}
+
+p {
+    margin: .25em 0;
+    line-height: 2rem;
+    max-width: 100rem;
+
+    > * { font-size: inherit; }
+}
+
+li {
+    display: block;
 }
 
 button {
     @extend %shadow, %pressable-hoverable;
     @include transition(color, border, background-color, shadow);
-    font-size: 2em;
+    font-size: 2rem;
     padding: .5em;
-    border: 4px solid $bg-quaternary;
-    color: $clr-secondary;
-    background-color: $bg-secondary-opacity;
-    border-radius: $border-radius;
+    border: 4px solid var(--bg-quaternary);
+    color: var(--clr-secondary);
+    background-color: var(--bg-secondary-opacity);
+    border-radius: var(--border-radius);
 
     &:hover {
-        @include gradient-background($bg-quaternary, $bg-tertiary);
-        border-color: $bg-quinary;
-        color: $clr-primary;
+        @include gradient-background(var(--bg-quaternary), var(--bg-tertiary));
+        border-color: var(--bg-quinary);
+        color: var(--clr-primary);
     }
 
     &[disabled] {
@@ -45,21 +60,48 @@ button {
         text-decoration: none;
     }
 
+    &.primary {
+        color: var(--clr-primary);
+        background-color: var(--thm-primary);
+        border: unset;
+
+        &:hover {
+            background: unset;
+            background-color: var(--thm-primary);
+        }
+    }
+    &.secondary {
+        color: var(--thm-secondary);
+        background-color: transparent;
+        border-color: var(--thm-secondary-opacity);
+
+        &:hover {
+            color: var(--thm);
+            border-color: var(--thm-secondary);
+        }
+    }
+    &.tertiary {
+        color: var(--thm-tertiary-opacity);
+        border-color: var(--thm-tertiary-opacity);
+
+        &:hover {
+            color: var(--thm-tertiary);
+            border-color: var(--thm-tertiary)
+        }
+    }
+    
     @each $key, $value in $cruds {
-        &[data-crud-type=#{$key}] {
+        &[data-crud=#{$key}] {
             $value-mix-percentage: 50%;
             $value-mix: mix($value, $bg-secondary, $value-mix-percentage);
 
             @include transition(color, background-color, border-color);
             
             &.primary {
-                color: $clr-primary;
                 background-color: $value-mix;
-                border: unset;
             }
             &.secondary {
                 color: mix($value, $clr-primary, 75%);
-                background-color: transparent;
                 border-color: mix($value, $bg-primary, $value-mix-percentage);
             }
             &.tertiary {
@@ -72,7 +114,6 @@ button {
                 background: unset;
 
                 &.primary {
-                    // background: radial-gradient(circle, $value-mix 0%, $value 100%)
                     background-color: mix($value, $value-mix, $value-mix-percentage);
                 }
                 &.secondary {
@@ -83,17 +124,21 @@ button {
                 &.tertiary {
                     color: mix($value, $clr-primary, $value-mix-percentage * 1.5);
                     background: mix($value, $bg-tertiary, 5%);
-                    border-color: mix($value, $bg-tertiary, 75%);;
+                    border-color: mix($value, $bg-tertiary, 75%);
                 }
             }
         }
     }
+
+    .fa {
+        margin-right: .25em;
+    }
 }
 
 input {
-    border-radius: $border-radius;
-    background-color: $bg-quinary;
-    color: $clr-primary;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-quinary);
+    color: var(--clr-primary);
     padding-left: .25em;
     padding-top: .1em;
 }
@@ -101,76 +146,94 @@ input {
 fieldset {
     @extend %shadow;
     @include transition(color, background-color, border-color);
+    // @include betterminmax(width, auto, calc(100% - 1em), 100%);
+    max-width: 100%;
 
     padding: 1em;
     padding-top: .5em;
-    color: $clr-tertiary;
-    background-color: $bg-tertiary;
-    border-color: $thm-tertiary;
-    border-radius: $border-radius;
+    color: var(--clr-tertiary);
+    background-color: var(--bg-tertiary);
+    border-color: var(--thm-tertiary);
+    border-radius: var(--border-radius);
 
     &:hover {
-        color: $clr-secondary;
-        border-color: $thm-secondary;
+        color: var(--clr-secondary);
+        border-color: var(--thm-secondary);
 
         legend {
-            color: $thm-primary;
+            color: var(--thm-primary);
         }
     }
 
-    legend {
-        color: $thm-secondary;
-        font-size: 2em;
-        font-weight: bold;
+}
+legend {
+    color: var(--thm-secondary);
+    font-size: 2rem;
+    font-weight: bold;
+
+    @include mq(tiny) {
+        font-size: 2rem;
     }
 }
 
-table {
+table, .plan-card {
     @extend %shadow;
 
     display: grid;
-    width: fit-content;
-    min-width: 80%;
+    width: 100%;
     
-    background-color: $bg-primary;
-    border: 1px solid $thm-secondary;
-    border-radius: $table-round;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--thm-secondary);
+    border-radius: var(--table-round);
     padding: .5em;
-}
 
-thead {
-    background-color: $bg-secondary;
-    color: $thm-primary;
-    border-radius: $table-round $table-round 0px 0px;
-}
-tbody tr:hover {
-    background-color: $bg-quinary;
-    color: $clr-primary;
-}
 
-tr {
-    @include transition(background-color, color);
-    display: grid;
-    grid-template-columns: repeat(4, 25%); /* Course, Start, End, Duration */
-    place-items: center;
+    thead {
+        background-color: var(--bg-secondary);
+        color: var(--thm-primary);
+        border-radius: var(--table-round) var(--table-round) 0px 0px;
+    }
+    tbody tr:hover {
+        background-color: var(--bg-quinary);
+        color: var(--clr-primary);
+    }
 
-    &:last-child {
-        // border-radius: 0px 0px $table-round $table-round;
-        border-radius: repeat(2, 0px) repeat(2, $table-round);
+    tr {
+        @include transition(background-color, color);
+        display: grid;
+        grid-template-columns: repeat(4, 25%); /* Course, Start, End, Duration */
+        place-items: center;
+    
+        &:last-child {
+            border-radius: 0px 0px var(--table-round) var(--table-round);
+        }
+    }
+    
+    --fs-th: 6ch;
+    --fs-td: 4ch;
+
+    th { font-size: var(--fs-th) }
+    td { font-size: var(--fs-td) }
+
+    @include mq(small) {
+        --fs-th: 2.5rem;
+        --fs-td: 3ch;
+    }
+    @include mq(tiny) {
+        --fs-th: 2rem;
+        --fs-td: 2ch;
     }
 }
-
-th { font-size: 2.75em; }
-td { font-size: 2em; }
 
 textarea {
     height: 100%;
     width: 100%;
     
-    background-color: $bg-quaternary;
-    color: $clr-secondary;
-    border-radius: $border-radius;
+    background-color: var(--bg-quaternary);
+    color: var(--clr-secondary);
+    border-radius: var(--border-radius);
     padding: .25em;
+    font-size: 1rem;
     resize: none;
 
     &:focus {

@@ -1,4 +1,4 @@
-import { BaseProps, Container } from 'danholibraryrjs';
+import { BaseProps, Button, Container } from 'danholibraryrjs';
 import { Project } from 'danhosaurportfolio-models';
 import { useLanguage } from 'providers/LanguageProvider';
 import ProjectImage from '../../../Projects/Project/ProjectImage';
@@ -26,8 +26,8 @@ export default function ProjectCard({ project, onUpdate, onDelete }: Props) {
         <ProjectImage project={project} modalable={true} />
       </ImageContainer>
       <ButtonContainer className='project-card-bottom'>
-        <button data-crud-type="update" className='primary' onClick={() => onUpdate(project)}>Update</button>
-        <button data-crud-type="delete" className='secondary' onClick={() => onDelete(project)}>Delete</button>
+        <Button crud='update' importance='primary' onClick={() => onUpdate(project)}>Update</Button>
+        <Button crud='delete' importance='secondary' onClick={() => onDelete(project)}>Delete</Button>
       </ButtonContainer>
     </Container>
   );

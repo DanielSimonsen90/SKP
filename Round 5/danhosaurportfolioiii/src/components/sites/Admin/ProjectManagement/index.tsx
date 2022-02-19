@@ -1,10 +1,10 @@
 import { Project } from 'danhosaurportfolio-models';
 import { useModal } from 'providers/ModalProvider';
+import { useMe } from 'providers/MeProvider';
 import ProjectModal from './ProjectModal';
 import ProjectContainer from '../../Projects/ProjectContainer';
 import './ProjectManagement.scss';
-import { useMe } from 'providers/MeProvider';
-import { useEffect } from 'react';
+import { Button } from 'danholibraryrjs';
 
 export type ModalTitles = 'create' | 'update' | 'delete' | string;
 
@@ -17,14 +17,10 @@ export default function ProjectManagement() {
         setModalVisible('show', <ProjectModal project={project} title={title} close={modalClose} />)
     }
 
-    useEffect(() => {
-        console.log('projects changed');
-    }, [projects])
-
     return (
         <div id='project-management'>
             {projects.length > 0 && (
-                <button className='tertiary' onClick={() => openModal('create')} data-crud-type="create">Create Project</button>
+                <Button importance='tertiary' crud='create' onClick={() => openModal('create')}>Create Project</Button>
             )}
             <ProjectContainer renderCards={true} 
                 onProjectUpdate={p => openModal('update', p)}

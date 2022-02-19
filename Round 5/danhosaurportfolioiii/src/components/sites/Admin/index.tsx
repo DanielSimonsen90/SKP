@@ -5,7 +5,7 @@ export default function Admin() {
     return (
         <main id="admin-page">
             <AdminProvider>
-                <AdminContent/>
+                <AdminContent />
             </AdminProvider>
         </main>
     )

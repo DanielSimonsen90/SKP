@@ -11,15 +11,16 @@ export function useRedirect() {
 }
 
 export default function RouteProvider({ children }: BaseProps) {
-    const [route, _setRoute] = useState(window.location.pathname);
-    const setRoute = (state: string | ((state: string) => string)) => {
+    const [route, setRoute] = useState(window.location.pathname);
+    const redirect = (state: string | ((state: string) => string)) => {
         const val = typeof state === 'function' ? state(route) : state;
-        _setRoute(val);
+        setRoute(val);
+        
         window.location.href = `${window.location.origin}/${val}`;
     }
 
     return (
-        <RouteContext.Provider value={[route, setRoute]}>
+        <RouteContext.Provider value={[route, redirect]}>
             {children}
         </RouteContext.Provider>
     )

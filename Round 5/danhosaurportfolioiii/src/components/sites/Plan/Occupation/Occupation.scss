@@ -1,4 +1,4 @@
-@import '../../../shared/scss/lib/variables';
+@import '../../../shared/scss/lib/mixins';
 
 #occupation-string {
     align-self: center;
@@ -6,10 +6,14 @@
     font-weight: bold;
     
     &.link-item-hoverable {
-        color: $thm-tertiary;
+        color: var(--thm-tertiary);
 
         &:hover {
-            color: $link-item-color-hover;
+            color: var(--link-item-color-hover);
         }
+    }
+
+    @include mq(small) {
+        font-size: 3ch;
     }
 }

@@ -1,21 +1,20 @@
-@import '../../../shared/scss/lib/variables';
+@import 'components/shared/scss/lib/mixins';
 
 .container.bookmark-list {
-    max-width: 16vw;
-    max-height: 75vh;
-    width: auto;
-    height: auto;
+    @include betterminmax(width, auto, auto, 16vw);
+    @include betterminmax(height, auto, auto, 75vh);
 
     position: fixed;
     left: 1em;
     z-index: 2;
     
     flex-direction: column;
+    align-items: flex-start;
     gap: 1em;
     overflow-x: auto;
     
-    border: 1px solid $bg-quaternary;
-    border-radius: $border-radius;
+    border: 1px solid var(--bg-quaternary);
+    border-radius: var(--border-radius);
     padding: .5em;
 }
 .bookmark-list {
@@ -23,7 +22,7 @@
 
     h1 {
         font-size: 2em;
-        color: $thm-primary;
+        color: var(--thm-primary);
         text-decoration: underline;
     }
 

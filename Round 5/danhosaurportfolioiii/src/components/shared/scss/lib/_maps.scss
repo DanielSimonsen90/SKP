@@ -1,0 +1,58 @@
+$diff: 4%;
+$names: primary secondary tertiary quaternary quinary;
+
+$bg-primary: #282828;
+$bg-secondary: mix(white, $bg-primary, $diff);
+$bg-tertiary: mix(white, $bg-secondary, $diff);
+$bg-quaternary: mix(white, $bg-tertiary, $diff);
+$bg-quinary: mix(white, $bg-quaternary, $diff);
+
+$bg: (
+    primary: $bg-primary,
+    secondary: $bg-secondary,
+    tertiary: $bg-tertiary,
+    quaternary: $bg-quaternary,
+    quinary: $bg-quinary,
+);
+
+$clr-primary: #eee;
+$clr-secondary: mix(black, $clr-primary, $diff);
+$clr-tertiary: mix(black, $clr-secondary, $diff);
+$clr-quaternary: mix(black, $clr-tertiary, $diff);
+$clr-quinary: mix(black, $clr-quaternary, $diff);
+
+$clr: (
+    primary: $clr-primary,
+    secondary: $clr-secondary,
+    tertiary: $clr-tertiary,
+    quaternary: $clr-quaternary,
+    quinary: $clr-quinary,
+);
+
+$thm-primary: #FF5E00;
+$thm-secondary: #FAB54B;
+$thm-tertiary: #E2927A;
+$thm-quaternary: #FEDABE;
+
+$thm: (
+    primary: $thm-primary,
+    secondary: $thm-secondary,
+    tertiary: $thm-tertiary,
+    quaternary: $thm-quaternary
+);
+
+$cruds: (
+    create: hsl(120,75%, 65%),
+    update: hsl(60, 75%, 65%),
+    delete: hsl(0, 75%, 65%)
+);
+
+$media: (
+    large: 1400px,
+    medium: 1100px,
+    small: 900px,
+    smaller: 750px,
+    tiny: 600px,
+    micro: 400px,
+    nano: 300px
+)

@@ -1,0 +1,33 @@
+@mixin animate-property($animation-name, $property, $start, $end) {
+    @keyframes #{$animation-name} {
+        0% {
+            #{$property}: $start;
+        }
+        100% {
+            #{$property}: $end;
+        }
+    }
+}
+
+@include animate-property(right-to-left, right, -100%, 0);
+@include animate-property(right-to-left-reverse, right, 0, -100%);
+
+@include animate-property(top-to-top, top, -100%, 0);
+@include animate-property(top-to-top-reverse, top, 0, 15vh);
+
+@include animate-property(turn-clockwise, transform, rotateZ(0deg), rotateZ(180deg));
+@include animate-property(turn-clockwise-2, transform, rotateZ(180deg), rotateZ(360deg));
+
+@include animate-property(fade-in, opacity, 0, 1);
+@include animate-property(fade-out, opacity, 1, 0);
+
+@keyframes fade-in-visible {
+    0% {
+        transform-origin: top;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        position: relative;
+    }
+}

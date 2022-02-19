@@ -7,33 +7,74 @@
     gap: 2em;
     min-width: 80%;
     margin: 2em;
-    
+
+    h1 { text-align: center; }
+
     #occupation-string {
-        font-size: 2em;
+        font-size: 2rem;
         padding: 0;
     }
-}
 
+    .presentation {
+        @extend %flexible;
+        flex-direction: column;
+    }
 
-.Grundforløb  {
-    background-color: $bg-tertiary;
-    color: $clr-tertiary;
-}
-.Skolepraktik {
-    background-color: $bg-quaternary;
-    color: $thm-tertiary;
-}
-.Hovedforløb {
-    background-color: $bg-tertiary;
-    color: $thm-secondary;
-}
-.current-occupation {
-    @include gradient-background($bg-quinary, $bg-quaternary);
-    font-weight: bold;
-    text-decoration: underline;
-    color: $clr-secondary;
+    @include mq(medium) {
+        h1 { font-size: 7vw; }
+        #occupation-string p { font-size: 4.5vw; line-height: 6vw; }
+        button { font-size: 4vw; }
+        table { width: 90vw; }
+        th { font-size: 5vw; }
+        td { font-size: 3.3vw; }
+    }
 
-    &:hover {
-        background-image: unset;
+    table, .plan-card-container {
+        [data-course=Grundforløb] {
+            background-color: var(--bg-tertiary);
+            color: var(--clr-tertiary);
+            border-color: var(--clr-tertiary);
+        }
+        [data-course=Skolepraktik] {
+            background-color: var(--bg-quaternary);
+            color: var(--thm-tertiary);
+            border-color: var(--thm-tertiary);
+        }
+        [data-course=Hovedforløb] {
+            background-color: var(--bg-tertiary);
+            color: var(--thm-secondary);
+            border-color: var(--thm-secondary);
+        }
+        [data-current-occupation=true] {
+            @include gradient-background(
+                var(--bg-quinary), 
+                var(--bg-quaternary)
+            );
+            font-weight: bold;
+            text-decoration: underline;
+            color: var(--clr-secondary);
+            border-color: var(--clr-secondary);
+        
+            &:hover {
+                background-image: unset;
+            }
+        }
+    }
+
+    tr, .plan-card {
+        @include dropdown(15, fade-in-visible);
+    
+        opacity: 0;
+        transform: scale(0);
+        position: absolute;
+    }
+
+    
+    .reverse .fa {
+        @include animate(turn-clockwise);
+        transform-origin: center;
+    }
+    .reverse.animation-reverse .fa {
+        @include animate(turn-clockwise-2);
     }
 }

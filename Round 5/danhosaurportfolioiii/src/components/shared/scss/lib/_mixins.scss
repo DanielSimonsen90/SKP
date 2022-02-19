@@ -1,16 +1,71 @@
-@import './variables';
+@import 'variables';
 
 @mixin transition($properties...) {
     $result: ();
     
     @each $prop in $properties {
-        $value: $prop $transition-time $transition-animation;
+        $value: $prop var(--transition-time) var(--transition-animation);
         $result: append($result, $value, "comma")
     }
     
     transition: $result;
 }
 
-@mixin gradient-background($middle: $bg-secondary, $gradient: $bg-primary) {
+@mixin gradient-background($middle: var(--bg-secondary), $gradient: var(--bg-primary)) {
     background: radial-gradient(circle, $middle 33%, $gradient 75%);
+}
+
+@mixin mq($key) {
+    @media only screen and (max-width: map-get($media, $key)) {
+        @content;
+    }
+}
+
+@mixin max {
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+@mixin betterminmax($property, $min-value, $default-value, $max-value) {
+    min-#{$property}: $min-value;
+    #{$property}: $default-value;
+    max-#{$property}: $max-value;
+}
+
+@mixin reduced-motion($value: false) {
+    $mq-value: no-preference;
+
+    @if $value == true {
+        $mq-value: reduced;
+    }
+
+    @media (prefers-reduced-motion: $mq-value) {
+        @content;
+    }
+}
+
+@mixin animate($name, $duration: $animation-time, $exists: true) {
+    @include reduced-motion(false) {
+        @if not $exists {
+            @keyframes #{$name} {
+                @content;
+            }
+        }
+    
+        animation: $name $duration forwards;
+    }
+}
+
+@mixin dropdown($length, $animation, $duration: $animation-time, $delay: $animation-time) {
+    @include reduced-motion(false) {
+        @for $i from 0 to $length {
+            &:nth-child(#{$i}) {
+                @if $i == 0 {
+                    animation: $animation $duration forwards;
+                } @else {
+                    animation: $animation $duration $delay * $i / 2 forwards;
+                }
+            }
+        }
+    }
 }

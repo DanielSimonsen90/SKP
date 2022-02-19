@@ -1,15 +1,62 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 import { ScheduleItem } from 'danhosaurportfolio-models';
-import { useLocationCollection } from 'providers/MeProvider';
+import { Button, useAnimationReverse, useMediaQuery, useStateOnUpdate } from 'danholibraryrjs';
+import { GetCSSProperty, Time } from 'danholibraryjs';
+
+import { useLocationCollection, useMe } from 'providers/MeProvider';
 import { useTranslate } from 'providers/LanguageProvider';
-import PlanRow from './PlanRow';
+
+import { ButtonContainer } from 'components/shared/container/SpecificContainer';
+import LinkItem from 'components/shared/navigation/LinkItem';
+
 import Occupation from './Occupation';
+import PlanTable from './PlanTable';
+import PlanCardContainer from './PlanCard/PlanCardContainer';
+
 import './Plan.scss'
 
 type PlanStates = 'future' | 'full';
+export type PlanProps = {
+    titles: Array<string>,
+    planData: Array<ScheduleItem>,
+}
+export type PlanItemProps = Omit<PlanProps, 'titles' | 'planData'> & {
+    item: ScheduleItem
+}
+
+export function usePlanItemData(item: ScheduleItem) {
+    const translate = useTranslate();
+    const me = useMe();
+
+    const { course } = item;
+    const [start, end] = [item.start, item.end].map(date => date.toString());
+
+    const isCurrentOccupation = useMemo(() => me.occupation === item.course, [me, item]);
+    const courseType = useMemo(() => item.course === 'Grundforløb' ? item.course : item.course.substring(0, item.course.length - 2), [item])
+    const duration = useMemo(() => {
+        const format = (time: number, type: 'month' | 'day') => `${time} ${translate(`${type}${time > 1 ? 's' : ''}`).toLowerCase()}`
+        return `${format(item.duration.months, 'month')} & ${format((item.duration.getTotalDays() % Time.avgMonth), 'day')}`
+    }, [item]);
+
+    return { 
+        course, start, duration, end,
+        isCurrentOccupation, courseType,
+        dataCurrentOccupation: isCurrentOccupation ? isCurrentOccupation : null
+    }
+}
 
 export default function Plan() {
     const locationCollection = useLocationCollection();
+    const isTiny = useMediaQuery('600');
+    const translate = useTranslate();
+    const addReverse = useAnimationReverse('button:last-child', 'reverse');
+    const animateReverse = useAnimationReverse('.reverse', 'animation-reverse', GetCSSProperty('--animation-time', 'number'));
+
+    const [isReverse, setIsReverse] = useState(false);
+    const [planState, setPlanState] = useState<PlanStates>('future');
+
+    const titles = useMemo(() => ['course', 'start', 'end', 'duration'].map(title => translate(title)), []);
     const futurePlan = useMemo(() => {
         const result = new Array<ScheduleItem>();
         for (const item of locationCollection) {
@@ -17,36 +64,34 @@ export default function Plan() {
                 result.push(item)
         }
         return result;
-        // return locationCollection.filter(i => i.end.getTime() > Date.now());
-    }, [locationCollection])
-    const translate = useTranslate();
-    const [planState, setPlanState] = useState<PlanStates>('future');
-    const [tableData, setTableData] = useState<Array<ScheduleItem>>(futurePlan)
-    const titles = ['course', 'start', 'end', 'duration'].map(title => translate(title));
-    
-    const onChangeEducationPlanClicked = () => {
-        const newState = planState === 'full' ? 'future' : 'full';
-        setPlanState(newState);
-        setTableData(newState === 'full' ? locationCollection : futurePlan);
-    }
+    }, [locationCollection]);
+    const planData = useMemo(() => {
+        let data = planState === 'full' ? [...locationCollection] : [...futurePlan];
+        return isReverse ? data.reverse() : data;
+    }, [planState, isReverse]);
+
+    const onChangeEducationPlanClicked = () => setPlanState(s => s === 'full' ? 'future' : 'full');
+    const onChangeDirectionClicked = () => setIsReverse(v => {
+        try { v ? animateReverse().then(el => el.classList.remove('reverse')) : addReverse(); }
+        catch {}
+        return !v;
+    });
 
     return (
         <main id="plan-page">
-            <div>
+            <div className='presentation'>
                 <h1>{translate('educationPlanTitle')[planState]}</h1>
                 <Occupation link={false} />
+                <LinkItem className='click-me' newPage link="Uddannelsesplan.pdf" title={translate('viewEducationPlan')} />
             </div>
-            <button onClick={onChangeEducationPlanClicked}>{translate('changeEducatonPlanState')}</button>
-            <table>
-                <thead>
-                    <tr>
-                        {titles.map((key, i) => <th key={i}>{translate(key)}</th>)}
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableData.map((item, i) => <PlanRow key={i} item={item} className={item.course === 'Grundforløb' ? item.course : item.course.substring(0, item.course.length - 2)} />)}
-                </tbody>
-            </table>
+            <ButtonContainer style={{ boxShadow: 'unset' }}>
+                <Button importance='secondary' onClick={onChangeEducationPlanClicked}>{translate('changeEducationPlanState')}</Button>
+                <Button importance='secondary' onClick={onChangeDirectionClicked} iconName='arrow-down'>{translate('changeDirection')}</Button>
+            </ButtonContainer>
+            {isTiny ? 
+                <PlanCardContainer planData={planData} data-length={planData.length} /> : 
+                <PlanTable titles={titles} planData={planData} data-length={planData.length} />
+            }
         </main>
     )
 }

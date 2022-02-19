@@ -53,44 +53,57 @@ export default function Intro() {
             })
     })
 
-    const MapExperienceLangauges = () => experienceLanguages.length ? (
-        <div className="languages">
-            {experienceLanguages.map(lang => <LinkItem link={`projects?language=${translateLanguages.unformat[lang] || lang}`} title={translateLanguages.format[lang] || lang} key={lang} />)}
-        </div>
-    ) : <p> {`${translate('otherLanguages').toLowerCase()}...`}</p>
+    const MapExperienceLangauges = () => experienceLanguages.length ? (<>
+        {experienceLanguages.map(lang => (
+            <LinkItem key={lang} className='experienced-language'
+                link={`projects?language=${translateLanguages.unformat[lang] || lang}`} 
+                title={`${translateLanguages.format[lang] || lang}, `} 
+            />
+        ))}
+    </>) : <>{translate('otherLanguages').toLowerCase()}...</>
     
 
     const mapSentences = (sentence: string, i: number) => {
         if (!sentence) return <br key={i} />;
         const includesExperienceLanguages = sentence.includes('$experienceLanguages');
-        
+        const includesPersonalFavorites = sentence.includes("$projects");
+
         if (includesExperienceLanguages) {
             const [part] = sentence.split('$experienceLanguages');
-            return (<div className='experience-languages-container' key={i}>
-                <p>{part}</p>
-                <MapExperienceLangauges />
-            </div>);
+            return (
+                <p key={i}>
+                    <span>{part}</span>
+                    <MapExperienceLangauges />
+                </p>
+            );
+        }
+        else if (includesPersonalFavorites) {
+            return !me.projects.length ? null : (
+                <p key={i}>
+                    <span>{sentence.split('$projects')[0]}</span>
+                    <FavoriteProjectList />
+                </p>
+            )
         }
         return <p key={i}>{sentence}</p>
     }
 
     const FavoriteProjectList = () => favoriteProjects.length > 1 ? (
-        <div className='project-container'>
+        <>
             {favoriteProjects.map(v => {
                 const name = typeof v === 'string' ? v : v.name;
                 return [
-                    <p key={`${name}-p`}>,</p>,
-                    <LinkItem key={name} title={name} link={`/projects#${name}`} />
+                    <span key={`${name}-p`}> & </span>,
+                    <LinkItem className='experienced-language' key={name} title={name} link={`/projects#${name}`} />
                 ]
             }).flat().slice(1)}
-        </div>
+        </>
     ) : null;     
 
     return (
         <InfoContainer title='introTitle' type='flex'>
             <div className='intro-text'>
                 {introText.map(mapSentences)}
-                <FavoriteProjectList />
             </div>
             <Socials />
         </InfoContainer>

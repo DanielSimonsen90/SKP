@@ -1,0 +1,20 @@
+@import 'components/shared/scss/lib/partials';
+
+.filter-menu-option {
+    @extend %flexible, %pressable-hoverable;
+    flex-direction: row;
+    padding: .25em .5em;
+
+    &:hover {
+        text-decoration: unset;
+        background-color: var(--bg-secondary);
+        border-radius: unset;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+    .description {
+        color: var(--clr-quinary);
+    }
+}

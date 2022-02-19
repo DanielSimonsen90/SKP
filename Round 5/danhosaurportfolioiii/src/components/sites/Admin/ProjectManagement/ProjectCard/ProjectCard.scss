@@ -1,9 +1,9 @@
-@import 'components/shared/scss/lib';
+@import 'components/shared/scss/lib/mixins';
 @use "sass:map";
 
 @mixin linear-gradient(
-    $top-bottom: $bg-quaternary, 
-    $middle: $bg-tertiary,
+    $top-bottom: var(--bg-quaternary), 
+    $middle: var(--bg-tertiary),
     $percent: 33%
 ) {
     background: linear-gradient(
@@ -21,17 +21,18 @@
     display: grid;
     grid-gap: .5em 0em;
     min-height: 50vh;
+    max-width: calc(100vw - 2em);
     padding: 1em;
-    border-radius: $border-radius;
-    border: 2px solid $bg-quaternary;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--bg-quaternary);
 
     &:hover {
-        @include linear-gradient($bg-quinary, $bg-quaternary);
+        @include linear-gradient(var(--bg-quinary), var(--bg-quaternary));
     }
     
     &-mid {
         &-top, &-bottom {
-            @include linear-gradient($bg-secondary, $bg-tertiary, 45%);
+            @include linear-gradient(var(--bg-secondary), var(--bg-tertiary), 45%);
         }
 
         &-top {

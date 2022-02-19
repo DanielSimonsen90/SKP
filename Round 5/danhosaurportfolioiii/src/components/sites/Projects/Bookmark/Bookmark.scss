@@ -1,49 +1,18 @@
 @import 'components/shared/scss/lib';
 
 .bookmark {
-    $border-color: $thm-tertiary;
-
     @include transition(border-color, background-color);
-    position: absolute;
-    right: 1em;
-    width: 17.5px;
-    height: 40px;
-    border: 2px solid $border-color;
-    border-radius: $border-radius;
-
-    &::after {
-        content: '';
-        
-        position: absolute;
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        display: block;
-        width: 33%;
-        height: 7.5px;
-        
-        background-color: $bg-tertiary;
-        border: 2px solid $border-color;
-        border-bottom: none;
-    }
+    font-size: 40px;
+    color: var(--thm-tertiary);
 
     &:hover {
-        background-color: $clr-tertiary;
-        border-color: $clr-primary;
+        color: var(--clr-tertiary);
         cursor: pointer;
-        // top: .25em;
-        // top: initial;
-
-        &::after {
-            border-color: $clr-primary;
-        }
     }
 
     &-selected {
-        @extend %shadow;
-        background-color: $thm-secondary;
-        border-color: $thm-primary;
-        top: -.25em;
+        color: var(--thm-secondary);
+        top: -.5em;
+        z-index: 3;
     }
 }

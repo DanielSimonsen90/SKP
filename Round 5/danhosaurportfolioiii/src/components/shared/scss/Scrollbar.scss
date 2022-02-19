@@ -1,15 +1,16 @@
-@import './lib/variables';
+@import '../scss/lib/maps';
 
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track {
-    background: $bg-tertiary;
+    background: var(--bg-tertiary);
   
     &:hover { 
-        background: $bg-quaternary;
+        background: var(--bg-quaternary);
     }
 }
 ::-webkit-scrollbar-thumb {
-    background: $bg-quinary;
+    $background: mix($bg-quinary, $thm-secondary, 85%);
+    background: $background;
   
     &:hover { background: lighten($bg-tertiary, 25%) }
 }

@@ -1,38 +1,38 @@
-/*#region Basic Variables*/
-$diff: 4%;
-$bg-primary: #282828;
-$bg-secondary: mix(white, $bg-primary, $diff);
-$bg-tertiary: mix(white, $bg-secondary, $diff);
-$bg-quaternary: mix(white, $bg-tertiary, $diff);
-$bg-quinary: mix(white, $bg-quaternary, $diff);
+@import 'maps';
 
-$bg-secondary-opacity: rgba($bg-secondary, .5);
+$opacity: .5;
+$animation-time: 500ms;
 
-$clr-primary: #eee;
-$clr-secondary: mix(black, $clr-primary, $diff);
-$clr-tertiary: mix(black, $clr-secondary, $diff);
+@mixin create-variables($prefix, $list) {
+    @each $name, $value in $list {
+        --#{$prefix}-#{$name}: #{$value};
+        $opacity-value: rgba($value, $opacity);
+        --#{$prefix}-#{$name}-opacity: #{$opacity-value};
+    }
+}
 
-$thm-primary: #FF5E00;
-$thm-secondary: #FAB54B;
-$thm-tertiary: #E2927A;
-/*#endregion*/
+:root {
+    @include create-variables(bg, $bg);
+    @include create-variables(clr, $clr);
+    @include create-variables(thm, $thm);
 
-/*#region Transition*/
-$transition-time: 150ms;
-$transition-animation: ease-in;
-/*#endregion*/
+    --transition-time: 150ms;
+    --transition-animation: ease-in;
 
-/*#region Link item color*/
-$link-item-color: $clr-primary;
-$link-item-color-hover: #8fafc4;
-$link-item-color-focus: #6ba7f5;
-/*#endregion*/
+    --animation-time: #{$animation-time};
 
-$table-round: 6px;
-$border-radius: 6px;
+    $link-item-hover: #8fafc4;
+    $link-item-focus: #6ba7f5;
+    $link-item-visited: mix(black, #4E4DF5, 25%);
 
-$cruds: (
-    create: hsl(120,75%, 65%),
-    update: hsl(60, 75%, 65%),
-    delete: hsl(0, 75%, 65%)
-);
+    $link-item-color: mix($clr-primary, $link-item-focus, 75%);
+    --link-item-color: #{$link-item-color};
+    --link-item-color-click-me: #5fafd6;
+    --link-item-color-hover: #{$link-item-hover};
+    --link-item-color-focus: #{$link-item-focus};
+    --link-item-color-visited: #{$link-item-visited};
+
+    --table-round: 6px;
+    --border-radius: 6px;
+    --shadow-clr: #222;
+}

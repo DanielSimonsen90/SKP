@@ -1,10 +1,13 @@
-import { BaseProps, Container } from 'danholibraryrjs';
+import { useEffect, useState } from 'react';
+import Icon from 'react-fontawesome';
+import { BaseProps, Container, useMediaQuery } from 'danholibraryrjs';
 import { useTranslate } from 'providers/LanguageProvider';
 import { useRoute } from 'providers/RouteProvider';
+import { RouteProps } from 'components/App';
 import LinkItem from 'components/shared/navigation/LinkItem';
 import Logo from 'components/shared/images/Logo';
-import { RouteProps } from 'components/App';
 import './Navbar.scss'
+import { useModal } from 'providers/ModalProvider';
 
 type Props = BaseProps & RouteProps & {
     includeLogo?: boolean,
@@ -13,23 +16,39 @@ type Props = BaseProps & RouteProps & {
 
 export default function Navbar({ routes, children, className, includeLogo = true, fromFooter = false, ...props }: Props) {
     const translate = useTranslate();
-    const [route, redirect] = useRoute();
+    const [route] = useRoute();
+    const forceIcon = useMediaQuery("400");
     
-    const navbarRoutes = routes.map(([path]) => path.substring(1)).reverse().map(path => (
-        <LinkItem key={path} className={route.toLowerCase() === `/${path.toLowerCase()}` ? 'current-page' : ''} 
-            title={translate(path) || translate('home')} link={path.replaceAll(' ', '').toLowerCase()}
+    const navbarRoutes = routes.map(([path]) => path.substring(1)).reverse().map(path => {
+        const isCurrentPage = route.toLowerCase() === `/${path.toLowerCase()}`;
+        const title = translate(path) || translate('home');
+        const link = path.replaceAll(' ', '').toLowerCase() || '/';
+        
+        return <LinkItem key={path} 
+            className={isCurrentPage ? 'current-page' : ''} 
+            title={title} link={!isCurrentPage && link} onClick={(props, e) => {
+                if (isVisible && isCurrentPage) toggleModal('hide');
+            }}
         />
-    ));
+    });
+
+    const contentChildren = <>
+        {navbarRoutes}
+        {children}
+    </>
+
+    const [isVisible, toggleModal] = useModal((
+        <nav className={`navigation-modal${className ? ` ${className}` : ''}`}>
+            {contentChildren}
+        </nav>
+    ), false)
 
     const content = (<>
         {includeLogo && <Logo />}
-        {navbarRoutes}
-        {children}
+        {forceIcon ? <Icon name='bars' onClick={() => toggleModal('show')} /> : contentChildren}
     </>)
 
-    return fromFooter ? (
-        <ul className='navbar'>{content}</ul>
-    ) : (
+    return fromFooter ? (!forceIcon ? <ul className='navbar'>{content}</ul> : null) : (
         <Container>
             <header className={`navbar${className ? ` ${className}` : ''}`} {...props}>
                 {content}

@@ -1,18 +1,49 @@
 {
     "Dansk": {
         "aboutme": "Om Mig",
+        "admin/management": "Admin Panel",
+        "admin/projects": "Project Panel",
         "all": "Alle",
         "bookmark": "Bogmærk",
         "bookmarks": "Bogmærker",
-        "changeEducatonPlanState": "Skift uddannelsesplan",
+        "changeDirection": "Skift retning",
+        "changeEducationPlanState": "Skift uddannelsesplan",
         "country-code": "dk",
         "course": "Forløb",
         "day": "Dag",
         "days": "Dage",
+        "duration": "Varighed",
+        "filters": {
+            "name": {
+                "title": "Navn",
+                "description": "Navnet på projektet"
+            },
+            "language": {
+                "title": "Sprog",
+                "description": "Programmeringssprog"
+            },
+            "projectType": {
+                "title": "ProjektType",
+                "description": "Hvilken slags application der er lavet"
+            },
+            "before": {
+                "title": "Før",
+                "description": "Før dato: yyyy-MM-dd"
+            },
+            "after": {
+                "title": "Efter",
+                "description": "Efter dato: yyyy-MM-dd"
+            },
+            "occupation": {
+                "title": "Beskæftigelse",
+                "description": "Projekter jeg har lavet mens jeg var på <beskæftigelse>"
+            }
+        },
         "educationPlanTitle": {
             "future": "Min uddannelsesplan i fremtiden",
             "full": "Hele min uddannelsesplan"
         },
+        "end": "Slut",
         "portfolio": "Portefølje",
         "home": "Hjem",
         "project": "Projekt",
@@ -23,7 +54,7 @@
             "Jeg er stor fan af Objekt Orienteret Programmering og Komponent-baseret strukture, og bruger meget af min tid på at lave alt så fleksibelt og generisk som muligt.",
             "Mit ynglingssprog er $favoriteLanguage, men jeg har også erfaring med $experienceLanguages.",
             "",
-            "Nogle af mine ynglingsprojekter er: "
+            "Nogle af mine ynglingsprojekter er: $projects"
         ],
         "introTitle": "Hvem er jeg?",
         "loadingProjects": "Indlæser projekter",
@@ -42,7 +73,7 @@
         "months": "Måneder",
         "noImage": "Intet billede",
         "noProjects": "Der findes ingen projekter med disse kriterier.",
-        "occupationString": "I øjeblikket er jeg på $module intil $date",
+        "occupationString": "I øjeblikket er jeg på $module indtil $date",
         "otherLanguages": "Andre sprog",
         "projectType": "Projekt Type",
         "seeMyProject": "Se $projectName her",
@@ -65,7 +96,8 @@
         },
         "spareTimeTitle": "Fritid",
         "top": "Til toppen",
-        "unableToFetch": "Kunne ikke hente dataen!"
+        "unableToFetch": "Kunne ikke hente dataen!",
+        "viewEducationPlan": "Se min uddannelsesplan her"
     },
     "English": {
         "aboutme": "About Me",
@@ -73,6 +105,32 @@
         "admin/projects": "Project Management",
         "changeEducatonPlanState": "Change education plan",
         "country-code": "us",
+        "filters": {
+            "name": {
+                "title": "Name",
+                "description": "Name of the project"
+            },
+            "language": {
+                "title": "Language",
+                "description": "Programming language"
+            },
+            "projectType": {
+                "title": "ProjectType",
+                "description": "Which type of application was made"
+            },
+            "before": {
+                "title": "Before",
+                "description": "Before date: yyyy-MM-dd"
+            },
+            "after": {
+                "title": "After",
+                "description": "After date: yyyy-MM-dd"
+            },
+            "occupation": {
+                "title": "Occupation",
+                "description": "Projects made while I was in <occupation>"
+            }
+        },
         "educationPlanTitle": {
             "future": "My education plan for the future",
             "full": "My entire education plan"
@@ -81,9 +139,9 @@
             "My name is $name and I'm a $age year old datatechnician student at $school.",
             "I have $experienceYears years experience with programming, and use a lot of my time on different projects.",
             "I'm a big fan of Object Oriented Programming and Component-based structures, and use a lot of my time to make everything flexible and generic.",
-            "My favorite language is $favoriteLanguage, but I also have experience with $experienceLanguages.",
+            "My favorite language is $favoriteLanguage, but I also have experience with: $experienceLanguages.",
             "",
-            "Some of my personal favorite projects are: "
+            "Some of my personal favorite projects are: $projects"
         ],
         "introTitle": "Who am I?",
         "languages": {
@@ -122,6 +180,7 @@
         },
         "spareTimeTitle": "Spare Time",
         "top": "To the top",
-        "unableToFetch": "Unable to fetch the data!"
+        "unableToFetch": "Unable to fetch the data!",
+        "viewEducationPlan": "View my education plan here"
     }
 }

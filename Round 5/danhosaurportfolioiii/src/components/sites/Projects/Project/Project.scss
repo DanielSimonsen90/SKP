@@ -1,85 +1,170 @@
-@import 'components/shared/scss/lib/variables';
 @import 'components/shared/scss/lib/mixins';
 
-/* Container for project data */
 .container.project {
     @include transition(background-color, border-radius);
-
-    max-width: 66%;
-    min-height: 40vh;
-    max-height: 90vh;
-    height: 100%;
-    width: 100%;
+    @include betterminmax(width, auto, 100%, 175vh);
+    @include betterminmax(height, auto, 100%, 90vh);
+    
     flex-direction: column;
     flex: 1 1 max-content;
+    
     padding: .75em;
-    background-color: $bg-tertiary;
-    border-radius: $border-radius;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius);
     
     &:hover {
         border-radius: 1em;
-        background-color: $bg-quaternary;
+        background-color: var(--bg-quaternary);
+    }
+
+    @include mq(micro) {
+        max-width: calc(100vw - 3em);
     }
 }
 
 .project {
-    h1, h2 { margin-bottom: .5rem; }
-    h1 { color: $thm-primary; }
-    h2 { color: $clr-secondary; }
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    h1, h2 { 
+        word-break: break-word;
+        margin-bottom: .5rem;
+    }
+    h1 {
+        color: var(--thm-primary); 
+        font-size: 2rem;
+        width: 100%;
 
-    /* Text information about project */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &:not(.bookmark) {
+                margin: 0 auto;
+            }
+        }
+
+        @include mq(micro) {
+            font-size: 1.8rem;
+        }
+        @include mq(nano) {
+            max-width: 100%;
+            font-size: 1.5rem;
+            text-align: start;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+        }
+    }
+    h2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        width: 100%;
+        gap: .25em;
+        color: var(--clr-secondary);
+
+        @include mq(micro) {
+            font-size: 1.125rem;
+        }
+    }
+
     &-info {
         position: relative;
         display: grid;
-        grid-template-areas: 
-            "description image"
-            "link image"
-        ;
+        grid-template-areas: "description image";
         grid-template-columns: 50% 50%;
-        grid-template-rows: auto 1.5rem;
+        grid-template-rows: auto;
         gap: .5em;
         justify-items: center;
 
-        max-height: 40vh;
-        height: 100%;
+        @include betterminmax(height, auto, 100%, 40vh);
         width: 100%;
         padding: .5em 1em;
 
-        border: 1px solid $thm-secondary;
-        border-radius: $border-radius;
+        border: 1px solid var(--thm-secondary);
+        border-radius: var(--border-radius);
+
+        @include mq(tiny) {
+            grid-template-areas: "image" "description";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+
+            padding: .5em;
+
+            .img-container {
+                overflow-y: hidden;
+            }
+        }
+        @include mq(micro) {
+            grid-template-areas: "description";
+
+            .img-container, .project-image {
+                display: none;
+            }
+        }
     }
     &-description {
         grid-area: description;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         overflow-y: auto;
         word-break: break-word;
 
-        // max-height: 37vh;
-        max-height: 33vh;
-        // padding-bottom: 1vh;
+        p {
+            padding: 0 .25rem;
+        }
+        p:last-child {
+            margin-bottom: 4rem;
+
+            @include mq(tiny) {
+                margin-bottom: 7.5vh;
+            }
+            @include mq(nano) {
+                margin-bottom: 12.5vh;
+            }
+        }
+
     }
     &-link {
-        grid-area: link;
+        grid-area: description;
+
+        $bg-clr: rgba($bg-tertiary, .85);
+        background-color: $bg-clr;
+        border-radius: 0 var(--border-radius) 0 0;
+        border: 2px dashed var(--thm-tertiary);
+        border-bottom: unset;
+        border-left: unset;
+
+        padding: .5rem;
+        width: 100%;
+        
         align-self: flex-end;
+        position: relative;
+        inset: auto auto -.5rem -1rem;
+
+        @include mq(tiny) {
+            inset: auto auto -.5rem -.5rem;
+        }
     }
     &-image-modal {
-        h1 {
-            padding-bottom: .25em;
-        }
-
-        .image-container {
-            padding: 0 !important;
-        }
+        h1 { padding-bottom: .25em; }
+        .image-container { padding: 0 !important; }
     }
 
-    .img-container {
-        grid-area: image;
-    }
+    .img-container { grid-area: image; }
 
     img.project-image {
-        max-width: 100%;
         height: 37.5vh;
-        border-radius: $border-radius;
+        border-radius: var(--border-radius);
         object-fit: cover;
     
         &[data-clickable=true] {
