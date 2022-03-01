@@ -39,6 +39,11 @@ li {
 button {
     @extend %shadow, %pressable-hoverable;
     @include transition(color, border, background-color, shadow);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 2rem;
     padding: .5em;
     border: 4px solid var(--bg-quaternary);

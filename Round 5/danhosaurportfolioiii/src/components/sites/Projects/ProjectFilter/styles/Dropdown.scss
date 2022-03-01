@@ -1,0 +1,19 @@
+@import 'components/shared/scss/lib/partials';
+
+.dropdown, .options {
+    overflow: auto;
+    width: 100%;
+    // max-height: 17vh;
+
+    li {
+        @extend %pressable-hoverable;
+        padding: .25em;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: unset;
+            background-color: var(--bg-secondary);
+            border-radius: unset;
+        }
+    }
+}

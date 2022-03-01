@@ -1,11 +1,12 @@
 $diff: 4%;
-$names: primary secondary tertiary quaternary quinary;
+$names: primary secondary tertiary quaternary quinary senary;
 
 $bg-primary: #282828;
 $bg-secondary: mix(white, $bg-primary, $diff);
 $bg-tertiary: mix(white, $bg-secondary, $diff);
 $bg-quaternary: mix(white, $bg-tertiary, $diff);
 $bg-quinary: mix(white, $bg-quaternary, $diff);
+$bg-senary: mix(white, $bg-quinary, $diff);
 
 $bg: (
     primary: $bg-primary,
@@ -13,6 +14,7 @@ $bg: (
     tertiary: $bg-tertiary,
     quaternary: $bg-quaternary,
     quinary: $bg-quinary,
+    senary: $bg-senary
 );
 
 $clr-primary: #eee;
@@ -20,6 +22,7 @@ $clr-secondary: mix(black, $clr-primary, $diff);
 $clr-tertiary: mix(black, $clr-secondary, $diff);
 $clr-quaternary: mix(black, $clr-tertiary, $diff);
 $clr-quinary: mix(black, $clr-quaternary, $diff);
+$clr-senary: mix(black, $clr-quinary, $diff);
 
 $clr: (
     primary: $clr-primary,
@@ -27,6 +30,7 @@ $clr: (
     tertiary: $clr-tertiary,
     quaternary: $clr-quaternary,
     quinary: $clr-quinary,
+    senary: $clr-senary
 );
 
 $thm-primary: #FF5E00;

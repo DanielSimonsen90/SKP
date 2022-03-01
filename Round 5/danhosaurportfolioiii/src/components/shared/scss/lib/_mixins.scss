@@ -55,15 +55,27 @@
         animation: $name $duration forwards;
     }
 }
+@mixin animate-reverse($name, $duration: $animation-time, $exists: true) {
+    @include reduced-motion(false) {
+        @if not $exists {
+            @keyframes #{$name} {
+                @content;
+            }
+        }
+    
+        animation: $name $duration reverse;
+    }
+}
 
-@mixin dropdown($length, $animation, $duration: $animation-time, $delay: $animation-time) {
+@mixin dropdown($length, $animation, $duration: $animation-time) {
     @include reduced-motion(false) {
         @for $i from 0 to $length {
             &:nth-child(#{$i}) {
                 @if $i == 0 {
                     animation: $animation $duration forwards;
                 } @else {
-                    animation: $animation $duration $delay * $i / 2 forwards;
+                    $time: $duration * $i * .2;
+                    animation: $animation $time forwards;
                 }
             }
         }

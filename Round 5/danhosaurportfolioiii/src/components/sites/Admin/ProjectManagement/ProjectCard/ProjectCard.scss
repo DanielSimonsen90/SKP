@@ -20,7 +20,9 @@
     
     display: grid;
     grid-gap: .5em 0em;
-    min-height: 50vh;
+    grid-auto-rows: auto auto auto 3rem;
+    // min-height: 50vh;
+    min-height: 100%;
     max-width: calc(100vw - 2em);
     padding: 1em;
     border-radius: var(--border-radius);
@@ -52,6 +54,10 @@
     }
     &-bottom.button-container {
         box-shadow: unset;
+
+        button {
+            font-size: 1.25rem;
+        }
     }
 
     img {

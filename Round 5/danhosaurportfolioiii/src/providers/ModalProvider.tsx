@@ -46,7 +46,10 @@ function ModalWrapper({ component, close, wrapContent }: ModalWrapperProps) {
     </>);
 
     return (
-        <Container className={`modal${component.props.className ? ` ${component.props.className}` : ''}`} onClick={close}>
+        <Container className={`modal${component.props.className ? ` ${component.props.className}` : ''}`} onClick={e => {
+            console.log(e);
+            close();
+        }}>
             {wrapContent ? (
                 <Container className='modal-content' onClick={e => e.stopPropagation()}>
                     {modalContent}

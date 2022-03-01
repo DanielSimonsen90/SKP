@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PlanLocation, ProgrammingLanguage } from 'danhosaurportfolio-models';
 import { useEffectOnce, UseStateSetState } from 'danholibraryrjs';
-import { useTranslate, useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
-import { LanguageFilter } from '.';
+import { useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
+import { useMe } from 'providers/MeProvider';
 import BookmarkList from './BookmarkList'
 import ProjectContainer from './ProjectContainer'
 import ProjectFilter from './ProjectFilter'
-import { useMe } from 'providers/MeProvider';
+import { useModal } from 'providers/ModalProvider';
 
 export type FilterProps = {
     filter: FilterData,
-    setFilter: UseStateSetState<FilterData>
+    setFilter: UseStateSetState<FilterData>,
+    optionResets: number
 }
 export type FilterData = {
     name?: string,
@@ -24,7 +25,8 @@ export type FilterData = {
 export default function ProjectsContent() {
     const translateLanguage = useTranslateProgrammingLanguages();
     const me = useMe();
-    const [filter, setFilter] = useState<FilterData>({})
+    const [filter, setFilter] = useState<FilterData>({});
+    const [optionResets, setOptionResets] = useState(0);
 
     useEffectOnce(() => {
         const { hash, search } = window.location;
@@ -43,11 +45,8 @@ export default function ProjectsContent() {
     })
 
     return (
-        <div id="projects-page">
-            {me.projects.length ? (<>
-                <ProjectFilter filter={filter} setFilter={setFilter} />
-                <BookmarkList />
-            </>) : null}
+        <div id="projects-page" onClick={() => setOptionResets(v => v + 1)}>
+            {me.projects.length ? <ProjectFilter filter={filter} setFilter={setFilter} optionResets={optionResets} /> : null}
             <ProjectContainer filter={filter} />
         </div>
     )

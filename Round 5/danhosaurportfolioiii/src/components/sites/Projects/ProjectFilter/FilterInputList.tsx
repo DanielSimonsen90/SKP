@@ -23,7 +23,7 @@ export default function FilterInputList({ value, onChange, type, bold = false, .
                 placeholder={translate('all')}
             />
             <datalist id={id}>
-                {values}
+                {values.map(v => <option value={v} key={v}>{v}</option>)}
             </datalist>
         </label>
     )

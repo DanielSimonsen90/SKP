@@ -10,6 +10,8 @@
         "changeEducationPlanState": "Skift uddannelsesplan",
         "country-code": "dk",
         "course": "Forløb",
+        "date": "Dato",
+        "dates": ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"],
         "day": "Dag",
         "days": "Dage",
         "duration": "Varighed",
@@ -28,11 +30,11 @@
             },
             "before": {
                 "title": "Før",
-                "description": "Før dato: yyyy-MM-dd"
+                "description": "Før dato: dd/MM/yyyy"
             },
             "after": {
                 "title": "Efter",
-                "description": "Efter dato: yyyy-MM-dd"
+                "description": "Efter dato: dd/MM/yyyy"
             },
             "occupation": {
                 "title": "Beskæftigelse",
@@ -71,12 +73,15 @@
         },
         "month": "Måned",
         "months": "Måneder",
+        "monthsArr": ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
         "noImage": "Intet billede",
         "noProjects": "Der findes ingen projekter med disse kriterier.",
         "occupationString": "I øjeblikket er jeg på $module indtil $date",
         "otherLanguages": "Andre sprog",
+        "phone": "Telefon",
         "projectType": "Projekt Type",
         "seeMyProject": "Se $projectName her",
+        "select": "Vælg",
         "socialsTitle": "Kontakt Mig",
         "spareTime": {
             "discord": [
@@ -120,11 +125,11 @@
             },
             "before": {
                 "title": "Before",
-                "description": "Before date: yyyy-MM-dd"
+                "description": "Before date: dd/MM/yyyy"
             },
             "after": {
                 "title": "After",
-                "description": "After date: yyyy-MM-dd"
+                "description": "After date: dd/MM/yyyy"
             },
             "occupation": {
                 "title": "Occupation",

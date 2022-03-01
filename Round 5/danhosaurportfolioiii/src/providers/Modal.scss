@@ -35,6 +35,11 @@
             border-radius: var(--border-radius);
         }
 
+        *:last-child {
+            max-height: 80vh;
+            overflow: auto;
+        }
+
         @include mq(micro) {
             min-width: 100%;
         }

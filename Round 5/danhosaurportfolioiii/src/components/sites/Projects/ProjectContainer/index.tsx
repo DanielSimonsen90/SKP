@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
-import { Project } from 'danhosaurportfolio-models';
+import { PlanLocation, Project } from 'danhosaurportfolio-models';
 import { useEffectOnce } from 'danholibraryrjs';
-import { Extensions } from 'danholibraryjs';
 import { useMe, useSetProjects } from 'providers/MeProvider';
 import { useTranslate } from 'providers/LanguageProvider';
 import ProjectComponent from '../Project';
@@ -22,13 +21,24 @@ export default function ProjectContainer({
     const me = useMe();
     const setProjects = useSetProjects();
     const translate = useTranslate();
-    const all = translate('all');
     
     const projects = useMemo(() => me.projects
-        .filter(p => !Object.array(filter).length || Object.array(filter).every(([prop, value]) => p[prop] === value))
-        .filter(p => renderCards || p.display)
+        .filter(p => (
+            !filter ||
+            !Object.array(filter).length || 
+            Object.array(filter).every(([prop, value]) => (
+                p[prop] === value || 
+                (prop === 'occupation' && me.projects.locations.get(value as PlanLocation)?.includes(p)) ||
+                (prop === 'before' && value instanceof Date && p.createdAt.getTime() <= value.getTime()) ||
+                (prop === 'after' && value instanceof Date && p.createdAt.getTime() >= value.getTime())
+            )))
+        )
+        .filter(p => {
+            if (p._id === null) console.warn(`Project doesn't have an id`, p);
+            return renderCards || p.display
+        })
         .reverse(), 
-    [filter, me, me.projects])
+    [filter, me, me.projects]);
 
     useEffectOnce(() => { if (!me.projects.length) setProjects(); })
 

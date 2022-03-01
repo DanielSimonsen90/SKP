@@ -6,14 +6,16 @@ type Props = BaseProps & {
     project: Project
 }
 
-export default function ProjectCardHead({ 
-    project: { 
+export default function ProjectCardHead({ project }: Props) {
+    const { 
         _id, name, language, projectType,
         createdAt, display, spareTime 
-    } 
-}: Props) {
+    } = project;
+
+    if (_id === undefined || _id === null) console.error('Project has no id', project) 
+
     return (
-        <div className='project-card-head'>
+        <header className='project-card-head'>
             <h1 className="project-card-head-title" title={name}>{name}</h1>
             <span className="project-card-head-id">{_id}</span>
             <label className="project-card-head-display" >
@@ -31,10 +33,10 @@ export default function ProjectCardHead({
             <label className="project-card-head-spare-time">
                 SpareTime
                 <input type="checkbox" 
-                     name="spare-time" id="spare-time" 
+                    name="spare-time" id="spare-time" 
                     disabled={true} checked={spareTime}    
                 />
             </label>
-        </div>
+        </header>
     );
 }
