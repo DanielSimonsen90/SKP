@@ -42,7 +42,7 @@ type ModalWrapperProps = ModalProps & {
 
 function ModalWrapper({ component, close, wrapContent }: ModalWrapperProps) {
     const className = `modal${component.props.className ? ` ${component.props.className}` : ''}`;
-    useEnterEsc({ onEsc: close })
+    useEnterEsc({ onEsc: close })   
 
     const modalContent = (<>
         <Icon onClick={close} className='modal-exit' name='times' />

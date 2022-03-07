@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { PlanLocation, ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { useEffectOnce, UseStateSetState } from 'danholibraryrjs';
+import { useEffectOnce, UseStateSetState, useLocalStorage } from 'danholibraryrjs';
+
 import { useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
 import { useMe } from 'providers/MeProvider';
-import BookmarkList from './BookmarkList'
+
 import ProjectContainer from './ProjectContainer'
 import ProjectFilter from './ProjectFilter'
-import { useModal } from 'providers/ModalProvider';
 
 export type FilterProps = {
     filter: FilterData,
@@ -29,7 +29,7 @@ export default function ProjectsContent() {
     const me = useMe();
     const [filter, setFilter] = useState<FilterData>({});
     const [optionResets, setOptionResets] = useState(0);
-    const [renderCards, setRenderCards] = useState(false);
+    const [renderCards, setRenderCards] = useLocalStorage('prefer-cards', false);
 
     useEffectOnce(() => {
         const { hash, search } = window.location;
