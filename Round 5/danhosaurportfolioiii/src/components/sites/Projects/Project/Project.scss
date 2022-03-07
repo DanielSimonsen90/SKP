@@ -3,7 +3,7 @@
 .container.project {
     @include transition(background-color, border-radius);
     @include betterminmax(width, auto, 100%, 175vh);
-    @include betterminmax(height, auto, 100%, 90vh);
+    @include betterminmax(height, 45vh, 100%, 90vh);
     
     flex-direction: column;
     flex: 1 1 max-content;
@@ -34,13 +34,18 @@
         margin-bottom: .5rem;
     }
     h1 {
-        color: var(--thm-primary); 
+        // color: var(--thm-primary); 
         font-size: 2rem;
         width: 100%;
 
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        & > span:first-child {
+            padding: 0 2em .25em;
+            border-bottom: 1px solid;
+        }
 
         span {
             text-overflow: ellipsis;
@@ -91,7 +96,7 @@
         width: 100%;
         padding: .5em 1em;
 
-        border: 1px solid var(--thm-secondary);
+        border: 1px solid;
         border-radius: var(--border-radius);
 
         @include mq(tiny) {

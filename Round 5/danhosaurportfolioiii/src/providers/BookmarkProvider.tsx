@@ -21,13 +21,12 @@ export function useBookmarks() {
     return useContext(BookmarksContext)
 }
 
-
 export default function BookmarksProvider({ children }: BaseProps) {
     const [bookmarks, setBookmarks] = useLocalStorage('bookmarks', new Array<Bookmark>());
 
     const toBookMark = (project: Project): Bookmark => ({
         id: project._id,
-        name: project.name
+        name: project.name.replaceAll('.', '')
     })
 
     const add = (project: Project) => {

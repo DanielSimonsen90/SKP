@@ -1,18 +1,21 @@
 import { useMemo } from 'react'
 import Icon from 'react-fontawesome';
+
 import { Project } from 'danhosaurportfolio-models';
 import { ClickEvent, useAnimationReverse } from 'danholibraryrjs';
 import { GetCSSProperty } from 'danholibraryjs';
+
 import { useBookmarks } from 'providers/BookmarkProvider';
 import { useTranslate } from 'providers/LanguageProvider';
+
 import './Bookmark.scss'
 
-
 type Props = {
-    project: Project
+    project: Project,
+    className?: string
 }
 
-export default function Bookmark({ project }: Props) {
+export default function Bookmark({ className, project }: Props) {
     const translate = useTranslate();
     const { bookmarks, add, remove } = useBookmarks();
     const isBookmarked = useMemo(() => bookmarks.some(b => b.id === project._id), [bookmarks, project]);
@@ -26,7 +29,7 @@ export default function Bookmark({ project }: Props) {
 
     return (
         <Icon name='bookmark' title={title} onClick={onClick} 
-            className={`bookmark${isBookmarked ? ' bookmark-selected' : ''}`} 
+            className={`bookmark${isBookmarked ? ' bookmark-selected' : ''}${className ? ` ${className}` : ''}`} 
             data-project={project._id}
         />
     )

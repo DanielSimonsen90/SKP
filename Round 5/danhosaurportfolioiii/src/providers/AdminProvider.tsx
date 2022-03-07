@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { BaseProps, StateObj, useLocalStorage, useSessionStorage } from 'danholibraryrjs';
-import { Admin, API } from 'danhosaurportfolio-models';
+import { BaseProps, StateObj, useSessionStorage } from 'danholibraryrjs';
+import { Admin } from 'danhosaurportfolio-models';
 import { api } from './MeProvider';
 
 type AdminContextType = StateObj<Admin, 'Admin'> & Record<'isAdmin', boolean>;

@@ -1,11 +1,11 @@
 .project-card-head {
     display: grid;
+    grid-template-columns: 80% 20%;
     grid-template-areas: 
         "title id"
         "title display"
         "info spare-time"
     ;
-    grid-template-columns: 66% 33%;
     grid-gap: .25em 5px;
 
     &, & > * {
@@ -30,13 +30,36 @@
         text-overflow: ellipsis;
         overflow: hidden;
         text-align: start;
+        margin: 0 auto;
     }
 
     &-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 1em;
+        display: grid;
+        grid-auto-flow: column;
         font-size: 1rem;
+        gap: .5em;
+        height: 1.5rem;
+
+        > * {
+            line-height: 1.5rem;
+            height: 1.5rem;
+            margin: 0;
+            text-overflow: ellipsis;
+           overflow: hidden;
+        }
+    }
+}
+
+#projects-page .project-card-head {
+    grid-template-columns: auto repeat(2, 13.75%);
+    grid-template-areas: 
+        "title title bookmark"
+        "info spare-time spare-time"
+    ;
+
+    .bookmark {
+        grid-area: bookmark;
+        top: -.15em;
+        margin-left: auto;
     }
 }

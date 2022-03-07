@@ -62,13 +62,21 @@
     }
 
     tr, .plan-card {
-        @include dropdown(15, fade-in-visible);
-    
-        opacity: 0;
-        transform: scale(0);
-        position: absolute;
-    }
+        &.visible {
+            @include dropdown-reverse(15, fade-in-visible);
+        
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+        }
+        &.hidden {
+            @include dropdown(15, fade-in-invisible);
 
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+    }
     
     .reverse .fa {
         @include animate(turn-clockwise);

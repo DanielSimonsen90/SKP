@@ -126,16 +126,16 @@ function DeleteModal({ title, project, close }: ProjectModalProps) {
         <h1>Are you sure you want to delete <u>{project.name}</u>?</h1>
         <ButtonContainer>
             <Button crud="delete" importance='primary' onClick={() => onChoice('yes')}>Delete</Button>
-            <Button importance="secondary" onClick={() => onChoice('no')}>Cancel</Button>
+            <Button crud="delete" importance="secondary" onClick={() => onChoice('no')} hideIcon>Cancel</Button>
         </ButtonContainer> 
     </>);
-    const loadingModal = <h1>Deleing project...</h1>;
+    const loadingModal = <h1>Deleting project...</h1>;
     const deletedModal = <h1>{project.name} was deleted from the database.</h1>
 
     const [content, setContent] = useState(defaultModal)
 
     const onChoice = async (value: string) => {
-        if (value !== 'yes') close();
+        if (value !== 'yes') return close();
 
         setContent(loadingModal);
         await api.delete('projects', project, console.error);

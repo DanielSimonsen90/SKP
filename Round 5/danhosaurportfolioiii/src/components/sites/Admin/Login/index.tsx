@@ -14,11 +14,11 @@ export default function Login() {
     const { setAdmin } = useAdmin();
     const findAdmin = useFindAdmin();
     const redirect = useRedirect();
-    const [visible, setModalVisibility] = useModal((
+    const [setModalVisibility] = useModal((
         <div className='admin-login-modal'>
             <h1>Invalid username 🤔</h1>
             <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
-            <button onClick={() => redirect('')}>sorry</button>
+            <button onClick={() => redirect('/')}>sorry</button>
         </div>
     ))
 

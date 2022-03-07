@@ -74,8 +74,22 @@
                 @if $i == 0 {
                     animation: $animation $duration forwards;
                 } @else {
-                    $time: $duration * $i * .2;
+                    $time: $duration * $i * .5;
                     animation: $animation $time forwards;
+                }
+            }
+        }
+    }
+}
+@mixin dropdown-reverse($length, $animation, $duration: $animation-time) {
+    @include reduced-motion(false) {
+        @for $i from 0 to $length {
+            &:nth-child(#{$i}) {
+                @if $i == $length {
+                    animation: $animation $duration forwards;
+                } @else {
+                    $time: $length * 2ms * $i;
+                    animation: $animation $duration $time forwards;
                 }
             }
         }

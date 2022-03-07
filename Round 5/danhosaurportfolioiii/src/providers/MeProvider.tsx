@@ -17,7 +17,7 @@ const MeContext = createContext<UseStateReturn<Me>>([dummyMe, () => {}])
 export function useMyState() {
     return useContext(MeContext);
 }
-export function useMe() {
+export function useMe(): Me {
     return useMyState()[0]
 }
 export function useLocationCollection() {
@@ -40,7 +40,7 @@ export function useSetSpareTime() {
 }
 export function useSetProjects() {
     const [me, setMe] = useMyState();
-    const setProjects = (projects: ProjectCollection) => setMe(me => ({ ...me, projects }) as Me);
+    const setProjects = (projects: ProjectCollection) => setMe(me => ({ ...me, projects: projects.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime()) }) as Me);
     const [value, setValue, removeValue] = useSessionStorage('projects', new ProjectCollection(api), data => {
         const result = new ProjectCollection(api);
         

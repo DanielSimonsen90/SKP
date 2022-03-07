@@ -3,11 +3,16 @@
 $opacity: .5;
 $animation-time: 500ms;
 
-@mixin create-variables($prefix, $list) {
+@mixin create-variables($prefix, $list, $mix: null, $amount: 50%) {
     @each $name, $value in $list {
         --#{$prefix}-#{$name}: #{$value};
         $opacity-value: rgba($value, $opacity);
         --#{$prefix}-#{$name}-opacity: #{$opacity-value};
+
+        @if $mix != null {
+            $mix-value: mix($value, $mix, $amount);
+            --#{$prefix}-#{$name}-mix: #{$mix-value};
+        }
     }
 }
 
@@ -15,6 +20,7 @@ $animation-time: 500ms;
     @include create-variables(bg, $bg);
     @include create-variables(clr, $clr);
     @include create-variables(thm, $thm);
+    @include create-variables(prgmLang, $prgmLang, $clr-primary, 40%);
 
     --transition-time: 150ms;
     --transition-animation: ease-in;

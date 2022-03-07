@@ -41,7 +41,7 @@ export default function LinkItem(props: Props) {
     }
 
     return (
-        <li tabIndex={0} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
+        <li tabIndex={link ? 0 : -1} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
             onClick={e => onClick?.(props, e)}
             onKeyDown={e => e.key === 'Enter' && onLinkItemPressed(e)}
             {...rest}

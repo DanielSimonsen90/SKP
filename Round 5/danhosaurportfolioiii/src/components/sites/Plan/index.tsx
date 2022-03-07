@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { ScheduleItem } from 'danhosaurportfolio-models';
+import { LocationCollection, ScheduleItem } from 'danhosaurportfolio-models';
 import { Button, useAnimationReverse, useMediaQuery, useStateOnUpdate } from 'danholibraryrjs';
 import { GetCSSProperty, Time } from 'danholibraryjs';
 
@@ -20,10 +20,12 @@ type PlanStates = 'future' | 'full';
 export type PlanProps = {
     titles: Array<string>,
     planData: Array<ScheduleItem>,
+    reverse: boolean
 }
-export type PlanItemProps = Omit<PlanProps, 'titles' | 'planData'> & {
+export type PlanItemProps = {
     item: ScheduleItem
 }
+export type PlanRowProps = Pick<PlanProps, 'planData'>;
 
 export function usePlanItemData(item: ScheduleItem) {
     const translate = useTranslate();
@@ -89,8 +91,8 @@ export default function Plan() {
                 <Button importance='secondary' onClick={onChangeDirectionClicked} iconName='arrow-down'>{translate('changeDirection')}</Button>
             </ButtonContainer>
             {isTiny ? 
-                <PlanCardContainer planData={planData} data-length={planData.length} /> : 
-                <PlanTable titles={titles} planData={planData} data-length={planData.length} />
+                <PlanCardContainer reverse={isReverse} planData={planData} /> : 
+                <PlanTable reverse={isReverse} titles={titles} planData={planData} />
             }
         </main>
     )

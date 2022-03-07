@@ -14,8 +14,9 @@ import useFilterOptions from './hooks/useFilterOptions';
 import useNewFilter from './hooks/useNewFilter';
 import './styles/index.scss';
 import { useBookmarks } from 'providers/BookmarkProvider';
+import CloseableInput from './ClosableInput/ClosableInput';
 
-export default function ProjectFilter({ filter, optionResets, setFilter }: FilterProps) {
+export default function ProjectFilter({ filter, optionResets, setFilter, renderCards, setRenderCards }: FilterProps) {
     const className = 'project-filter';    
     const shouldStick = useWindowScroll(78, className);
     const translate = useTranslateFilters();
@@ -26,7 +27,7 @@ export default function ProjectFilter({ filter, optionResets, setFilter }: Filte
     }).join(' '));
     const internalValue = useMemo(() => value.replaceAll(' ', ':'), [value]);
     const { options, setOptions, onFocus } = useFilterOptions({ value, internalValue, filter, onOptionSelected, onOptionValueSelected })
-    const [showing, toggle] = useModal(<BookmarkList onClick={() => toggle('hide')} />);
+    const [toggle, showing] = useModal(<BookmarkList onClick={() => toggle('hide')} />);
     const { bookmarks } = useBookmarks();
     const hasBookmarks = useMemo(() => bookmarks.length > 0, [bookmarks]);
     
@@ -38,10 +39,15 @@ export default function ProjectFilter({ filter, optionResets, setFilter }: Filte
         <Container className={className} onClick={e => e.stopPropagation()}>
             <label>
                 Filter
-                <input type='text' onChange={e => setValue(e.target.value)} value={value}
+                <CloseableInput setValue={setValue} value={value}
                     onClick={() => onFocus(true)} /*onBlur={() => onFocus(true)}*/
                 />
-                {me.projects.length && hasBookmarks && <Icon name="bookmark" className='bookmark bookmark-list' onClick={() => toggle('show')} />}
+                <Icon name="bookmark" className={`bookmark bookmark-list ${hasBookmarks && me.projects.length ? 'visible' : 'invisible'}`} 
+                    onClick={() => toggle('show')} tabIndex={hasBookmarks && me.projects.length ? 0 : -1}
+                />
+                <Icon name={me.projects.length && renderCards ? 'list' : 'table'} className="render-cards-toggle" 
+                    onClick={() => setRenderCards(!me.projects.length || !renderCards)} tabIndex={0}
+                />
             </label>
             {options && <div className="options">{options}</div>}
             {shouldStick && <ToTop />}

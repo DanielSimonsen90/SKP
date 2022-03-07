@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { BaseProps, Container, useMediaQuery } from 'danholibraryrjs';
+import { BaseProps, Container, useMediaQuery, ensureSlash } from 'danholibraryrjs';
+
 import { useTranslate } from 'providers/LanguageProvider';
 import { useRoute } from 'providers/RouteProvider';
+import { useModal } from 'providers/ModalProvider';
+
 import { RouteProps } from 'components/App';
 import LinkItem from 'components/shared/navigation/LinkItem';
 import Logo from 'components/shared/images/Logo';
+
 import './Navbar.scss'
-import { useModal } from 'providers/ModalProvider';
 
 type Props = BaseProps & RouteProps & {
     includeLogo?: boolean,
@@ -22,7 +24,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
     const navbarRoutes = routes.map(([path]) => path.substring(1)).reverse().map(path => {
         const isCurrentPage = route.toLowerCase() === `/${path.toLowerCase()}`;
         const title = translate(path) || translate('home');
-        const link = path.replaceAll(' ', '').toLowerCase() || '/';
+        const link = ensureSlash(path.replaceAll(' ', '').toLowerCase() || '/');
         
         return <LinkItem key={path} 
             className={isCurrentPage ? 'current-page' : ''} 
@@ -37,7 +39,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
         {children}
     </>
 
-    const [isVisible, toggleModal] = useModal((
+    const [toggleModal, isVisible] = useModal((
         <nav className={`navigation-modal${className ? ` ${className}` : ''}`}>
             {contentChildren}
         </nav>

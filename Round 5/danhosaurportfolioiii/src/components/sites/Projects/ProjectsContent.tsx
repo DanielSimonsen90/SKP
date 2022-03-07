@@ -11,7 +11,9 @@ import { useModal } from 'providers/ModalProvider';
 export type FilterProps = {
     filter: FilterData,
     setFilter: UseStateSetState<FilterData>,
-    optionResets: number
+    optionResets: number,
+    renderCards: boolean,
+    setRenderCards: UseStateSetState<boolean>
 }
 export type FilterData = {
     name?: string,
@@ -27,6 +29,7 @@ export default function ProjectsContent() {
     const me = useMe();
     const [filter, setFilter] = useState<FilterData>({});
     const [optionResets, setOptionResets] = useState(0);
+    const [renderCards, setRenderCards] = useState(false);
 
     useEffectOnce(() => {
         const { hash, search } = window.location;
@@ -46,8 +49,8 @@ export default function ProjectsContent() {
 
     return (
         <div id="projects-page" onClick={() => setOptionResets(v => v + 1)}>
-            {me.projects.length ? <ProjectFilter filter={filter} setFilter={setFilter} optionResets={optionResets} /> : null}
-            <ProjectContainer filter={filter} />
+            {me.projects.length ? <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} /> : null}
+            <ProjectContainer allowCrud={false} renderCards={renderCards} filter={filter} />
         </div>
     )
 }

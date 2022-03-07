@@ -108,7 +108,8 @@
         "aboutme": "About Me",
         "admin/management": "Admin Management",
         "admin/projects": "Project Management",
-        "changeEducatonPlanState": "Change education plan",
+        "changeDirection": "Change direction",
+        "changeEducationPlanState": "Change education plan",
         "country-code": "us",
         "filters": {
             "name": {

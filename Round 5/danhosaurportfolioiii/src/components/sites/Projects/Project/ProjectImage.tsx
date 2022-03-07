@@ -1,11 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { BaseProps, Button, UseStateSetState } from "danholibraryrjs";
 import { Project } from "danhosaurportfolio-models";
+
 import { useTranslate } from "providers/LanguageProvider";
 import { useModal } from "providers/ModalProvider";
+
 import LoadData from "components/shared/LoadData";
-import ProjectImageModal from "./ProjectImageModal";
 import { ImageContainer } from "components/shared/container/SpecificContainer";
+
+import ProjectImageModal from "./ProjectImageModal";
 
 export const ImageSrcPrefix = 'data:image/png;base64,';
 
@@ -66,7 +69,7 @@ export default function ProjectImage({ project, onSrcChange, changable = false, 
         return strVal && !strVal.includes(ImageSrcPrefix) ? `${ImageSrcPrefix}${value}` : value
     };
     const [src, setSrc] = useState(prefixSrc(project?.image || ""));
-    const [visible, setModalVisibility] = useModal(<ProjectImageModal project={project} />);
+    const [setModalVisibility] = useModal(<ProjectImageModal project={project} />);
 
     useEffect(() => { onSrcChange?.(src); }, [src]);
 
@@ -81,8 +84,9 @@ export default function ProjectImage({ project, onSrcChange, changable = false, 
             <ImageContainer>
                 <img className={`project-image${className ? ` ${className}` : ''}`} 
                     src={src} {...props} data-clickable={modalable}
-                    alt="Project preview"
-                    onClick={() => { if (modalable) setModalVisibility('show'); }} 
+                    alt="Project preview" tabIndex={modalable ? 0 : -1}
+                    onClick={() => modalable && setModalVisibility('show')}
+                    onKeyDown={e => (e.key === 'Enter' || e.key === 'NumpadEnter') && modalable && setModalVisibility('show')}
                 />
             </ImageContainer>
             {changable && <ProjectImageChangeable  setSrc={setSrc} prefixSrc={prefixSrc} />}

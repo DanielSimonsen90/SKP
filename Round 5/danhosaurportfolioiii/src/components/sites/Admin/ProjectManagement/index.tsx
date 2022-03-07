@@ -17,7 +17,7 @@ export default function ProjectManagement() {
     const projects = useMe().projects;
     const modalClose = () => setModalVisible('hide');
     const defaultModal = <ProjectModal title="create" project={null} close={modalClose} />;
-    const [visible, setModalVisible] = useModal(defaultModal)
+    const [setModalVisible] = useModal(defaultModal)
     const openModal = (title: ModalTitles, project?: Project) => {
         setModalVisible('show', <ProjectModal project={project} title={title} close={modalClose} />)
     }
@@ -30,7 +30,7 @@ export default function ProjectManagement() {
                     <ResetSessionButton />
                 </ButtonContainer>
             )}
-            <ProjectContainer renderCards={true} 
+            <ProjectContainer renderCards allowCrud
                 onProjectUpdate={p => openModal('update', p)}
                 onProjectDelete={p => openModal('delete', p)}
             />

@@ -14,7 +14,7 @@ export default function ProjectLanguage({ language }: Props) {
 
     return (
         <span className="programming-language">
-            <img className="icon" src={`Programming Languages/${iconName}.png`} alt={`${language} logo`} />
+            <img className="icon" src={`/Programming Languages/${iconName}.png`} alt={`${language} logo`} />
             {!isNano && language.toString()}
         </span>
     );

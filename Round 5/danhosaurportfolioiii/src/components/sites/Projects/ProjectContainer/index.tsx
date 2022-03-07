@@ -5,18 +5,18 @@ import { useMe, useSetProjects } from 'providers/MeProvider';
 import { useTranslate } from 'providers/LanguageProvider';
 import ProjectComponent from '../Project';
 import { FilterProps } from '../ProjectsContent';
-import ProjectCard from '../../Admin/ProjectManagement/ProjectCard';
+import ProjectCard from '../Project/ProjectCard';
 import './ProjectContainer.scss';
 
 type Props = Partial<FilterProps> & {
-    renderCards?: boolean,
+    allowCrud: boolean,
     onProjectUpdate?: (project: Project) => void,
     onProjectDelete?: (project: Project) => void,
 }
 
 export default function ProjectContainer({ 
-    filter, setFilter,
-    renderCards = false, onProjectUpdate, onProjectDelete
+    filter, allowCrud, renderCards, 
+    onProjectUpdate, onProjectDelete
 }: Props) {
     const me = useMe();
     const setProjects = useSetProjects();
@@ -35,7 +35,7 @@ export default function ProjectContainer({
         )
         .filter(p => {
             if (p._id === null) console.warn(`Project doesn't have an id`, p);
-            return renderCards || p.display
+            return allowCrud || p.display
         })
         .reverse(), 
     [filter, me, me.projects]);
@@ -47,7 +47,7 @@ export default function ProjectContainer({
             {(projects.length && projects.map(p => 
                 !renderCards ? 
                     <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
-                    <ProjectCard project={p} key={`${p.name}_${p._id}`} 
+                    <ProjectCard project={p} key={`${p.name}_${p._id}`} allowCrud={allowCrud}
                         onUpdate={onProjectUpdate} onDelete={onProjectDelete}
                     />
                 )) || <h1>{me.projects.length ? translate('noProjects') : translate('unableToFetch')}</h1>

@@ -1,4 +1,4 @@
-@import 'components/shared/scss/lib/partials';
+@import 'components/shared/scss/lib';
 
 .container.project-filter {
     display: grid;
@@ -47,14 +47,36 @@
         color: var(--link-item-color-hover);
     }
 
-    label {
+    .options {
+        max-height: 17vh;
+        overflow: auto;
+    }
+
+    .render-cards-toggle {
+        &::before {
+            color: var(--clr-senary);
+            cursor: pointer;
+        }
+        
+        &:hover::before {
+            @include transition(color);
+            color: var(--clr-primary);
+        }
+    }
+
+    label, .closable-input {
         @extend %flexible;
         flex-direction: row;
-        align-items: end;
+        align-items: center;
         width: 100%;
 
         input { flex: 1; }
     }
+
+    .closable-input {
+
+    }
+
     @include mq(tiny) {
         li:last-child {
             grid-area: totop;
@@ -64,4 +86,11 @@
             width: 100%;
         }
     }
+}
+
+.close {
+    @extend %pressable-hoverable;
+    color: map-get($map: $cruds, $key: delete);
+    position: absolute !important;
+    right: .25em;
 }
