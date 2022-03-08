@@ -35,7 +35,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
     });
 
     const contentChildren = <>
-        {navbarRoutes}
+        <ul>{navbarRoutes}</ul>
         {children}
     </>
 
@@ -50,7 +50,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
         {forceIcon ? <Icon name='bars' onClick={() => toggleModal('show')} /> : contentChildren}
     </>)
 
-    return fromFooter ? (!forceIcon ? <ul className='navbar'>{content}</ul> : null) : (
+    return fromFooter ? (!forceIcon ? <nav className='navbar'>{content}</nav> : null) : (
         <Container>
             <header className={`navbar${className ? ` ${className}` : ''}`} {...props}>
                 {content}

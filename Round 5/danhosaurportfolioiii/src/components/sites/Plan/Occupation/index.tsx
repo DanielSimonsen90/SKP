@@ -16,8 +16,8 @@ export default function Occupation({ link = true }: Props) {
         .replace('$module', me.occupation)
         .replace('$date', locationCollection.find(i => i.course === me.occupation).end.toString())
 
-    return <LinkItem id='occupation-string' title={occupationString} 
+    return <LinkItem className='occupation-string' title={occupationString} 
         link={(link && translate('plan')) || undefined} 
-        hoverable={link}
+        hoverable={link} listElement={false}
     />
 }

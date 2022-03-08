@@ -1,10 +1,9 @@
-@import 'components/shared/scss/lib/mixins';
+@import 'components/shared/scss/lib';
 
 #admin-page {
+    @include size();
     display: grid;
     grid-template-rows: 10vh auto;
-    width: 100%;
-    height: 100%;
     grid-gap: .5em 0;
 
     @include mq(micro) {
@@ -22,7 +21,12 @@
     }
 }
 
-.admin-nav button {
-    margin-top: auto;
-    width: 100%;
+.admin-nav {
+    .link-item-hoverable:hover a {
+        @include gradient-background($bg-quaternary, $bg-tertiary);
+    }
+
+    button {
+        margin-top: auto;
+    }
 }

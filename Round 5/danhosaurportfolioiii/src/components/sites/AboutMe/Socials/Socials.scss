@@ -2,23 +2,27 @@
 
 #info-container-socialstitle {
     background-color: unset;
-    height: fit-content;
+    flex: 0;
+
+    &, fieldset {
+        height: auto;
+    }
 
     .content {
         display: flex;
         flex-direction: row;
-        padding: 0px 2em;
+        padding: 0 2em;
+        gap: .5rem;
         
         @include mq(small) {
             padding: 0 .5em;
         }
     }
     
-    li {
-        min-height: 1.5rem;
-    }
     ul {
-        flex: 0;
+        p {
+            line-height: 1rem;
+        }
 
         @include mq(tiny) {
             flex-wrap: wrap;

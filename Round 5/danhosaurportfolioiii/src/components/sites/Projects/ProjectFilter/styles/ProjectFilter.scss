@@ -73,10 +73,6 @@
         input { flex: 1; }
     }
 
-    .closable-input {
-
-    }
-
     @include mq(tiny) {
         li:last-child {
             grid-area: totop;

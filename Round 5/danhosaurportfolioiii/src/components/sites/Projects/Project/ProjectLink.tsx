@@ -1,9 +1,9 @@
 import { BaseProps } from "danholibraryrjs";
 import { Project } from "danhosaurportfolio-models";
 import { useTranslate } from "providers/LanguageProvider";
-import LinkItem from '../../../shared/navigation/LinkItem';
+import LinkItem, { LinkItemElement } from '../../../shared/navigation/LinkItem';
 
-type Props = Omit<BaseProps<HTMLLIElement>, 'onClick'> & {
+type Props = Omit<BaseProps<LinkItemElement>, 'onClick'> & {
     project: Project
 }
 

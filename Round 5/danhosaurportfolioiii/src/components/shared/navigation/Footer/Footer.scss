@@ -2,6 +2,8 @@
 
 .footer {
     min-height: 7.5vh;
+    justify-content: space-evenly;
+    align-items: center;
 
     * {
         width: auto !important;
@@ -14,8 +16,16 @@
 
     .navbar {
         max-width: 25vw;
+
+        ul {
+            margin: 0;
+        }
     }
     
+    .link-item-hoverable a:hover {
+        background: unset;
+    }
+
     #occupation-string {
         padding: 0;
     }

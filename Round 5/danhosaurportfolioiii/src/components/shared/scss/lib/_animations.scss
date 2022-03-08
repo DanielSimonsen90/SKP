@@ -33,6 +33,7 @@
 }
 @keyframes fade-in-invisible {
     0% {
+        position: relative;
         transform-origin: bottom;
     }
     100% {

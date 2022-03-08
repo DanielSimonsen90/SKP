@@ -9,8 +9,11 @@
     &-flex {
         .content, ul {
             display: flex;
-            flex: 1 0 100%;
             justify-content: space-between;
+
+            & > * {
+                flex: 1;
+            }
         }
 
         ul {
@@ -20,7 +23,7 @@
 
     fieldset, .content {
         height: inherit;
-        min-height: 100%;
+        // min-height: 100%;
     }
 
     // @include mq(micro) {

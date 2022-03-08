@@ -1,4 +1,4 @@
-import { createRoute, Router, useRedirect } from 'danholibraryrjs';
+import { Button, createRoute, Router } from 'danholibraryrjs';
 import { useAdmin } from 'providers/AdminProvider';
 import Navbar from 'components/shared/navigation/Navbar';
 import AdminDashboard from './AdminDashboard';
@@ -9,17 +9,11 @@ import './Admin.scss';
 
 export default function AdminContent() {
     const { setAdmin, isAdmin } = useAdmin();
-    const redirect = useRedirect();
     const routes = [
         createRoute('admin/management', Management),
         createRoute('admin/projects', ProjectManagement),
         createRoute('admin', AdminDashboard)
     ]
-
-    const logout = () => {
-        setAdmin(null);
-        redirect('/');
-    }
 
     return (
         <main id='admin-page'>
@@ -27,7 +21,7 @@ export default function AdminContent() {
                 <Login /> : 
                 <>
                     <Navbar routes={routes} includeLogo={false} className='admin-nav'>
-                        <button onClick={() => logout()}>Logout</button>
+                        <Button importance='tertiary' crud="delete" iconName='sign-out' onClick={() => setAdmin(null)} value='Logout' />
                     </Navbar>
                     <Router routes={routes} fallback={AdminDashboard} />
                 </>

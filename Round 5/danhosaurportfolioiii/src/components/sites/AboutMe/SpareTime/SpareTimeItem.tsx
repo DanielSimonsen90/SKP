@@ -10,7 +10,7 @@ export default function SpareTimeItem({ item, ...props }: Props) {
     return (
         <article className='spare-time-item'>
             <LinkItem className='spare-time-item spare-time-item-top'
-                title={item.name} hoverable={false}
+                title={item.name} hoverable={false} listElement={false}
                 icon={`${item.name.toLowerCase().replaceAll(' ', '')}.png`} 
             />
             {item.description.map(sentence => <p key={sentence}>{sentence}</p>)}

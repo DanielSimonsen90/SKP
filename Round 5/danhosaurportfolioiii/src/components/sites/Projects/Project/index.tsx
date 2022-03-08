@@ -51,7 +51,7 @@ export default function ProjectComponent({ project }: Props) {
         <article className='project container-flex container' id={project.name.replaceAll(' ', '%20').replaceAll('.', '')} {...{ 'data-project-id': project._id }}>
             <header>
                 <h1>
-                    <span style={{ color: languageColor, borderColor: languageColor }}>{project.name}</span>
+                    <span style={{ color: languageColor, borderColor: languageColor, textShadow: `0px 1px 3px ${languageColor}` }}>{project.name}</span>
                     <Bookmark project={project} />
                 </h1>
                 <h2> 

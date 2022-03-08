@@ -23,7 +23,7 @@ export default function ProjectCardHead({ allowCrud, project }: Props) {
 
     return (
         <header className='project-card-head'>
-            <h1 className="project-card-head-title" title={name} style={{ color: languageColor }}>{name}</h1>
+            <h1 className="project-card-head-title" title={name} style={{ color: languageColor, textShadow: `0px 1px 3px ${languageColor}` }}>{name}</h1>
             {allowCrud && (<>
                 <span className="project-card-head-id">{_id}</span>
                 <label className="project-card-head-display" >
