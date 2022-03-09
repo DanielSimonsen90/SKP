@@ -51,7 +51,6 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-            background-color: attr(data-color);
 
             &:not(.bookmark) {
                 margin: 0 auto;
