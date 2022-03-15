@@ -50,6 +50,7 @@ button {
     color: var(--clr-secondary);
     background-color: var(--bg-secondary-opacity);
     border-radius: var(--border-radius);
+    max-height: 5em;
 
     &:hover {
         @include gradient-background(var(--bg-quaternary), var(--bg-tertiary));

@@ -84,7 +84,7 @@ export default function Plan() {
             <div className='presentation'>
                 <h1>{translate('educationPlanTitle')[planState]}</h1>
                 <Occupation link={false} />
-                <LinkItem className='click-me' newPage link="Uddannelsesplan.pdf" title={translate('viewEducationPlan')} />
+                <LinkItem className='click-me' listElement={false} newPage link="Uddannelsesplan.pdf" title={translate('viewEducationPlan')} />
             </div>
             <ButtonContainer style={{ boxShadow: 'unset' }}>
                 <Button importance='secondary' onClick={onChangeEducationPlanClicked}>{translate('changeEducationPlanState')}</Button>

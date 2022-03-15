@@ -1,9 +1,15 @@
-@import '../../scss/lib/mixins';
+@import '../../scss/lib';
 
 .info-container {
     &.container {
+        $animation-time: 250ms;
+        --animation-time: $animation-time;
         background-color: unset;
         box-shadow: unset;
+
+        opacity: 0;
+        transform: scale(0);
+        @include animate(fade-in-visible);
     }
 
     &-flex {

@@ -8,7 +8,7 @@ type Props = ContainerProps & {
 
 export default function SpareTimeItem({ item, ...props }: Props) {
     return (
-        <article className='spare-time-item'>
+        <article className='spare-time-item' id={item.name.toLowerCase().replaceAll(' ', '')}>
             <LinkItem className='spare-time-item spare-time-item-top'
                 title={item.name} hoverable={false} listElement={false}
                 icon={`${item.name.toLowerCase().replaceAll(' ', '')}.png`} 

@@ -1,4 +1,7 @@
+@import '../scss/lib';
+
 .page-content {
+    @include animate(fade-in);
     display: grid;
     grid-template-rows: minmax(75vh, auto);
 

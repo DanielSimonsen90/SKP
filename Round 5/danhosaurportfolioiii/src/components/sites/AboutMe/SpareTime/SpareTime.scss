@@ -90,5 +90,7 @@ $border-2: 2px dotted var(--thm-secondary);
 
     @include mq(small) {
         width: 100%;
+        @include animate(fade-in);
+        animation-delay: var(--animation-time) !important;
     }
 }

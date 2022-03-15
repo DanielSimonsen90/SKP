@@ -39,7 +39,9 @@
 
     @include mq(micro) {
         gap: .25em;
-        padding: .75em 0px;
+        padding: .75em 2em;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
