@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Date as DanhoDate } from 'danholibraryjs';
-import { Component, Dropdown, DatePicker, Button } from "danholibraryrjs";
+import { Component, Dropdown, Button } from "danholibraryrjs";
 import { useLocationCollection } from "providers/MeProvider";
 import { FilterData } from "../../ProjectsContent";
 import FilterMenuOption from "../FilterMenuOption";
@@ -28,7 +28,6 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
     const occupationOptions = useLocationCollection().map(i => i.course);
 
     const translate = useTranslate();
-    const translateArray = useTranslate<Array<string>>()
     const translateFilter = useTranslateFilters();
     const translateFilterReverse = useTranslateFilters(true);
 

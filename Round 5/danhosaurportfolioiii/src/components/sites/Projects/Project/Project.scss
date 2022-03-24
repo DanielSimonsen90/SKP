@@ -2,8 +2,9 @@
 
 .container.project {
     @include transition(background-color, border-radius);
-    @include betterminmax(width, auto, 100%, 175vh);
+    @include betterminmax(width, auto, 100%, 150vh);
     @include betterminmax(height, 45vh, 100%, 90vh);
+    @include animate(fade-in);
     
     flex-direction: column;
     flex: 1 1 max-content;
@@ -165,7 +166,9 @@
         .image-container { padding: 0 !important; }
     }
 
-    .img-container { grid-area: image; }
+    .img-container { 
+        grid-area: image; 
+    }
 
     img.project-image {
         height: 37.5vh;

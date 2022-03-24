@@ -1,4 +1,4 @@
-@import 'components/shared/scss/lib/partials';
+@import 'components/shared/scss/lib';
 
 .dropdown, .options {
     overflow: auto;
@@ -7,6 +7,7 @@
 
     li {
         @extend %pressable-hoverable;
+        @include animate(fade-in);
         padding: .25em;
         cursor: pointer;
 

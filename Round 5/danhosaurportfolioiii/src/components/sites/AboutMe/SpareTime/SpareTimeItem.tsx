@@ -1,4 +1,4 @@
-import { Container, ContainerProps } from 'danholibraryrjs'
+import { ContainerProps } from 'danholibraryrjs'
 import { Item } from 'danhosaurportfolio-models'
 import LinkItem from 'components/shared/navigation/LinkItem'
 

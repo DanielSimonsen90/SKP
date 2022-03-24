@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { Container } from 'danholibraryrjs';
+import { Container, ClickEvent, useEffectOnce } from 'danholibraryrjs';
 
 import ToTop from 'components/shared/navigation/ToTop';
 import { useTranslateFilters } from 'providers/LanguageProvider';
@@ -35,6 +35,11 @@ export default function ProjectFilter({ filter, optionResets, setFilter, renderC
     useEffect(() => { setOptions(null) }, [optionResets])
     useEffect(() => { if (!hasBookmarks && showing) toggle('hide') }, [hasBookmarks]);
 
+    const onRenderCardsToggleClicked = (e: ClickEvent) => {
+        e.preventDefault();
+        setRenderCards(!me.projects.length || !renderCards);
+    }
+
     return (
         <Container className={className} onClick={e => e.stopPropagation()}>
             <label>
@@ -45,11 +50,11 @@ export default function ProjectFilter({ filter, optionResets, setFilter, renderC
                 <Icon name="bookmark" className={`bookmark bookmark-list ${hasBookmarks && me.projects.length ? 'visible' : 'invisible'}`} 
                     onClick={() => toggle('show')} tabIndex={hasBookmarks && me.projects.length ? 0 : -1}
                 />
-                <Icon name={me.projects.length && renderCards ? 'list' : 'table'} className="render-cards-toggle" 
-                    onClick={() => setRenderCards(!me.projects.length || !renderCards)} tabIndex={0}
+                <Icon name={me.projects.length && renderCards ? 'list' : 'table'} className="render-cards-toggle"
+                    onClick={onRenderCardsToggleClicked} tabIndex={0}
                 />
             </label>
-            {options && <div className="options">{options}</div>}
+            {options && <ul className="options">{options}</ul>}
             {shouldStick && <ToTop />}
         </Container>
     )
