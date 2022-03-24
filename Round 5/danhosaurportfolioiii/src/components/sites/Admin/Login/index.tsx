@@ -13,13 +13,7 @@ export default function Login() {
     const [isLogginIn, setIsLogginIn] = useState(false);
     const { isAdmin, setAdmin } = useAdmin();
     const redirect = useRedirect();
-    const [setModalVisibility] = useModal((
-        <div className='admin-login-modal'>
-            <h1>Invalid username 🤔</h1>
-            <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
-            <button onClick={() => redirect('/')}>sorry</button>
-        </div>
-    ))
+    const [setModalVisibility] = useModal(<></>)
 
     const resetForm = () => {
         setIsLogginIn(false);
@@ -30,7 +24,13 @@ export default function Login() {
         setIsLogginIn(true);
         if (isValid) return setAdmin({ username, _id: -1});
 
-        setModalVisibility('show');
+        setModalVisibility('show', (
+            <div className='admin-login-modal'>
+                <h1>Invalid username 🤔</h1>
+                <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
+                <button onClick={() => redirect('')}>sorry</button>
+            </div>
+        ));
         resetForm();
     }
 

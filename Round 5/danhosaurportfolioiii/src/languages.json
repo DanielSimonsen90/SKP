@@ -102,7 +102,12 @@
         "spareTimeTitle": "Fritid",
         "top": "Til toppen",
         "unableToFetch": "Kunne ikke hente dataen!",
-        "viewEducationPlan": "Se min uddannelsesplan her"
+        "viewEducationPlan": "Se min uddannelsesplan her",
+        "youreBlind": {
+            "h1": "Kan du stadig se?",
+            "h3": "Det er ret lyst.. Skal vi slukke det?",
+            "button": "Skift tilbage til mørk tema"
+        }
     },
     "English": {
         "aboutme": "About Me",
@@ -187,6 +192,11 @@
         "spareTimeTitle": "Spare Time",
         "top": "To the top",
         "unableToFetch": "Unable to fetch the data!",
-        "viewEducationPlan": "View my education plan here"
+        "viewEducationPlan": "View my education plan here",
+        "youreBlind": {
+            "h1": "Can you still see?",
+            "h3": "It's pretty bright.. Turn it off?",
+            "button": "Go back to darkmode"
+        }
     }
 }

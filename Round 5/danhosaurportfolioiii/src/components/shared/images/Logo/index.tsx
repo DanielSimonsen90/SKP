@@ -7,7 +7,7 @@ export default function Logo() {
 
     return (
         <div className='image-container logo-container'>
-            <LinkItem icon={`/logo.png`} onClick={() => redirect('/')} className='logo' />
+            <LinkItem icon={`/logo.png`} onClick={() => redirect('')} className='logo' />
         </div>
     )
 }

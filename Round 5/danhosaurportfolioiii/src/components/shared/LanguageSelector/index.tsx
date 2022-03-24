@@ -14,6 +14,12 @@ export default function LanguageSelector() {
         setLanguage(language);
     }, [language])
 
+    useEffect(() => {
+        console.log({
+            currentLanguage, language, inputLanguage, languages
+        });
+    })
+
     return (
         <label id="language-selector">
             <p>{translate('language')}</p>

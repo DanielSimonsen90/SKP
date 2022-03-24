@@ -22,7 +22,8 @@ export function useFindAdmin() {
             alert(err);
             return [];
         });
-        return admins.find(admin => admin.username === username);
+
+        return admins == undefined ? false : admins.find(admin => admin.username === username);
     }
 }
 
