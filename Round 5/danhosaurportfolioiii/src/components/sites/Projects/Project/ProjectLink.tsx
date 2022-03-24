@@ -1,9 +1,9 @@
 import { BaseProps } from "danholibraryrjs";
 import { Project } from "danhosaurportfolio-models";
 import { useTranslate } from "providers/LanguageProvider";
-import LinkItem from '../../../shared/navigation/LinkItem';
+import LinkItem, { LinkItemElement } from '../../../shared/navigation/LinkItem';
 
-type Props = Omit<BaseProps<HTMLLIElement>, 'onClick'> & {
+type Props = Omit<BaseProps<LinkItemElement>, 'onClick'> & {
     project: Project
 }
 
@@ -14,7 +14,9 @@ export default function ProjectLink({ project, className, ...props }: Props) {
         return <>{start}<b>{project.name}</b>{end}</>
     })();
 
-    if (!project.link || project.link === 'No link') return null;
+    if (!project.link || project.link === 'No link') {        
+        return null
+    };
     return ( 
         <LinkItem link={project.link} className={`project-link${className ? ` ${className}` : ''}`}
             children={seeMyProject}

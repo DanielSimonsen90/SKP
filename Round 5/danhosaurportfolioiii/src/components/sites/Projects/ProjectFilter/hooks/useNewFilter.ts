@@ -1,6 +1,6 @@
-import { UseStateSetState } from "danholibraryrjs";
-import { useTranslateFilters } from "providers/LanguageProvider";
 import { useEffect } from "react";
+import { useAsyncEffect, UseStateSetState } from "danholibraryrjs";
+import { useTranslateFilters } from "providers/LanguageProvider";
 import { FilterData } from "sites/Projects/ProjectsContent";
 
 export default function useNewFilter(value: string, setFilter: UseStateSetState<FilterData>) {
@@ -9,10 +9,20 @@ export default function useNewFilter(value: string, setFilter: UseStateSetState<
     useEffect(() => {
         const split = value.split(':');
         const newFilter = split.reduce((result, item, i) => {
-            if (item !== '') {
-                if (i % 2 === 0 || i === 0) result[translateReverse[item] as any] = null;
-                else result[translateReverse[split[i - 1]] as any] = item;
+            if (item === '') return result;
+            
+            if (i % 2 !== 0 && i !== 0) {
+                const key = translateReverse[split[i - 1]];
+                result[key as any] = item.replace('_', ' ');
+
+                const dateRegex = /^(?<day>0?[1-9]|[12]\d|3[01])\/(?<month>0?[1-9]|1[0-2])\/(?<year>19|20\d{2})$/;
+                if (dateRegex.test(item)) {
+                    const { groups: { day, month, year }} = dateRegex.exec(item);
+                    const [y, m, d] = [year, month, day].map(s => parseInt(s));                    
+                    result[key as any] = new Date(y, m - 1, d);
+                }
             }
+            else result[translateReverse[item] as any] = null;
 
             return result;
         }, {} as FilterData);

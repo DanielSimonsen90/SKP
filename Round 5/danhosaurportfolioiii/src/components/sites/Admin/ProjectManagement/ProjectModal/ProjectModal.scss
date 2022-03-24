@@ -28,11 +28,14 @@
         grid-gap: .5em 1em;
     
         &.description, 
-        &.language-project, 
-        &.name-display {
+        &.language-project {
             grid-auto-flow: column;
         }
     
+        &.name-display {
+            display: flex;
+        }
+
         &.language-project {
             grid-row: 2;
         }
@@ -78,6 +81,7 @@
     }
 
     button {
+        font-size: 1.5rem;
         padding-top: .25em;
         padding-bottom: .25em;
     }

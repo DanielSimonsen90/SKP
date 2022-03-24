@@ -1,20 +1,18 @@
 @import 'components/shared/scss/lib/partials';
 
 .filter-menu-option {
-    @extend %flexible, %pressable-hoverable;
+    @extend %flexible;
     flex-direction: row;
-    padding: .25em .5em;
-
-    &:hover {
-        text-decoration: unset;
-        background-color: var(--bg-secondary);
-        border-radius: unset;
-    }
+    overflow-x: auto;
+    // max-height: 2rem;
 
     .title {
         font-weight: bold;
     }
     .description {
         color: var(--clr-quinary);
+        width: max-content;
+        overflow-x: visible;
+        word-break: keep-all;
     }
 }

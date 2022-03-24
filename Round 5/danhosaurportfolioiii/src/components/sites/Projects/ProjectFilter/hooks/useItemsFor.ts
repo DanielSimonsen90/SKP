@@ -1,11 +1,15 @@
 import { Project } from "danhosaurportfolio-models";
 import { PropertiesWith } from "danholibraryjs";
 import { useMe } from "providers/MeProvider";
+import { FilterData } from "sites/Projects/ProjectsContent";
 
-export default function useItemsFor(prop: keyof PropertiesWith<string, Project>) {
+export default function useItemsFor(prop: keyof PropertiesWith<string, Project>, filter?: FilterData) {
     const { projects } = useMe();
     return projects.reduce((result, proj) => {
-        if (!result.includes(proj[prop]) && proj.display) result.push(proj[prop]);
+        if (!result.includes(proj[prop]) && 
+            (filter ? Object.array(filter).every(([key, value]) => proj[key] === value) : true) &&
+            proj.display
+        ) result.push(proj[prop]);
         return result;
     }, new Array<string>()).sort();
 }

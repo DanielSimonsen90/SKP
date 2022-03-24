@@ -4,9 +4,14 @@ import { BaseProps } from 'danholibraryrjs';
 import { useRedirect } from 'providers/RouteProvider';
 import './LinkItem.scss'
 
-type SelectEvent = React.MouseEvent<HTMLLIElement, MouseEvent> | React.KeyboardEvent<HTMLLIElement>;
-
-type Props = Omit<BaseProps<HTMLLIElement>, 'onClick'> & {
+type SelectEvent<Element extends HTMLElement> = 
+    React.MouseEvent<Element, MouseEvent> | 
+    React.KeyboardEvent<Element>
+;
+export type LinkItemElement = HTMLLIElement & HTMLDivElement;
+type Props<
+    IsListItem extends boolean = true, 
+> = Omit<BaseProps<LinkItemElement>, 'onClick'> & {
     title?: string,
     link?: string,
     icon?: string,
@@ -14,20 +19,24 @@ type Props = Omit<BaseProps<HTMLLIElement>, 'onClick'> & {
     newPage?: boolean,
     /**@default true */
     hoverable?: boolean,
-    onClick?: (props: Props, e: SelectEvent) => void
+    /**@default true */
+    listElement?: IsListItem,
+    onClick?: (props: Props<IsListItem>, e: SelectEvent<LinkItemElement>) => void
 }
 
-export default function LinkItem(props: Props) {
+export default function LinkItem<IsListItem extends boolean = true>(props: Props<IsListItem>) {
     const { className, title, link, onClick, children,
-        icon: iconPath, newPage = false, hoverable = true,
+        icon: iconPath, newPage = false, hoverable = true, listElement = true,
         ...rest
     } = props;
 
     const redirect = useRedirect();
 
-    const icon = iconPath && (iconPath.endsWith('.png') ? 
-        <img className='icon' src={iconPath} alt={title} /> : 
-        <Icon className='icon' name={iconPath} alt={title} />)
+    const icon = iconPath && (
+        iconPath.endsWith('.png') ? 
+            <img className='icon' src={iconPath} alt={title} /> : 
+            <Icon className='icon' name={iconPath} alt={title} />
+    )
     const content = (
         !title && !children ? null : 
         link ? 
@@ -35,19 +44,30 @@ export default function LinkItem(props: Props) {
             <p>{title || children}</p>
     );
 
-    const onLinkItemPressed = (e: SelectEvent) => {
+    const onLinkItemPressed = <Element extends LinkItemElement>(e: SelectEvent<Element>) => {
         onClick?.(props, e);
         if (link) redirect(link);
     }
 
-    return (
-        <li tabIndex={0} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
-            onClick={e => onClick?.(props, e)}
-            onKeyDown={e => e.key === 'Enter' && onLinkItemPressed(e)}
+    const result = listElement ? (
+        <li tabIndex={link ? 0 : -1} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
+            onClick={e => onClick?.(props, e as any)}
+            onKeyDown={e => e.key === 'Enter' && onLinkItemPressed(e as any)}
             {...rest}
         >
             {icon}
             {content}
         </li>
+    ) : (
+        <div tabIndex={link ? 0 : -1} className={`link-item${(hoverable && ' link-item-hoverable') || ''}${(className && ` ${className}`) || ''}`} 
+            onClick={e => onClick?.(props, e as any)}
+            onKeyDown={e => e.key === 'Enter' && onLinkItemPressed(e as any)}
+            {...rest}
+        >
+            {icon}
+            {content}
+        </div>
     )
+
+    return result;
 }

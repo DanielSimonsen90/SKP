@@ -1,0 +1,20 @@
+@import '../../scss/lib';
+
+.container.modal-content {
+    background-color: $bg-primary;
+    color: $clr-primary;
+}
+#youre-blind {
+    @include size();
+    @extend %flexible;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin-top: auto;
+    }
+
+    button {
+        margin: auto 0;
+    }
+}

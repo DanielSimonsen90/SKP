@@ -1,0 +1,90 @@
+@import 'components/shared/scss/lib';
+
+.datepicker {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin: auto .5rem;
+    color: var(--clr-secondary);
+
+    .fa {
+        cursor: pointer;
+    }
+
+    > * {
+        font-size: 1rem;
+    }
+
+    input {
+        // width: 10.5ch;
+        width: 18ch;
+    }
+    button {
+        margin-left: auto;
+    }
+}
+
+.calendar {
+    width: 100%;
+    min-height: 33vh;
+
+    header {
+        display: grid;
+        grid-template-areas: "previous month next";
+        grid-template-columns: 5% auto 5%;
+        gap: .5rem;
+        margin: .5rem auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+        line-height: 3rem;
+        grid-area: month;
+    }
+
+    .fa {
+        @include transition(background-color);
+        background-color: var(--bg-quinary);
+        font-size: 2rem;
+        padding: .5rem .25rem;
+        text-align: center;
+        border-radius: var(--border-radius);
+        
+        grid-area: next;
+        &-angle-left { grid-area: previous; }
+
+        &:hover {
+            background-color: var(--bg-senary);
+        }
+    }
+
+
+    .calendar-dates {
+        display: flex;
+        flex-wrap: wrap;
+        // gap: .25rem;
+
+        .calendar-date, .weekday {
+            // flex: 1 1 calc(100% / 7 - .25rem);
+            flex: 1 1 calc(100% / 7);
+            text-align: center;
+        }
+        .weekday {
+            padding: .5rem;
+        }
+        .calendar-date {
+            @include transition(color);
+            cursor: pointer;
+            margin: 0;
+
+            &:hover {
+                background-color: var(--bg-secondary);
+                color: var(--clr-primary);
+            }
+            &[data-time=today] {
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

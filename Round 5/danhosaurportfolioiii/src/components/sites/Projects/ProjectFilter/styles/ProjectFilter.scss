@@ -1,8 +1,11 @@
-@import 'components/shared/scss/lib/partials';
+@import 'components/shared/scss/lib';
 
 .container.project-filter {
-    @extend %flexible;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas: "filter" "totop";
+    grid-auto-columns: 1fr;
+    place-items: center;
+    grid-gap: .5rem 0;
 
     $animation-time: 250ms;
     --animation-time: #{$animation-time};
@@ -44,36 +47,46 @@
         color: var(--link-item-color-hover);
     }
 
-    label {
+    .options {
+        max-height: 17vh;
+        overflow: auto;
+    }
+
+    .render-cards-toggle {
+        &::before {
+            color: var(--clr-senary);
+            cursor: pointer;
+        }
+        
+        &:hover::before {
+            @include transition(color);
+            color: var(--clr-primary);
+        }
+    }
+
+    label, .closable-input {
         @extend %flexible;
         flex-direction: row;
+        align-items: center;
+        width: 100%;
 
         input { flex: 1; }
     }
+
     @include mq(tiny) {
-        display: grid;
-        grid-template-areas: "language totop projecttype";
-        justify-items: center;
-
-        label {
-            display: grid;
-            grid-auto-flow: row;
-
-            b { justify-self: center; }
-        }
-
         li:last-child {
             grid-area: totop;
             align-self: baseline;
         }
-    }
-    @include mq(micro) {
-        grid-template-areas: "language" "projecttype" "totop";
-        grid-auto-columns: 1fr;
-
         &, label {
             width: 100%;
         }
     }
+}
 
+.close {
+    @extend %pressable-hoverable;
+    color: map-get($map: $cruds, $key: delete);
+    position: absolute !important;
+    right: .25em;
 }

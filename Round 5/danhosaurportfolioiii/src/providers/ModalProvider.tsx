@@ -1,6 +1,6 @@
-import { createContext, useContext, useMemo, useState, useCallback } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { BaseProps, Component, Container, useStack, PopState, UseStateSetState, useAnimationReverse } from 'danholibraryrjs';
+import { BaseProps, Component, Container, useStack, PopState, UseStateSetState, useAnimationReverse, useEnterEsc } from 'danholibraryrjs';
 import { GetCSSProperty } from 'danholibraryjs';
 import './Modal.scss';
 
@@ -16,9 +16,10 @@ type ModalContextType = [
 ];
 const ModalContext = createContext<ModalContextType>([s => 0, () => {}, false]);
 
+export type ToggleModal = (show: ModalShow, modal?: Component) => void;
 type UseModalReturn = [
+    setVisible: ToggleModal,
     visible: boolean,
-    setVisible: (show: ModalShow, modal?: Component) => void,
     modal: Component,
     setModal: UseStateSetState<Component>
 ]
@@ -31,7 +32,7 @@ export function useModal(modalValue: Component, wrapContent = true): UseModalRet
         else close();
     }
 
-    return [visible, setVisible, modalValueState, setModal]
+    return [setVisible, visible, modalValueState, setModal]
 }
 
 type ModalWrapperProps = ModalProps & {
@@ -40,13 +41,16 @@ type ModalWrapperProps = ModalProps & {
 }
 
 function ModalWrapper({ component, close, wrapContent }: ModalWrapperProps) {
+    const className = `modal${component.props.className ? ` ${component.props.className}` : ''}`;
+    useEnterEsc({ onEsc: close })   
+
     const modalContent = (<>
         <Icon onClick={close} className='modal-exit' name='times' />
         {component}
     </>);
 
     return (
-        <Container className={`modal${component.props.className ? ` ${component.props.className}` : ''}`} onClick={close}>
+        <Container className={className} onClick={close}>
             {wrapContent ? (
                 <Container className='modal-content' onClick={e => e.stopPropagation()}>
                     {modalContent}

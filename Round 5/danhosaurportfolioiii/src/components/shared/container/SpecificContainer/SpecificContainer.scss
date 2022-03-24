@@ -15,7 +15,9 @@
 
 .img-container {
     height: 100%;
-    width: 100%;
+    max-width: 100%;
+    width: fit-content;
+    margin: 0 auto;
 
     display: grid;
     place-items: center;
@@ -32,6 +34,7 @@
     flex-wrap: wrap;
     gap: .5em;
     padding: .5em;
+    height: max-content;
 
     background-color: var(--bg-secondary);
 

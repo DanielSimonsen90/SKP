@@ -23,6 +23,10 @@ $border-2: 2px dotted var(--thm-secondary);
         justify-content: space-around;
         padding: 0em .5rem 1rem;
 
+        > * {
+            flex: 1;
+        }
+
         p {
             font-size: 1.5rem;
         }
@@ -51,7 +55,7 @@ $border-2: 2px dotted var(--thm-secondary);
     font-size: 1.1em;
     width: 30vw;
 
-    padding: .5em;
+    padding: .5em 1em;
     height: initial;
     
     &:hover {
@@ -62,8 +66,6 @@ $border-2: 2px dotted var(--thm-secondary);
 
     & + & {
         border-left: $border-1;
-        padding-left: 1em;
-        margin: 0;
 
         @include mq(small) {
             border-left: unset;
@@ -88,5 +90,7 @@ $border-2: 2px dotted var(--thm-secondary);
 
     @include mq(small) {
         width: 100%;
+        @include animate(fade-in);
+        animation-delay: var(--animation-time) !important;
     }
 }

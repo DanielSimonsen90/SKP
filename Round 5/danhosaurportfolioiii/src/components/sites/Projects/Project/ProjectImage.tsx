@@ -1,11 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { BaseProps, UseStateSetState } from "danholibraryrjs";
+import { BaseProps, Button, UseStateSetState } from "danholibraryrjs";
 import { Project } from "danhosaurportfolio-models";
+
 import { useTranslate } from "providers/LanguageProvider";
 import { useModal } from "providers/ModalProvider";
+
 import LoadData from "components/shared/LoadData";
-import ProjectImageModal from "./ProjectImageModal";
 import { ImageContainer } from "components/shared/container/SpecificContainer";
+
+import ProjectImageModal from "./ProjectImageModal";
 
 export const ImageSrcPrefix = 'data:image/png;base64,';
 
@@ -26,15 +29,14 @@ function ProjectImageChangeable({ setSrc, prefixSrc }: ProjectImageChangeablePro
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState<File>(null);
 
-    useEffect(() => {
-        if (image) setSrc(prefixSrc(image.toString()));
-    }, [image])
-    useEffect(() => {
-        setLoading(file !== null && file !== undefined);
-    }, [file])
+    useEffect(() => { if (image) setSrc(prefixSrc(image.toString())); }, [image]);
+    useEffect(() => { setLoading(file !== null && file !== undefined); }, [file]);
 
     const inputRef = useRef<HTMLInputElement>();
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => setFile(e.target.files[0]);
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        e.stopPropagation();
+        setFile(e.target.files[0]);
+    };
     const loadData = () => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -53,7 +55,10 @@ function ProjectImageChangeable({ setSrc, prefixSrc }: ProjectImageChangeablePro
 
     return (<>
         <input ref={inputRef} style={{ display: 'none' }} type="file" id="project-image-change" onChange={onChange} />
-        <button className="secondary" onClick={() => inputRef.current.click()}>Upload Project Image</button>
+        <Button importance="secondary" onClick={e => {
+            e.stopPropagation();
+            inputRef.current.click();
+        }}>Upload Project Image</Button>
     </>)
 }
 
@@ -64,7 +69,7 @@ export default function ProjectImage({ project, onSrcChange, changable = false, 
         return strVal && !strVal.includes(ImageSrcPrefix) ? `${ImageSrcPrefix}${value}` : value
     };
     const [src, setSrc] = useState(prefixSrc(project?.image || ""));
-    const [visible, setModalVisibility] = useModal(<ProjectImageModal project={project} />);
+    const [setModalVisibility] = useModal(<ProjectImageModal project={project} />);
 
     useEffect(() => { onSrcChange?.(src); }, [src]);
 
@@ -79,8 +84,9 @@ export default function ProjectImage({ project, onSrcChange, changable = false, 
             <ImageContainer>
                 <img className={`project-image${className ? ` ${className}` : ''}`} 
                     src={src} {...props} data-clickable={modalable}
-                    alt="Project preview"
-                    onClick={e => { if (modalable) setModalVisibility('show'); }} 
+                    alt="Project preview" tabIndex={modalable ? 0 : -1}
+                    onClick={() => modalable && setModalVisibility('show')}
+                    onKeyDown={e => (e.key === 'Enter' || e.key === 'NumpadEnter') && modalable && setModalVisibility('show')}
                 />
             </ImageContainer>
             {changable && <ProjectImageChangeable  setSrc={setSrc} prefixSrc={prefixSrc} />}

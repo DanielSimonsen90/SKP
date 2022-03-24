@@ -1,12 +1,8 @@
 @import 'components/shared/scss/lib/mixins';
 
 .container.bookmark-list {
-    @include betterminmax(width, auto, auto, 16vw);
-    @include betterminmax(height, auto, auto, 75vh);
-
-    position: fixed;
-    left: 1em;
-    z-index: 2;
+    // @include betterminmax(width, auto, auto, 16vw);
+    // @include betterminmax(height, auto, auto, 75vh);
     
     flex-direction: column;
     align-items: flex-start;
@@ -15,10 +11,12 @@
     
     border: 1px solid var(--bg-quaternary);
     border-radius: var(--border-radius);
-    padding: .5em;
+    padding: 1em;
 }
 .bookmark-list {
     align-items: flex-start;
+    font-size: 125%;
+    max-height: 100%;
 
     h1 {
         font-size: 2em;
@@ -34,11 +32,14 @@
 
         .link-item { padding: 0 .5em; }
         
-        .bookmark {
-            position: relative;
-            right: unset;
-            top: unset;
+        .bookmark-selected {
             min-width: 17.5px;
+            animation: unset;
+
+            &.animation-reverse, 
+            &.animation-reverse ~ .link-item {
+                @include animate(fade-out);
+            }
         }
     }
 }

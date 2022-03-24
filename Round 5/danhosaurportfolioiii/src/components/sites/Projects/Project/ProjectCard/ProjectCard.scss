@@ -1,5 +1,4 @@
 @import 'components/shared/scss/lib/mixins';
-@use "sass:map";
 
 @mixin linear-gradient(
     $top-bottom: var(--bg-quaternary), 
@@ -20,7 +19,9 @@
     
     display: grid;
     grid-gap: .5em 0em;
-    min-height: 50vh;
+    grid-auto-rows: auto auto auto 3rem;
+    // min-height: 50vh;
+    min-height: 100%;
     max-width: calc(100vw - 2em);
     padding: 1em;
     border-radius: var(--border-radius);
@@ -44,6 +45,7 @@
             overflow-y: auto;
             box-shadow: unset;
             margin-top: .5em;
+            width: 100%;
 
             .img-container {
                 height: 100% !important;
@@ -52,6 +54,10 @@
     }
     &-bottom.button-container {
         box-shadow: unset;
+
+        button {
+            font-size: 1.25rem;
+        }
     }
 
     img {

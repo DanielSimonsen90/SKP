@@ -11,8 +11,17 @@
     }
 
     &-selected {
+        $animation-time: 250ms;
+        --animation-time: #{$animation-time};
+
         color: var(--thm-secondary);
-        top: -.5em;
-        z-index: 3;
+        z-index: 1;
+        @include animate-property(bookmark-animation, transform, translateY(0%), translateY(-50%));
+        @include animate(bookmark-animation, #{$animation-time});
+    
+        &.animation-reverse {
+            @include animate-property(bookmark-animation-reverse, transform, translateY(-50%), translateY(0%));
+            @include animate(bookmark-animation-reverse, #{$animation-time});
+        }
     }
 }

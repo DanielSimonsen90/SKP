@@ -4,5 +4,5 @@ import LinkItem from './LinkItem'
 
 export default function ToTop() {
     const translate = useTranslate();
-    return <LinkItem className='to-top' title={translate('top')} link="#" />
+    return <LinkItem className='to-top' title={translate('top')} link="#" listElement={false} />
 }

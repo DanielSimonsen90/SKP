@@ -4,6 +4,7 @@ import { useMe } from 'providers/MeProvider';
 import Logo from 'components/shared/images/Logo';
 import LanguageSelector from 'components/shared/LanguageSelector';
 import Occupation from 'components/sites/Plan/Occupation';
+import ThemeToggle from './ThemeToggle';
 import Navbar from '../Navbar';
 import ToTop from '../ToTop';
 import './Footer.scss';
@@ -21,6 +22,7 @@ export default function Footer({ routes }: RouteProps) {
                 <ToTop />
                 <Occupation />
                 <LanguageSelector />
+                <ThemeToggle />
             </footer>
         </Container>
     )

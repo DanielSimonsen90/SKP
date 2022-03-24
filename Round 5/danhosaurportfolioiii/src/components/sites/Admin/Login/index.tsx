@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useStateWithValidation, useRedirect } from 'danholibraryrjs';
+import { useStateWithValidation, useRedirect, Button, useDeepCompareEffect } from 'danholibraryrjs';
 import { useAdmin, useFindAdmin } from 'providers/AdminProvider';
 import { useModal } from 'providers/ModalProvider';
 import InfoContainer from 'components/shared/container/InfoContainer';
@@ -11,14 +11,13 @@ export default function Login() {
         ""
     )
     const [isLogginIn, setIsLogginIn] = useState(false);
-    const { setAdmin } = useAdmin();
-    const findAdmin = useFindAdmin();
+    const { isAdmin, setAdmin } = useAdmin();
     const redirect = useRedirect();
-    const [visible, setModalVisibility] = useModal((
+    const [setModalVisibility] = useModal((
         <div className='admin-login-modal'>
             <h1>Invalid username 🤔</h1>
             <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
-            <button onClick={() => redirect('')}>sorry</button>
+            <button onClick={() => redirect('/')}>sorry</button>
         </div>
     ))
 
@@ -28,27 +27,23 @@ export default function Login() {
     }
 
     const login = async () => {
-        setIsLogginIn(true)
-        if (!isValid) {
-            setModalVisibility('show');
-            resetForm();
-        }
+        setIsLogginIn(true);
+        if (isValid) return setAdmin({ username, _id: -1});
 
-        const adminResult = await findAdmin(username);
-        setAdmin(adminResult);
-        if (adminResult) {
-            redirect(admin => `${admin.substring(1)}/dashboard`);
-        }
-        
-        resetForm()
+        setModalVisibility('show');
+        resetForm();
     }
+
+    useDeepCompareEffect(() => {
+        if (isAdmin) redirect(admin => `${admin.substring(1)}/dashboard`);
+    }, [isAdmin])
 
     const form = (<>
         <input type="password" value={username} placeholder="So you're an admin, huh?"
             onChange={e => setUsername(e.target.value)}
-            onKeyPress={e => e.key === 'Enter' && login()}
+            onKeyPress={e => (e.key === 'Enter' || e.key === 'NumpadEnter') && login()}
         />
-        <button onClick={() => login()}>Login</button>
+        <Button importance='primary' crud="create" iconName='sign-in' onClick={() => login()} value="Login" />
     </>);
     const loggingIn = <h1>Logging in...</h1>
 

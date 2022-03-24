@@ -1,0 +1,20 @@
+@import 'components/shared/scss/lib';
+
+.dropdown, .options {
+    overflow: auto;
+    width: 100%;
+    // max-height: 17vh;
+
+    li {
+        @extend %pressable-hoverable;
+        @include animate(fade-in);
+        padding: .25em;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: unset;
+            background-color: var(--bg-secondary);
+            border-radius: unset;
+        }
+    }
+}

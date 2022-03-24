@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { BaseProps, StateObj, useLocalStorage } from 'danholibraryrjs';
-import { Admin, API } from 'danhosaurportfolio-models';
+import { BaseProps, StateObj, useSessionStorage } from 'danholibraryrjs';
+import { Admin } from 'danhosaurportfolio-models';
 import { api } from './MeProvider';
 
 type AdminContextType = StateObj<Admin, 'Admin'> & Record<'isAdmin', boolean>;
@@ -22,12 +22,12 @@ export function useFindAdmin() {
             alert(err);
             return [];
         });
-        return admins?.find(admin => admin.username === username);
+        return admins.find(admin => admin.username === username);
     }
 }
 
 export default function AdminProvider({ children }: BaseProps) {
-    const [localAdmin, setLocalAdmin, removeLocalAdmin] = useLocalStorage<'admin', Admin>('admin', null);
+    const [localAdmin, setLocalAdmin, removeLocalAdmin] = useSessionStorage<'admin', Admin>('admin', null);
     const findAdmin = useFindAdmin();
     const [admin, setAdmin] = useState(localAdmin);
     const isAdmin = useMemo(() => admin?.username && findAdmin(admin.username) != null, [admin]);

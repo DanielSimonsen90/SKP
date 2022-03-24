@@ -20,7 +20,7 @@ export default function useProjectOptional({ project }: ProjectModalHookProps): 
     const [image, setImage] = useState(project?.image || "")
     
     const didChange = useStateOnUpdate(false, () => true, [baseLink, isOnGithub, isSpareTime, collabGithub, collabRepo, image]);
-    const hasLink = useStateOnUpdate(false, () => hasLink || isOnGithub || baseLink !== "", [baseLink, isOnGithub])
+    const hasLink = useStateOnUpdate(isOnGithub || baseLink !== "", () => hasLink || isOnGithub || baseLink !== "", [baseLink, isOnGithub])
 
     const collab = useMemo(() => collabGithub || collabRepo ? 
         new Collab(collabGithub, collabRepo) : null, 

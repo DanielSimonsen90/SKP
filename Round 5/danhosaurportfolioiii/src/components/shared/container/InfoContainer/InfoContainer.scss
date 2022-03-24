@@ -1,16 +1,25 @@
-@import '../../scss/lib/mixins';
+@import '../../scss/lib';
 
 .info-container {
     &.container {
+        $animation-time: 250ms;
+        --animation-time: $animation-time;
         background-color: unset;
         box-shadow: unset;
+
+        opacity: 0;
+        transform: scale(0);
+        @include animate(fade-in-visible);
     }
 
     &-flex {
         .content, ul {
             display: flex;
-            flex: 1 0 100%;
             justify-content: space-between;
+
+            & > * {
+                flex: 1;
+            }
         }
 
         ul {
@@ -20,7 +29,7 @@
 
     fieldset, .content {
         height: inherit;
-        min-height: 100%;
+        // min-height: 100%;
     }
 
     // @include mq(micro) {

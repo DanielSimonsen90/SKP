@@ -1,11 +1,24 @@
 $diff: 4%;
-$names: primary secondary tertiary quaternary quinary;
-
 $bg-primary: #282828;
-$bg-secondary: mix(white, $bg-primary, $diff);
-$bg-tertiary: mix(white, $bg-secondary, $diff);
-$bg-quaternary: mix(white, $bg-tertiary, $diff);
-$bg-quinary: mix(white, $bg-quaternary, $diff);
+$bg-mix: white;
+$clr-primary: #eee;
+$clr-mix: black;
+
+@media (prefers-color-scheme: light) {
+    $diff: 8%;
+    $bg-primary: #eee;
+    $bg-mix: black;
+    $clr-primary: #282828;
+    $clr-mix: white;
+}
+
+$names: primary secondary tertiary quaternary quinary senary;
+
+$bg-secondary: mix($bg-mix, $bg-primary, $diff);
+$bg-tertiary: mix($bg-mix, $bg-secondary, $diff);
+$bg-quaternary: mix($bg-mix, $bg-tertiary, $diff);
+$bg-quinary: mix($bg-mix, $bg-quaternary, $diff);
+$bg-senary: mix($bg-mix, $bg-quinary, $diff);
 
 $bg: (
     primary: $bg-primary,
@@ -13,13 +26,14 @@ $bg: (
     tertiary: $bg-tertiary,
     quaternary: $bg-quaternary,
     quinary: $bg-quinary,
+    senary: $bg-senary
 );
 
-$clr-primary: #eee;
-$clr-secondary: mix(black, $clr-primary, $diff);
-$clr-tertiary: mix(black, $clr-secondary, $diff);
-$clr-quaternary: mix(black, $clr-tertiary, $diff);
-$clr-quinary: mix(black, $clr-quaternary, $diff);
+$clr-secondary: mix($clr-mix, $clr-primary, $diff);
+$clr-tertiary: mix($clr-mix, $clr-secondary, $diff);
+$clr-quaternary: mix($clr-mix, $clr-tertiary, $diff);
+$clr-quinary: mix($clr-mix, $clr-quaternary, $diff);
+$clr-senary: mix($clr-mix, $clr-quinary, $diff);
 
 $clr: (
     primary: $clr-primary,
@@ -27,6 +41,7 @@ $clr: (
     tertiary: $clr-tertiary,
     quaternary: $clr-quaternary,
     quinary: $clr-quinary,
+    senary: $clr-senary
 );
 
 $thm-primary: #FF5E00;
@@ -45,6 +60,17 @@ $cruds: (
     create: hsl(120,75%, 65%),
     update: hsl(60, 75%, 65%),
     delete: hsl(0, 75%, 65%)
+);
+
+$prgmLang: (
+    c: #659AD2,
+    csharp: #A279DB,
+    javascript: #F0DB4F,
+    reactjs: #0AD6F9,
+    typescript: #2580C6,
+    vuejs: #41B883,
+    website: #E44D26,
+    xml: #FCAF3E
 );
 
 $media: (

@@ -17,6 +17,22 @@ html {
 body {
     background-color: var(--bg-primary);
     color: var(--clr-primary);
+
+    &.light {
+        --bg-primary: $clr-tertiary;
+        --bg-secondary: $clr-tertiary;
+        --bg-tertiary: $clr-tertiary;
+        --bg-quaternary: $clr-quaternary;
+        --bg-quinary: $clr-quinary;
+        --bg-senary: $clr-senary;
+    
+        --clr-primary: $bg-primary;
+        --clr-secondary: $bg-secondary;
+        --clr-tertiary: $bg-tertiary;
+        --clr-quaternary: $bg-quaternary;
+
+        transition: all 1s ease-in;
+    }
 }
 
 h1 {
@@ -24,7 +40,7 @@ h1 {
     text-align: center;
 }
 
-p {
+p, time {
     margin: .25em 0;
     line-height: 2rem;
     max-width: 100rem;
@@ -39,12 +55,18 @@ li {
 button {
     @extend %shadow, %pressable-hoverable;
     @include transition(color, border, background-color, shadow);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 2rem;
     padding: .5em;
     border: 4px solid var(--bg-quaternary);
     color: var(--clr-secondary);
     background-color: var(--bg-secondary-opacity);
     border-radius: var(--border-radius);
+    max-height: 5em;
 
     &:hover {
         @include gradient-background(var(--bg-quaternary), var(--bg-tertiary));
@@ -55,9 +77,13 @@ button {
     &[disabled] {
         cursor: no-drop;
         background: unset;
-        background-color: inherit !important;
-        color: gray;
+        background-color: var(--bg-quaternary) !important;
+        color: gray !important;
         text-decoration: none;
+
+        &.secondary {
+            border-color: var(--bg-tertiary) !important;
+        }
     }
 
     &.primary {
@@ -239,4 +265,15 @@ textarea {
     &:focus {
         outline: unset;
     }
+}
+
+.visible {
+    opacity: 0;
+    transform: scale(0);
+    @include animate(fade-in-visible);
+}
+.invisible {
+    opacity: 1;
+    transform: scale(1);
+    @include animate(fade-in-invisible);
 }

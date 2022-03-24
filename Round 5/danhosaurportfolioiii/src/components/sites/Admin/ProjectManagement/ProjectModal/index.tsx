@@ -1,13 +1,17 @@
 import { useMemo, useState } from 'react'
 import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { Button, CRUD, useEnterEsc, useRedirect, useStateOnUpdate } from 'danholibraryrjs';
+import { Button, CRUD, useEnterEsc, useStateOnUpdate } from 'danholibraryrjs';
 import { BetterOmit } from 'danholibraryjs';
+
 import { useUpsertProject, api, github, useSetProjects } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
+
 import InfoContainer from 'components/shared/container/InfoContainer';
 import { ButtonContainer } from 'components/shared/container/SpecificContainer';
+
 import useProjectInformation from './useProjectInformation';
 import useProjectOptional from './useProjectOptional';
+
 import { ModalTitles } from '..';
 import './ProjectModal.scss';
 
@@ -22,8 +26,7 @@ export type ProjectModalProps = ModalProps & {
 export type ProjectModalHookProps = BetterOmit<ProjectModalProps, 'close'>
 
 export default function ProjectModal({ title, project, close }: ProjectModalProps) {
-    const redirect = useRedirect();
-    useEnterEsc({ onEnter: () => onConstruct(), onEsc: close })
+    useEnterEsc({ onEnter: () => propsChanged && onConstruct(), onEsc: close })
 
     const [ProjectInformation, infoChanged, projectInfoProps] = useProjectInformation({ project, title: 'Project Information' })
     const [ProjectOptional, optionalChanged, projectOptionalProps] = useProjectOptional({ project, title: 'Optional' });
@@ -120,23 +123,19 @@ function DeleteModal({ title, project, close }: ProjectModalProps) {
     const setProjects = useSetProjects();
 
     const defaultModal = (<>
-        <h1>
-            Are you sure you want to delete 
-            <u>{project.name}</u>
-            ?
-        </h1>
+        <h1>Are you sure you want to delete <u>{project.name}</u>?</h1>
         <ButtonContainer>
-            <button className="primary" onClick={() => onChoice('yes')} data-crud-type="delete">Delete</button>
-            <button className="secondary" onClick={() => onChoice('no')}>Cancel</button>
+            <Button crud="delete" importance='primary' onClick={() => onChoice('yes')}>Delete</Button>
+            <Button crud="delete" importance="secondary" onClick={() => onChoice('no')} hideIcon>Cancel</Button>
         </ButtonContainer> 
     </>);
-    const loadingModal = <h1>Deleing project...</h1>;
+    const loadingModal = <h1>Deleting project...</h1>;
     const deletedModal = <h1>{project.name} was deleted from the database.</h1>
 
     const [content, setContent] = useState(defaultModal)
 
     const onChoice = async (value: string) => {
-        if (value !== 'yes') close();
+        if (value !== 'yes') return close();
 
         setContent(loadingModal);
         await api.delete('projects', project, console.error);
