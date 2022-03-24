@@ -4,8 +4,7 @@ export default function Home() {
 
     return (
         <div>
-            <p>Darkmode: {dark.toString()}</p>
-            <Button importance="primary" onClick={() => setDark(v => !v)}>Toggle</Button>
+            <Button importance="primary" crud={dark ? 'create' : 'delete'} onClick={() => setDark(v => !v)}>Toggle</Button>
         </div>
     )
 }

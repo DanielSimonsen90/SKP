@@ -17,6 +17,22 @@ html {
 body {
     background-color: var(--bg-primary);
     color: var(--clr-primary);
+
+    &.light {
+        --bg-primary: $clr-tertiary;
+        --bg-secondary: $clr-tertiary;
+        --bg-tertiary: $clr-tertiary;
+        --bg-quaternary: $clr-quaternary;
+        --bg-quinary: $clr-quinary;
+        --bg-senary: $clr-senary;
+    
+        --clr-primary: $bg-primary;
+        --clr-secondary: $bg-secondary;
+        --clr-tertiary: $bg-tertiary;
+        --clr-quaternary: $bg-quaternary;
+
+        transition: all 1s ease-in;
+    }
 }
 
 h1 {
