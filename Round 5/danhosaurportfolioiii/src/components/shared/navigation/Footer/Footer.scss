@@ -1,33 +1,49 @@
 @import 'components/shared/scss/lib';
 
 .footer {
-    min-height: 7.5vh;
+    height: 7.5vh;
     justify-content: space-evenly;
     align-items: center;
 
     * {
-        width: auto !important;
         font-size: 1em;
+        flex: 1 1;
 
         @include mq(micro) {
             font-size: 1em;
         }
     }
 
-    .navbar {
+    .logo-container {
+        flex: 0 1 min-content;
+
+        .logo {
+            width: auto;
+        }
+    }
+
+    .navbar { 
         max-width: 25vw;
 
-        ul {
-            margin: 0;
+        ul { 
+            margin: 0; 
+
+            li { flex: 1 0 max-content; }
         }
     }
     
-    .link-item-hoverable a:hover {
-        background: unset;
-    }
+    .link-item-hoverable a:hover { background: unset; }
+    .occupation-string { 
+        padding: 0; 
 
-    #occupation-string {
-        padding: 0;
+        a {
+            width: fit-content;
+        }
+     }
+
+    #copyright {
+        flex: 1 1 min-content;
+        text-align: center;
     }
 
     @include mq(medium) {
@@ -39,11 +55,6 @@
         ;
 
         gap: .25em;
-
-        #copyright {
-            width: fit-content;
-            text-align: center;
-        }
 
         .navbar {
             max-width: 100%;
