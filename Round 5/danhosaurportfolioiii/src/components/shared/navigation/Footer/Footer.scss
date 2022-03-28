@@ -7,13 +7,20 @@
 
     * {
         font-size: 1em;
-        flex: 1 1;
 
         @include mq(micro) {
             font-size: 1em;
         }
     }
 
+    div {
+        flex: 1 1 min-content;
+    }
+
+    a {
+        width: fit-content !important;
+    }
+    
     .logo-container {
         flex: 0 1 min-content;
 
@@ -35,15 +42,15 @@
     .link-item-hoverable a:hover { background: unset; }
     .occupation-string { 
         padding: 0; 
-
-        a {
-            width: fit-content;
-        }
      }
 
     #copyright {
-        flex: 1 1 min-content;
         text-align: center;
+    }
+
+    .link-item {
+        width: min-content;
+        flex: 0 1 fit-content;
     }
 
     @include mq(medium) {

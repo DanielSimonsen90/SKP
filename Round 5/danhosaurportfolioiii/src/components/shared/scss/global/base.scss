@@ -19,17 +19,17 @@ body {
     color: var(--clr-primary);
 
     &.light {
-        --bg-primary: $clr-tertiary;
-        --bg-secondary: $clr-tertiary;
-        --bg-tertiary: $clr-tertiary;
-        --bg-quaternary: $clr-quaternary;
-        --bg-quinary: $clr-quinary;
-        --bg-senary: $clr-senary;
+        --bg-primary: #{$clr-tertiary};
+        --bg-secondary: #{$clr-tertiary};
+        --bg-tertiary: #{$clr-tertiary};
+        --bg-quaternary: #{$clr-quaternary};
+        --bg-quinary: #{$clr-quinary};
+        --bg-senary: #{$clr-senary};
     
-        --clr-primary: $bg-primary;
-        --clr-secondary: $bg-secondary;
-        --clr-tertiary: $bg-tertiary;
-        --clr-quaternary: $bg-quaternary;
+        --clr-primary: #{$bg-primary};
+        --clr-secondary: #{$bg-secondary};
+        --clr-tertiary: #{$bg-tertiary};
+        --clr-quaternary: #{$bg-quaternary};
 
         transition: all 1s ease-in;
     }
@@ -276,4 +276,15 @@ textarea {
     opacity: 1;
     transform: scale(1);
     @include animate(fade-in-invisible);
+}
+
+.switch {
+    --checked-color: var(--bg-senary);
+    --checked-background-color: var(--bg-quaternary);
+    --unchecked-color: var(--bg-quaternary);
+    --unchecked-background-color: var(--bg-senary);
+
+    .fa {
+        font-size: .8em;
+    }
 }

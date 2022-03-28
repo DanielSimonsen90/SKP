@@ -32,23 +32,24 @@ function YoureBlind({ setDarkMode, showModal }: YoureBlindProps) {
     )
 }
 
-export default function ThemeToggle() {
+type ThemeToggleProps = {
+    disableModal?: boolean
+}
+
+export default function ThemeToggle({ disableModal = false }: ThemeToggleProps) {
     const [isDark, setDarkMode] = useDarkMode();
     const [showModal] = useModal(<></>);
     
     useEffect(() => {
         let timeout: NodeJS.Timeout = null;
         document.body.classList.toggle("light", !isDark);
-        if (!isDark) timeout = setTimeout(() => {
+        if (!isDark && !disableModal) timeout = setTimeout(() => {
            showModal("show", <YoureBlind setDarkMode={setDarkMode} showModal={showModal} />);
         }, ms('5s'))
         return () => clearTimeout(timeout);
     }, [isDark])
 
     return (
-        <Switch checked={isDark} onCheckChanged={(v, e) => {
-            console.log(v, e);
-            setDarkMode(v);
-        }} />
+        <Switch checked={isDark} onCheckChanged={setDarkMode} icons={{ checked: "moon-o", unchecked: "sun-o" }} />
     )
 }

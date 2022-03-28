@@ -22,7 +22,7 @@ export default function Footer({ routes }: RouteProps) {
                 <ToTop />
                 <Occupation />
                 <LanguageSelector />
-                <ThemeToggle />
+                <ThemeToggle disableModal />
             </footer>
         </Container>
     )
