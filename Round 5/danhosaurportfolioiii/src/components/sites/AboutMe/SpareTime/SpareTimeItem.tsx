@@ -1,12 +1,11 @@
-import { ContainerProps } from 'danholibraryrjs'
 import { Item } from 'danhosaurportfolio-models'
 import LinkItem from 'components/shared/navigation/LinkItem'
 
-type Props = ContainerProps & {
+type Props = {
     item: Item,
 }
 
-export default function SpareTimeItem({ item, ...props }: Props) {
+export default function SpareTimeItem({ item }: Props) {
     return (
         <article className='spare-time-item' id={item.name.toLowerCase().replaceAll(' ', '')}>
             <LinkItem className='spare-time-item spare-time-item-top'

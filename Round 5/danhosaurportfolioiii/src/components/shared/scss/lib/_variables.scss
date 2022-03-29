@@ -20,13 +20,20 @@ $animation-time: 500ms;
     @include create-variables(bg, $bg);
     @include create-variables(clr, $clr);
     @include create-variables(thm, $thm);
-    @include create-variables(prgmLang, $prgmLang, $clr-primary, 40%);
 
     --transition-time: 150ms;
     --transition-animation: ease-in;
-
     --animation-time: #{$animation-time};
 
+    --border-radius: 6px;
+    --shadow-clr: #222;
+}
+
+.project {
+    @include create-variables(prgmLang, $prgmLang, $clr-primary, 40%);
+}
+
+.link-item {
     $link-item-hover: #8fafc4;
     $link-item-focus: #6ba7f5;
     $link-item-visited: mix(black, #4E4DF5, 25%);
@@ -37,8 +44,8 @@ $animation-time: 500ms;
     --link-item-color-hover: #{$link-item-hover};
     --link-item-color-focus: #{$link-item-focus};
     --link-item-color-visited: #{$link-item-visited};
+}
 
+table {
     --table-round: 6px;
-    --border-radius: 6px;
-    --shadow-clr: #222;
 }

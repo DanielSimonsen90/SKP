@@ -30,13 +30,9 @@ export function useSetSpareTime() {
     const spareTimeDescriptions = translate('spareTime');
     const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase()] as Array<string>;
 
-    return () => {
-        if (dummySpareTime[0].description !== me.spareTime[0].description) return;
-
-        setMe(me => ({ ...me,
-            spareTime: dummySpareTime.map(({ name }) => new Item(name, description(name)))
-        }) as Me)
-    }
+    return () => setMe(me => ({ ...me,
+        spareTime: dummySpareTime.map(({ name }) => new Item(name, description(name)))
+    }) as Me)
 }
 export function useSetProjects() {
     const [me, setMe] = useMyState();
