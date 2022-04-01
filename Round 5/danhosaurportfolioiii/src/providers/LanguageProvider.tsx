@@ -1,8 +1,9 @@
-import { createContext, useContext } from 'react';
+import { createContext, useCallback, useContext } from 'react';
 import { BaseProps, useLocalStorage, UseStateReturn } from 'danholibraryrjs';
 import { ProgrammingLanguage } from 'danhosaurportfolio-models';
 import { FilterData } from 'sites/Projects/ProjectsContent';
 import data from '../languages.json';
+import { useSettings } from './SettingsProvider';
 
 export type SupportedLanguages = 'Dansk' | 'English';
 export type TranslationObj = Record<SupportedLanguages, any>
@@ -45,7 +46,7 @@ export function useLanguages(): Array<SupportedLanguages> {
 }
 
 export default function LanguageProvider({ children }: BaseProps) {
-    const [language, setLanguage] = useLocalStorage<"language", SupportedLanguages>("language", "English");
+    const [language, setLanguage] = useSettings("language");
 
     return (
         <LanguageContext.Provider value={[language, setLanguage]}>

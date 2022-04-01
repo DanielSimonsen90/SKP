@@ -5,10 +5,12 @@ import LanguageProvider from './LanguageProvider';
 import MeProvider from './MeProvider';
 import ModalProvider from './ModalProvider';
 import RouteProvider from './RouteProvider';
+import SettingsProvider from './SettingsProvider';
 
 export default function Providers({ children }: BaseProps) {
     return (
-        <LanguageProvider>
+        // <LanguageProvider>
+        <SettingsProvider>
         <AdminProvider>
         <MeProvider>
         <BookmarksProvider>
@@ -20,6 +22,7 @@ export default function Providers({ children }: BaseProps) {
         </BookmarksProvider>
         </MeProvider>
         </AdminProvider>
-        </LanguageProvider>
+        </SettingsProvider>
+        // </LanguageProvider>
     )
 }

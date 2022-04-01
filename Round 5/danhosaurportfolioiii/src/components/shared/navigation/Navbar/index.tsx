@@ -1,5 +1,5 @@
 import Icon from 'react-fontawesome';
-import { BaseProps, Container, useMediaQuery, ensureSlash } from 'danholibraryrjs';
+import { BaseProps, useMediaQuery, ensureSlash, classNames } from 'danholibraryrjs';
 
 import { useTranslate } from 'providers/LanguageProvider';
 import { useRoute } from 'providers/RouteProvider';
@@ -9,10 +9,12 @@ import { RouteProps } from 'components/App';
 import LinkItem from 'components/shared/navigation/LinkItem';
 import Logo from 'components/shared/images/Logo';
 
-import './Navbar.scss'
+import './Navbar.scss';
 
 type Props = BaseProps & RouteProps & {
+    /**@default true */
     includeLogo?: boolean,
+    /**@default false */
     fromFooter?: boolean
 }
 
@@ -35,7 +37,10 @@ export default function Navbar({ routes, children, className, includeLogo = true
     });
 
     const contentChildren = <>
-        <ul>{navbarRoutes}</ul>
+        <ul>
+            {includeLogo && <Logo />}
+            {navbarRoutes}
+        </ul>
         {children}
     </>
 
@@ -45,16 +50,11 @@ export default function Navbar({ routes, children, className, includeLogo = true
         </nav>
     ), false)
 
-    const content = (<>
-        {includeLogo && <Logo />}
-        {forceIcon ? <Icon name='bars' onClick={() => toggleModal('show')} /> : contentChildren}
-    </>)
+    const content = forceIcon ? <Icon name='bars' onClick={() => toggleModal('show')} /> : contentChildren
 
     return fromFooter ? (!forceIcon ? <nav className='navbar'>{content}</nav> : null) : (
-        <Container>
-            <header className={`navbar${className ? ` ${className}` : ''}`} {...props}>
-                {content}
-            </header>
-        </Container>
+        <header className={classNames('container', 'navbar', className)} {...props}>
+            {content}
+        </header>
     )
 }

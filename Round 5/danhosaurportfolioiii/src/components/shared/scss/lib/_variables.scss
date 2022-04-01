@@ -39,6 +39,7 @@ $animation-time: 500ms;
     $link-item-visited: mix(black, #4E4DF5, 25%);
 
     $link-item-color: mix($clr-primary, $link-item-focus, 75%);
+    $link-item-color-light: mix($bg-primary, $link-item-focus, 75%);
     --link-item-color: #{$link-item-color};
     --link-item-color-click-me: #5fafd6;
     --link-item-color-hover: #{$link-item-hover};

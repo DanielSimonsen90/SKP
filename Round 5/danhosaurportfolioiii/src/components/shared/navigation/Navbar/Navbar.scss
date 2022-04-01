@@ -3,7 +3,8 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    padding: .5rem;
+    padding: .5vh;
+    height: 8vh;
     
     ul {
         display: flex;
@@ -13,6 +14,10 @@
         flex: 1;
         margin: 0 1rem;
         gap: .5rem;
+
+        .logo-container {
+            flex: 1 1 max-content;
+        }
     }
 
     .link-item-hoverable a {
@@ -34,7 +39,7 @@
 
     .logo-container .logo {
         padding: .25em;
-        width: 10vw;
+        // width: 10vw;
     }
 
     @include mq(micro) {
@@ -52,7 +57,6 @@ header .link-item {
 .link-item-hoverable.current-page {
     color: var(--thm-primary);
     font-size: 1.25rem;
-    height: 1.3rem;
 
     p { border-bottom: 2px solid var(--thm-primary); }
 }

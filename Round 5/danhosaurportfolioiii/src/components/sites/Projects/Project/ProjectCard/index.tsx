@@ -27,12 +27,11 @@ export default function ProjectCard({ allowCrud, project, onUpdate, onDelete }: 
       border: `1px solid ${languageColor}`
     }}>
       <ProjectCardHead project={project} allowCrud={allowCrud} />
-      <textarea className='project-card-mid-top' 
-        readOnly
+      <textarea className='project-card-mid-top' readOnly
         value={project.description[language]} 
       />
       <ImageContainer className='project-card-mid-bottom'>
-        <ProjectImage project={project} modalable={true} />
+        <ProjectImage modalable project={project} />
       </ImageContainer>
       {allowCrud && (
         <ButtonContainer className='project-card-bottom'>

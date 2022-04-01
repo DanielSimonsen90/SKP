@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useStateOnChange } from 'danholibraryrjs';
 import { SupportedLanguages, useLanguage, useLanguages, useTranslate } from 'providers/LanguageProvider'
 import './LanguageSelector.scss';
+import { useSettings } from 'providers/SettingsProvider';
 
 export default function LanguageSelector() {
     const translate = useTranslate();
-    const [currentLanguage, setLanguage] = useLanguage();
+    const [currentLanguage, setLanguage] = useSettings('language');
     const [language, inputLanguage, setInput] = useStateOnChange(currentLanguage, 100);
     const languages = useLanguages();
 

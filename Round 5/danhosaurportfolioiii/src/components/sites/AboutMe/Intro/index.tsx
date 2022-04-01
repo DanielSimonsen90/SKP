@@ -102,9 +102,9 @@ export default function Intro() {
 
     return (
         <InfoContainer title='introTitle' type='flex'>
-            <div className='intro-text'>
+            <section className='intro-text'>
                 {introText.map(mapSentences)}
-            </div>
+            </section>
             <Socials />
         </InfoContainer>
     )

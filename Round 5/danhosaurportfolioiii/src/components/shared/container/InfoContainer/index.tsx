@@ -1,4 +1,4 @@
-import { BaseProps, Container, ContainerType } from 'danholibraryrjs'
+import { BaseProps, classNames, ContainerType } from 'danholibraryrjs'
 import { useTranslate } from 'providers/LanguageProvider'
 import './InfoContainer.scss';
 
@@ -17,13 +17,13 @@ export default function InfoContainer({ className, title, children, type }: Prop
     ].filter(v => v).join(' ');
     
     return (
-        <Container id={`info-container-${title.toLowerCase().replaceAll(' ', '-')}`} className={_className}>
-            <fieldset>
-                <legend>{translate(title)}</legend>
-                <div className="content">
-                    {children}
-                </div>
-            </fieldset>
-        </Container>
+        <fieldset id={`info-container-${title.toLowerCase().replaceAll(' ', '-')}`} 
+            className={classNames('info-container', type && `info-container-${type}`, className)}
+        >
+            <legend>{translate(title)}</legend>
+            <section className="content">
+                {children}
+            </section>
+        </fieldset>
     )
 }

@@ -2,9 +2,11 @@
     display: flex;
     gap: .5em;
     align-items: center;
-    flex-shrink: 1;
+    flex: 0 1 min-content;
 
     input {
-        max-width: 7vw;
+        max-width: 10ch;
+        text-overflow: ellipsis;
+        flex: 0 1 min-content;
     }
 }

@@ -9,23 +9,31 @@ import Navbar from '../Navbar';
 import ToTop from '../ToTop';
 import './Footer.scss';
 
-export default function Footer({ routes }: RouteProps) {
-    const me = useMe();
+function CopyRight() {
     const currentYear = new Date().getFullYear();
+    const me = useMe();
 
+    return <span id="copyright" title={`Copyrighted by ${me.name}, ${currentYear}`}>© {currentYear} • {me.name}</span>
+} 
+
+export default function Footer({ routes }: RouteProps) {
     return (
-        <Container>
-            <footer className='navbar footer'>
-                <Logo />
-                <p id="copyright" title={`Copyrighted by ${me.name}, ${currentYear}`}>© {currentYear} • {me.name}</p>
-                <Navbar routes={routes} includeLogo={false} fromFooter={true} />
-                <ToTop />
-                <Occupation />
-                <LanguageSelector />
-                <ThemeToggle disableModal />
-            </footer>
-        </Container>
-    )
+        <footer className='container footer'>
+            <Container className="footer-content" style={{ boxShadow: 'unset' }}>
+                <header className="footer-top">
+                    <Logo />
+                    <CopyRight />
+                    <Occupation />
+                </header>
+                <section className="footer-nav">
+                    <Navbar routes={routes} includeLogo={false} fromFooter />
+                    <ToTop />
+                </section>
+                <footer className="footer-bottom">
+                    <LanguageSelector />
+                    <ThemeToggle />
+                </footer>
+            </Container>
+        </footer>
+   )
 }
-
-
