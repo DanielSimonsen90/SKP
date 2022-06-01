@@ -13,7 +13,7 @@ export default function Login() {
     const [isLogginIn, setIsLogginIn] = useState(false);
     const { isAdmin, setAdmin } = useAdmin();
     const redirect = useRedirect();
-    const [setModalVisibility] = useModal(<></>)
+    const [toggleModal] = useModal(null);
 
     const resetForm = () => {
         setIsLogginIn(false);
@@ -22,9 +22,9 @@ export default function Login() {
 
     const login = async () => {
         setIsLogginIn(true);
-        if (isValid) return setAdmin({ username, _id: -1});
+        if (isValid) return setAdmin({ username, _id: -1 });
 
-        setModalVisibility('show', (
+        toggleModal('show', (
             <div className='admin-login-modal'>
                 <h1>Invalid username 🤔</h1>
                 <p>I don't know who you think you are, "{username}", but you're definitely not an admin!</p>
@@ -43,7 +43,7 @@ export default function Login() {
             onChange={e => setUsername(e.target.value)}
             onKeyPress={e => (e.key === 'Enter' || e.key === 'NumpadEnter') && login()}
         />
-        <Button importance='primary' crud="create" iconName='sign-in' onClick={() => login()} value="Login" />
+        <Button type="submit" importance='primary' crud="create" iconName='sign-in' onClick={() => login()} value="Login" />
     </>);
     const loggingIn = <h1>Logging in...</h1>
 

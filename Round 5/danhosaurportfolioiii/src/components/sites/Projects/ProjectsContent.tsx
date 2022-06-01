@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PlanLocation, ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { useEffectOnce, UseStateSetState, useLocalStorage } from 'danholibraryrjs';
+import { useEffectOnce, UseStateSetState } from 'danholibraryrjs';
 
 import { useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
 import { useMe } from 'providers/MeProvider';
@@ -49,8 +49,9 @@ export default function ProjectsContent() {
     })
 
     return (
-        <section id="projects-page" onClick={() => setOptionResets(v => v + 1)}>
-            {me.projects.length ? <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} /> : null}
+        // TODO: Move ProjectFilter to ProjectContainer
+        <section className="projects-page" onClick={() => setOptionResets(v => v + 1)}>
+            {me.projects.length && <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} />}
             <ProjectContainer allowCrud={false} renderCards={renderCards} filter={filter} />
         </section>
     )

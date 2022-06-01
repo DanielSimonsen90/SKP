@@ -5,7 +5,7 @@ import './AboutMe.scss'
 
 export default function AboutMe() {
     return (
-        <section id="about-me-page">
+        <section className="about-me-page">
             <Intro />
             <Portrait uwuVerySecret={true} />
             <SpareTime />

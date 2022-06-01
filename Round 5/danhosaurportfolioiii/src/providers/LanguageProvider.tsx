@@ -1,5 +1,3 @@
-import { createContext, useCallback, useContext } from 'react';
-import { BaseProps, useLocalStorage, UseStateReturn } from 'danholibraryrjs';
 import { ProgrammingLanguage } from 'danhosaurportfolio-models';
 import { FilterData } from 'sites/Projects/ProjectsContent';
 import data from '../languages.json';
@@ -12,10 +10,8 @@ export type FilterObj = Record<keyof FilterData, Record<'title' | 'description',
 export type FilterObjReverse = Record<string, keyof FilterData>;
 type UseTranslateFiltersReturn<Reverse extends boolean> = Reverse extends false ? FilterObj : FilterObjReverse; 
 
-const LanguageContext = createContext<UseStateReturn<SupportedLanguages>>(["English", () => {}]);
-
 export function useLanguage() {
-    return useContext(LanguageContext);
+    return useSettings('language');
 }
 export function useTranslationObj(): TranslationObj {
     return data;
@@ -43,14 +39,4 @@ export function useTranslateFilters<Reverse extends boolean = false>(reverse: Re
 }
 export function useLanguages(): Array<SupportedLanguages> {
     return Object.keys(data) as Array<SupportedLanguages>;
-}
-
-export default function LanguageProvider({ children }: BaseProps) {
-    const [language, setLanguage] = useSettings("language");
-
-    return (
-        <LanguageContext.Provider value={[language, setLanguage]}>
-            {children}
-        </LanguageContext.Provider>
-    )
 }

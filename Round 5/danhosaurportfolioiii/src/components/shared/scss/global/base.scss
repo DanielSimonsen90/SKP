@@ -19,12 +19,12 @@ body {
     color: var(--clr-primary);
 
     &.light {
-        --bg-primary: #{$clr-tertiary};
-        --bg-secondary: #{$clr-tertiary};
-        --bg-tertiary: #{$clr-tertiary};
-        --bg-quaternary: #{$clr-quaternary};
-        --bg-quinary: #{$clr-quinary};
-        --bg-senary: #{$clr-senary};
+        --bg-primary: #{$clr-senary};
+        --bg-secondary: #{$clr-quinary};
+        --bg-tertiary: #{$clr-quaternary};
+        --bg-quaternary: #{$clr-tertiary};
+        --bg-quinary: #{$clr-secondary};
+        --bg-senary: #{$clr-primary};
     
         --clr-primary: #{$bg-primary};
         --clr-secondary: #{$bg-secondary};

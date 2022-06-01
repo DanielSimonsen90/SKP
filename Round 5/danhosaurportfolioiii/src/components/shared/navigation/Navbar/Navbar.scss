@@ -16,8 +16,11 @@
         gap: .5rem;
 
         .logo-container {
-            flex: 1 1 max-content;
+            flex: 1 0 fit-content;
         }
+    }
+    .logo-container {
+        flex: 0 1 min-content;
     }
 
     .link-item-hoverable a {
@@ -70,7 +73,7 @@ header .link-item {
     gap: 1rem;
 
     inset: 0 0 0 auto;
-    padding: 1em;
+    padding: 1.5em 1em;
     background-color: var(--bg-primary);
     min-height: 100vh;
     box-shadow: -5px 0px 10px #222;

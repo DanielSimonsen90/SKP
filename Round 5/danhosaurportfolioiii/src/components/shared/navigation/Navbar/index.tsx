@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Icon from 'react-fontawesome';
 import { BaseProps, useMediaQuery, ensureSlash, classNames } from 'danholibraryrjs';
 
@@ -22,39 +23,43 @@ export default function Navbar({ routes, children, className, includeLogo = true
     const translate = useTranslate();
     const [route] = useRoute();
     const forceIcon = useMediaQuery("400");
-    
-    const navbarRoutes = routes.map(([path]) => path.substring(1)).reverse().map(path => {
+    const navbarRoutes = useMemo(() => routes.map(([path]) => path.substring(1)).reverse().map(path => {
         const isCurrentPage = route.toLowerCase() === `/${path.toLowerCase()}`;
         const title = translate(path) || translate('home');
         const link = ensureSlash(path.replaceAll(' ', '').toLowerCase() || '/');
         
         return <LinkItem key={path} 
-            className={isCurrentPage ? 'current-page' : ''} 
-            title={title} link={!isCurrentPage && link} onClick={(props, e) => {
+            className={isCurrentPage ? 'current-page' : null} 
+            title={title} link={!isCurrentPage && link} onClick={() => {
                 if (isVisible && isCurrentPage) toggleModal('hide');
             }}
         />
-    });
-
-    const contentChildren = <>
+    }), [route, translate, routes]);
+    const ContentChildren = () => (<>
         <ul>
-            {includeLogo && <Logo />}
+            {includeLogo && !forceIcon && <Logo />}
             {navbarRoutes}
         </ul>
         {children}
-    </>
+    </>);
 
-    const [toggleModal, isVisible] = useModal((
-        <nav className={`navigation-modal${className ? ` ${className}` : ''}`}>
-            {contentChildren}
-        </nav>
-    ), false)
+    const [toggleModal, isVisible] = useModal(null, false)
 
-    const content = forceIcon ? <Icon name='bars' onClick={() => toggleModal('show')} /> : contentChildren
+    const Content = () => forceIcon ? <>
+        {includeLogo && <Logo />}
+        <Icon name='bars' onClick={() => toggleModal('show', (
+            <nav className={classNames('navigation-modal', className)}>
+                <ContentChildren />
+            </nav>)
+        )} />
+    </> : <ContentChildren />;
 
-    return fromFooter ? (!forceIcon ? <nav className='navbar'>{content}</nav> : null) : (
+    return fromFooter ? (!forceIcon ? (
+        <nav className='navbar'>
+            <Content />
+        </nav>) : null) : (
         <header className={classNames('container', 'navbar', className)} {...props}>
-            {content}
+            <Content />
         </header>
     )
 }

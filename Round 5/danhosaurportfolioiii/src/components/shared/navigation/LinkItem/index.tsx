@@ -24,7 +24,7 @@ type Props<
     listElement?: IsListItem,
     onClick?: (props: Props<IsListItem>, e: SelectEvent<LinkItemElement>) => void
 }
-
+export type LinkItemProps = Props;
 export default function LinkItem<IsListItem extends boolean = true>(props: Props<IsListItem>) {
     const { className, title, link, onClick, children, alt,
         icon: iconPath, newPage = false, hoverable = true, listElement = true,

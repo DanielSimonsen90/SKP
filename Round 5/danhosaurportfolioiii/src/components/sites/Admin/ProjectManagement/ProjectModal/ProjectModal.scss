@@ -4,20 +4,26 @@
 #info-container-update-project {
     height: 85vh;
     width: 65vw;
+    background-color: var(--bg-secondary);
 
     .content {
         display: grid;
-        grid-gap: 2vh;
+        gap: 2vh;
+        grid-template-rows: 85% auto;
     }
 
-    & > fieldset > .content {
+    & > .content {
         grid-template-columns: repeat(2, auto);
-        grid-template-rows: 85% auto;
+        row-gap: unset;
         max-height: 100%;
     }
 
     .description label {
         flex-direction: column;
+    }
+
+    .info-container {
+        overflow-y: auto;
     }
 
     .project-information-row {
@@ -65,10 +71,17 @@
             }
         }
 
-        &.project-image .content {
+        &.project-image, &.no-image {
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: center;
+            // gap: .25em;
+        }
+        &.img-container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+
         }
     }
 
@@ -95,8 +108,10 @@
         }
     }
     img {
-        max-width: 100%;
-        // max-height: 12.5vh;
+        width: 100%;
+        overflow-y: auto;
+        object-fit: fill;
+        max-height: 7vh;
     }
 }
 #info-container-project-information .content {
@@ -107,7 +122,11 @@
     }
 }
 #info-container-optional .content {
-    grid-template-rows: repeat(3, min-content) auto;
+    grid-template-rows: repeat(3, auto);
+
+    .button-container {
+        box-shadow: unset;
+    }
 }
 
 #info-container-delete {

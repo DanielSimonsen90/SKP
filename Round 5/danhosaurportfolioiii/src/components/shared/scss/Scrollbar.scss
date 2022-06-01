@@ -1,6 +1,6 @@
 @import '../scss/lib/maps';
 
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track {
     background: var(--bg-tertiary);
   
@@ -11,6 +11,7 @@
 ::-webkit-scrollbar-thumb {
     $background: mix($bg-quinary, $thm-secondary, 85%);
     background: $background;
+    border-radius: var(--border-radius);
   
     &:hover { background: lighten($bg-tertiary, 25%) }
 }

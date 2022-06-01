@@ -12,6 +12,7 @@
     padding: .75em;
     background-color: var(--bg-tertiary);
     border-radius: var(--border-radius);
+    box-shadow: 0px .5em 1em var(--shadow-clr);
     
     &:hover {
         border-radius: 1em;
@@ -96,7 +97,8 @@
         @include betterminmax(height, auto, 100%, 40vh);
         width: 100%;
         padding: .5em 1em;
-
+        
+        @include gradient-background(var(--bg-quaternary), var(--bg-tertiary));
         border: 1px solid;
         border-radius: var(--border-radius);
 

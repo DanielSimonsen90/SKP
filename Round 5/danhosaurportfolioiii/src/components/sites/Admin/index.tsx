@@ -16,7 +16,7 @@ export default function AdminContent() {
     ]
 
     return (
-        <main id='admin-page'>
+        <main className='admin-page'>
             {!isAdmin ? 
                 <Login /> : 
                 <>

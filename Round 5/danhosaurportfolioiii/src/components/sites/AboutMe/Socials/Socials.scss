@@ -33,9 +33,9 @@
             }
         }
         @include mq(micro) {
-            display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
+            .link-item {
+                flex: 1 1 33vw;
+            }
         }
     }
 }

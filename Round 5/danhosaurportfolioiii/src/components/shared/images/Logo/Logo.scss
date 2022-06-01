@@ -1,6 +1,8 @@
+@import 'components/shared/scss/lib/mixins';
+
 .logo {
     cursor: pointer;
-    height: 100%;
+    // height: 100%;
     width: 100%;
 
     img.icon {
@@ -9,6 +11,6 @@
 }
 img.icon {
     --size: 25px;
-    max-height: var(--size);
-    max-width: var(--size);
+    @include betterminmax(height, var(--size), auto, var(--size));
+    @include betterminmax(width, var(--size), auto, var(--size));
 }

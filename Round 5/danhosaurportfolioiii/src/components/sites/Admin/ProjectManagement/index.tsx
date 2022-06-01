@@ -14,12 +14,11 @@ import './ProjectManagement.scss';
 export type ModalTitles = 'create' | 'update' | 'delete' | string;
 
 export default function ProjectManagement() {
-    const projects = useMe().projects;
-    const modalClose = () => setModalVisible('hide');
-    const defaultModal = <ProjectModal title="create" project={null} close={modalClose} />;
-    const [setModalVisible] = useModal(defaultModal)
+    const { projects } = useMe();
+    const close = () => toggleModal('hide');
+    const [toggleModal] = useModal(<ProjectModal title="create" project={null} close={close} />)
     const openModal = (title: ModalTitles, project?: Project) => {
-        setModalVisible('show', <ProjectModal project={project} title={title} close={modalClose} />)
+        toggleModal('show', <ProjectModal project={project} title={title} close={close} />)
     }
 
     return (
