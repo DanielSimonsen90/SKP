@@ -14,17 +14,24 @@
 }
 
 .img-container {
-    height: 100%;
-    max-width: 100%;
-    width: fit-content;
-    margin: 0 auto;
-
     display: grid;
     place-items: center;
     border-radius: var(--border-radius);
     border: 1px solid var(--bg-secondary);
+
     overflow-y: auto;
     overflow-x: hidden;
+
+    height: unset;
+
+    &.container {
+        box-shadow: unset;
+        background-color: unset;
+        border: unset;
+    }
+    &.no-image {
+        gap: .5em;
+    }
 }
 
 .button-container {
@@ -36,7 +43,8 @@
     padding: .5em;
     height: max-content;
 
-    background-color: var(--bg-secondary);
+    // background-color: var(--bg-secondary);
+    background-color: unset;
 
     button {
         flex: 1 1 calc(33% - 1em);

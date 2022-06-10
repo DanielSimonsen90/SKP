@@ -9,6 +9,7 @@ import { useLanguageColor } from '../hooks/useLanguageColor';
 import ProjectImage from '../ProjectImage';
 import ProjectCardHead from './ProjectCardHead';
 import './ProjectCard.scss';
+import ProjectLink from '../ProjectLink';
 
 type Props = BaseProps & {
   project: Project,
@@ -22,24 +23,23 @@ export default function ProjectCard({ allowCrud, project, onUpdate, onDelete }: 
   const languageColor = useLanguageColor(project.language, "opacity");
 
   return (
-    <Container className='project-card' id={project.name.replaceAll(' ', '%20')} style={{
-      boxShadow: `0px 5px 5px ${languageColor}`,
+    <article className="project-card" id={project.name.replaceAll(' ', '%20')} style={{
+      boxShadow: `0px 5px 1em ${languageColor}`,
       border: `1px solid ${languageColor}`
     }}>
       <ProjectCardHead project={project} allowCrud={allowCrud} />
-      <textarea className='project-card-mid-top' 
-        readOnly
+      <textarea className='project-card-mid-top' readOnly
         value={project.description[language]} 
       />
-      <ImageContainer className='project-card-mid-bottom'>
-        <ProjectImage project={project} modalable={true} />
-      </ImageContainer>
-      {allowCrud && (
+      {project.image && <ProjectImage modalable project={project} className='project-card-mid-bottom' />}
+      {allowCrud ? (
         <ButtonContainer className='project-card-bottom'>
           <Button crud='update' importance='primary' onClick={() => onUpdate(project)}>Update</Button>
           <Button crud='delete' importance='secondary' onClick={() => onDelete(project)}>Delete</Button>
         </ButtonContainer>
+      ) : (
+        <ProjectLink className='project-card-bottom' project={project} style={{ borderColor: languageColor }}  />
       )}
-    </Container>
+    </article>
   );
 }

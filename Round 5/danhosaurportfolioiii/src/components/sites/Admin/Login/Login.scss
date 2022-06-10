@@ -1,8 +1,14 @@
-#admin-page {
+@import 'components/shared/scss/lib/';
+
+.admin-page {
     .info-container {
+        font-size: 3em;
+        position: absolute;
         max-width: 50vw;
         height: auto;
         margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
     
         &.info-container-admin-login {
             background-color: unset;
@@ -13,16 +19,24 @@
         }
     
         legend {
-            font-size: 3em;
+            font-size: inherit;
         }
     
         .content {
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            gap: .5em;
     
             input {
-                font-size: 3em;
+                font-size: inherit;
+            }
+        }
+        
+        @include mq(smaller) {
+            font-size: 6vw;
+
+            button.primary {
+                font-size: .75em;
             }
         }
     }

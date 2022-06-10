@@ -13,6 +13,7 @@ type Props<
     IsListItem extends boolean = true, 
 > = Omit<BaseProps<LinkItemElement>, 'onClick'> & {
     title?: string,
+    alt?: string,
     link?: string,
     icon?: string,
     /**@default false*/
@@ -23,9 +24,9 @@ type Props<
     listElement?: IsListItem,
     onClick?: (props: Props<IsListItem>, e: SelectEvent<LinkItemElement>) => void
 }
-
+export type LinkItemProps = Props;
 export default function LinkItem<IsListItem extends boolean = true>(props: Props<IsListItem>) {
-    const { className, title, link, onClick, children,
+    const { className, title, link, onClick, children, alt,
         icon: iconPath, newPage = false, hoverable = true, listElement = true,
         ...rest
     } = props;
@@ -34,7 +35,7 @@ export default function LinkItem<IsListItem extends boolean = true>(props: Props
 
     const icon = iconPath && (
         iconPath.endsWith('.png') ? 
-            <img className='icon' src={iconPath} alt={title} /> : 
+            <img className='icon' src={iconPath} alt={alt || title} /> : 
             <Icon className='icon' name={iconPath} alt={title} />
     )
     const content = (

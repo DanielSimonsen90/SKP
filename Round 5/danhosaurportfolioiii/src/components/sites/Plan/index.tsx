@@ -80,20 +80,20 @@ export default function Plan() {
     });
 
     return (
-        <main id="plan-page">
-            <div className='presentation'>
+        <section className="plan-page">
+            <header className='presentation'>
                 <h1>{translate('educationPlanTitle')[planState]}</h1>
                 <Occupation link={false} />
                 <LinkItem className='click-me' listElement={false} newPage link="Uddannelsesplan.pdf" title={translate('viewEducationPlan')} />
-            </div>
+            </header>
             <ButtonContainer style={{ boxShadow: 'unset' }}>
-                <Button importance='secondary' onClick={onChangeEducationPlanClicked}>{translate('changeEducationPlanState')}</Button>
-                <Button importance='secondary' onClick={onChangeDirectionClicked} iconName='arrow-down'>{translate('changeDirection')}</Button>
+                <Button type="button" importance='secondary' onClick={onChangeEducationPlanClicked}>{translate('changeEducationPlanState')}</Button>
+                <Button type="button" importance='secondary' onClick={onChangeDirectionClicked} iconName='arrow-down'>{translate('changeDirection')}</Button>
             </ButtonContainer>
             {isTiny ? 
                 <PlanCardContainer reverse={isReverse} planData={planData} /> : 
                 <PlanTable reverse={isReverse} titles={titles} planData={planData} />
             }
-        </main>
+        </section>
     )
 }

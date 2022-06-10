@@ -27,9 +27,9 @@ export default function App() {
     return (
         <Providers>
             <Navbar routes={routes} />
-            <Container className='page-content'>
-                <Router routes={[createRoute('admin', Admin), ...routes]} />
-            </Container>
+            <main className="container page-content">
+                <Router routes={[createRoute('admin', Admin), ...routes]} className="test" />
+            </main>
             <Footer routes={routes} />
         </Providers>
     )

@@ -1,5 +1,5 @@
 import { Arrayable } from 'danholibraryjs';
-import { BaseProps, Container } from 'danholibraryrjs';
+import { BaseProps, classNames, Container } from 'danholibraryrjs';
 
 type HTMLElements = JSX.IntrinsicElements;
 type Props<T extends keyof HTMLElements> = BaseProps & Record<'children', Arrayable<HTMLElements[T]>>
@@ -7,7 +7,7 @@ type InternalProps<ElementKey extends keyof HTMLElements> = Props<ElementKey> & 
 
 function SpecificContainer<Element extends keyof HTMLElements>({ children, type, className, ...props }: InternalProps<Element>) {
     return (
-        <Container className={`${type}-container${className ? ` ${className}` : ''}`} {...props}>
+        <Container className={classNames(`${type}-container`, className)} {...props}>
             {children}
         </Container>
     )

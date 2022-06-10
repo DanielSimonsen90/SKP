@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import { DanhoDate, IProgrammingLanguage, ProgrammingLanguage } from "danhosaurportfolio-models";
-import InfoContainer from "components/shared/container/InfoContainer";
-import FilterInputList from "components/sites/Projects/ProjectFilter/FilterInputList";
-import DescriptionInput from "./DescriptionInput";
-import { ConstructableProps, ProjectModalHookProps, UseProjectModifyReturn } from "..";
-import Label from "../Label";
 import { useStateOnUpdate } from "danholibraryrjs";
 import { BetterOmit } from "danholibraryjs";
+
+import InfoContainer from "components/shared/container/InfoContainer";
+import FilterInputList from "components/sites/Projects/ProjectFilter/FilterInputList";
+
+import { ConstructableProps, ProjectModalHookProps, UseProjectModifyReturn } from "..";
+import Label from "../Label";
+import DescriptionInput from "./DescriptionInput";
 
 type ProjectType = IProgrammingLanguage[ProgrammingLanguage];
 export type UseProjectInformationProps = BetterOmit<ConstructableProps, 
@@ -25,21 +27,8 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
     }, [createdAtTimestamp]);
     const [dansk, setDansk] = useState(project?.description.Dansk || new Array<string>());
     const [english, setEnglish] = useState(project?.description.English || new Array<string>());
-    const didChange = useStateOnUpdate(false, () => {
-        if (!project) return true;
 
-        return (
-            project.name !== name || 
-            project.display !== display ||
-            project.language !== language ||
-            project.projectType !== projectType ||
-            project.createdAt.getTime() !== createdAtTimestamp ||
-            project.description.Dansk.some((sentence, i) => dansk[i] !== sentence) || 
-            project.description.English.some((sentence, i) => english[i] !== sentence)
-        )
-    }, [name, display, language, projectType, createdAtTimestamp, dansk, english]);
-
-    const component = (
+    const ProjectModalInformation = (
         <InfoContainer title="Project Information">
             <div className='name-display project-information-row'>
                 <Label title="Name" type="text" value={name} onChange={setName} required={true} />
@@ -62,7 +51,21 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
         </InfoContainer>
     )
 
-    return [component, didChange, {
+    const didChange = useStateOnUpdate(false, () => {
+        if (!project) return true;
+
+        return (
+            project.name !== name || 
+            project.display !== display ||
+            project.language !== language ||
+            project.projectType !== projectType ||
+            project.createdAt.getTime() !== createdAtTimestamp ||
+            project.description.Dansk.some((sentence, i) => dansk[i] !== sentence) || 
+            project.description.English.some((sentence, i) => english[i] !== sentence)
+        )
+    }, [name, display, language, projectType, createdAtTimestamp, dansk, english]);
+
+    return [ProjectModalInformation, didChange, {
         name, display, language, projectType, createdAt, 
         description: {
             Dansk: dansk, 

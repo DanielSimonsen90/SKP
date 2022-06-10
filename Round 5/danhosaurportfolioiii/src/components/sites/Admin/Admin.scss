@@ -1,6 +1,6 @@
 @import 'components/shared/scss/lib';
 
-#admin-page {
+.admin-page {
     @include size();
     display: grid;
     grid-template-rows: 10vh auto;

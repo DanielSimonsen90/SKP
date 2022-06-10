@@ -19,17 +19,21 @@ body {
     color: var(--clr-primary);
 
     &.light {
-        --bg-primary: #{$clr-tertiary};
-        --bg-secondary: #{$clr-tertiary};
-        --bg-tertiary: #{$clr-tertiary};
-        --bg-quaternary: #{$clr-quaternary};
-        --bg-quinary: #{$clr-quinary};
-        --bg-senary: #{$clr-senary};
+        --bg-primary: #{$clr-senary};
+        --bg-secondary: #{$clr-quinary};
+        --bg-tertiary: #{$clr-quaternary};
+        --bg-quaternary: #{$clr-tertiary};
+        --bg-quinary: #{$clr-secondary};
+        --bg-senary: #{$clr-primary};
     
         --clr-primary: #{$bg-primary};
         --clr-secondary: #{$bg-secondary};
         --clr-tertiary: #{$bg-tertiary};
         --clr-quaternary: #{$bg-quaternary};
+
+        .link-item {
+            --link-item-color: $link-item-color-light;
+        }
 
         transition: all 1s ease-in;
     }
@@ -283,6 +287,7 @@ textarea {
     --checked-background-color: var(--bg-quaternary);
     --unchecked-color: var(--bg-quaternary);
     --unchecked-background-color: var(--bg-senary);
+    width: 200%;
 
     .fa {
         font-size: .8em;

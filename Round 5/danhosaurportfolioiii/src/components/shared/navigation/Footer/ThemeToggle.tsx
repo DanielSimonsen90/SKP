@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { Button, useDarkMode, UseStateSetState, useEnterEsc, Switch } from "danholibraryrjs";
+import { Button, UseStateSetState, useEnterEsc, Switch } from "danholibraryrjs";
 import { ms } from "danholibraryjs";
 import { ToggleModal, useModal } from "providers/ModalProvider";
 import { useTranslate } from "providers/LanguageProvider";
+import { useSettings } from "providers/SettingsProvider";
 import './ThemeToggle.scss';
 
 type YoureBlindLanguage = {
@@ -15,7 +16,7 @@ type YoureBlindProps = {
     showModal: ToggleModal,
     setDarkMode: UseStateSetState<boolean>
 }
-function YoureBlind({ setDarkMode, showModal }: YoureBlindProps) {
+function YoureBlindModal({ setDarkMode, showModal }: YoureBlindProps) {
     const onConfirm = () => {
         showModal('hide');
         setDarkMode(true);
@@ -37,19 +38,22 @@ type ThemeToggleProps = {
 }
 
 export default function ThemeToggle({ disableModal = false }: ThemeToggleProps) {
-    const [isDark, setDarkMode] = useDarkMode();
+    const [isDark, setDarkMode] = useSettings("darkmode");
     const [showModal] = useModal(<></>);
     
     useEffect(() => {
         let timeout: NodeJS.Timeout = null;
         document.body.classList.toggle("light", !isDark);
         if (!isDark && !disableModal) timeout = setTimeout(() => {
-           showModal("show", <YoureBlind setDarkMode={setDarkMode} showModal={showModal} />);
+           showModal("show", <YoureBlindModal setDarkMode={setDarkMode} showModal={showModal} />);
         }, ms('5s'))
         return () => clearTimeout(timeout);
     }, [isDark])
 
     return (
-        <Switch checked={isDark} onCheckChanged={setDarkMode} icons={{ checked: "moon-o", unchecked: "sun-o" }} />
+        <Switch vertical id="theme-toggle" 
+            checked={isDark} onCheckChanged={setDarkMode} 
+            icons={{ checked: "moon-o", unchecked: "sun-o" }} 
+        />
     )
 }

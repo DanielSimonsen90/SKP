@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { BaseProps, Component, Container, useStack, PopState, UseStateSetState, useAnimationReverse, useEnterEsc } from 'danholibraryrjs';
+import { BaseProps, Component, Container, useStack, PopState, UseStateSetState, useAnimationReverse, useEnterEsc, classNames } from 'danholibraryrjs';
 import { GetCSSProperty } from 'danholibraryjs';
 import './Modal.scss';
 
@@ -41,7 +41,7 @@ type ModalWrapperProps = ModalProps & {
 }
 
 function ModalWrapper({ component, close, wrapContent }: ModalWrapperProps) {
-    const className = `modal${component.props.className ? ` ${component.props.className}` : ''}`;
+    const className = classNames('modal', component.props.className);
     useEnterEsc({ onEsc: close })   
 
     const modalContent = (<>

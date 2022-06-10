@@ -1,11 +1,14 @@
 import { useMemo } from 'react';
 import { PlanLocation, Project } from 'danhosaurportfolio-models';
-import { useEffectOnce } from 'danholibraryrjs';
+import { classNames, useEffectOnce } from 'danholibraryrjs';
+
 import { useMe, useSetProjects } from 'providers/MeProvider';
 import { useTranslate } from 'providers/LanguageProvider';
+
 import ProjectComponent from '../Project';
 import { FilterProps } from '../ProjectsContent';
 import ProjectCard from '../Project/ProjectCard';
+
 import './ProjectContainer.scss';
 
 type Props = Partial<FilterProps> & {
@@ -40,18 +43,20 @@ export default function ProjectContainer({
         .reverse(), 
     [filter, me, me.projects]);
 
-    useEffectOnce(() => { if (!me.projects.length) setProjects(); })
+    useEffectOnce(() => { if (!me.projects.length) setProjects(); });
 
     return (
-        <div className={`project-container${!projects.length ? ' no-projects' : ''}`} data-render-cards={renderCards}>
+        <section className={classNames('project-container', !projects.length && 'no-projects')} 
+            data-render-cards={renderCards} 
+        >
             {(projects.length && projects.map(p => 
                 !renderCards ? 
                     <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
                     <ProjectCard project={p} key={`${p.name}_${p._id}`} allowCrud={allowCrud}
                         onUpdate={onProjectUpdate} onDelete={onProjectDelete}
                     />
-                )) || <h1>{me.projects.length ? translate('noProjects') : translate('unableToFetch')}</h1>
+                )) || <h1>{translate(me.projects.length ? 'noProjects' : 'unableToFetch')}</h1>
             }
-        </div>
+        </section>
     )
 }

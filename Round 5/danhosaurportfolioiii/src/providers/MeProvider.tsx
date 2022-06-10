@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { DanhoDate } from 'danhosaurportfolio-models';
 import { LocationCollection, ProjectCollection, Me, API, Item, Project } from 'danhosaurportfolio-models';
 import { BaseProps, useSessionStorage, UseStateReturn } from 'danholibraryrjs';
 import { useTranslate } from './LanguageProvider';
 import myData from '../me.json'
-import { DanhoDate } from 'danhosaurportfolio-models';
 
 export const { email, github, phone, linkedin } = myData;
 export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, [activity]));
@@ -79,7 +79,9 @@ export function useUpsertProject() {
 
     return (project: Project) => (!projects.some(p => p._id === project._id) ? 
         api.create('projects', project) : 
-        api.update('projects', project)).then(() => setProjects(true))
+        api.update('projects', project)).then(() => {
+            setProjects(true)
+        })
 }
 
 export default function MeProvider({ children }: BaseProps) {

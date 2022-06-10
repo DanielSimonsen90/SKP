@@ -12,4 +12,10 @@
     margin: .5rem;
     padding: .5rem;
     border-radius: var(--border-radius);
+
+    background: linear-gradient(
+        var(--bg-secondary), 
+        var(--bg-quaternary), 
+        var(--bg-secondary)
+    );
 }

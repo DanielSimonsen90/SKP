@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { PlanLocation, ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { useEffectOnce, UseStateSetState, useLocalStorage } from 'danholibraryrjs';
+import { useEffectOnce, UseStateSetState } from 'danholibraryrjs';
 
 import { useTranslateProgrammingLanguages } from 'providers/LanguageProvider'
 import { useMe } from 'providers/MeProvider';
 
 import ProjectContainer from './ProjectContainer'
 import ProjectFilter from './ProjectFilter'
+import { useSettings } from 'providers/SettingsProvider';
 
 export type FilterProps = {
     filter: FilterData,
@@ -29,7 +30,7 @@ export default function ProjectsContent() {
     const me = useMe();
     const [filter, setFilter] = useState<FilterData>({});
     const [optionResets, setOptionResets] = useState(0);
-    const [renderCards, setRenderCards] = useLocalStorage('prefer-cards', false);
+    const [renderCards, setRenderCards] = useSettings('preferCards');
 
     useEffectOnce(() => {
         const { hash, search } = window.location;
@@ -48,9 +49,10 @@ export default function ProjectsContent() {
     })
 
     return (
-        <div id="projects-page" onClick={() => setOptionResets(v => v + 1)}>
-            {me.projects.length ? <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} /> : null}
+        // TODO: Move ProjectFilter to ProjectContainer
+        <section className="projects-page" onClick={() => setOptionResets(v => v + 1)}>
+            {me.projects.length && <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} />}
             <ProjectContainer allowCrud={false} renderCards={renderCards} filter={filter} />
-        </div>
+        </section>
     )
 }

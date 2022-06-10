@@ -1,6 +1,6 @@
 .project-card-head {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 65% auto;
     grid-template-areas: 
         "title id"
         "title display"
@@ -31,6 +31,7 @@
         overflow: hidden;
         text-align: start;
         margin: 0 auto;
+        max-width: 100%;
     }
 
     &-info {
@@ -50,7 +51,7 @@
     }
 }
 
-#projects-page .project-card-head {
+.projects-page .project-card-head {
     grid-template-columns: auto repeat(2, 13.75%);
     grid-template-areas: 
         "title title bookmark"

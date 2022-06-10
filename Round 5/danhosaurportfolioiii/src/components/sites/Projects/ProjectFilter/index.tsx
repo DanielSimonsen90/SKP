@@ -1,20 +1,22 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { Container, ClickEvent, useEffectOnce } from 'danholibraryrjs';
+import { Container, ClickEvent, classNames } from 'danholibraryrjs';
 
-import ToTop from 'components/shared/navigation/ToTop';
+import { useBookmarks } from 'providers/BookmarkProvider';
 import { useTranslateFilters } from 'providers/LanguageProvider';
-
-import { FilterProps } from '../ProjectsContent';
 import { useModal } from 'providers/ModalProvider';
 import { useMe } from 'providers/MeProvider';
+
+import ToTop from 'components/shared/navigation/ToTop';
+
+import { FilterProps } from '../ProjectsContent';
 import BookmarkList from '../BookmarkList';
+
 import useWindowScroll from './hooks/useWindowScroll';
 import useFilterOptions from './hooks/useFilterOptions';
 import useNewFilter from './hooks/useNewFilter';
-import './styles/index.scss';
-import { useBookmarks } from 'providers/BookmarkProvider';
 import CloseableInput from './ClosableInput/ClosableInput';
+import './styles/index.scss';
 
 export default function ProjectFilter({ filter, optionResets, setFilter, renderCards, setRenderCards }: FilterProps) {
     const className = 'project-filter';    
@@ -47,7 +49,7 @@ export default function ProjectFilter({ filter, optionResets, setFilter, renderC
                 <CloseableInput setValue={setValue} value={value}
                     onClick={() => onFocus(true)} /*onBlur={() => onFocus(true)}*/
                 />
-                <Icon name="bookmark" className={`bookmark bookmark-list ${hasBookmarks && me.projects.length ? 'visible' : 'invisible'}`} 
+                <Icon name="bookmark" className={classNames('bookmark bookmark-list', hasBookmarks && me.projects.length ? 'visible': 'invisible')}
                     onClick={() => toggle('show')} tabIndex={hasBookmarks && me.projects.length ? 0 : -1}
                 />
                 <Icon name={me.projects.length && renderCards ? 'list' : 'table'} className="render-cards-toggle"

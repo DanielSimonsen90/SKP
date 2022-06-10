@@ -1,6 +1,6 @@
 @import '../../shared/scss/lib';
 
-#plan-page {
+.plan-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@
 
     h1 { text-align: center; }
 
-    #occupation-string {
+    .occupation-string {
         font-size: 2rem;
         padding: 0;
     }
@@ -22,7 +22,7 @@
 
     @include mq(medium) {
         h1 { font-size: 7vw; }
-        #occupation-string p { font-size: 4.5vw; line-height: 6vw; }
+        .occupation-string p { font-size: 4.5vw; line-height: 6vw; }
         button { font-size: 4vw; }
         table { width: 90vw; }
         th { font-size: 5vw; }

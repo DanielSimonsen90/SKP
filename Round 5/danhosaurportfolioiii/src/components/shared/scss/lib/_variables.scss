@@ -22,14 +22,14 @@ $animation-time: 500ms;
     @include create-variables(thm, $thm);
 
     --transition-time: 150ms;
-    --transition-animation: ease-in;
+    --transition-animation: ease-in-out;
     --animation-time: #{$animation-time};
 
     --border-radius: 6px;
     --shadow-clr: #222;
 }
 
-.project {
+.project, .project-card {
     @include create-variables(prgmLang, $prgmLang, $clr-primary, 40%);
 }
 
@@ -39,6 +39,7 @@ $animation-time: 500ms;
     $link-item-visited: mix(black, #4E4DF5, 25%);
 
     $link-item-color: mix($clr-primary, $link-item-focus, 75%);
+    $link-item-color-light: mix($bg-primary, $link-item-focus, 75%);
     --link-item-color: #{$link-item-color};
     --link-item-color-click-me: #5fafd6;
     --link-item-color-hover: #{$link-item-hover};
