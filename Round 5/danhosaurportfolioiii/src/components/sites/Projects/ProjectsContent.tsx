@@ -51,7 +51,7 @@ export default function ProjectsContent() {
     return (
         // TODO: Move ProjectFilter to ProjectContainer
         <section className="projects-page" onClick={() => setOptionResets(v => v + 1)}>
-            {me.projects.length && <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} />}
+            {me.projects.length > 0 && <ProjectFilter {...{ renderCards, setRenderCards, filter, setFilter, optionResets }} />}
             <ProjectContainer allowCrud={false} renderCards={renderCards} filter={filter} />
         </section>
     )
