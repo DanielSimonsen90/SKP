@@ -1,6 +1,11 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 import Icon from 'react-fontawesome';
-import { BaseProps, Component, Container, useStack, PopState, UseStateSetState, useAnimationReverse, useEnterEsc, classNames } from 'danholibraryrjs';
+import {
+    Container,
+    Component, PopState, UseStateSetState, BaseProps,
+    useAnimationReverse, useEnterEsc, useStack,
+    classNames
+} from 'danholibraryrjs';
 import { GetCSSProperty } from 'danholibraryjs';
 import './Modal.scss';
 
@@ -10,11 +15,11 @@ export type ModalProps = {
 
 type ModalShow = 'show' | 'hide';
 type ModalContextType = [
-    push: (state: Component, wrapContent: boolean) => number, 
-    pop: PopState, 
+    push: (state: Component, wrapContent: boolean) => number,
+    pop: PopState,
     isVisible: boolean
 ];
-const ModalContext = createContext<ModalContextType>([s => 0, () => {}, false]);
+const ModalContext = createContext<ModalContextType>([s => 0, () => { }, false]);
 
 export type ToggleModal = (show: ModalShow, modal?: Component) => void;
 type UseModalReturn = [
@@ -42,7 +47,7 @@ type ModalWrapperProps = ModalProps & {
 
 function ModalWrapper({ component, close, wrapContent }: ModalWrapperProps) {
     const className = classNames('modal', component.props.className);
-    useEnterEsc({ onEsc: close })   
+    useEnterEsc({ onEsc: close })
 
     const modalContent = (<>
         <Icon onClick={close} className='modal-exit' name='times' />

@@ -8,8 +8,8 @@ type Settings = {
     preferCards: boolean,
     animations: boolean,
 }
-type SettingsContext = [Settings, (type: ActionTypes, payload: Partial<Settings>) => Settings];
-const SettingsContext = createContext<SettingsContext>([
+type SettingsContextType = [Settings, (type: ActionTypes, payload: Partial<Settings>) => Settings];
+const SettingsContext = createContext<SettingsContextType>([
     { darkmode: true, language: "English", preferCards: false, animations: true },
     () => ({ darkmode: true, language: "English", preferCards: false, animations: true })
 ]);
