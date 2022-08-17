@@ -1,6 +1,6 @@
 const express = require('express');
 const mongo = require('mongodb');
-const mongoConnectionString = `mongodb+srv://DanhosaurPortfolioIIApplication:database-admin@danhosaurportfolioii.x1ocs.mongodb.net/DanhosaurPortfolioIIDB?retryWrites=true&w=majority`;
+const mongoConnectionString = process.env.MONG_CONNECTION_STRING;
 const router = express.Router();
 
 const log = (message) => console.log(`%c${new Date().toLocaleTimeString()} [API]: %c${message}`, "color: lime", "%cwhite");

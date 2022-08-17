@@ -14,7 +14,7 @@ function CopyRight() {
     const me = useMe();
 
     return <span id="copyright" title={`Copyrighted by ${me.name}, ${currentYear}`}>© {currentYear} • {me.name}</span>
-} 
+}
 
 export default function Footer({ routes }: RouteProps) {
     return (
@@ -27,7 +27,10 @@ export default function Footer({ routes }: RouteProps) {
                 </header>
                 <section className="footer-nav">
                     <Navbar routes={routes} includeLogo={false} fromFooter />
-                    <ToTop />
+                    {/* 
+                        Quoting Emsenparry; is this really necessary?
+                        <ToTop /> 
+                    */}
                 </section>
                 <footer className="footer-bottom">
                     <LanguageSelector />
@@ -35,5 +38,5 @@ export default function Footer({ routes }: RouteProps) {
                 </footer>
             </Container>
         </footer>
-   )
+    )
 }

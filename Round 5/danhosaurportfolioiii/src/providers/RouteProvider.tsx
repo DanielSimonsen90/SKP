@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { BaseProps, UseStateReturn, useRedirect as _useRedirect } from 'danholibraryrjs'
 import { useTranslate } from './LanguageProvider';
+import { useLocation, useNavigate } from 'react-router';
 
-const RouteContext = createContext<UseStateReturn<string>>(["", () => {}]);
+const RouteContext = createContext<UseStateReturn<string>>(["", () => { }]);
 
 export function useRoute() {
     return useContext(RouteContext);
@@ -12,20 +13,18 @@ export function useRedirect() {
 }
 
 export default function RouteProvider({ children }: BaseProps) {
-    const [route, setRoute] = useState(window.location.pathname);
+    const route = useLocation().pathname;
     const translate = useTranslate();
-    const _redirect = _useRedirect();
-    const redirect = (to: string | ((from: string) => string)) => setRoute(_redirect(to));
+    const redirect = _useRedirect();
 
     useEffect(() => {
         const metaTitle = document.querySelector('meta[property="og:title"]');
-        const title = document.querySelector('title');
         if (!metaTitle) return;
 
         const routeName = route.split('/').pop() || 'home';
         const content = `${translate(routeName)} - DanhosaurPortfolio`;
         metaTitle.setAttribute('content', content);
-        title.textContent = content;
+        document.querySelector('title').textContent = content;
     }, [route])
 
     return (

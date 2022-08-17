@@ -1,6 +1,6 @@
 const express = require('express');
 const connect = require('mongodb');
-const mongoConnectionString = `mongodb+srv://DanhosaurPortfolioIIApplication:database-admin@danhosaurportfolioii.x1ocs.mongodb.net/DanhosaurPortfolioIIDB?retryWrites=true&w=majority`;
+const mongoConnectionString = process.env.MONG_CONNECTION_STRING;
 const router = express.Router();
 
 const log = (message) => console.log(`%c${new Date().toLocaleTimeString()} [API]: %c${message}`, "color: lime", "%cwhite");
@@ -19,12 +19,12 @@ router.post('/', async (req, res) => {
     await projects.insertOne({ ...JSON.parse(req.body.postData) });
     res.status(201).send();
 });
-
 router.get('/', async (req, res) => {
     log('Sending projects');
     const projects = await getProjects();
     res.send(await projects.find({}).toArray());
 });
+
 router.get('/:id', async (req, res) => {
     const projects = await getProjects();
     log('Sending project');

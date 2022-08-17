@@ -18,11 +18,13 @@ export default function useContextMenu<Element extends HTMLElement>(query: strin
 
     useClickOutside(query, () => visible && toggle('hide'));
     useEventListener<'contextmenu', Element>('contextmenu', (event, element) => {
+        if (!allow) return;
+
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        if (allow) toggle('show', 
-            typeof component === 'function' ? 
+        toggle('show',
+            typeof component === 'function' ?
                 component({ allow, query, visible, toggle, element, event }) :
                 component
         );

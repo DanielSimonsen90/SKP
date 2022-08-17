@@ -6,25 +6,26 @@ import { api } from './MeProvider';
 type AdminContextType = StateObj<Admin, 'Admin'> & Record<'isAdmin', boolean>;
 const BaseAdmin: AdminContextType = {
     admin: null,
-    setAdmin: () => {},
+    setAdmin: () => { },
     isAdmin: false,
 }
+
+var LastAdminRequest = new Date();
+
 const AdminContext = createContext(BaseAdmin);
+export const useAdmin = (): AdminContextType => useContext(AdminContext);
+export const useFindAdmin = () => async (username: string) => {
+    if (!username) return null;
+    else if (new Date(LastAdminRequest.getTime() + 1000 * 5).getTime() > new Date().getTime()) return null;
 
-export function useAdmin(): AdminContextType {
-    return useContext(AdminContext)
-}
-export function useFindAdmin() {
-    return async (username: string) => {
-        if (!username) return null;
+    LastAdminRequest = new Date();
 
-        const admins: Array<Admin> = await api.get('admins').catch(err => {
-            alert(err);
-            return [];
-        });
+    const admins: Array<Admin> = await api.get('admins').catch(err => {
+        alert(err);
+        return [];
+    });
 
-        return admins === undefined ? false : admins.find(admin => admin.username === username);
-    }
+    return admins?.find(admin => admin.username === username);
 }
 
 export default function AdminProvider({ children }: BaseProps) {
@@ -32,6 +33,8 @@ export default function AdminProvider({ children }: BaseProps) {
     const findAdmin = useFindAdmin();
     const [admin, setAdmin] = useState(localAdmin);
     const isAdmin = useMemo(() => admin?.username && findAdmin(admin.username) != null, [admin]);
+
+    console.trace('AdminProvider', admin, isAdmin);
 
     useEffect(() => {
         if (!isAdmin) removeLocalAdmin();

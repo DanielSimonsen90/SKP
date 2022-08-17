@@ -7,12 +7,12 @@ import myData from '../me.json'
 
 export const { email, github, phone, linkedin } = myData;
 export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, [activity]));
-export const api = new API("localhost:8081", github);
+export const api = new API("10.243.0.29:8081", github);
 const locationCollection = new LocationCollection();
 const contact = { email, phone, github, linkedin };
 const dummyMe = new Me(locationCollection, contact, dummySpareTime, api);
 
-const MeContext = createContext<UseStateReturn<Me>>([dummyMe, () => {}])
+const MeContext = createContext<UseStateReturn<Me>>([dummyMe, () => { }])
 
 export function useMyState() {
     return useContext(MeContext);
@@ -30,7 +30,8 @@ export function useSetSpareTime() {
     const spareTimeDescriptions = translate('spareTime');
     const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase()] as Array<string>;
 
-    return () => setMe(me => ({ ...me,
+    return () => setMe(me => ({
+        ...me,
         spareTime: dummySpareTime.map(({ name }) => new Item(name, description(name)))
     }) as Me)
 }
@@ -39,7 +40,7 @@ export function useSetProjects() {
     const setProjects = (projects: ProjectCollection) => setMe(me => ({ ...me, projects: projects.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime()) }) as Me);
     const [value, setValue, removeValue] = useSessionStorage('projects', new ProjectCollection(api), data => {
         const result = new ProjectCollection(api);
-        
+
         for (const entry of data) {
             const item = new Project(entry.name, {
                 ...entry,
@@ -47,7 +48,7 @@ export function useSetProjects() {
                 createdAt: new DanhoDate(entry.createdAt.year, entry.createdAt.month, entry.createdAt.day),
                 hasLink: entry.link && true
             })
-            result.add({...entry, ...item} as Project)
+            result.add({ ...entry, ...item } as Project)
         }
         return result;
     })
@@ -77,8 +78,8 @@ export function useUpsertProject() {
     const { projects } = useMe();
     const setProjects = useSetProjects();
 
-    return (project: Project) => (!projects.some(p => p._id === project._id) ? 
-        api.create('projects', project) : 
+    return (project: Project) => (!projects.some(p => p._id === project._id) ?
+        api.create('projects', project) :
         api.update('projects', project)).then(() => {
             setProjects(true)
         })
@@ -86,7 +87,7 @@ export function useUpsertProject() {
 
 export default function MeProvider({ children }: BaseProps) {
     const [me, setMe] = useState(dummyMe);
-    
+
     return (
         <MeContext.Provider value={[me, setMe]}>
             {children}

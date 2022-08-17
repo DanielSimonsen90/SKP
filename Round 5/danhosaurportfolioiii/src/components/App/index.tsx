@@ -1,4 +1,6 @@
-import { Container, createRoute, RouteConstruct, Router } from 'danholibraryrjs'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useRoutes } from 'react-router';
+
 import Navbar from '../shared/navigation/Navbar'
 import Providers from 'providers'
 import Home from '../sites/Home'
@@ -12,25 +14,29 @@ import './App.scss';
 import '../shared/scss/PageContent.scss';
 import '../shared/scss/Scrollbar.scss';
 
+export const createRoute = (path: string, element: JSX.Element) => ({ path, element });
 export type RouteProps = {
-    routes: Array<RouteConstruct>
+    routes: Map<string, JSX.Element>
 }
 
 export default function App() {
-    const routes: Array<RouteConstruct> = [
-        createRoute('plan', Plan),
-        createRoute('projects', Projects),
-        createRoute('aboutme', AboutMe),
-        createRoute('', Home),
-    ]
+    const routeMap = new Map(new Map([
+        ['', <Home />],
+        ['aboutme', <AboutMe />],
+        ['projects', <Projects />],
+        ['plan', <Plan />],
+    ]).entries()).map((value, key) => [`/${key}`, value]);
 
     return (
         <Providers>
-            <Navbar routes={routes} />
+            <Navbar routes={routeMap} />
             <main className="container page-content">
-                <Router routes={[createRoute('admin', Admin), ...routes]} className="test" />
+                <Routes>
+                    {routeMap.array().map(([path, element]) => <Route key={path} path={path} element={element} />)}
+                    <Route path="/admin/*" element={<Admin />} />
+                </Routes>
             </main>
-            <Footer routes={routes} />
+            <Footer routes={routeMap} />
         </Providers>
     )
 }

@@ -3,21 +3,24 @@ import { Admin, Project } from 'danhosaurportfolio-models';
 import { useMediaQuery, useSessionStorage } from 'danholibraryrjs';
 
 import { useLanguage, useTranslate } from 'providers/LanguageProvider';
+import { useFindAdmin } from 'providers/AdminProvider';
+
 import LinkItem from 'components/shared/navigation/LinkItem';
+import ProjectModal from 'components/sites/Admin/ProjectManagement/ProjectModal';
 
 import Bookmark from '../Bookmark';
 
 import ProjectImage from './ProjectImage';
 import ProjectLink from './ProjectLink';
 import ProjectLanguage from './ProjectLanguage';
+
 import { useLanguageColor } from './hooks/useLanguageColor';
 import useContextMenu from './hooks/useContextMenu';
+
 import './Project.scss';
-import { useFindAdmin } from 'providers/AdminProvider';
-import ProjectModal from 'components/sites/Admin/ProjectManagement/ProjectModal';
 
 type Props = {
-    project: Project
+    project: Project,
 }
 
 export default function ProjectComponent({ project }: Props) {
@@ -38,7 +41,7 @@ export default function ProjectComponent({ project }: Props) {
     ), [isAdmin]);
 
     function handleSentenceMapping(sentence: string, key: number) {
-        if (!sentence) return <br key={`${project.name}-${key}`}/>;
+        if (!sentence) return <br key={`${project.name}-${key}`} />;
         else if (sentence.startsWith('http')) return (
             <LinkItem link={sentence} key={`${project.name}-${key}`}
                 newPage={true} children={seeMyProject}
@@ -54,7 +57,7 @@ export default function ProjectComponent({ project }: Props) {
                     <span style={{ color: languageColor, borderColor: languageColor, textShadow: `0px 1px 3px ${languageColor}` }}>{project.name}</span>
                     <Bookmark project={project} />
                 </h1>
-                <h2> 
+                <h2>
                     <time dateTime={project.createdAt.toStringReverse()}>{project.createdAt.toString()}</time>
                     {!isMicro && <span> • </span>}
                     <ProjectLanguage language={project.language} />

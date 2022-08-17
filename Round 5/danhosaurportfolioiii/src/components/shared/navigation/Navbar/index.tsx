@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import Icon from 'react-fontawesome';
-import { BaseProps, useMediaQuery, ensureSlash, classNames } from 'danholibraryrjs';
+import { BaseProps, useMediaQuery, classNames } from 'danholibraryrjs';
 
 import { useTranslate } from 'providers/LanguageProvider';
 import { useRoute } from 'providers/RouteProvider';
@@ -19,17 +19,19 @@ type Props = BaseProps & RouteProps & {
     fromFooter?: boolean
 }
 
+const ensureSlash = (str: string) => str.startsWith('/') ? str : `/${str}`;
+
 export default function Navbar({ routes, children, className, includeLogo = true, fromFooter = false, ...props }: Props) {
     const translate = useTranslate();
     const [route] = useRoute();
     const forceIcon = useMediaQuery("400");
-    const navbarRoutes = useMemo(() => routes.map(([path]) => path.substring(1)).reverse().map(path => {
+    const navbarRoutes = useMemo(() => routes.map((c, path) => [path.substring(1), c]).array().map(([path]) => {
         const isCurrentPage = route.toLowerCase() === `/${path.toLowerCase()}`;
         const title = translate(path) || translate('home');
         const link = ensureSlash(path.replaceAll(' ', '').toLowerCase() || '/');
-        
-        return <LinkItem key={path} 
-            className={isCurrentPage ? 'current-page' : null} 
+
+        return <LinkItem key={path}
+            className={isCurrentPage ? 'current-page' : null}
             title={title} link={!isCurrentPage && link} onClick={() => {
                 if (isVisible && isCurrentPage) toggleModal('hide');
             }}
