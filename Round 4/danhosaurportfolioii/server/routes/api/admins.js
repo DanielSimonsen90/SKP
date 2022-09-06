@@ -1,6 +1,6 @@
 const express = require('express');
 const mongo = require('mongodb');
-const mongoConnectionString = process.env.MONG_CONNECTION_STRING;
+const mongoConnectionString = process.env.MONGO_CONNECTION_STRING;
 const router = express.Router();
 
 const log = (message) => console.log(`%c${new Date().toLocaleTimeString()} [API]: %c${message}`, "color: lime", "%cwhite");

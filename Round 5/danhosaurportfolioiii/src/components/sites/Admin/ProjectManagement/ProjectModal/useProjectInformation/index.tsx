@@ -1,18 +1,18 @@
 import { useMemo, useState } from "react";
 import { DanhoDate, IProgrammingLanguage, ProgrammingLanguage } from "danhosaurportfolio-models";
-import { useStateOnUpdate } from "danholibraryrjs";
+import { useStateUpdate } from "danholibraryrjs";
 import { BetterOmit } from "danholibraryjs";
 
 import InfoContainer from "components/shared/container/InfoContainer";
 import FilterInputList from "components/sites/Projects/ProjectFilter/FilterInputList";
 
 import { ConstructableProps, ProjectModalHookProps, UseProjectModifyReturn } from "..";
-import Label from "../Label";
+import Label from "../Input";
 import DescriptionInput from "./DescriptionInput";
 
 type ProjectType = IProgrammingLanguage[ProgrammingLanguage];
 export type UseProjectInformationProps = BetterOmit<ConstructableProps, 
-    'collab' | 'image' | 'spareTime' | 'baseLink' | 'hasLink'
+    'collab' | 'image' | 'spareTime' | 'link'
 >
 
 export default function useProjectInformation({ project }: ProjectModalHookProps): UseProjectModifyReturn<UseProjectInformationProps> {
@@ -51,18 +51,21 @@ export default function useProjectInformation({ project }: ProjectModalHookProps
         </InfoContainer>
     )
 
-    const didChange = useStateOnUpdate(false, () => {
-        if (!project) return true;
+    const didChange = useStateUpdate(false, {
+        after: () => {}, // TODO: Remove once library is updated
+        before: () => {
+            if (!project) return true;
 
-        return (
-            project.name !== name || 
-            project.display !== display ||
-            project.language !== language ||
-            project.projectType !== projectType ||
-            project.createdAt.getTime() !== createdAtTimestamp ||
-            project.description.Dansk.some((sentence, i) => dansk[i] !== sentence) || 
-            project.description.English.some((sentence, i) => english[i] !== sentence)
-        )
+            return (
+                project.name !== name || 
+                project.display !== display ||
+                project.language !== language ||
+                project.projectType !== projectType ||
+                project.createdAt.getTime() !== createdAtTimestamp ||
+                project.description.Dansk.some((sentence, i) => dansk[i] !== sentence) || 
+                project.description.English.some((sentence, i) => english[i] !== sentence)
+            )
+        } 
     }, [name, display, language, projectType, createdAtTimestamp, dansk, english]);
 
     return [ProjectModalInformation, didChange, {

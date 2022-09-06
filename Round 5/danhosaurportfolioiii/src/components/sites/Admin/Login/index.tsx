@@ -7,13 +7,13 @@ import './Login.scss';
 
 export default function Login() {
     const [username, setUsername, isValid] = useStateWithValidation(
-        v => v && /\w+#\d{4}/g.test(v),
+        v => v ? /\w+#\d{4}/g.test(v) : false,
         ""
     )
     const [isLogginIn, setIsLogginIn] = useState(false);
     const { isAdmin, setAdmin } = useAdmin();
     const redirect = useRedirect();
-    const [toggleModal] = useModal(null);
+    const [toggleModal] = useModal(undefined);
 
     const resetForm = () => {
         setIsLogginIn(false);

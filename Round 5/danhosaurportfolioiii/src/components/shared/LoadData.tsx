@@ -16,10 +16,11 @@ export default function LoadData<T>({ loadData, dependencies, onLoadedChanged, v
     
     const style = { display: 'flex', justifySelf: 'center' }
 
-    const errorComponent = <h1 ref={loadingProjects} style={style}>{errorMessage || translate('unableToFetch')}</h1>;
-    const loadingComponent = <h1 ref={loadingProjects} style={style}>{loadMessage || translate('loadingProjects')}...</h1>;
+    // TODO: Remove function call once library is updated
+    const errorComponent = () => <h1 ref={loadingProjects} style={style}>{errorMessage || translate('unableToFetch')}</h1>;
+    const loadingComponent = () => <h1 ref={loadingProjects} style={style}>{loadMessage || translate('loadingProjects')}...</h1>;
 
-    const [component, loading] = useLoadData(loadData, { 
+    const [component] = useLoadData(loadData, { 
         errorComponent, valueComponent, loadingComponent
      }, dependencies)
     const [loaded, setLoaded] = useState(0);
@@ -30,7 +31,7 @@ export default function LoadData<T>({ loadData, dependencies, onLoadedChanged, v
             return loadingProjects.current.textContent = translate('unableToFetch');
         }
 
-        const { textContent } = loadingProjects.current;
+        const textContent = loadingProjects.current.textContent!;
         let newValue = textContent + '.';
         if (textContent.endsWith('...')) {
             newValue = textContent.substring(0, textContent.length - 3);

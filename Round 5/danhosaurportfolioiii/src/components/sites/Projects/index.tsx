@@ -9,10 +9,14 @@ export type LanguageFilter = ProgrammingLanguage | 'all';
 export default function Projects() {
     const me = useMe();
     const setProjects = useSetProjects();
-    const valueComponent = <ProjectsContent />
+    // TODO: Remove function when library is updated
+    const Content = () => <ProjectsContent />
 
     return !me.projects.length ? (
-        <LoadData loadData={setProjects} valueComponent={valueComponent}/>
-    ) : valueComponent
+        <>
+            {/* @ts-ignore */}
+            <LoadData loadData={setProjects} valueComponent={Content}/>
+        </>
+    ) : <Content />
     
 }

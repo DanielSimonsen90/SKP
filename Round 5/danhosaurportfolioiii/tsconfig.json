@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "scss/*": ["components/shared/scss/*"],
-      "sites/*": ["components/sites/*"],
-      "providers/*": ["providers/*"]
-    },
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,7 +20,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "keyofStringsOnly": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "strict": true
   },
   "include": [
     "src"

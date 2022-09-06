@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
-import { Component } from 'danholibraryrjs';
 import { useLanguage, useTranslateFilters } from 'providers/LanguageProvider';
-import { FilterProps } from 'sites/Projects/ProjectsContent';
+import { FilterProps } from 'components/sites/Projects/ProjectsContent';
 import './FilterMenuOption.scss';
 
 export type OnFilterMenuOptionClick = (title: string) => void;

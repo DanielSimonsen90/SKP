@@ -14,7 +14,7 @@ export default function Occupation({ link = true }: Props) {
 
     const occupationString = translate('occupationString')
         .replace('$module', me.occupation)
-        .replace('$date', locationCollection.find(i => i.course === me.occupation).end.toString())
+        .replace('$date', locationCollection.find(i => i.course === me.occupation)?.end.toString() ?? 'unknown date');
 
     return <LinkItem className='occupation-string' title={occupationString} 
         link={(link && translate('plan')) || undefined} 

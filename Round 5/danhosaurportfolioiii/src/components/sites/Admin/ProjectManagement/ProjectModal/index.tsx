@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Project, IProject, ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { Button, Component, CRUD, FunctionComponent, useEnterEsc, useStateOnUpdate } from 'danholibraryrjs';
-import { BetterOmit } from 'danholibraryjs';
+import { Button, Component, CRUD, useEnterEsc, useStateUpdate } from 'danholibraryrjs';
+import { BetterOmit, TransformType } from 'danholibraryjs';
 
-import { useUpsertProject, api, github, useSetProjects } from 'providers/MeProvider';
+import { useUpsertProject, api, useSetProjects } from 'providers/MeProvider';
 import { ModalProps } from 'providers/ModalProvider';
 
 import InfoContainer from 'components/shared/container/InfoContainer';
@@ -15,12 +15,10 @@ import useProjectOptional from './useProjectOptional';
 import { ModalTitles } from '..';
 import './ProjectModal.scss';
 
-export type ConstructableProps = BetterOmit<Project & IProject<ProgrammingLanguage>, 
-    '_id' | 'toString' | 'link' | 'githubUsername'
->
+export type ConstructableProps = BetterOmit<Project & IProject<ProgrammingLanguage>, '_id' | 'toString'>;
 export type UseProjectModifyReturn<P> = [component: Component, didChange: boolean, props: P]
 export type ProjectModalProps = ModalProps & {
-    project: Project | null,
+    project: Project | undefined,
     title: ModalTitles
 }
 export type ProjectModalHookProps = BetterOmit<ProjectModalProps, 'close'>
@@ -32,20 +30,20 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
     const [ProjectOptional, optionalChanged, projectOptionalProps] = useProjectOptional({ project, title: 'Optional' });
     const projectProps = useMemo(() => {
         const { createdAt, description, display, language, name, projectType } = projectInfoProps;
-        const { collab, image, spareTime, baseLink, hasLink } = projectOptionalProps;
+        const { collab, image, spareTime, link } = projectOptionalProps;
 
         const shell = new Project(name, { 
             display, createdAt, language, projectType,
-            description, hasLink, baseLink, spareTime,
-            collab, image, githubUsername: github
+            description, link, spareTime,
+            collab, image
         });
 
-        console.log(shell);
+        // console.log(shell);
 
         return Object.assign({}, project, shell) as Project
     }, [projectInfoProps, projectOptionalProps]);
-    const propsChanged = useStateOnUpdate(false, 
-        () => Object.keys(projectProps).some(prop => {
+    const propsChanged = useStateUpdate(false, {
+        before: () => Object.keysOf(projectProps).some(prop => {
             if (!project) return true;
 
 
@@ -54,7 +52,7 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
             const propIsObj = typeof project[prop] === 'object';
             const propObjKeysUnequal = () => {
                 try {
-                    Object.keys(project[prop]).some(key => {
+                    Object.keysOf(project[prop]).some(key => {
                         if (key === 'hasLink') return false;
 
                         try {
@@ -90,36 +88,31 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
             })*/
 
             if (value) {
-                console.log('Changed properties', {
-                    booleans: {
-                        projectExists, propsUnequal, propIsObj, 
-                        propObjKeysUnequal: propObjKeysUnequal()
-                    },
-                    project: project[prop],
-                    value: projectProps[prop]
-                });
+                // console.log('Changed properties', {
+                //     booleans: {
+                //         projectExists, propsUnequal, propIsObj, 
+                //         propObjKeysUnequal: propObjKeysUnequal()
+                //     },
+                //     project: project[prop],
+                //     value: projectProps[prop]
+                // });
                 return true;
             }
             return false;
-        }), 
+        }),
+        //TODO: Remove when library is updated
+        after: () => {}
+    }, 
         [infoChanged, optionalChanged]
     );
     const upsertProject = useUpsertProject();
 
-    useEffect(() => {
-        console.log({
-            changed: { propsChanged, infoChanged, optionalChanged },
-            props: { projectProps, projectInfoProps, projectOptionalProps },
-            project
-        })
-    })
-
     const onConstruct = () => {
-        console.log(projectProps);
+        // console.log(projectProps);
         upsertProject(projectProps).then(close)
     };
 
-    if (title === 'delete') return <DeleteModal title={title} project={project} close={close} />
+    if (title === 'delete' && project) return <DeleteModal title={title} project={project} close={close} />
 
     return (
         <form action={title === 'create' ? 'post' : title === 'update' ? 'put' : title} onSubmit={e => {
@@ -142,7 +135,7 @@ export default function ProjectModal({ title, project, close }: ProjectModalProp
     )
 }
 
-function DeleteModal({ title, project, close }: ProjectModalProps) {
+function DeleteModal({ title, project, close }: TransformType<ProjectModalProps, Project | undefined, Project>) {
     const setProjects = useSetProjects();
     const loadingModal = <h1>Deleting project...</h1>;
     const deletedModal = <h1>{project.name} was deleted from the database.</h1>

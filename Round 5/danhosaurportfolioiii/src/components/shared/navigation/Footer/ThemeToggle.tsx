@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { Button, UseStateSetState, useEnterEsc, Switch } from "danholibraryrjs";
 import { ms } from "danholibraryjs";
+
 import { ToggleModal, useModal } from "providers/ModalProvider";
 import { useTranslate } from "providers/LanguageProvider";
 import { useSettings } from "providers/SettingsProvider";
+
 import './ThemeToggle.scss';
 
 type YoureBlindLanguage = {
@@ -14,7 +16,7 @@ type YoureBlindLanguage = {
 
 type YoureBlindProps = {
     showModal: ToggleModal,
-    setDarkMode: UseStateSetState<boolean>
+    setDarkMode: (darkMode: boolean) => void
 }
 function YoureBlindModal({ setDarkMode, showModal }: YoureBlindProps) {
     const onConfirm = () => {
@@ -42,7 +44,7 @@ export default function ThemeToggle({ disableModal = false }: ThemeToggleProps) 
     const [showModal] = useModal(<></>);
     
     useEffect(() => {
-        let timeout: NodeJS.Timeout = null;
+        let timeout: NodeJS.Timeout | undefined = undefined;
         document.body.classList.toggle("light", !isDark);
         if (!isDark && !disableModal) timeout = setTimeout(() => {
            showModal("show", <YoureBlindModal setDarkMode={setDarkMode} showModal={showModal} />);

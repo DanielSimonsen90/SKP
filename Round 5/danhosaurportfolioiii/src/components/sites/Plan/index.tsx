@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
-import { LocationCollection, ScheduleItem } from 'danhosaurportfolio-models';
-import { Button, useAnimationReverse, useMediaQuery, useStateOnUpdate } from 'danholibraryrjs';
+import { ScheduleItem } from 'danhosaurportfolio-models';
+import { Button, useAnimation, useMediaQuery } from 'danholibraryrjs';
 import { GetCSSProperty, Time } from 'danholibraryjs';
 
 import { useLocationCollection, useMe } from 'providers/MeProvider';
@@ -52,8 +52,8 @@ export default function Plan() {
     const locationCollection = useLocationCollection();
     const isTiny = useMediaQuery('600');
     const translate = useTranslate();
-    const addReverse = useAnimationReverse('button:last-child', 'reverse');
-    const animateReverse = useAnimationReverse('.reverse', 'animation-reverse', GetCSSProperty('--animation-time', 'number'));
+    const addReverse = useAnimation('button:last-child', 'reverse');
+    const animateReverse = useAnimation('.reverse', 'animation-reverse', GetCSSProperty('--animation-time', 'number'));
 
     const [isReverse, setIsReverse] = useState(false);
     const [planState, setPlanState] = useState<PlanStates>('future');
@@ -82,7 +82,7 @@ export default function Plan() {
     return (
         <section className="plan-page">
             <header className='presentation'>
-                <h1>{translate('educationPlanTitle')[planState]}</h1>
+                <h1>{translate('educationPlanTitle')[planState as any]}</h1>
                 <Occupation link={false} />
                 <LinkItem className='click-me' listElement={false} newPage link="Uddannelsesplan.pdf" title={translate('viewEducationPlan')} />
             </header>

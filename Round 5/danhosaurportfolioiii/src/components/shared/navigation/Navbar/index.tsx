@@ -31,8 +31,8 @@ export default function Navbar({ routes, children, className, includeLogo = true
         const link = ensureSlash(path.replaceAll(' ', '').toLowerCase() || '/');
 
         return <LinkItem key={path}
-            className={isCurrentPage ? 'current-page' : null}
-            title={title} link={!isCurrentPage && link} onClick={() => {
+            className={isCurrentPage ? 'current-page' : undefined}
+            title={title} link={!isCurrentPage ? link : undefined} onClick={() => {
                 if (isVisible && isCurrentPage) toggleModal('hide');
             }}
         />
@@ -45,7 +45,7 @@ export default function Navbar({ routes, children, className, includeLogo = true
         {children}
     </>);
 
-    const [toggleModal, isVisible] = useModal(null, false)
+    const [toggleModal, isVisible] = useModal(undefined, false)
 
     const Content = () => forceIcon ? <>
         {includeLogo && <Logo />}

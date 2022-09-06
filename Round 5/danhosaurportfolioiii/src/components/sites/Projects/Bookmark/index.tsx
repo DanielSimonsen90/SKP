@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import Icon from 'react-fontawesome';
 
 import { Project } from 'danhosaurportfolio-models';
-import { ClickEvent, useAnimationReverse } from 'danholibraryrjs';
+import { ClickEvent, useAnimation } from 'danholibraryrjs';
 import { GetCSSProperty } from 'danholibraryjs';
 
 import { useBookmarks } from 'providers/BookmarkProvider';
@@ -20,7 +20,7 @@ export default function Bookmark({ className, project }: Props) {
     const { bookmarks, add, remove } = useBookmarks();
     const isBookmarked = useMemo(() => bookmarks.some(b => b.id === project._id), [bookmarks, project]);
     const title = `${translate('bookmark')} ${translate('project').toLowerCase()}`;
-    const animate = useAnimationReverse(`span[data-project="${project._id}"]`, 'animation-reverse', GetCSSProperty('--animation-time', 'number'))
+    const animate = useAnimation(`span[data-project="${project._id}"]`, 'animation-reverse', GetCSSProperty('--animation-time', 'number'))
 
     const onClick = (e: ClickEvent) => {
         e.stopPropagation();

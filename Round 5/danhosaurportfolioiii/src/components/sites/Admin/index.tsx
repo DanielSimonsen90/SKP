@@ -25,7 +25,7 @@ export default function AdminContent() {
             {!isAdmin ? <Login /> :
                 <>
                     <Navbar routes={routeMap} includeLogo={false} className='admin-nav'>
-                        <Button importance='tertiary' crud="delete" iconName='sign-out' onClick={() => setAdmin(null)} value='Logout' />
+                        <Button importance='tertiary' crud="delete" iconName='sign-out' onClick={() => setAdmin(undefined)} value='Logout' />
                     </Navbar>
                     <Routes>
                         {routeMap.array().map(([path, element]) => <Route key={path} path={path.substring('/admin'.length)} element={element} />)}

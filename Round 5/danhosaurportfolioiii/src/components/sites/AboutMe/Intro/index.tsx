@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useEffectOnce } from 'danholibraryrjs';
-import { Project } from 'danhosaurportfolio-models';
+import { IProgrammingLanguage, Project } from 'danhosaurportfolio-models';
 import { useTranslate, useTranslateProgrammingLanguages } from 'providers/LanguageProvider';
 import { useMe, useSetProjects } from 'providers/MeProvider';
 import InfoContainer from 'components/shared/container/InfoContainer';
@@ -14,7 +14,7 @@ const { favoriteLanguage, favoriteProjects: favoriteProjectNames } = myData;
 export default function Intro() {
     const me = useMe();
     const setProjects = useSetProjects();
-    const [experienceLanguages, setExperienceLanguages] = useState(new Array<string>());
+    const [experienceLanguages, setExperienceLanguages] = useState(new Array<keyof IProgrammingLanguage>());
     const [favoriteProjects, setFavoriteProjects] = useState(new Array<Project | string>());
 
     const translate = useTranslate();
@@ -36,7 +36,7 @@ export default function Intro() {
                 setExperienceLanguages(() => me.projects.map(p => p.language).reduce((result, lang) => {
                     if (!result.includes(lang) && lang !== favoriteLanguage) result.push(lang);
                     return result;
-                }, new Array<string>()).sort())
+                }, new Array<keyof IProgrammingLanguage>()).sort())
                 setFavoriteProjects(() => {
                     const result = new Array<Project>();
                     for (const item of data) {
@@ -48,7 +48,7 @@ export default function Intro() {
                 })
             })
             .catch(() => {
-                setExperienceLanguages([translate('unableToFetch')]);
+                setExperienceLanguages([translate('unableToFetch') as any]);
                 setFavoriteProjects([translate('unableToFetch')]);
             })
     })

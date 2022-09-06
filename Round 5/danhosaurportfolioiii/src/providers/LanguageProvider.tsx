@@ -1,5 +1,5 @@
 import { ProgrammingLanguage } from 'danhosaurportfolio-models';
-import { FilterData } from 'sites/Projects/ProjectsContent';
+import { FilterData } from 'components/sites/Projects/ProjectsContent';
 import data from '../languages.json';
 import { useSettings } from './SettingsProvider';
 
@@ -32,7 +32,7 @@ export function useTranslateFilters<Reverse extends boolean = false>(reverse: Re
 
     const values = Object.keys(filter);
     const props = Object.values(filter).map(v => v.title);
-    return props.reduce((result, prop, i) => {
+    return props.reduce<Record<string, string>>((result, prop, i) => {
         result[prop] = values[i];
         return result;
     }, {}) as UseTranslateFiltersReturn<Reverse>

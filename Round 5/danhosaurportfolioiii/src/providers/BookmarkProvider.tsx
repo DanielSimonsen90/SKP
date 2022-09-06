@@ -13,8 +13,8 @@ type BookmarkManager = {
 
 const BookmarksContext = createContext<BookmarkManager>({
     bookmarks: new Array<Bookmark>(),
-    add: () => null,
-    remove: () => null
+    add: () => [],
+    remove: () => []
 });
 
 export function useBookmarks() {

@@ -16,7 +16,7 @@ export type ModalTitles = 'create' | 'update' | 'delete' | string;
 export default function ProjectManagement() {
     const { projects } = useMe();
     const close = () => toggleModal('hide');
-    const [toggleModal] = useModal(<ProjectModal title="create" project={null} close={close} />)
+    const [toggleModal] = useModal(<ProjectModal title="create" project={undefined} close={close} />)
     const openModal = (title: ModalTitles, project?: Project) => {
         toggleModal('show', <ProjectModal project={project} title={title} close={close} />)
     }

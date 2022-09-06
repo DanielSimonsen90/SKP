@@ -30,6 +30,7 @@ export default function ProjectContainer({
             !filter ||
             !Object.array(filter).length || 
             Object.array(filter).every(([prop, value]) => (
+                // @ts-ignore
                 p[prop] === value || 
                 (prop === 'occupation' && me.projects.locations.get(value as PlanLocation)?.includes(p)) ||
                 (prop === 'before' && value instanceof Date && p.createdAt.getTime() <= value.getTime()) ||
@@ -46,15 +47,16 @@ export default function ProjectContainer({
     useEffectOnce(() => { if (!me.projects.length) setProjects(); });
 
     return (
-        <section className={classNames('project-container', !projects.length && 'no-projects')} 
+        <section className={classNames('project-container', !projects.length ? 'no-projects' : undefined)} 
             data-render-cards={renderCards} 
         >
             {(projects.length && projects.map(p => 
                 !renderCards ? 
                     <ProjectComponent project={p} key={`${p.name}_${p._id}`} /> :
-                    <ProjectCard project={p} key={`${p.name}_${p._id}`} allowCrud={allowCrud}
-                        onUpdate={onProjectUpdate} onDelete={onProjectDelete}
-                    />
+                    onProjectUpdate && onProjectDelete && 
+                        <ProjectCard project={p} key={`${p.name}_${p._id}`} allowCrud={allowCrud}
+                            onUpdate={onProjectUpdate} onDelete={onProjectDelete}
+                        />
                 )) || <h1>{translate(me.projects.length ? 'noProjects' : 'unableToFetch')}</h1>
             }
         </section>

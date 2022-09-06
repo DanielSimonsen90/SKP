@@ -24,7 +24,7 @@ export default function RouteProvider({ children }: BaseProps) {
         const routeName = route.split('/').pop() || 'home';
         const content = `${translate(routeName)} - DanhosaurPortfolio`;
         metaTitle.setAttribute('content', content);
-        document.querySelector('title').textContent = content;
+        document.querySelector('title')!.textContent = content;
     }, [route])
 
     return (

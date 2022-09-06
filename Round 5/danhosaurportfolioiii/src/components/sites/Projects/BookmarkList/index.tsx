@@ -22,7 +22,7 @@ export default function BookmarkList({ onClick }: Props) {
             <h1>{translate('bookmarks')}</h1>
             {bookmarks.map(bookmark => (
                 <div className='bookmark-list-item' key={bookmark.id}>
-                    <Bookmark project={bookmarkProjects.find(p => p._id === bookmark.id)} />
+                    <Bookmark project={bookmarkProjects.find(p => p._id === bookmark.id)!} />
                     <LinkItem title={bookmark.name} link={`#${bookmark.name}`} />
                 </div>
             ))}

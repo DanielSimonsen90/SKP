@@ -27,7 +27,7 @@ export default function ProjectComponent({ project }: Props) {
     const [language] = useLanguage();
     const translate = useTranslate();
     const isMicro = useMediaQuery("400");
-    const [admin] = useSessionStorage<'admin', Admin>('admin', null);
+    const [admin] = useSessionStorage<'admin', Admin | undefined>('admin', undefined);
     const findAdmin = useFindAdmin();
     const isAdmin = useMemo(() => admin?.username && findAdmin(admin.username) != null, [admin]);
 
@@ -38,7 +38,7 @@ export default function ProjectComponent({ project }: Props) {
     const languageColor = useLanguageColor(project.language, 'mix');
     useContextMenu(`[data-project-id="${project._id}"]`, ({ visible, toggle }) => (
         <ProjectModal close={() => visible && toggle('hide')} project={project} title='update' />
-    ), [isAdmin]);
+    ), [Boolean(isAdmin)]);
 
     function handleSentenceMapping(sentence: string, key: number) {
         if (!sentence) return <br key={`${project.name}-${key}`} />;

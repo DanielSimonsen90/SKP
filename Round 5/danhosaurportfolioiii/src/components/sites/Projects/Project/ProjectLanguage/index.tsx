@@ -9,6 +9,7 @@ type Props = {
 
 export default function ProjectLanguage({ language }: Props) {
     const translate = useTranslateProgrammingLanguages();
+    // @ts-ignore
     const iconName = (translate.unformat[language.replace('.js', '')] || language.replace('.js', ''))?.toLowerCase();
     const isNano = useMediaQuery("300");
 

@@ -64,7 +64,7 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
                         onClick={() => (
                             onOptionValueSelected(
                                 new DanhoDate(new Date(
-                                    document.querySelector<HTMLInputElement>('input[type=date]').value
+                                    document.querySelector<HTMLInputElement>('input[type=date]')!.value
                                 )).toString()
                             )
                         )}
@@ -73,7 +73,9 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
             ])))
             .filter(([key]) => {
                     if (internalValue.split(':').some(v => (
+                    // @ts-ignore
                     translateFilter[key].title.includes(v) &&
+                    // @ts-ignore
                     translateFilter[key].title.includes(`${v}:`)
                 ))) {
                     // console.log({ condition: "internalValue.split(':').some(v => translate[key].title.includes(v) && translate[key].title !== v)",
@@ -81,6 +83,7 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
                     // });
                     return true;
                 }
+                // @ts-ignore
                 else if (internalValue.includes(':') && !filter[key]) {
                     // console.log({ condition: "!filter[key]", filter, key });
                     return true;
@@ -102,7 +105,7 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
         return new FilterOptionCollection(filterOptions);
     }, [filter, internalValue]);
 
-    const [options, setOptions] = useState<Arrayable<Component>>(filterOptions.options);
+    const [options, setOptions] = useState<Arrayable<Component> | null>(filterOptions.options);
 
     useEffect(() => {
         if (!value || !value.endsWith(':')) setOptions(filterOptions.options);
@@ -122,7 +125,7 @@ export default function useFilterOptions(props: UseFitlerOptionsProps) {
 
         try {
             const item = filterOptions.items.find(i => i.key === key);
-            setOptions(item.component)
+            setOptions(item?.component ?? null);
         }
         catch (err) {
             console.warn(err);

@@ -7,7 +7,7 @@ import myData from '../me.json'
 
 export const { email, github, phone, linkedin } = myData;
 export const dummySpareTime = ["Discord", "Overwatch", "FruityLoops Studio"].map(activity => new Item(activity, [activity]));
-export const api = new API("10.243.0.29:8081", github);
+export const api = new API("localhost:8081", github);
 const locationCollection = new LocationCollection();
 const contact = { email, phone, github, linkedin };
 const dummyMe = new Me(locationCollection, contact, dummySpareTime, api);
@@ -28,7 +28,7 @@ export function useSetSpareTime() {
     const [me, setMe] = useMyState();
     const translate = useTranslate<Record<'discord' | 'overwatch' | 'flstudio', Array<string>>>();
     const spareTimeDescriptions = translate('spareTime');
-    const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase()] as Array<string>;
+    const description = (name: string) => spareTimeDescriptions[name.replaceAll(' ', '').toLowerCase() as keyof typeof spareTimeDescriptions] as Array<string>;
 
     return () => setMe(me => ({
         ...me,
@@ -44,9 +44,7 @@ export function useSetProjects() {
         for (const entry of data) {
             const item = new Project(entry.name, {
                 ...entry,
-                githubUsername: github,
                 createdAt: new DanhoDate(entry.createdAt.year, entry.createdAt.month, entry.createdAt.day),
-                hasLink: entry.link && true
             })
             result.add({ ...entry, ...item } as Project)
         }
@@ -80,9 +78,8 @@ export function useUpsertProject() {
 
     return (project: Project) => (!projects.some(p => p._id === project._id) ?
         api.create('projects', project) :
-        api.update('projects', project)).then(() => {
-            setProjects(true)
-        })
+        api.update('projects', project)
+    ).then(() => setProjects(true));
 }
 
 export default function MeProvider({ children }: BaseProps) {

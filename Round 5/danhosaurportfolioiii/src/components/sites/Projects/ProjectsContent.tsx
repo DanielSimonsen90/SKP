@@ -11,10 +11,10 @@ import { useSettings } from 'providers/SettingsProvider';
 
 export type FilterProps = {
     filter: FilterData,
-    setFilter: UseStateSetState<FilterData>,
+    setFilter: (UseStateSetState<FilterData>),
     optionResets: number,
     renderCards: boolean,
-    setRenderCards: UseStateSetState<boolean>
+    setRenderCards: (value: boolean | undefined) => void
 }
 export type FilterData = {
     name?: string,
@@ -41,6 +41,7 @@ export default function ProjectsContent() {
         }
         if (search) {
             const queryData = search.substring(1).split('&').map(v => v.split('=')).reduce((obj, [prop, value]) => {
+                // @ts-ignore
                 obj[prop] = translateLanguage[value] || value;
                 return obj;
             }, {} as FilterData);

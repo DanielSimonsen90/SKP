@@ -19,9 +19,9 @@ type ProjectImageChangeableProps = {
 }
 
 function ProjectImageChangeable({ src = "", setSrc, prefixSrc }: ProjectImageChangeableProps) {
-    const [image, setImage] = useState<string | ArrayBuffer>(src);
+    const [image, setImage] = useState<string | ArrayBuffer | null>(src);
     const [loading, setLoading] = useState(false);
-    const [file, setFile] = useState<File>(null);
+    const [file, setFile] = useState<File | null | undefined>(null);
 
     useDeepCompareEffect(() => { 
         if (image) {
@@ -35,7 +35,7 @@ function ProjectImageChangeable({ src = "", setSrc, prefixSrc }: ProjectImageCha
     const inputRef = useRef<HTMLInputElement>();
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.stopPropagation();
-        setFile(e.target.files[0]);
+        setFile(e.target.files?.[0]);
     };
     const loadData = () => new Promise(resolve => {
         const reader = new FileReader();
@@ -46,18 +46,21 @@ function ProjectImageChangeable({ src = "", setSrc, prefixSrc }: ProjectImageCha
                 resolve(reader.result);
             }
         }
-        reader.readAsDataURL(file);
+        if (file) reader.readAsDataURL(file);
     });
 
+    // TODO: Fixed in library update
+    // @ts-ignore
     if (loading) return <LoadData loadData={loadData} />
 
-    return (<>
+    return (<>  
+        {/* @ts-ignore -- For some reason inputRef should be null and not undefined */}
         <input ref={inputRef} style={{ display: 'none' }} type="file" id="project-image-change" onChange={onChange} onClick={e => e.stopPropagation()} />
         <ButtonContainer>
             <Button className="project-image-changeable" importance="secondary" crud="create" iconName="upload" onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
-                inputRef.current.click();
+                inputRef.current?.click();
             }}>Upload</Button>
             <Button className="project-image-changeable" importance="secondary" crud="delete" onClick={e => {
                 e.stopPropagation();
@@ -93,7 +96,7 @@ export default function ProjectImage({ project, src: baseSrc, onSrcChange, chang
     if (!src || src === prefixSrc('[object Object]')) return (
         <ImageContainer className={classNames('no-image', className)}>
             <p className="project-image">{translate('noImage')}</p>
-            {changable && <ProjectImageChangeable src={src} setSrc={setSrc} prefixSrc={prefixSrc} />}
+            {changable ? <ProjectImageChangeable src={src} setSrc={setSrc} prefixSrc={prefixSrc} /> : null}
         </ImageContainer>
     );
 
@@ -105,7 +108,7 @@ export default function ProjectImage({ project, src: baseSrc, onSrcChange, chang
                 onKeyDown={e => (e.key === 'Enter' || e.key === 'NumpadEnter') && modalable && toggleModal('show')}
                 {...props} 
             />
-            {changable && <ProjectImageChangeable src={src} setSrc={setSrc} prefixSrc={prefixSrc} />}
+            {changable ? <ProjectImageChangeable src={src} setSrc={setSrc} prefixSrc={prefixSrc} /> : null}
         </ImageContainer>
     )
 }

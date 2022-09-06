@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
@@ -22,8 +24,8 @@ app.use(`${prefix}/api/projects/:id`, require('./routes/api/projects'));
 app.use(`${prefix}/api/admins`, require('./routes/api/admins'));
 // app.use(`${prefix}/postProjects`, require('./runProjects'))
 
-require('dotenv').config();
 const port = process.env.PORT || 8081;
+console.log(process.env.MONGO_CONNECTION_STRING);
 app.listen(port, () => console.log(`Server started on port ${port}!`));
 
 module.exports = app;

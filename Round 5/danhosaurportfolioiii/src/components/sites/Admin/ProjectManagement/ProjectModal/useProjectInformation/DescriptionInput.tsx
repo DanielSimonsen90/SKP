@@ -1,10 +1,10 @@
 import { useTranslationObj } from "providers/LanguageProvider";
-import { InputProps } from "../Label";
+import { InputProps } from "../Input";
 
 export type DescriptionInputProps = Omit<InputProps<string, 'text'>, 'type'>;
 export default function DescriptionInput({ title, value, onChange }: DescriptionInputProps) {
     const data = useTranslationObj();
-    const language = title.split(': ')[1];
+    const language = title.split(': ')[1] as keyof typeof data;
     
     return (
         <label>
