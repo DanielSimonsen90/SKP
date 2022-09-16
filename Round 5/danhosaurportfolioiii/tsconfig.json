@@ -21,7 +21,6 @@
     "jsx": "react-jsx",
     "keyofStringsOnly": true,
     "downlevelIteration": true,
-    "strict": true
   },
   "include": [
     "src"

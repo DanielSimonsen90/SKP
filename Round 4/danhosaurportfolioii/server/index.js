@@ -25,7 +25,6 @@ app.use(`${prefix}/api/admins`, require('./routes/api/admins'));
 // app.use(`${prefix}/postProjects`, require('./runProjects'))
 
 const port = process.env.PORT || 8081;
-console.log(process.env.MONGO_CONNECTION_STRING);
 app.listen(port, () => console.log(`Server started on port ${port}!`));
 
 module.exports = app;

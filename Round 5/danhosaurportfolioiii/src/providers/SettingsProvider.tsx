@@ -1,5 +1,6 @@
+import { Store } from 'danholibraryjs'
 import { BaseProps, useLocalStorage } from "danholibraryrjs";
-import { createContext, useCallback, useContext, useMemo } from "react"
+import { createContext, useCallback, useContext } from "react"
 import { SupportedLanguages } from "./LanguageProvider"
 
 type Settings = {
@@ -8,6 +9,13 @@ type Settings = {
     preferCards: boolean,
     animations: boolean,
 }
+const DEFAULT_SETTINGS: Settings = {
+    darkmode: true, 
+    language: "English", 
+    preferCards: false, 
+    animations: true
+}
+
 type SettingsContextType = [Settings, (type: ActionTypes, payload: Partial<Settings>) => Settings];
 const SettingsContext = createContext<SettingsContextType>([
     { darkmode: true, language: "English", preferCards: false, animations: true },
@@ -17,7 +25,7 @@ const SettingsContext = createContext<SettingsContextType>([
 type ActionTypes = "set" | "reset";
 function SettingsReducer(settings: Settings, type: ActionTypes, payload: Partial<Settings>) {
     switch (type) {
-        case "set": return { ...settings, ...payload };
+        case "set": 
         case "reset": return { ...settings, ...payload };
         default: return settings;
     }
@@ -30,8 +38,7 @@ export function useSettings<Setting extends keyof Settings>(setting: Setting): U
 }
 
 export default function SettingsProvider({ children }: BaseProps) {
-    const defaultSettings = useMemo<Settings>(() => ({ darkmode: true, language: "English", preferCards: false, animations: true }), []);
-    const [settings, setSettings] = useLocalStorage<"settings", Settings>("settings", defaultSettings);
+    const [settings, setSettings] = useLocalStorage<"settings", Settings>("settings", DEFAULT_SETTINGS);
     const dispatch = useCallback((type: ActionTypes, payload: Partial<Settings>) => {
         setSettings(s => SettingsReducer(s, type, payload));
         return settings;

@@ -1,27 +1,32 @@
-import { createRef, DependencyList, useState, useEffect } from 'react';
+import { createRef, DependencyList, useState, useEffect, CSSProperties } from 'react';
 import { useEffectOnce, useLoadData, UseLoadDataProps } from 'danholibraryrjs';
 import { useTranslate } from 'providers/LanguageProvider';
 
 type Props<T> = Omit<UseLoadDataProps<T>, 'loadingComponent' | 'errorComponent'> & {
     loadData(): Promise<T>;
+    condition?: boolean;
     dependencies?: DependencyList;
     onLoadedChanged?: (loaded: number) => void;
     loadMessage?: string
     errorMessage?: string
 }
 
-export default function LoadData<T>({ loadData, dependencies, onLoadedChanged, valueComponent, loadMessage, errorMessage }: Props<T>) {
+export default function LoadData<T>({ 
+    loadData, 
+    condition, dependencies, 
+    onLoadedChanged, 
+    loadMessage, errorMessage,
+    ...loadDataProps
+}: Props<T>) {
     const loadingProjects = createRef<HTMLHeadingElement>();
     const translate = useTranslate();
     
-    const style = { display: 'flex', justifySelf: 'center' }
+    const style: CSSProperties = { display: 'flex', justifySelf: 'center' }
+    const errorComponent = <h1 ref={loadingProjects} style={style}>{errorMessage || translate('unableToFetch')}</h1>;
+    const loadingComponent = <h1 ref={loadingProjects} style={style}>{loadMessage || translate('loadingProjects')}...</h1>;
 
-    // TODO: Remove function call once library is updated
-    const errorComponent = () => <h1 ref={loadingProjects} style={style}>{errorMessage || translate('unableToFetch')}</h1>;
-    const loadingComponent = () => <h1 ref={loadingProjects} style={style}>{loadMessage || translate('loadingProjects')}...</h1>;
-
-    const [component] = useLoadData(loadData, { 
-        errorComponent, valueComponent, loadingComponent
+    const [Component] = useLoadData(condition && loadData, { 
+        errorComponent, loadingComponent, ...loadDataProps
      }, dependencies)
     const [loaded, setLoaded] = useState(0);
     const timeout = setTimeout(() => {
@@ -43,5 +48,5 @@ export default function LoadData<T>({ loadData, dependencies, onLoadedChanged, v
     useEffect(() => { onLoadedChanged?.(loaded); }, [loaded])
     useEffectOnce(() => () => clearTimeout(timeout))
 
-    return component;
+    return <Component />;
 }
