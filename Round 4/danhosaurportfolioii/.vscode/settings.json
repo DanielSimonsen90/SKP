@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/3e7da919-fe2d-4147-a17b-4e8ff1a9ecc4/resourceGroups/AzurePortfolio/providers/Microsoft.Web/sites/DanhosaurPortfolioii",
-    "appService.deploySubpath": "."
-}
