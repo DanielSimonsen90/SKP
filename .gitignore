@@ -1,4 +1,12 @@
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
-Round 5/Greenhouse
+# Any visual studio file generated
+.vs 
+
+# Private env files should not be public 
+.env 
+
+# Never include node_modules in a project
+node_modules 
+
+# SKP group projects managed in Azure DevOps
+Round 5/Greenhouse 
 Round 5/Harmony
