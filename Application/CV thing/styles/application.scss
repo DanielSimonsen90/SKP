@@ -1,0 +1,34 @@
+#application {
+    display: grid;
+    grid-template-areas:
+        "application sparetime"
+        "application why-me";
+    gap: 1em;
+
+    --margin: 2em;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+
+    article:first-child {
+        grid-area: application;
+    }
+}
+
+.paper:has(#application) header {
+    gap: 2ch;
+}
+
+.mvh {
+    flex-direction: column;
+    gap: unset;
+
+    span {
+        --margin: 2rem;
+        margin-top: var(--margin);
+        margin-bottom: unset;
+
+        &:last-child {
+            margin-top: calc(1rem + var(--margin));
+        }
+    }
+}

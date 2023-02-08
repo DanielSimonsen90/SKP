@@ -1,0 +1,27 @@
+.paper {
+  background: var(--background);
+  width: 210mm;
+  height: 297mm;
+}
+
+.pfp {
+  --size: 5em;
+  border-radius: 50%;
+  height: var(--size);
+  width: var(--size);
+  background-image: url("/images/pfp.jpg");
+  background-size: cover;
+}
+
+.progress {
+  border-radius: 2em;
+  height: 0.5rem;
+  width: 100%;
+  background: #c07705;
+}
+.progress .value {
+  background-color: var(--accent);
+  border-radius: 2em;
+  height: 100%;
+  box-shadow: 0.5rem 0 10px 0 rgba(0, 0, 0, 0.5);
+}

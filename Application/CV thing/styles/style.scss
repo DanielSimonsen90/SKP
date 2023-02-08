@@ -1,0 +1,30 @@
+.paper {
+    background: var(--background);
+    // Container should be the size of an A4 page
+    width: 210mm;
+    height: 297mm;
+}
+
+.pfp {
+    --size: 5em;
+    border-radius: 50%;
+    height: var(--size);
+    width: var(--size);
+
+    background-image: url('/images/pfp.jpg');
+    background-size: cover;
+}
+
+.progress {
+    border-radius: 2em;
+    height: .5rem;
+    width: 100%;
+    background: darken(#FAB54B, 25%);
+
+    .value {
+        background-color: var(--accent);
+        border-radius: 2em;
+        height: 100%;
+        box-shadow: .5rem 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+}
