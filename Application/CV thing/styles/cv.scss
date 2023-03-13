@@ -1,0 +1,87 @@
+.hero-header {
+    background-image: url('/images/code.png');
+    background-size: cover;
+    background-position: center;
+
+    display: grid;
+    place-items: center;
+
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    height: 20vh;
+
+    .pfp {
+        --size: 12.5em;
+    }
+}
+
+#info {
+    display: grid;
+    gap: 2em;
+}
+
+#abilities {
+    display: flex;
+    justify-content: space-between;
+
+    .ability {
+        display: flex;
+        flex-direction: column;
+        gap: 1ch;
+    }
+}
+
+.bar {
+    display: grid;
+    gap: .5ch;
+}
+
+.lang {
+    display: flex;
+    align-items: center;
+    gap: .5ch;
+}
+
+.content {
+    margin-top: .5em;
+}
+
+#hobbies .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5em 1em;
+
+    header {
+        grid-area: header;
+    }
+}
+
+#projects .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1em;
+}
+
+#education {
+    display: grid;
+    max-width: max-content;
+    place-items: center;
+    margin: 0 auto;
+
+    table.content,
+    tbody {
+        display: grid;
+        gap: .5em;
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+
+        td,
+        th {
+            color: var(--color);
+        }
+    }
+}
