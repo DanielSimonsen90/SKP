@@ -1,4 +1,3 @@
-import { Store } from 'danholibraryjs'
 import { BaseProps, useLocalStorage } from "danholibraryrjs";
 import { createContext, useCallback, useContext } from "react"
 import { SupportedLanguages } from "./LanguageProvider"

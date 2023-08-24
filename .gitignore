@@ -1,5 +1,5 @@
 # Any visual studio file generated
-.vs 
+.vs
 
 # Private env files should not be public 
 .env 
@@ -10,3 +10,4 @@ node_modules
 # SKP group projects managed in Azure DevOps
 Round 5/Greenhouse 
 Round 5/Harmony
+Round 6/DCH
