@@ -6,6 +6,8 @@
 :root {
   --brand: #FF5E00;
   --color: #EEE;
+  --link-color: #d9e2fd;
+  --muted: #bbb;
   --background: #333;
   --accent: #FAB54B;
 }
@@ -13,7 +15,7 @@
 body {
   background: black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-family: arial, sans-serif;
@@ -68,6 +70,7 @@ p, a {
 
 a {
   text-decoration: none;
+  color: var(--link-color);
 }
 
 span {

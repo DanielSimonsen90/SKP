@@ -1,17 +1,25 @@
 #application {
   display: grid;
-  grid-template-areas: "application sparetime" "application why-me";
+  grid-template-areas: "application sparetime" "why-me sparetime";
   gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
   --margin: 2em;
   margin-top: var(--margin);
-  margin-bottom: var(--margin);
+  margin-bottom: calc(var(--margin) * 2);
 }
 #application article:first-child {
   grid-area: application;
 }
+#application article:last-child {
+  grid-area: sparetime;
+}
 
 .paper:has(#application) header {
   gap: 2ch;
+}
+
+#presentation p {
+  color: var(--muted);
 }
 
 .mvh {
