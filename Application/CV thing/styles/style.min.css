@@ -9,7 +9,7 @@
   border-radius: 50%;
   height: var(--size);
   width: var(--size);
-  background-image: url("/images/pfp.jpg");
+  background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png"), url("https://candeno-uploads.s3-dk6.clu1.obj.storagefactory.io/material-cv-images/zKBfLtYJPeAcNohtfp4371a97LsRRnJQ8ia5k9Js.png");
   background-size: cover;
 }
 

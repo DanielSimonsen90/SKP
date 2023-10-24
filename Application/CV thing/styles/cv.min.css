@@ -1,5 +1,5 @@
 .hero-header {
-  background-image: url("/images/code.png");
+  background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/code.png");
   background-size: cover;
   background-position: center;
   display: grid;
@@ -8,7 +8,7 @@
   height: 20vh;
 }
 .hero-header .pfp {
-  --size: 12.5em;
+  --size: 10em;
 }
 
 #info {
