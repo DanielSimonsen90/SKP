@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
 
     <style id="global">
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             position: relative;
         }
@@ -18,6 +20,8 @@
         :root {
             --brand: #FF5E00;
             --color: #EEE;
+            --link-color: #d9e2fd;
+            --muted: #bbb;
             --background: #333;
             --accent: #FAB54B;
         }
@@ -25,6 +29,7 @@
         body {
             background: black;
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             font-family: arial, sans-serif;
@@ -45,18 +50,27 @@
             display: flex;
             justify-content: space-between;
         }
+
         nav i {
             color: var(--color);
         }
 
-        h1, h2, h3, p {
+        h1,
+        h2,
+        h3,
+        p {
             margin: 0;
         }
-        h1, h2, h3 {
+
+        h1:not(p),
+        h2:not(p),
+        h3:not(p),
+        p:not(p) {
             text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             color: var(--brand);
         }
 
@@ -70,7 +84,8 @@
             margin-bottom: 0.75ch;
         }
 
-        p, a {
+        p,
+        a {
             display: flex;
             font-size: 1rem;
             color: var(--color);
@@ -79,6 +94,7 @@
 
         a {
             text-decoration: none;
+            color: var(--link-color);
         }
 
         span {
@@ -122,9 +138,12 @@
             display: flex;
             flex-direction: column;
         }
-        article p, article a {
+
+        article p,
+        article a {
             display: initial;
         }
+
         article a {
             text-decoration: underline;
         }
@@ -153,6 +172,7 @@
             width: 100%;
             background: #c07705;
         }
+
         .progress .value {
             background-color: var(--accent);
             border-radius: 2em;
@@ -163,29 +183,41 @@
     <style id="application">
         #application {
             display: grid;
-            grid-template-areas: "application sparetime" "application why-me";
+            grid-template-areas: "application sparetime" "why-me sparetime";
             gap: 1em;
+            grid-template-columns: repeat(2, 1fr);
             --margin: 2em;
             margin-top: var(--margin);
-            margin-bottom: var(--margin);
+            margin-bottom: calc(var(--margin) * 2);
         }
+
         #application article:first-child {
             grid-area: application;
         }
 
+        #application article:last-child {
+            grid-area: sparetime;
+        }
+
         .paper:has(#application) header {
-        gap: 2ch;
+            gap: 2ch;
+        }
+
+        #presentation p {
+            color: var(--muted);
         }
 
         .mvh {
             flex-direction: column;
             gap: unset;
         }
+
         .mvh span {
             --margin: 2rem;
             margin-top: var(--margin);
             margin-bottom: unset;
         }
+
         .mvh span:last-child {
             margin-top: calc(1rem + var(--margin));
         }
@@ -200,8 +232,9 @@
             box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
             height: 20vh;
         }
+
         .hero-header .pfp {
-            --size: 10em;
+            --size: 12.5em;
         }
 
         #info {
@@ -213,6 +246,7 @@
             display: flex;
             justify-content: space-between;
         }
+
         #abilities .ability {
             display: flex;
             flex-direction: column;
@@ -239,6 +273,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5em 1em;
         }
+
         #hobbies .content header {
             grid-area: header;
         }
@@ -252,24 +287,27 @@
 
         #education {
             display: grid;
-            max-width: -webkit-max-content;
             max-width: -moz-max-content;
             max-width: max-content;
             place-items: center;
             margin: 0 auto;
         }
+
         #education table.content,
         #education tbody {
             display: grid;
             gap: 0.5em;
         }
+
         #education tr {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1em;
         }
+
         #education tr td,
         #education tr th {
+            text-align: left;
             color: var(--color);
         }
     </style>

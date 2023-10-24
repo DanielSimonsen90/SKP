@@ -59,7 +59,6 @@
 
 #education {
   display: grid;
-  max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
   place-items: center;
@@ -77,5 +76,6 @@
 }
 #education tr td,
 #education tr th {
+  text-align: left;
   color: var(--color);
 }
