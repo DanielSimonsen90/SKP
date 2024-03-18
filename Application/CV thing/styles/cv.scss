@@ -6,7 +6,7 @@
     display: grid;
     place-items: center;
 
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    // box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
     height: 20vh;
 
     .pfp {
@@ -14,14 +14,37 @@
     }
 }
 
+
+#socials a {
+    text-decoration: none;
+}
+
 #info {
     display: grid;
-    gap: 2em;
+    gap: 1em;
 }
 
 #abilities {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas:
+        "skills education info"
+        "skills languages info";
+    gap: 1em;
+
+    $areas: (
+        skills,
+        education,
+        languages,
+        info
+    );
+
+    @each $area in $areas {
+        $index: index($areas, $area);
+
+        .ability:nth-child(#{$index}) {
+            grid-area: $area;
+        }
+    }
 
     .ability {
         display: flex;
@@ -65,24 +88,13 @@
 #education {
     display: grid;
     max-width: max-content;
-    place-items: center;
     margin: 0 auto;
 
-    table.content,
-    tbody {
+    p {
         display: grid;
-        gap: .5em;
-    }
 
-    tr {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1em;
-
-        td,
-        th {
-            text-align: left;
-            color: var(--color);
+        span {
+            margin: 0;
         }
     }
 }

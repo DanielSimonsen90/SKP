@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
 
+    <!-- <link rel="stylesheet" href="styles/global.min.css">
+    <link rel="stylesheet" href="styles/cv.min.css">
+    <link rel="stylesheet" href="styles/application.min.css"> -->
+
     <style id="global">
         *,
         *::before,
@@ -19,21 +23,24 @@
 
         :root {
             --brand: #FF5E00;
-            --color: #EEE;
-            --link-color: #d9e2fd;
-            --muted: #bbb;
-            --background: #333;
+            --color: #333;
+            --link-color: #5d7cdb;
+            --muted: #474747;
+            --background: #ececec;
             --accent: #FAB54B;
+            --body-background: white;
         }
 
         body {
-            background: black;
+            background: var(--body-background);
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
             font-family: arial, sans-serif;
             gap: 1em;
+            /* height: 100vh; */
+            margin: 0;
         }
 
         header {
@@ -66,7 +73,17 @@
         h2:not(p),
         h3:not(p),
         p:not(p) {
-            text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+            text-shadow: 0 0.25rem 0.5rem rgba(25, 25, 25, 0.5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            h1:not(p),
+            h2:not(p),
+            h3:not(p),
+            p:not(p) {
+                text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+            }
         }
 
         h1,
@@ -93,8 +110,24 @@
         }
 
         a {
-            text-decoration: none;
             color: var(--link-color);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+
+        ul.flex {
+            display: flex;
+            align-items: center;
+            gap: 1ch;
+            padding: unset;
+        }
+
+        ul.flex li {
+            list-style: none;
+            font-size: 1.25rem;
         }
 
         span {
@@ -102,17 +135,6 @@
             --margin: 1ch;
             margin-top: var(--margin);
             margin-bottom: var(--margin);
-        }
-
-        ul {
-            display: flex;
-            align-items: center;
-            gap: 1ch;
-        }
-
-        li {
-            list-style: none;
-            font-size: 1.25rem;
         }
 
         i {
@@ -129,7 +151,7 @@
             border-color: var(--accent);
             max-width: 90%;
             opacity: 0.75;
-            --margin: 1.5em;
+            --margin: 1em;
             margin-top: var(--margin);
             margin-bottom: var(--margin);
         }
@@ -144,11 +166,6 @@
             display: initial;
         }
 
-        article a {
-            text-decoration: underline;
-        }
-    </style>
-    <style id="style">
         .paper {
             background: var(--background);
             width: 210mm;
@@ -160,9 +177,7 @@
             border-radius: 50%;
             height: var(--size);
             width: var(--size);
-            background-image:
-                url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png"),
-                url("https://candeno-uploads.s3-dk6.clu1.obj.storagefactory.io/material-cv-images/zKBfLtYJPeAcNohtfp4371a97LsRRnJQ8ia5k9Js.png");
+            background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png");
             background-size: cover;
         }
 
@@ -181,30 +196,50 @@
         }
     </style>
     <style id="application">
+        .paper:has(#application)>header>ul {
+            width: 100%;
+            justify-content: space-around;
+            margin-top: 1ch;
+        }
+
+        .paper:has(#application)>header>ul li {
+            font-size: 1rem;
+        }
+
         #application {
             display: grid;
-            grid-template-areas: "application sparetime" "why-me sparetime";
+            grid-template-areas: "why-apply who-dis" "what-offer who-dis";
             gap: 1em;
             grid-template-columns: repeat(2, 1fr);
-            --margin: 2em;
+            --margin: 1em;
             margin-top: var(--margin);
-            margin-bottom: calc(var(--margin) * 2);
+            margin-bottom: calc(var(--margin) * 4);
         }
 
-        #application article:first-child {
-            grid-area: application;
+        #application>*:nth-child(1) {
+            grid-area: why-apply;
         }
 
-        #application article:last-child {
-            grid-area: sparetime;
+        #application>*:nth-child(2) {
+            grid-area: what-offer;
+        }
+
+        #application>*:nth-child(3) {
+            grid-area: who-dis;
         }
 
         .paper:has(#application) header {
             gap: 2ch;
         }
 
-        #presentation p {
+        #profile p {
             color: var(--muted);
+            flex-direction: column;
+            gap: unset;
+        }
+
+        #profile p span {
+            margin: 0;
         }
 
         .mvh {
@@ -229,22 +264,42 @@
             background-position: center;
             display: grid;
             place-items: center;
-            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
             height: 20vh;
         }
 
         .hero-header .pfp {
-            --size: 12.5em;
+            --size: 10em;
+        }
+
+        #socials a {
+            text-decoration: none;
         }
 
         #info {
             display: grid;
-            gap: 2em;
+            gap: 1em;
         }
 
         #abilities {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-areas: "skills education info" "skills languages info";
+            gap: 1em;
+        }
+
+        #abilities .ability:nth-child(1) {
+            grid-area: skills;
+        }
+
+        #abilities .ability:nth-child(2) {
+            grid-area: education;
+        }
+
+        #abilities .ability:nth-child(3) {
+            grid-area: languages;
+        }
+
+        #abilities .ability:nth-child(4) {
+            grid-area: info;
         }
 
         #abilities .ability {
@@ -289,133 +344,104 @@
             display: grid;
             max-width: -moz-max-content;
             max-width: max-content;
-            place-items: center;
             margin: 0 auto;
         }
 
-        #education table.content,
-        #education tbody {
+        #education p {
             display: grid;
-            gap: 0.5em;
         }
 
-        #education tr {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1em;
-        }
-
-        #education tr td,
-        #education tr th {
-            text-align: left;
-            color: var(--color);
+        #education p span {
+            margin: 0;
         }
     </style>
+
 </head>
 
 <body>
     <div class="paper">
+        <header>
+            <ul class="flex">
+                <li>Daniel Simonsen</li>
+                <li>Full-stack programmør</li>
+            </ul>
+        </header>
         <section>
-            <header>
-                <img class="pfp">
-    
-                <div id="presentation">
-                    <h1>Daniel Simonsen</h1>
-                    <p>Datateknikersvend, færdiguddannet 26. jan 2024</p>
-                </div>
-            </header>
-    
             <div id="application">
-                <article name="Application">
-                    <h1>Ansøgning som programmeringsmedarbejder</h1>
+                <article name="Why apply">
+                    <h1>Struktureret datateknikersvend leder efter full-stack arbejde</h1>
                     <p>
                         <span>
-                            Mit navn er Daniel Simonsen, og jeg er en 22-årig
-                            ung mand fra Frederikshavn, som brænder for webudvikling og OOP.
+                            Kan I bruge for en struktureret, selvstændig og kreativ kollega?
                         </span>
                         <span>
-                            Jeg har altid været interesseret i
-                            programmeringsverdenen, og har siden
-                            folkeskolen leget med programmeringslogikken i
-                            bl.a. Sheets, Minecrafts ”redstone” & RPG Maker
-                            XP.
+                            Med uddannelse i backend og interesse for frontend, kan jeg tilbyde 5½ års erfaring i
+                            full-stack udvikling.
+                            Selvom jeg er særligt effektiv i sprog som C#, Typescript og Javascript i teknologier som
+                            React, ASP.NET og EntityFramework,
+                            er jeg meget interesseret i at lære nye sprog og teknologier.
                         </span>
                         <span>
-                            Siden starten af "datatekniker med speciale i programmering"'s-uddannelsen, har jeg elsket OOP
-                            og brugt mange timer på at lave smarte
-                            hierarkier. Dog har jeg siden brobygning i 9.
-                            klasse haft interesse i webudvikling, og har stor
-                            interesse i komponent udvikling i f.eks. Vue.js &
-                            React.js.
-                        </span>
-                        <span>
-                            Alle mine projekter kan findes på <a href="https://github.com/DanielSimonsen90">min Github</a>,
-                            hvor mange af dem ligger enten i <a
-                                href="https://github.com/DanielSimonsen90/Education">Education</a>
-                            eller <a href="https://github.com/DanielSimonsen90/Education">SKP</a>
-                            repositories, ellers vil jeg foreslå at kikke på mine
-                            <a href="https://github.com/stars/DanielSimonsen90/lists/libraries">DanhoLibraries</a>.
-                        </span>
-                        <span>
-                            Nogle af de hjemmesider jeg har lavet findes på min <a href="https://linktr.ee/DanielSimonsen90">linktree</a>. Disse sider er lavet med et C# ASP.NET API med forbindelse til en MSSQL database, der viser mit data på en Typescript React.js hjemmeside styled i SCSS.
+                            Jeg er stor fan af generisk kode, brug af DRY conceptet, og har en stor interesse i at
+                            lave kode, der er smart og nemt at vedligeholde.
+                            Derudover har jeg øje for detaljer og brugervenlighed, sådan at jeg kan give
+                            brugeren den bedste oplevelse.
                         </span>
                     </p>
                 </article>
-    
-                <article name="Why me?">
-                    <h1>Hvorfor mig?</h1>
+
+                <article name="Who am I as a colleague">
+                    <h1>Hvem er jeg?</h1>
                     <p>
                         <span>
-                            Siden brobygning i 9. klasse, har jeg haft stor
-                            interesse inden for webudvikling. Jeg er stor fan
-                            af Javascript & Typescript, og har arbejdet med
-                            sprogene uafbrudt i 4 år.
-                            Jeg er altid åben til at lære mere.
+                            <!-- TODO: Stop "jeg" spam -->
+                            Jeg nyder at sidde for mig selv og lave mine opgaver med musik i ørene, men jeg er ikke
+                            bange for at samarbejde med andre eller tage ansvar for en feature.
+                            Jeg er en struktureret type, som godt kan lide at planlægge mine opgaver og holde styr på
+                            mine deadlines.
+                            Jeg er glad for at kommunikere, brainstorme og hjælpe mine kollegaer, og nyder at udvikle
+                            innovative løsninger sammen.
                         </span>
                         <span>
-                            Jeg bliver nemt fanget af projekter og
-                            problemstillinger, og er utrolig dårlig til at holde
-                            pauser, når jeg har en problemstilling i hovedet,
-                            jeg vil have løst.
-                        </span>
-                        <span>
-                            På skoleoplæringscenteret er vi blevet lært at bruge SCRUM og planlægge vores arbejdsopgaver.
-                            Herunder benyttes Azure DevOps til at holde styr på opgaver og versionsstyring af vores
-                            projekter.
+                            Udenfor arbejde nyder jeg at spille Genshin Impact eller Overwatch med mine venner, lave
+                            elektronisk musik og redigere videoer.
+                            Mine fritidsinteresser er med til at styrke min kreativitet, selvrefelktion og adaptivitet.
                         </span>
                     </p>
                 </article>
-    
-                <article name="Spare time">
-                    <h1>Min Fritid</h1>
+
+                <article name="What can I offer">
+                    <h1>Hvad kan jeg tilbyde?</h1>
                     <p>
                         <span>
-                            Min fritid bliver brugt på spil med kammerarter, musikproduktion og lidt videoredigering og
-                            fritidsprogrammering.
+                            Jeg kan tilbyde en kollega, der er effektiv, struktureret, åben for nye teknologier samt
+                            systemer og har et øje for detaljer.
+                            Jeg kan godt lide at planlægge mine opgaver og holde styr på mine deadlines,
+                            da jeg føler at det er med til at give mig motivation til at arbejde og vise at jeg gør en
+                            god indsats.
+                            Selvom jeg er blevet tryg i mine nuværende teknologier og sprog, er jeg stadig interesseret
+                            i at lære nyt.
+                            Jeg er en detajleorienteret type, der har øje for selv de små detaljer og brugervenlighed,
+                            så brugeren får den bedste oplevelse.
                         </span>
                         <span>
-                            Jeg spiller Overwatch, da jeg godt kan lide at have mange ting at tænke over og lære.
-                            Jeg synes det er fedt, at der sker mange ting på en gang, og at man hurtigt skal reagere på de
-                            situationer, der opstår.
-                            Herunder er jeg også glad for at selvreflektere, og se, hvad jeg kan gøre bedre, hvis jeg bliver
-                            udsat for en lignende situation igen.
+                            Jeg kan spare jer tid i oplæring i programmer som Visual Studio, Visual Studio Code, SQL
+                            Server Management Studio, Figma og draw.io.
+                            Disse programmer blev brugt under min uddannelse, hvor jeg derudover selv tog initiativ til
+                            at lære Figma og draw.io,
+                            som begge er redskaber i forbindelse med opstart af projekter (mindmap og wireframes).
                         </span>
                         <span>
-                            Når jeg føler mig kreativ, kan jeg godt lide at lukke alt af og 100% koncentrere mig med f.eks.
-                            musikproduktion.
-                            Herunder indgår at komme med en ide og udvikle den til et helt stykke musik, som jeg kan være
-                            stolt af og udgive til diverse streaming services som f.eks. Spotify.
-                            Jeg har lavet musik i 6 år, og har udgivet 3 albums, og arbejder langsomt mod det 4. album.
+                            Under min uddannelse er jeg blevet undervist i SCRUM, og har erfaring med at arbejde i et
+                            agilt miljø i Azure DevOps.
+                            Derudover har jeg god erfaring med at bruge git til versionsstyring og projektstyring.
                         </span>
-			<span>
-			    Siden jeg er blevet ledig i arbejdsmarkedet, er jeg begyndt at træne i det lokale fitnesscenter, hvor jeg skifter imellem hvilke kropsdele, jeg har fokus på.
-			</span>
                     </p>
                 </article>
             </div>
-    
+
             <footer>
-                <p>Jeg håber, at jeg vækker interesse.</p>
+                <p>Jeg håber, I vil tage min ansøgning i betragtning og ser meget frem til at høre fra jer.</p>
                 <p class="mvh">
                     <span>Med venlig hilsen</span>
                     <span>Daniel Simonsen</span>
@@ -423,22 +449,22 @@
             </footer>
         </section>
     </div>
-    
+
     <div class="paper">
         <header class="hero-header">
             <img class="pfp">
         </header>
-    
+
         <section>
             <nav>
                 <div id="presentation">
                     <h1>Daniel Simonsen</h1>
                     <p>Datateknikersvend</p>
                 </div>
-    
-                <ul id="socials">
+
+                <ul id="socials" class="flex">
                     <li>
-                        <a href="https://www.linkedin.com/in/daniel-simonsen-53219421a/">
+                        <a href="https://www.linkedin.com/in/danielsimonsen90/">
                             <i class="fa fa-linkedin"></i>
                         </a>
                     </li>
@@ -448,18 +474,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://danhosaurportfolioii.netlify.com/">
+                        <a href="https://linktr.ee/DanielSimonsen90">
                             <i class="fa fa-external-link"></i>
                         </a>
                     </li>
                 </ul>
             </nav>
-    
+
             <hr />
-    
+
             <div id="info">
                 <div id="abilities">
-                    <div class="ability">
+                    <div class="ability" name="skills">
                         <header>
                             <i class="fa fa-code"></i>
                             <h2>Kompetencer</h2>
@@ -485,8 +511,21 @@
                             </div>
                         </div>
                     </div>
-    
-                    <div class="ability">
+
+                    <div class="ability" name="education">
+                        <div id="education">
+                            <header>
+                                <i class="fa fa-graduation-cap"></i>
+                                <h2>Uddannelse</h2>
+                            </header>
+                            <p>
+                                <span>Datatekniker m. speciale i prog.</span>
+                                <span>Aug. 2018 - Jan. 2024</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="ability" name="languages">
                         <header>
                             <i class="fa fa-globe"></i>
                             <h2>Sprog</h2>
@@ -500,43 +539,20 @@
                             <p>Engelsk • Flydende</p>
                         </div>
                     </div>
-    
-                    <div class="ability">
+
+                    <div class="ability" name="info">
                         <header>
                             <i class="fa fa-user"></i>
                             <h2>Oplysninger</h2>
                         </header>
-                        <p><i class="fa fa-map-marker"></i> 9900 Frederikshavn</p>
                         <a href="mailto:danielsimonsen90@gmail.com">
                             <i class="fa fa-envelope"></i> danielsimonsen90@gmail.com
                         </a>
+                        <p><i class="fa fa-phone"></i> +45 20 95 61 77</p>
                         <p><i class="fa fa-birthday-cake"></i> 3. Maj 2001</p>
                     </div>
                 </div>
-    
-                <div id="hobbies">
-                    <header>
-                        <i class="fa fa-music"></i>
-                        <h2>Fritidsinteresser</h2>
-                    </header>
-    
-                    <div class="content">
-                        <div class="hobby">
-                            <h3>Overwatch & venner</h3>
-                            <p>Siden 2017 har jeg spillet FPS spillet Overwatch, og læner mig til Support rollen, hvor jeg
-                                støtter mine holdkammerarter.</p>
-                        </div>
-                        <div class="hobby">
-                            <h3>Musik</h3>
-                            <p>Jeg er stor fan af musik og nyder også at lave mit eget, som jeg kan dele med omverden.</p>
-                        </div>
-                        <div class="hobby">
-                            <h3>Videoredigering</h3>
-                            <p>Jeg redigere nogle gange compilation videoer af spil klip fra tidligere spilsessioner.</p>
-                        </div>
-                    </div>
-                </div>
-    
+
                 <div id="projects">
                     <header>
                         <i class="fa fa-briefcase"></i>
@@ -545,7 +561,8 @@
                     <div class="content">
                         <div class="project">
                             <h3>CitizenTaxi</h3>
-                            <p>Svendeprøveprojekt som online taxabooking system til Region Nordjyllands borgere, der har ret til flexsygehustaxa.</p>
+                            <p>Svendeprøveprojekt som online taxabooking system til Region Nordjyllands borgere, der har
+                                ret til flexsygehustaxa.</p>
                         </div>
                         <div class="project">
                             <h3>FlipNow</h3>
@@ -558,38 +575,53 @@
                         </div>
                         <div class="project">
                             <h3>Pingu</h3>
-                            <p>Utility Discord bot hvor jeg tager inspiration af andre Discord bots, og prøver at genskabe
-                                deres features.</p>
+                            <p>Utility Discord bot hvor jeg tager inspiration af andre Discord bots, og prøver at
+                                genskabe deres features.</p>
                         </div>
                     </div>
                 </div>
-    
-                <div id="education">
+
+                <div id="volunteer">
                     <header>
-                        <i class="fa fa-graduation-cap"></i>
-                        <h2>Uddannelse</h2>
+                        <i class="fa fa-handshake-o"></i>
+                        <h2>Frivilligt arbejde</h2>
                     </header>
-                    <table class="content">
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Skole</th>
-                                <th>Periode</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Datatekniker m. speciale i prog.</td>
-                                <td>TECHCOLLEGE</td>
-                                <td>Aug. 2018 - Jan. 2024</td>
-                            </tr>
-                            <tr>
-                                <td>Folkeskole</td>
-                                <td>Bangsbostrandskole</td>
-                                <td>Aug. 2007 - Jun. 2018</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="content">
+                        <h3>PixelSpark</h3>
+                        <p>
+                            Hos PixelSpark serveren administrerede jeg dokumenter, accepterede ban appeals, var med til
+                            ansættelsesprocessen og modererede serverens medlemmer.
+                            Derudover var jeg også serverens Social Media Manager, hvor jeg bl.a. styrede Facebook og
+                            Twitter konti
+                            samt udgav månedlige nyhedsbreve om de adskillige opdateringer, der har været sket i løbet
+                            af måneden.
+                        </p>
+                        <p>2016 - 2017 og 2019 - 2020</p>
+                    </div>
+                </div>
+
+                <div id="hobbies">
+                    <header>
+                        <i class="fa fa-music"></i>
+                        <h2>Fritidsinteresser</h2>
+                    </header>
+
+                    <div class="content">
+                        <div class="hobby">
+                            <h3>Videospil</h3>
+                            <p>Jeg spiller hurtige team-building spil, der kræver planlægning, adaptivitet og
+                                team-building, hvor alle styrker hinanden.</p>
+                        </div>
+                        <div class="hobby">
+                            <h3>Musikproduktion</h3>
+                            <p>Musikproduktion er med til at styrke min kreativitet, hvor jeg bl.a. kan eksperimentere
+                                med lyde.</p>
+                        </div>
+                        <div class="hobby">
+                            <h3>Videoredigering</h3>
+                            <p>Jeg redigere nogle gange compilation videoer af klip fra tidligere spilsessioner.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

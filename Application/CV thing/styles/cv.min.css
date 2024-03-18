@@ -4,21 +4,37 @@
   background-position: center;
   display: grid;
   place-items: center;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
   height: 20vh;
 }
 .hero-header .pfp {
   --size: 10em;
 }
 
+#socials a {
+  text-decoration: none;
+}
+
 #info {
   display: grid;
-  gap: 2em;
+  gap: 1em;
 }
 
 #abilities {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-areas: "skills education info" "skills languages info";
+  gap: 1em;
+}
+#abilities .ability:nth-child(1) {
+  grid-area: skills;
+}
+#abilities .ability:nth-child(2) {
+  grid-area: education;
+}
+#abilities .ability:nth-child(3) {
+  grid-area: languages;
+}
+#abilities .ability:nth-child(4) {
+  grid-area: info;
 }
 #abilities .ability {
   display: flex;
@@ -61,21 +77,11 @@
   display: grid;
   max-width: -moz-max-content;
   max-width: max-content;
-  place-items: center;
   margin: 0 auto;
 }
-#education table.content,
-#education tbody {
+#education p {
   display: grid;
-  gap: 0.5em;
 }
-#education tr {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
-}
-#education tr td,
-#education tr th {
-  text-align: left;
-  color: var(--color);
+#education p span {
+  margin: 0;
 }
