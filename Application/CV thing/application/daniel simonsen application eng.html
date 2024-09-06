@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style id="global">
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    :root {
+      --brand: #3586bb;
+      --color: #333;
+      --link-color: #5d7cdb;
+      --muted: #474747;
+      --background: #ececec;
+      --accent: #7289da;
+      --accent-shadow: #637edd;
+      --body-background: white;
+    }
+
+    body {
+      background: var(--body-background);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-family: arial, sans-serif;
+      gap: 1em;
+      margin: 0;
+      height: calc(100vh + 2em);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1ch;
+    }
+
+    section {
+      padding: 1em 2em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav i {
+      color: var(--color);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-shadow: 0 0.25rem 0.5rem rgba(25, 25, 25, 0.25);
+    }
+
+    h1,
+    h2 {
+      color: var(--brand);
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      color: var(--color);
+      font-size: 1rem;
+      margin-bottom: 0.75ch;
+    }
+
+    p,
+    a {
+      display: flex;
+      font-size: 1rem;
+      color: var(--color);
+      gap: 1ch;
+    }
+
+    a {
+      color: var(--link-color);
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin: 0;
+    }
+
+    ul.flex {
+      display: flex;
+      align-items: center;
+      gap: 1ch;
+      padding: unset;
+    }
+
+    ul.flex li {
+      list-style: none;
+      font-size: 1.25rem;
+    }
+
+    span {
+      display: block;
+      --margin: 1ch;
+      margin-top: var(--margin);
+      margin-bottom: var(--margin);
+    }
+
+    .hero-header {
+      background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/code.png");
+      background-size: cover;
+      background-position: center;
+      display: grid;
+      place-items: center;
+      height: 20vh;
+    }
+
+    .hero-header .pfp {
+      --size: 10em;
+    }
+
+    .pfp {
+      --size: 5em;
+      border-radius: 50%;
+      height: var(--size);
+      width: var(--size);
+      background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png");
+      background-size: cover;
+    }
+
+    #socials a {
+      text-decoration: none;
+    }
+
+    i {
+      display: flex !important;
+      justify-content: center;
+      color: var(--brand);
+      background-repeat: no-repeat;
+      --size: 1.25rem;
+      font-size: var(--size) !important;
+      height: var(--size);
+      width: var(--size);
+    }
+
+    hr {
+      border-color: var(--accent);
+      max-width: 90%;
+      opacity: 0.75;
+      --margin: 1em;
+      margin-top: var(--margin);
+      margin-bottom: var(--margin);
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+    }
+
+    article p,
+    article a {
+      display: initial;
+    }
+
+    .paper {
+      background: var(--background);
+      width: 210mm;
+      height: 297mm;
+    }
+
+    .progress {
+      border-radius: 2em;
+      height: 0.5rem;
+      width: 100%;
+      background: var(--accent-shadow);
+    }
+
+    .progress .value {
+      background-color: var(--accent);
+      border-radius: 2em;
+      height: 100%;
+      box-shadow: 0.5rem 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <style id="application">
+    .paper:has(#application)>header>ul {
+      width: 100%;
+      justify-content: space-around;
+      margin-top: 1ch;
+    }
+
+    .paper:has(#application)>header>ul li {
+      font-size: 1rem;
+    }
+
+    #application {
+      column-count: 2;
+      gap: 1em;
+
+      max-height: 100%;
+      --margin: 1em;
+      margin-top: var(--margin);
+      margin-bottom: calc(var(--margin) * 4);
+    }
+
+    #application>* {
+      break-inside: avoid;
+      margin-bottom: .5em;
+    }
+
+    .paper:has(#application) header {
+      gap: 2ch;
+    }
+
+    #profile p {
+      color: var(--muted);
+      flex-direction: column;
+      gap: unset;
+    }
+
+    #profile p span {
+      margin: 0;
+    }
+
+    .mvh {
+      flex-direction: column;
+      gap: unset;
+    }
+
+    .mvh span {
+      --margin: 2rem;
+      margin-top: var(--margin);
+      margin-bottom: unset;
+    }
+
+    .mvh span:last-child {
+      margin-top: calc(1rem + var(--margin));
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper">
+    <header class="hero-header">
+      <img class="pfp">
+    </header>
+    <section>
+      <nav>
+        <div id="presentation">
+          <h1>Daniel Simonsen</h1>
+          <p>Datatechnician</p>
+        </div>
+
+        <ul id="socials" class="flex">
+          <li>
+            <a href="https://www.linkedin.com/in/danielsimonsen90/">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/DanielSimonsen90">
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://linktr.ee/DanielSimonsen90">
+              <i class="fa fa-external-link"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      <div id="application">
+        <article name="Why apply">
+          <h1>Structured datatechnician graduate looking for full-stack work</h1>
+          <p>
+            <span>
+              Can you use a structured, independent and creative colleague?
+            </span>
+            <span>
+              With an education in backend and an interest in frontend, I can offer 5½ years of experience
+              in full-stack development.
+              Although I am particularly effective in languages such as C#, Typescript and Javascript in
+              technologies such as React, ASP.NET and EntityFramework,
+              I am very interested in learning new languages and technologies.
+            </span>
+            <span>
+              I'm a big fan of generic code, use of the DRY concept, and have a great interest in making
+              code that is smart and easy to maintain.
+              In addition, I have an eye for detail and user-friendliness, so that I can give the user the
+              best experience.
+            </span>
+          </p>
+        </article>
+
+        <article name="Who am I as a colleague">
+          <h1>Who am I?</h1>
+          <p>
+            <span>
+              <!-- TODO: Stop "I" spam -->
+              I enjoy sitting by myself and doing my tasks with music in my ears, but I'm not afraid to
+              collaborate with others or take responsibility for a feature.
+              I am a structured type who likes to plan my tasks and keep track of my deadlines.
+              I enjoy communicating, brainstorming and helping my colleagues, and enjoy developing
+              innovative solutions together.
+            </span>
+            <span>
+              Outside of work, I enjoy playing Genshin Impact or Overwatch with my friends, making
+              electronic music and editing videos.
+              My hobbies help to strengthen my creativity, self-reflection and adaptability.
+            </span>
+          </p>
+        </article>
+
+        <article name="What can I offer">
+          <h1>What can I offer?</h1>
+          <p>
+            <span>
+              I can offer a colleague who is effective, structured, open to new technologies and systems
+              and has an eye for detail.
+              I like to plan my tasks and keep track of my deadlines, as I feel that it gives me
+              motivation to work and show that I am making a good effort.
+              Although I have become comfortable in my current technologies and languages, I am still
+              interested in learning something new.
+              I'm a detail-oriented type who has an eye for even the smallest details and
+              user-friendliness, so the user gets the best experience.
+            </span>
+            <span>
+              I can save you time in training in programs like Visual Studio, Visual Studio Code, SQL
+              Server Management Studio, Figma and draw.io.
+              These programs were used during my education, where I also took the initiative to learn
+              Figma and draw.io,
+              both of which are tools in connection with starting projects (mindmap and wireframes).
+            </span>
+            <span>
+              During my education, I have been taught SCRUM and have experience working in an agile
+              environment in Azure DevOps.
+              In addition, I have good experience using git for version control and project management.
+            </span>
+          </p>
+        </article>
+        <footer>
+          <p>I hope you will consider my application and I look forward to hearing from you.</p>
+          <p class="mvh">
+            <span>Best regards</span>
+            <span>Daniel Simonsen</span>
+          </p>
+        </footer>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>

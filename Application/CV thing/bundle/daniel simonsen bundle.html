@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
 
-    <!-- <link rel="stylesheet" href="styles/global.min.css">
-    <link rel="stylesheet" href="styles/cv.min.css">
-    <link rel="stylesheet" href="styles/application.min.css"> -->
-
     <style id="global">
         *,
         *::before,
@@ -22,12 +18,13 @@
         }
 
         :root {
-            --brand: #FF5E00;
+            --brand: #3586bb;
             --color: #333;
             --link-color: #5d7cdb;
             --muted: #474747;
             --background: #ececec;
-            --accent: #FAB54B;
+            --accent: #7289da;
+            --accent-shadow: #637edd;
             --body-background: white;
         }
 
@@ -39,8 +36,8 @@
             justify-content: center;
             font-family: arial, sans-serif;
             gap: 1em;
-            /* height: 100vh; */
             margin: 0;
+            height: calc(100vh + 2em);
         }
 
         header {
@@ -50,7 +47,7 @@
         }
 
         section {
-            padding: 1.5em 2em;
+            padding: 1em 2em;
         }
 
         nav {
@@ -69,21 +66,10 @@
             margin: 0;
         }
 
-        h1:not(p),
-        h2:not(p),
-        h3:not(p),
-        p:not(p) {
-            text-shadow: 0 0.25rem 0.5rem rgba(25, 25, 25, 0.5);
-        }
-
-        @media (prefers-color-scheme: dark) {
-
-            h1:not(p),
-            h2:not(p),
-            h3:not(p),
-            p:not(p) {
-                text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
-            }
+        h1,
+        h2,
+        h3 {
+            text-shadow: 0 0.25rem 0.5rem rgba(25, 25, 25, 0.25);
         }
 
         h1,
@@ -137,12 +123,39 @@
             margin-bottom: var(--margin);
         }
 
+        .hero-header {
+            background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/code.png");
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            height: 20vh;
+        }
+
+        .hero-header .pfp {
+            --size: 10em;
+        }
+
+        .pfp {
+            --size: 5em;
+            border-radius: 50%;
+            height: var(--size);
+            width: var(--size);
+            background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png");
+            background-size: cover;
+        }
+
+        #socials a {
+            text-decoration: none;
+        }
+
         i {
             display: flex !important;
             justify-content: center;
             color: var(--brand);
             background-repeat: no-repeat;
-            --size: 1rem;
+            --size: 1.25rem;
+            font-size: var(--size) !important;
             height: var(--size);
             width: var(--size);
         }
@@ -172,20 +185,11 @@
             height: 297mm;
         }
 
-        .pfp {
-            --size: 5em;
-            border-radius: 50%;
-            height: var(--size);
-            width: var(--size);
-            background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/pfp.png");
-            background-size: cover;
-        }
-
         .progress {
             border-radius: 2em;
             height: 0.5rem;
             width: 100%;
-            background: #c07705;
+            background: var(--accent-shadow);
         }
 
         .progress .value {
@@ -207,25 +211,18 @@
         }
 
         #application {
-            display: grid;
-            grid-template-areas: "why-apply who-dis" "what-offer who-dis";
+            column-count: 2;
             gap: 1em;
-            grid-template-columns: repeat(2, 1fr);
+
+            max-height: 100%;
             --margin: 1em;
             margin-top: var(--margin);
             margin-bottom: calc(var(--margin) * 4);
         }
 
-        #application>*:nth-child(1) {
-            grid-area: why-apply;
-        }
-
-        #application>*:nth-child(2) {
-            grid-area: what-offer;
-        }
-
-        #application>*:nth-child(3) {
-            grid-area: who-dis;
+        #application>* {
+            break-inside: avoid;
+            margin-bottom: .5em;
         }
 
         .paper:has(#application) header {
@@ -258,23 +255,6 @@
         }
     </style>
     <style id="cv">
-        .hero-header {
-            background-image: url("https://raw.githubusercontent.com/DanielSimonsen90/SKP/main/Application/CV%20thing/images/code.png");
-            background-size: cover;
-            background-position: center;
-            display: grid;
-            place-items: center;
-            height: 20vh;
-        }
-
-        .hero-header .pfp {
-            --size: 10em;
-        }
-
-        #socials a {
-            text-decoration: none;
-        }
-
         #info {
             display: grid;
             gap: 1em;
@@ -360,13 +340,38 @@
 
 <body>
     <div class="paper">
-        <header>
-            <ul class="flex">
-                <li>Daniel Simonsen</li>
-                <li>Full-stack programmør</li>
-            </ul>
+        <header class="hero-header">
+            <img class="pfp">
         </header>
+
         <section>
+            <nav>
+                <div id="presentation">
+                    <h1>Daniel Simonsen</h1>
+                    <p>Datatekniker</p>
+                </div>
+
+                <ul id="socials" class="flex">
+                    <li>
+                        <a href="https://www.linkedin.com/in/danielsimonsen90/">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/DanielSimonsen90">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linktr.ee/DanielSimonsen90">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <hr />
+
             <div id="application">
                 <article name="Why apply">
                     <h1>Struktureret datateknikersvend leder efter full-stack arbejde</h1>
@@ -438,15 +443,15 @@
                         </span>
                     </p>
                 </article>
-            </div>
 
-            <footer>
-                <p>Jeg håber, I vil tage min ansøgning i betragtning og ser meget frem til at høre fra jer.</p>
-                <p class="mvh">
-                    <span>Med venlig hilsen</span>
-                    <span>Daniel Simonsen</span>
-                </p>
-            </footer>
+                <footer>
+                    <p>Jeg håber, I vil tage min ansøgning i betragtning og ser meget frem til at høre fra jer.</p>
+                    <p class="mvh">
+                        <span>Med venlig hilsen</span>
+                        <span>Daniel Simonsen</span>
+                    </p>
+                </footer>
+            </div>
         </section>
     </div>
 
@@ -459,7 +464,7 @@
             <nav>
                 <div id="presentation">
                     <h1>Daniel Simonsen</h1>
-                    <p>Datateknikersvend</p>
+                    <p>Datatekniker</p>
                 </div>
 
                 <ul id="socials" class="flex">
@@ -567,7 +572,8 @@
                     <div class="content">
                         <div class="project">
                             <h3>Redesign af Gærum Form og Trivsel</h3>
-                            <p>Redesign af Gærum Form og Trivsels hjemmeside i forbindelse med grafisk design kursus.</p>
+                            <p>Redesign af Gærum Form og Trivsels hjemmeside i forbindelse med grafisk design kursus.
+                            </p>
                         </div>
                         <div class="project">
                             <h3>CitizenTaxi</h3>
