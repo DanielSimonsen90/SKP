@@ -28,15 +28,18 @@
     }
 
     body {
+      font-size: 16px;
       background: var(--body-background);
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       font-family: arial, sans-serif;
       gap: 1em;
       margin: 0;
-      height: calc(100vh + 2em);
+      /* height: calc(100vh + 2em); */
+      height: 100vh;
+      padding-inline: 1em;
     }
 
     header {
@@ -117,7 +120,7 @@
 
     span {
       display: block;
-      --margin: 1ch;
+      --margin: .75ch;
       margin-top: var(--margin);
       margin-bottom: var(--margin);
     }
@@ -132,7 +135,7 @@
     }
 
     .hero-header .pfp {
-      --size: 10em;
+      --size: 25vw;
     }
 
     .pfp {
@@ -147,6 +150,7 @@
     #socials a {
       text-decoration: none;
     }
+
 
     i {
       display: flex !important;
@@ -180,8 +184,9 @@
 
     .paper {
       background: var(--background);
-      width: 210mm;
-      height: 297mm;
+      height: 100%;
+      /* width: 210mm;
+      height: 297mm; */
     }
 
     .progress {
@@ -306,7 +311,7 @@
             </a>
           </li>
           <li>
-            <a href="https://linktr.ee/DanielSimonsen90">
+            <a href="https://youtu.be/NnSeDzOYZ0Y">
               <i class="fa fa-external-link"></i>
             </a>
           </li>

@@ -27,15 +27,18 @@
     }
 
     body {
+      font-size: 16px;
       background: var(--body-background);
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       font-family: arial, sans-serif;
       gap: 1em;
       margin: 0;
-      height: calc(100vh + 2em);
+      /* height: calc(100vh + 2em); */
+      height: 100vh;
+      padding-inline: 1em;
     }
 
     header {
@@ -116,7 +119,7 @@
 
     span {
       display: block;
-      --margin: 1ch;
+      --margin: .75ch;
       margin-top: var(--margin);
       margin-bottom: var(--margin);
     }
@@ -131,7 +134,7 @@
     }
 
     .hero-header .pfp {
-      --size: 10em;
+      --size: 25vw;
     }
 
     .pfp {
@@ -180,8 +183,9 @@
 
     .paper {
       background: var(--background);
-      width: 210mm;
-      height: 297mm;
+      height: 100%;
+      /* width: 210mm;
+      height: 297mm; */
     }
 
     .progress {
@@ -199,6 +203,11 @@
     }
   </style>
   <style id="application">
+    .paper:has(#application) {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
     .paper:has(#application)>header>ul {
       width: 100%;
       justify-content: space-around;
@@ -213,7 +222,7 @@
       column-count: 2;
       gap: 1em;
 
-      max-height: 100%;
+      height: 100%;
       --margin: 1em;
       margin-top: var(--margin);
       margin-bottom: calc(var(--margin) * 4);
@@ -252,6 +261,11 @@
     .mvh span:last-child {
       margin-top: calc(1rem + var(--margin));
     }
+
+    .mvh + a {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 
@@ -280,7 +294,7 @@
             </a>
           </li>
           <li>
-            <a href="https://linktr.ee/DanielSimonsen90">
+            <a href="https://youtu.be/NnSeDzOYZ0Y">
               <i class="fa fa-external-link"></i>
             </a>
           </li>
@@ -316,10 +330,10 @@
           <h1>Hvem er jeg?</h1>
           <p>
             <span>
-              <!-- TODO: Stop "jeg" spam -->
-              Jeg nyder at sidde for mig selv og lave mine opgaver med musik i ørene, men jeg er ikke
+              Jeg er en INFJ som personlighedstype, hvilket betyder at jeg er introvert, intuitiv, følsom og dømmende.
+              Selvom jeg nyder at sidde for mig selv og lave mine opgaver med musik i ørene, er jeg ikke
               bange for at samarbejde med andre eller tage ansvar for en feature.
-              Jeg er en struktureret type, som godt kan lide at planlægge mine opgaver og holde styr på
+              Jeg er struktureret og kan godt lide at planlægge mine opgaver og holde styr på
               mine deadlines.
               Jeg er glad for at kommunikere, brainstorme og hjælpe mine kollegaer, og nyder at udvikle
               innovative løsninger sammen.
@@ -367,6 +381,8 @@
             <span>Med venlig hilsen</span>
             <span>Daniel Simonsen</span>
           </p>
+
+          <a href="https://youtu.be/NnSeDzOYZ0Y">Mød mig på YouTube</a>
         </footer>
       </div>
     </section>

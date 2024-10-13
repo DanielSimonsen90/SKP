@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
   <style id="global">
     *,
     *::before,
@@ -27,15 +27,18 @@
     }
 
     body {
+      font-size: 16px;
       background: var(--body-background);
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       font-family: arial, sans-serif;
       gap: 1em;
       margin: 0;
-      height: calc(100vh + 2em);
+      /* height: calc(100vh + 2em); */
+      height: 100vh;
+      padding-inline: 1em;
     }
 
     header {
@@ -116,7 +119,7 @@
 
     span {
       display: block;
-      --margin: 1ch;
+      --margin: .75ch;
       margin-top: var(--margin);
       margin-bottom: var(--margin);
     }
@@ -131,7 +134,7 @@
     }
 
     .hero-header .pfp {
-      --size: 10em;
+      --size: 25vw;
     }
 
     .pfp {
@@ -146,6 +149,7 @@
     #socials a {
       text-decoration: none;
     }
+
 
     i {
       display: flex !important;
@@ -179,8 +183,9 @@
 
     .paper {
       background: var(--background);
-      width: 210mm;
-      height: 297mm;
+      height: 100%;
+      /* width: 210mm;
+        height: 297mm; */
     }
 
     .progress {
@@ -197,7 +202,6 @@
       box-shadow: 0.5rem 0 10px 0 rgba(0, 0, 0, 0.5);
     }
   </style>
-  
   <style id="cv">
     #info {
       display: grid;
@@ -306,7 +310,7 @@
             </a>
           </li>
           <li>
-            <a href="https://linktr.ee/DanielSimonsen90">
+            <a href="https://youtu.be/NnSeDzOYZ0Y">
               <i class="fa fa-external-link"></i>
             </a>
           </li>
